@@ -1,0 +1,32 @@
+Renesas Optimizing Linker (W2.08.00 )             31-Jul-2018 10:42:29
+
+*** Options ***
+
+DefaultBuild\CANFDGateway.mot
+D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\rh850f1kh-d8_rscanfd_rlin3_rlin2_fr\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE1\DefaultBuild\PE1.mot
+D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\rh850f1kh-d8_rscanfd_rlin3_rlin2_fr\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE2\DefaultBuild\PE2.mot
+-form=stype
+-output=DefaultBuild_merged\CANFDGateway.mot
+-list
+
+*** Error information ***
+
+*** Entry address ***
+
+*** Combine information ***
+FILE               START            END              SIZE
+DefaultBuild\CANFDGateway.mot
+                   00000000         000001f5         1f6
+DefaultBuild\CANFDGateway.mot
+                   00000200         00000f6f         d70
+D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\rh850f1kh-d8_rscanfd_rlin3_rlin2_fr\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE1\DefaultBuild\PE1.mot
+                   00002000         00025c7d         23c7e
+D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\rh850f1kh-d8_rscanfd_rlin3_rlin2_fr\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE1\DefaultBuild\PE1.mot
+                   00025c80         000269cf         d50
+DefaultBuild\CANFDGateway.mot
+                   00100000         001000c5         c6
+D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\rh850f1kh-d8_rscanfd_rlin3_rlin2_fr\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE2\DefaultBuild\PE2.mot
+                   00130000         00130135         136
+
+*** Conflict information ***
+

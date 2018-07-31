@@ -1,0 +1,175 @@
+Host OS:	Windows 7
+ELXR: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:02:55 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+
+
+
+Load Map Tue Nov 10 14:51:58 2015
+Image Summary
+
+  Section              Base      Size(hex)    Size(dec)  SecOffs
+  .intvect             00800000  00000730         1840   0000180
+  .intvect_end         00800730  00000000            0   0000000
+  .rozdata             00800730  00000000            0   0000000
+  .robase              00800730  00000000            0   0000000
+  .rosdata             00800730  00000000            0   0000000
+  .rodata              00800730  00000000            0   0000000
+  .text                00800730  0000089e         2206   00008b0
+  .fixaddr             00800fd0  00000000            0   0000000
+  .fixtype             00800fd0  00000000            0   0000000
+  .secinfo             00800fd0  00000060           96   0001150
+  .syscall             00801030  00000006            6   00011b0
+  .romdata             00801038  0000001c           28   00011b8
+  .romzdata            00801054  00000000            0   0000000
+  .romsdata            00801054  00000000            0   0000000
+  .romtdata            00801054  00000000            0   0000000
+  .romsldata           00801054  00000000            0   0000000
+  .bcode               00801054  00000000            0   0000000
+  .bconst              00801054  00000000            0   0000000
+  .top_of_ROM_BOOT     00a00000  00000000            0   0000000
+  .bcode2              01000000  00000000            0   0000000
+  .bconst2             01000000  00000000            0   0000000
+  .top_of_ROM_BOOT2    01008000  00000000            0   0000000
+  .data                fe9e0000  0000001c           28   00011b8
+  .bss                 fe9e001c  00000004            4   0000000
+  .sdabase             fe9e0020  00000000            0   0000000
+  .sdata               fe9e0020  00000000            0   0000000
+  .sbss                fe9e0020  00000000            0   0000000
+  .noclear             fe9e0020  00000000            0   0000000
+  .zdata               fe9e0020  00000000            0   0000000
+  .zbss                fe9e0020  00000000            0   0000000
+  .ramtext             fe9e0080  00000000            0   0000000
+  .tdata               fe9e0080  00000000            0   0000000
+  .exec                fe9e0080  00000000            0   0000000
+  .stack               fe9e0080  00001000         4096   0000000
+  .heapbase            fe9e1080  00000000            0   0000000
+  .heap                fe9e1080  0001ef80       126848   0000000
+  .top_of_RAM          fea00000  00000000            0   0000000
+  .slsync              feef8000  00000004            4   0000000
+  .sldata              feef8004  00000000            0   0000000
+  .slbss               feef8004  00000000            0   0000000
+  .rdata               fef00000  00000000            0   0000000
+  .rbss                fef00000  00000000            0   0000000
+  .top_of_RAM_R        fef10000  00000000            0   0000000
+  .note.renesas        00000000  0000003c           60   00011d4
+  .gstackfix           00000000  00000000            0   0000000
+
+Load Map Tue Nov 10 14:51:58 2015
+Module Summary
+
+  Origin+Size    Section          Module
+00800730+0000f0  .text            crt0.o
+00000000+00003c  .note.renesas    <RENESAS ABI INFO>
+00800820+0000c4  .text            pe2.rel
+00800000+000730  .intvect         pe2.rel
+008008e4+000066  .text            libansi.a(ccexit.o)
+0080094a+00035e  .text            libstartup.a(ind_crt0.o)
+00800cb0+000060  .text            libstartup.a(ind_mset.o)
+00800d10+000114  .text            libstartup.a(ind_mcpy.o)
+00800e24+0000ac  .text            libsys.a(ind_exit.o)
+fe9e001c+000004  .bss             libsys.a(ind_exit.o)
+00801030+000006  .syscall         libsys.a(ind_dots.o)
+00800ed0+000022  .text            libsys.a(ind_call.o)
+00800ef2+0000ba  .text            libsys.a(ind_crt1.o)
+fe9e0000+00001c  .data            libsys.a(ind_crt1.o)
+00800fac+000006  .text            libsys.a(ind_lock.o)
+00800fb2+00001c  .text            libsys.a(ind_errn.o)
+00800fd0+000060  .secinfo         <section info>
+
+Load Map Tue Nov 10 14:51:58 2015
+Global Symbols (sorted alphabetically)
+
+ .intvect         00800000+000000 .intvect..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe2.5Cdr7f7015273_startup.
+ .text            00800850+000044 _INTOSTM5_1
+ .text            00800820+000000 _RESET
+ .text            00800e24+00006a __Exit
+                  00000000+000000 ___atexit_cleanup_func
+                  00000000+000000 ___cpp_exception_cleanup
+                  00000000+000000 ___cpp_exception_init
+ .syscall         00801030+000006 ___dotsyscall
+ .text            00800fbc+000008 ___gh_errno_ptr
+ .text            00800fc4+00000a ___gh_get_errno
+                  00000000+000000 ___gh_iob_init
+ .text            00800fb0+000002 ___gh_lock_init
+ .text            00800fb2+00000a ___gh_set_errno
+ .text            00800fac+000002 ___ghsLock
+ .text            00800fae+000002 ___ghsUnlock
+                  00000000+000000 ___ghs_GetCurrentThreadID
+                  00000000+000000 ___ghs_GetCurrentThreadName
+                  00000000+000000 ___ghs_InterruptLock
+                  00000000+000000 ___ghs_InterruptUnlock
+                  00000000+000000 ___ghs_RunTimeErrorDetected
+ .text            00800e8e+000042 ___ghs_at_exit
+                  00000000+000000 ___ghs_board_cache_sync
+                  00000000+000000 ___ghs_board_devices_init
+                  00000000+000000 ___ghs_board_memory_init
+                  00000000+000000 ___ghs_call_table
+                  00000000+000000 ___ghs_checksum
+                  00000000+000000 ___ghs_coverage_init
+                  00000000+000000 ___ghs_cpp_exception_cleanup
+                  00000000+000000 ___ghs_cpp_exception_init
+                  00000000+000000 ___ghs_decompress
+ .text            0080094a+00035e ___ghs_ind_crt0
+ .text            00800ef2+0000ba ___ghs_ind_crt1
+ .syscall         00801030+000006 ___ghs_initial_dotsyscall
+                  00000002+000000 ___ghs_log_fee_level
+                  00000000+000000 ___ghs_manprf_init
+                  00000000+000000 ___ghs_rambootcodeend
+                  00000000+000000 ___ghs_rambootcodestart
+                  00000000+000000 ___ghs_rombootcodeend
+                  00000000+000000 ___ghs_rombootcodestart
+                  00000000+000000 ___ghs_set_stack_chk_guard
+ .text            00800ed0+000022 ___ghs_syscall
+                  00000000+000000 ___ghs_undefined_func
+ .fixaddr         00800fd0+000000 ___ghsbegin_fixaddr
+ .fixtype         00800fd0+000000 ___ghsbegin_fixtype
+                  00000000+000000 ___ghsbegin_picbase
+                  00000000+000000 ___ghsbegin_pidbase
+ .robase          00800730+000000 ___ghsbegin_robase
+                  00000000+000000 ___ghsbegin_sda_end
+                  00000000+000000 ___ghsbegin_sda_start
+ .sdabase         fe9e0020+000000 ___ghsbegin_sdabase
+ .secinfo         00800fd0+000000 ___ghsbegin_secinfo
+ .secinfo         00800ff4+000000 ___ghsbinfo_aclear
+ .secinfo         00801030+000000 ___ghsbinfo_acopy
+ .secinfo         00801030+000000 ___ghsbinfo_bcopy
+ .secinfo         00800fd0+000024 ___ghsbinfo_clear
+ .secinfo         00801030+000000 ___ghsbinfo_comacopy
+ .secinfo         00801030+000000 ___ghsbinfo_comcopy
+ .secinfo         00801030+000000 ___ghsbinfo_comtcopy
+ .secinfo         00800ff4+00003c ___ghsbinfo_copy
+ .secinfo         00801030+000000 ___ghsbinfo_tcopy
+ .secinfo         00801030+000000 ___ghseinfo_bcopy
+ .secinfo         00800ff4+000000 ___ghseinfo_clear
+ .secinfo         00801030+000000 ___ghseinfo_comcopy
+ .secinfo         00801030+000000 ___ghseinfo_copy
+ .fixaddr         00800fd0+000000 ___ghsend_fixaddr
+ .fixtype         00800fd0+000000 ___ghsend_fixtype
+ .stack           fe9e1080+000000 ___ghsend_stack
+                  00000000+000000 ___lowinit
+ .text            00800e00+000024 ___mcopy
+                  00000000+000000 __cleanup
+ .tdata           fe9e0080+000000 __ep
+ .text            00800e24+00006a __exit
+                  00000000+000000 __ghs_v800_r20_initializer
+                  00000000+000000 __ghs_v800_r21_initializer
+                  00000000+000000 __ghs_v800_sda_model
+ .sdabase         fe9e8020+000000 __gp
+ .text            00800730+0000ce __start
+ .rosdata         00808730+000000 __tp
+ .text            0080084e+000000 __unused_isr
+                  fe9e001c+000004 _environ
+                  fe9e0020+000004 _errno
+ .text            008008e4+000066 _exit
+ .text            00800894+000036 _init_OSTM5
+ .text            008008ca+00001a _main
+ .text            00800d10+0000f0 _memcpy
+ .text            00800cb0+000060 _memset
+                  00000000+000000 _undefined_cleanup
+                  00000000+000000 _undefined_cleanup_func

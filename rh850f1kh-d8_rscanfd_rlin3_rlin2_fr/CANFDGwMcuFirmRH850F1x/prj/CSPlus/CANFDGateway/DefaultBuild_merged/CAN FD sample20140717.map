@@ -1,0 +1,28 @@
+Renesas Optimizing Linker (W1.01.01 )             05-Jan-2015 08:45:25
+
+*** Options ***
+
+DefaultBuild\CAN FD sample20140717.mot
+D:\EvaCAN\EV_CAN_RH850 F1H-RCANFD\fromZhao\RH850_Multi_core_SampleCode_20140724\RH850_Multi_core_SampleCode\PE1\DefaultBuild\PE1.mot
+D:\EvaCAN\EV_CAN_RH850 F1H-RCANFD\fromZhao\RH850_Multi_core_SampleCode_20140724\RH850_Multi_core_SampleCode\PE2\DefaultBuild\PE2.mot
+-form=stype
+-output=DefaultBuild_merged\CAN FD sample20140717.mot
+-list
+
+*** Error information ***
+
+*** Entry address ***
+
+*** Combine information ***
+FILE               START            END              SIZE
+DefaultBuild\CAN FD sample20140717.mot
+                   00000000         000001f5         1f6
+DefaultBuild\CAN FD sample20140717.mot
+                   00000200         00000aa3         8a4
+D:\EvaCAN\EV_CAN_RH850 F1H-RCANFD\fromZhao\RH850_Multi_core_SampleCode_20140724\RH850_Multi_core_SampleCode\PE1\DefaultBuild\PE1.mot
+                   00001000         000026ad         16ae
+D:\EvaCAN\EV_CAN_RH850 F1H-RCANFD\fromZhao\RH850_Multi_core_SampleCode_20140724\RH850_Multi_core_SampleCode\PE2\DefaultBuild\PE2.mot
+                   00010000         00010135         136
+
+*** Conflict information ***
+

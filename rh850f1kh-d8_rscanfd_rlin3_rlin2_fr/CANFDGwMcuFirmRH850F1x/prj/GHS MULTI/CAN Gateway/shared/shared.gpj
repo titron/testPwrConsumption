@@ -1,0 +1,6 @@
+#!gbuild
+[SharedMemory]
+	-nothreshold
+	-object_dir=./output/obj/shared
+dr7f7015273_shared.ld
+shared.c

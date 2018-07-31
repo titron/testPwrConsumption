@@ -1,0 +1,37 @@
+------------------------------------------------
+dle output started at: Thu Nov 20 13:36:47 2014
+------------------------------------------------
+dblink = "C:\GHS\V800.V2013.5.5\comp_201355\dblink"
+------------------------------------------------
+argv[0] = "C:\GHS\V800.V2013.5.5\comp_201355\dblink.exe"
+argv[1] = "-a"
+argv[2] = "-nm=gnm"
+argv[3] = "C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006do3.nm"
+argv[4] = "-o"
+argv[5] = "pe2.dnm"
+argv[6] = "-top_project"
+argv[7] = "D:\\CANFDGwMcuFirmRH850F1x\\code\\CANFDGwMcuFirmRH850F1x\\CANFDGwMcuFirmRH850F1x\\prj\\GHS MULTI\\CAN Gateway\\default.gpj"
+argv[8] = "-Dscope.tools_dir=C:\GHS\V800.V2013.5.5\comp_201355"
+argv[9] = "-Dscope.target=v850elf"
+argv[10] = "-Dscope.processor=800"
+argv[11] = "-Dscope.cpuname=rh850g3m"
+argv[12] = "-Dscope.fputype=hard"
+argv[13] = "-Dscope.deflibdir=C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850"
+argv[14] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\crt0.dbo"
+argv[15] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libscnoe_fp_s32.dba"
+argv[16] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libscnoe_s32.dba"
+argv[17] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libscnoe.dba"
+argv[18] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libscnoe_s32.dba"
+argv[19] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libsedgnoe.dba"
+argv[20] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libfmalloc.dba"
+argv[21] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libwchar_s32.dba"
+argv[22] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libansi.dba"
+argv[23] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libwc_s32.dba"
+argv[24] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libmath_fp.dba"
+argv[25] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libind_fp.dba"
+argv[26] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libstartup.dba"
+argv[27] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libsys.dba"
+argv[28] = "C:\GHS\V800.V2013.5.5\comp_201355\lib\rh850\libarch.dba"
+------------------------------------------------
+dblink: WARNING: could not find .dbo for "D:\EmbeddedProgram\2014\F1H-176_GHS_StartUp_dualcore\output\obj\pe2\dr7f701503_startup.dlo" with magic="..bof.D.3A.5CEmbeddedProgram.5C2014.5CF1H.2D176_GHS_StartUp_dualcore.5Coutput.5Cobj.5Cpe2.5Cdr7f701503_startup..D.3A.5CEmbeddedProgram.5C2014.5CF1H.2D176_GHS_StartUp_dualcore..53453dc1..00000001". Source level debugging will not be available for this object.
+dblink: WARNING: during processing, some .dbo files were not found.  Use the "-dbo_trace" option to diagnose.
