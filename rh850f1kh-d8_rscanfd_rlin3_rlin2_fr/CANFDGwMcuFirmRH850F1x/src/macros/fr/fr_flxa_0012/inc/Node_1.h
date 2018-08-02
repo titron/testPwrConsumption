@@ -80,26 +80,26 @@
 #define TABBE                       1             /* Transmission Across Boundary Channel B Interrupt Enable */
 
 /* SIES - Status Interrupt Enable Set Register */
-#define WSTE                        0             /* Wakeup Status Interrupt Enable */
-#define CASE                        0             /* Collision Avoidance Symbol Interrupt Enable */
-#define CYCSE                       0             /* Cycle Start Interrupt Enable */
-#define TXIE                        0             /* Transmit Interrupt Enable */
-#define RXIE                        0             /* Receive Interrupt Enable */
-#define RFNEE                       0             /* Receive FIFO Not Empty Interrupt Enable */
-#define RFCLE                       0             /* Receive FIFO Critical Level Interrupt Enable */
-#define NMVCE                       0             /* Network Management Vector Changed Interrupt Enable */
-#define TI0E                        0             /* Timer Interrupt 0 Enable */
-#define TI1E                        0             /* Timer Interrupt 1 Enable */
-#define TIBCE                       0             /* Transfer Input Buffer Completed Enable */
-#define TOBCE                       0             /* Transfer Output Buffer Completed Enable */
-#define SWEE                        0             /* Stop Watch Event Interrupt Enable */
-#define SUCSE                       0             /* Startup Completed Successfully Interrupt Enable */
-#define MBSIE                       0             /* Message Buffer Status Interrupt Enable */
-#define SDSE                        0             /* Start of Dynamic Segment Interrupt Enable */
-#define WUPAE                       0             /* Wakeup Pattern Channel A  Interrupt Enable */
-#define MTSAE                       0             /* MTS Received on Channel A Interrupt Enable */
-#define WUPBE                       0             /* Wakeup Pattern Channel B Interrupt Enable */
-#define MTSBE                       0             /* MTS Received on Channel B Interrupt Enable */
+#define WSTE                        1             /* Wakeup Status Interrupt Enable */
+#define CASE                        1             /* Collision Avoidance Symbol Interrupt Enable */
+#define CYCSE                       1             /* Cycle Start Interrupt Enable */
+#define TXIE                        1             /* Transmit Interrupt Enable */
+#define RXIE                        1             /* Receive Interrupt Enable */
+#define RFNEE                       1             /* Receive FIFO Not Empty Interrupt Enable */
+#define RFCLE                       1             /* Receive FIFO Critical Level Interrupt Enable */
+#define NMVCE                       1             /* Network Management Vector Changed Interrupt Enable */
+#define TI0E                        1             /* Timer Interrupt 0 Enable */
+#define TI1E                        1             /* Timer Interrupt 1 Enable */
+#define TIBCE                       1             /* Transfer Input Buffer Completed Enable */
+#define TOBCE                       1             /* Transfer Output Buffer Completed Enable */
+#define SWEE                        1             /* Stop Watch Event Interrupt Enable */
+#define SUCSE                       1             /* Startup Completed Successfully Interrupt Enable */
+#define MBSIE                       1             /* Message Buffer Status Interrupt Enable */
+#define SDSE                        1             /* Start of Dynamic Segment Interrupt Enable */
+#define WUPAE                       1             /* Wakeup Pattern Channel A  Interrupt Enable */
+#define MTSAE                       1             /* MTS Received on Channel A Interrupt Enable */
+#define WUPBE                       1             /* Wakeup Pattern Channel B Interrupt Enable */
+#define MTSBE                       1             /* MTS Received on Channel B Interrupt Enable */
 
 /* ILE - Interrupt Line Enable Configuration Register */
 #define EINT0                       0             /* Enable Interrupt Line 0 */

@@ -108,24 +108,8 @@ extern const u16 BufferHeader_u16[128][10];
 //============================================================================
 // Functions
 //============================================================================
-void FrDrv_CC_init ( void ) {
-//=============================================================================
-// FunctionName: FrDrv_CC_init 
-// IN: -
-// OUT: -
-// Description: Initialization of the FlexRay macro
-//=============================================================================
-
-  /* Interrupt activation */
-  
-	REG_ICFLX0LINE0   = EE_FR_INTLEV_INT0;
-	REG_ICFLX0LINE1   = EE_FR_INTLEV_INT1;
-	REG_ICFLX0TIM0 = EE_FR_INTLEV_TIMER0;
-	REG_ICFLX0TIM1 = EE_FR_INTLEV_TIMER1;
-	REG_ICFLX0TIM2 = EE_FR_INTLEV_TIMER2;
-  
-  /* Port activation */
-  
+void FrDrv_CC_Port_init(void){
+  /* Transceiver pin init */
 #ifdef EE_FR_PORT_ENA
   PORT_Enable( EE_FR_PORT_ENA, EE_FR_PORT_BIT_ENA,
                PORT_DIR_OUTPUT, PORT_MODE_IO, 
@@ -182,6 +166,7 @@ void FrDrv_CC_init ( void ) {
   PORT_WriteBit( EE_FR_PORT_STBNB, EE_FR_PORT_BIT_STBNB, 1 );
 #endif
 
+  /* FlexRay pins */
   PORT_Enable( EE_FR_PORT_TXA, EE_FR_PORT_BIT_TXA,
                PORT_DIR_OUTPUT, PORT_MODE_PERIPHERAL, 
                EE_FR_PORT_FUNC_TXA );
@@ -201,7 +186,27 @@ void FrDrv_CC_init ( void ) {
   PORT_Enable( EE_FR_PORT_RXB, EE_FR_PORT_BIT_RXB,
                PORT_DIR_INPUT, PORT_MODE_PERIPHERAL, 
                EE_FR_PORT_FUNC_RXB );
-               
+}
+
+void FrDrv_CC_init ( void ) {
+//=============================================================================
+// FunctionName: FrDrv_CC_init
+// IN: -
+// OUT: -
+// Description: Initialization of the FlexRay macro
+//=============================================================================
+
+  /* Interrupt activation */
+  REG_ICFLX0LINE0   = EE_FR_INTLEV_INT0;
+  REG_ICFLX0LINE1   = EE_FR_INTLEV_INT1;
+  REG_ICFLX0TIM0 = EE_FR_INTLEV_TIMER0;
+  REG_ICFLX0TIM1 = EE_FR_INTLEV_TIMER1;
+  REG_ICFLX0TIM2 = EE_FR_INTLEV_TIMER2;
+
+  /* Port activation */
+  FrDrv_CC_Port_init();
+
+  /*** DEFAULT_CONFIG -> CONFIG @Titron ***/
   FrDrv_EnterConfigMode ( );
   FrDrv_Config_LLParams ( );
   FrDrv_Config_PhysicalBuffers ( );

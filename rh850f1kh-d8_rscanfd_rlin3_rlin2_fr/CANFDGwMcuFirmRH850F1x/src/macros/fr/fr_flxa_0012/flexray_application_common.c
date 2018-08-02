@@ -119,6 +119,7 @@ void FrDrv_SW_reset ( void ) {
 
 #ifdef RH850
   u08 i_u08;
+
   FrDrv_write_32bit ( CR2_REG, 0x00000001 );//FLXA0FROC.OE=1
 
   for ( i_u08=0; i_u08 < 5; i_u08++ )

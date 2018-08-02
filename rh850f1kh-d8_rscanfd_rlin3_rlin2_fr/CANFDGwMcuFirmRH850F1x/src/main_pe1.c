@@ -63,8 +63,10 @@
  Includes   <System Includes> , "Project Includes"
  ***********************************************************************************************************************/
 #include <iodefine.h>
+#ifdef TEST_ENV
 #include <test_tmr.h>
 #include <test_port.h>
+#endif
 /***********************************************************************************************************************
  Macro definitions
  ***********************************************************************************************************************/
@@ -77,7 +79,6 @@
  Exported global variables (to be accessed by other files)
  ***********************************************************************************************************************/
 extern void __lowinit_hw( void);
-extern void test_port(void);
 void main(void);
 
 
@@ -95,37 +96,21 @@ void main(void)
 {
 	__DI();
 	__lowinit_hw();
+#ifdef TEST_ENV
 	tmr0_init();
 	port_init();
+#endif
 	 /* Tell PE2 that clock init is done */
 	G0MEV0=1u;
 	__EI();
-	while(1);
 
-//	port_test();
+#ifdef TEST_ENV
+	while(1);
+	port_test();
+#endif
 
 	main_loop();
 } /* End of main() */
 
-//lint +fem
-#if 0
-/***********************************************************************************************************************
- * Function Name: Isr_OsTimer0
- * Description  : Interrupt service routine of OS Timer 0.
- * Arguments    : none
- * Return Value : none
- ***********************************************************************************************************************/
-#ifdef CSPLUS_PRJ_USED /* CS+ project */
-#pragma section text"comint"
-#pragma interrupt Isr_OsTimer0( enable=false , channel=84 , callt=false , fpu=false )
-void Isr_OsTimer0(void)
-#else /* GHS project */
-__interrupt void Isr_OsTimer0(void)
-#endif
-{
-	while(1);
-} /* End of Isr_OsTimer0() */
-#pragma section default
-#endif
 /* End of file */
 #endif

@@ -54,6 +54,13 @@
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>df5a939e-3bae-4f51-bf8a-ce8bbaa9d956</ParentItem>
     </Instance>
+    <Instance Guid="1e533d21-1e01-4393-8625-7855f8bf0334">
+      <Name>test_tmr.c</Name>
+      <Type>File</Type>
+      <RelativePath>..\..\..\..\src\test_tmr.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>df5a939e-3bae-4f51-bf8a-ce8bbaa9d956</ParentItem>
+    </Instance>
     <Instance Guid="4ba73981-e81e-4d91-bf8e-99c9a1f54c69">
       <Name>ree_macros.h</Name>
       <Type>File</Type>
@@ -1368,7 +1375,9 @@
       <SourceItemType57>CSource</SourceItemType57>
       <SourceItemGuid58>9631c925-e285-4a38-aa9a-a40fe008d8d5</SourceItemGuid58>
       <SourceItemType58>CSource</SourceItemType58>
-      <SourceItemCount>59</SourceItemCount>
+      <SourceItemGuid59>1e533d21-1e01-4393-8625-7855f8bf0334</SourceItemGuid59>
+      <SourceItemType59>CSource</SourceItemType59>
+      <SourceItemCount>60</SourceItemCount>
       <LastDeviceChangedCounter>1</LastDeviceChangedCounter>
     </Instance>
     <Instance Guid="989d6783-59a0-4525-8ee4-a067fda90fe2">
@@ -2870,6 +2879,10 @@ CLMA2|iodefine.h|True
       <ItemAddTime>636673535508850487</ItemAddTime>
       <ItemAddTimeCount>0</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="1e533d21-1e01-4393-8625-7855f8bf0334">
+      <ItemAddTime>636686294928875038</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="149baf2a-1b8c-4f78-9702-3ac495e87f5a">
       <TimeTagModified-SourceItem0--0>-8587960391082664830</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -3109,6 +3122,10 @@ CLMA2|iodefine.h|True
       <SourceItem58-IsLockedByUser>False</SourceItem58-IsLockedByUser>
       <SourceItem58-IndividualCompileOption-0>False</SourceItem58-IndividualCompileOption-0>
       <SourceItem58-BuildingTarget-0>True</SourceItem58-BuildingTarget-0>
+      <TimeTagModified-SourceItem59--0>-8586686029925900770</TimeTagModified-SourceItem59--0>
+      <SourceItem59-IsLockedByUser>False</SourceItem59-IsLockedByUser>
+      <SourceItem59-IndividualCompileOption-0>False</SourceItem59-IndividualCompileOption-0>
+      <SourceItem59-BuildingTarget-0>True</SourceItem59-BuildingTarget-0>
     </Instance>
   </Class>
   <Class Guid="44fa27c9-0aa0-4297-bd3b-2c5c5bdb8881">

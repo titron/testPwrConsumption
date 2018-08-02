@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             31-Jul-2018 10:42:27
+Renesas Optimizing Linker (W2.08.00 )             01-Aug-2018 17:28:16
 
 *** Options ***
 
@@ -95,9 +95,9 @@ SECTION                            START      END         SIZE   ALIGN
 comint.text
                                   00005008  00007395      238e   2
 .text
-                                  00007396  00025c7d     1e8e8   2
+                                  00007396  00025d8b     1e9f6   2
 .data
-                                  00025c80  000269cf       d50   4
+                                  00025d8c  00026adb       d50   4
 .data.R
                                   fede4000  fede4d4f       d50   4
 .bss
@@ -109,4 +109,4 @@ comint.text
 
 RAMDATA SECTION:  00000fd8 Byte(s)
 ROMDATA SECTION:  00003d58 Byte(s)
-PROGRAM SECTION:  00020c76 Byte(s)
+PROGRAM SECTION:  00020d84 Byte(s)

@@ -112,18 +112,19 @@ void application_start_1 ( void ) {
 // Version:
 //=============================================================================
 
- wait_ms(5);
+  wait_ms(5);
 
+  /*** CONFIG -> READY @Titron ***/
   //leave config mode
   FrDrv_unlock_seq_CONF ( );
-
   FrDrv_send_command ( READY );
   //wait until FrDrv is in READY
   while ( FrDrv_state_1 ( ) != (Fr_ReturnType) READY_STATE  ) {
   }
 
+  /*** READY -> STARTUP @Titron ***/
   FrDrv_send_command ( RUN );
-  FrDrv_send_command ( ALLOW_COLDSTART );
+  FrDrv_send_command ( ALLOW_COLDSTART ); /* COMMENT @Titron */
 //wait until FrDrv is in NORMAL_ACTIVE_STATE or NORMAL_PASSIVE_STATE
   while ( ( FrDrv_state_1 ( ) != (Fr_ReturnType) NORMAL_ACTIVE_STATE  ) ) {
   }
@@ -136,10 +137,10 @@ void application_start_1 ( void ) {
   FrDrv_Interrupt_Line0_enable ( );
   FrDrv_Interrupt_Line1_enable ( );
 #ifdef RH850
-  //FrDrv_Timer0_Interrupt_enable ( );
+  FrDrv_Timer0_Interrupt_enable ( );// comment @Titron
 #endif
-  //FrDrv_Start_timer0 ( );
-  //FrDrv_Start_timer1 ( );
+  FrDrv_Start_timer0 ( );// comment @Titron
+  FrDrv_Start_timer1 ( );// comment @Titron
 
 //  while (test_result == 0) __asm("nop");
 
