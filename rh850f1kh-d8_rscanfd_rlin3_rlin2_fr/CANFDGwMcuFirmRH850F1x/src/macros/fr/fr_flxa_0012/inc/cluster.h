@@ -17,10 +17,10 @@
 #define WCF                1        /* SUCC3 (gMaxWithoutClockCorrectionFatal) */
 #define NML                0        /* NEMC (gNetworkManagementVectorLength) */
 #define TSST               6        /* PRTC1 (gdTSSTransmitter) */
-#define CASM               81       /* PRTC1 (gdCASRxLowMax) */
+#define CASM               67       /* PRTC1 (gdCASRxLowMax), 67~99 */
 
 #define TEST_LOAD_RATE
-#define RXW                301      /* PRTC1 (gdWakeupSymbolRxWindow) *//* comment @Titron */
+#define RXW                76      /* PRTC1 (gdWakeupSymbolRxWindow), 76~301 *//* comment @Titron */
 
 #define RXI                59       /* PRTC2 (gdWakeupSymbolRxIdle) *//* comment @Titron */
 #define RXL                55       /* PRTC2 (gdWakeupSymbolRxLow) *//* comment @Titron */
@@ -39,29 +39,28 @@
 
 #define SFDL               1        /* MHDC (gPayloadLengthStatic) */
 
-#define MPC                16000    /* GTUC2 (gMacroPerCycle) *//* comment @Titron */
 
 
-#define NIT                15401    /* GTUC4: Network Idle Time Start *//* comment @Titron */
-#define OCS                15501    /* GTUC4 (gOffsetCorrectionStart) *//* comment @Titron */
+//#define MPC                16000    /* GTUC2 (gMacroPerCycle), 10~16000 MT *//* comment @Titron */
+#define MPC                300    /* GTUC2 (gMacroPerCycle), 10~16000 MT *//* comment @Titron */
 //#ifndef TEST_LOAD_RATE
 //#else
 ////#define MPC                201    /* GTUC2 (gMacroPerCycle) */
 //
 //#define NIT                195    /* GTUC4: Network Idle Time Start *//* comment @Titron */
 //#define OCS                197    /* GTUC4 (gOffsetCorrectionStart) *//* comment @Titron */
-//#endif
+#define NIT                288    /* GTUC4: Network Idle Time Start, 7~15997MT *//* comment @Titron */
+#define OCS                290    /* GTUC4 (gOffsetCorrectionStart), 8~15998MT *//* comment @Titron */
 
 #define SNM                3        /* GTUC2 (gSyncNodeMax) */
 
 #ifndef TEST_LOAD_RATE
 #define SSL                659      /* GTUC7 (gdStaticSlot) *//* comment @Titron */
-#define NSS                18       /* GTUC7 (gNumberOfStaticSlots) *//* comment @Titron */
 #else
 #define SSL                15      /* GTUC7 (gdStaticSlot) *//* comment @Titron */
-#define NSS                18       /* GTUC7 (gNumberOfStaticSlots) *//* comment @Titron */
 #endif
 
+#define NSS                18       /* GTUC7 (gNumberOfStaticSlots), 2~1023 *//* comment @Titron */
 
 #define MSL                0        /* GTUC8 (gdMinislot) */
 #define NMS                0        /* GTUC8 (gNumberOfMinislots) */

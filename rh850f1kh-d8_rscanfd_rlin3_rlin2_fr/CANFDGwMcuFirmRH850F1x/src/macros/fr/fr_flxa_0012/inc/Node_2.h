@@ -155,12 +155,12 @@
 #define MTSB                        0             /* SUCC1: Select Channel B for MTS Transmission */
 #define CCHA                        1             /* SUCC1 (pChannels) */
 #define CCHB                        1             /* SUCC1 (pChannels) */
-#define LT                          1283846       /* SUCC2 (pdListenTimeout) */
+#define LT                          1284       /* SUCC2 (pdListenTimeout), 1284~ 1283846uT */
 #define SPP                         0             /* PRTC1: Strobe Point Position */
 #define BRP                         0             /* PRTC1: Baud Rate Prescaler */
 #define RWP                         2             /* PRTC1 (pWakeupPattern) */
 #define SLT                         0             /* MHDC (pLatestTx) */
-#define UT                          640000        /* GTUC1 (pMicroPerCycle) */
+#define UT                          12000        /* GTUC1 (pMicroPerCycle), 640~640000uT */
 #define UIOA                        4             /* GTUC3 (pMicroInitialOffset[A]) */
 #define UIOB                        4             /* GTUC3 (pMicroInitialOffset[B]) */
 #define MIOA                        5             /* GTUC3 (pMacroInitialOffset[A]) */
