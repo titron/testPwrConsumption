@@ -150,17 +150,22 @@
 #define PTA                         15            /* SUCC1 (pAllowPassiveToActive) */
 #define WUCS                        1             /* SUCC1 (pWakeupChannel) ( A:0, B:1 ) */
 #define TSM                         0             /* SUCC1 (pSingleSlotEnabled) */
+//#define TSM                         1             /* SUCC1 (pSingleSlotEnabled) */
 #define HCSE                        0             /* SUCC1 (pAllowHaltDueToClock) */
 #define MTSA                        0             /* SUCC1: Select Channel A for MTS Transmission */
 #define MTSB                        0             /* SUCC1: Select Channel B for MTS Transmission */
 #define CCHA                        1             /* SUCC1 (pChannels) */
 #define CCHB                        1             /* SUCC1 (pChannels) */
+//#define LT                          1283846       /* SUCC2 (pdListenTimeout), 1284~ 1283846uT */
 #define LT                          1284       /* SUCC2 (pdListenTimeout), 1284~ 1283846uT */
+
 #define SPP                         0             /* PRTC1: Strobe Point Position */
 #define BRP                         0             /* PRTC1: Baud Rate Prescaler */
 #define RWP                         2             /* PRTC1 (pWakeupPattern) */
 #define SLT                         0             /* MHDC (pLatestTx) */
-#define UT                          12000        /* GTUC1 (pMicroPerCycle), 640~640000uT */
+//#define UT                          640000        /* GTUC1 (pMicroPerCycle), 640~640000uT */
+#define UT                          6000        /* GTUC1 (pMicroPerCycle), 640~640000uT */
+
 #define UIOA                        4             /* GTUC3 (pMicroInitialOffset[A]) */
 #define UIOB                        4             /* GTUC3 (pMicroInitialOffset[B]) */
 #define MIOA                        5             /* GTUC3 (pMacroInitialOffset[A]) */
@@ -169,10 +174,15 @@
 #define DCB                         0             /* GTUC5 (pDelayCompensation[B]) */
 #define CDD                         1             /* GTUC5 (pClusterDriftDamping) */
 #define DEC                         36            /* GTUC5 (pDecodingCorrection) */
-#define ASR                         1875          /* GTUC6 (pdAcceptedStartupRange) */
-#define MOD                         1923          /* GTUC6 (pdMaxDrift) */
+
+#define ASR                         1875          /* GTUC6 (pdAcceptedStartupRange), 0~1875uT */
+//#define ASR                         0          /* GTUC6 (pdAcceptedStartupRange), 0~1875uT */
+#define MOD                         1923          /* GTUC6 (pdMaxDrift), 2~1923uT */
+//#define MOD                         2          /* GTUC6 (pdMaxDrift), 2~1923uT */
+
 #define MOC                         134           /* GTUC10 (pOffsetCorrectionOut) */
 #define MRC                         1923          /* GTUC10 (pRateCorrectionOut) */
+
 #define EOCC                        0             /* GTUC11: External Offset Correction Control (vExternOffsetControl) */
 #define ERCC                        0             /* GTUC11: External Rate Correction Control (vExternRateControl) */
 #define EOC                         0             /* GTUC11 (pExternOffsetCorrection) */
@@ -878,6 +888,7 @@
 const unsigned short BufferHeader_u16[128][10] =
 {
         /* FID,CYC,CHA,CHB,CFG,PPIT,TXM,MBI,PL,DP         Tx node */
+#if 0
 /*MB_0*/  { 3 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 1 , 36 },    /* Node2 */
 /*MB_1*/  { 1 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 37 },    /* Node1 */
 /*MB_2*/  { 5 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 38 },    /* Node1 */
@@ -887,6 +898,17 @@ const unsigned short BufferHeader_u16[128][10] =
 /*MB_6*/  { 13 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , 1 , 42 },    /* Node1 */
 /*MB_7*/  { 15 , 0 , 0 , 1 , 1 , 0 , 0 , 0 , 1 , 43 },    /* Node2 */
 /*MB_8*/  { 17 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 1 , 44 },    /* Node1 */
+#else
+/*MB_0*/  { 2 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 1 , 36 },    /* Node2 */
+/*MB_1*/  { 1 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 37 },    /* Node1 */
+/*MB_2*/  { 3 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 38 },    /* Node1 */
+/*MB_3*/  { 4 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 1 , 39 },    /* Node2 */
+/*MB_4*/  { 5 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 40 },    /* Node1 */
+/*MB_5*/  { 6 , 0 , 1 , 0 , 1 , 0 , 0 , 0 , 1 , 41 },    /* Node2 */
+/*MB_6*/  { 7 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , 1 , 42 },    /* Node1 */
+/*MB_7*/  { 8 , 0 , 0 , 1 , 1 , 0 , 0 , 0 , 1 , 43 },    /* Node2 */
+/*MB_8*/  { 9 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 1 , 44 },    /* Node1 */
+#endif
 /*MB_9*/  { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
 /*MB_10*/  { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
 /*MB_11*/  { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
