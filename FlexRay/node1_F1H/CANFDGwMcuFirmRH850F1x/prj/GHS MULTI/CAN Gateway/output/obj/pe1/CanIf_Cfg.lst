@@ -1,0 +1,115 @@
+                                                                      Page 1
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_000076c1.si
+Command Line: C:\GHS\V800.V2014.1.7\comp_201417\ease850.exe -w -elf -b0 -Ipe1_project\inc -I..\..\..\src -Isrc -Idev -Iinc -Idevice -IC:\GHS\V800.V2014.1.7\comp_201417\lib\rh850 -cg_underscore -cpu=rh850g3m -no_v850_simd -rh850_fpsimd=none -nomacro -patch_dbo=D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway\output\obj\pe1\CanIf_Cfg.dbo -source=CanIf_Cfg.c -o .\output\obj\pe1\gh_000076c1.o -list=.\output\obj\pe1\CanIf_Cfg.lst C:\Users\TIEZHU~1\AppData\Local\Temp\gh_000076c1.si 
+Original File: C:\Users\TIEZHU~1\AppData\Local\Temp\gh_000076c1.si
+Source File: CanIf_Cfg.c
+Directory: D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway
+Host OS: Windows 7
+EASE: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:05:06 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+                           1 --Driver Command: ccv850 -c -MD -Ipe1_project\inc -I..\..\..\src -Isrc -Idev
+                           2 --		-Iinc -Idevice -DMY_CLOCK -UMSC_CLOCK -sda -DEMBEDDED
+                           3 --		--enable_noinline --restrict --bool -bsp generic -g -list
+                           4 --		-passsource -preprocess_assembly_files
+                           5 --		--preprocess_linker_directive_full -DDEVICE=F1H -cpu=rh850g3m
+                           6 --		-Onone -DCPU1=1 -DCPU2=0 -DCORE1 -object_dir=./output/obj/pe1
+                           7 --		-filetype.c ..\..\..\src\CanIf_Cfg.c -o
+                           8 --		.\output\obj\pe1\CanIf_Cfg.o
+                           9 --Source File:   ..\..\..\src\CanIf_Cfg.c
+                          10 --Directory:     
+                          11 --		D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS
+                          12 --		MULTI\CAN Gateway
+                          13 --Compile Date:  Tue Nov 10 14:51:55 2015
+                          14 --Host OS:       Win32
+                          15 --Version:       C-RH850 2014.1.7 RELEASE VERSION
+                          16 --Release:       Compiler v2014.1.7
+                          17 --Revision Date: Fri Sep 05 14:10:46 2014
+                          18 --Release Date:  Fri Sep 05 14:44:23 2014
+                          19 -- ecom  -g -w
+                          20 --_Can_PbConfig	_Can_PbConfig	import
+                          21 
+                          22 	.section ".rodata","a"
+                          23 	.align	4
+                          24 	.global	_CanIf_PbConfig
+00000000 0400             25 _CanIf_PbConfig:	.byte	4,0
+00000002 0000             26 	.space	2
+00000004 00000000*        27 	.word	_CanIf_PduCfgTbl
+00000008 0200             28 	.byte	2,0
+0000000a 0000             29 	.space	2
+0000000c 00000000*        30 	.word	_CanIf_HrhCfgTbl
+00000010 00000000*        31 	.word	_Can_PbConfig
+                          32 	.type	_CanIf_PbConfig,@object
+                          33 	.size	_CanIf_PbConfig,20
+                          34 	.global	_CanIf_PduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.
+                          35 _CanIf_PduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.:
+00000014 0000             36 _CanIf_PduCfgTbl:	.space	2
+00000016 0000             37 	.space	2
+00000018 02000000         38 	.byte	2,0,0,0
+0000001c 01000000         39 	.byte	1,0,0,0
+00000020 10               40 	.byte	16
+00000021 00               41 	.space	1
+00000022 0000             42 	.space	2
+00000024 01               43 	.byte	1
+00000025 000000           44 	.space	3
+00000028 0100             45 	.byte	1,0
+0000002a 0000             46 	.space	2
+0000002c 03000000         47 	.byte	3,0,0,0
+00000030 01000000         48 	.byte	1,0,0,0
+00000034 10               49 	.byte	16
+00000035 00               50 	.space	1
+
+                                                                      Page 2
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_000076c1.si
+00000036 0100             51 	.byte	1,0
+00000038 01               52 	.byte	1
+00000039 000000           53 	.space	3
+0000003c 0200             54 	.byte	2,0
+0000003e 0000             55 	.space	2
+00000040 00000000         56 	.space	4
+00000044 01000000         57 	.byte	1,0,0,0
+00000048 10               58 	.byte	16
+00000049 00               59 	.space	1
+0000004a 0100             60 	.byte	1,0
+0000004c 00               61 	.space	1
+0000004d 000000           62 	.space	3
+00000050 0300             63 	.byte	3,0
+00000052 0000             64 	.space	2
+00000054 01000000         65 	.byte	1,0,0,0
+00000058 01000000         66 	.byte	1,0,0,0
+0000005c 10               67 	.byte	16
+0000005d 00               68 	.space	1
+0000005e 0000             69 	.space	2
+00000060 00               70 	.space	1
+00000061 000000           71 	.space	3
+                          72 	.type	_CanIf_PduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.,@object
+                          73 	.size	_CanIf_PduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.,80
+                          74 	.type	_CanIf_PduCfgTbl,@object
+                          75 	.size	_CanIf_PduCfgTbl,80
+                          76 	.global	_CanIf_HrhCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.
+                          77 _CanIf_HrhCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.:
+00000064 01000000         78 _CanIf_HrhCfgTbl:	.byte	1,0,0,0
+00000068 0300             79 	.byte	3,0
+0000006a 0000             80 	.space	2
+0000006c 00000000         81 	.space	4
+00000070 00000000         82 	.space	4
+00000074 0200             83 	.byte	2,0
+00000076 0000             84 	.space	2
+00000078 00000000         85 	.space	4
+                          86 	.type	_CanIf_HrhCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.,@object
+                          87 	.size	_CanIf_HrhCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.,24
+                          88 	.type	_CanIf_HrhCfgTbl,@object
+                          89 	.size	_CanIf_HrhCfgTbl,24
+                          90 	.data
+                          91 	.ghsnote version,15
+                          92 	.ghsnote tools,3
+                          93 	.ghsnote options,144
+                          94 	.text
+                          95 ..bof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940B..0::
+                          96 ..eof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940B..0::
+                          97 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3M

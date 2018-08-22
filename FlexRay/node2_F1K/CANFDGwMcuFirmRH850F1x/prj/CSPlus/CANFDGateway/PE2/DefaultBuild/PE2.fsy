@@ -1,0 +1,6 @@
+;RENESAS OPTIMIZING LINKER GENERATED FILE 2018.08.20
+;fsymbol = .const.cmn
+
+;SECTION NAME = .const.cmn
+ .public _pm2_setting_table
+_pm2_setting_table .equ 0x130014

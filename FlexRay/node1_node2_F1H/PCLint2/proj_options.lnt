@@ -1,0 +1,70 @@
+///// [1] Include paths used /////
+// PCLint Path
+-iC:\PClint9
+-iC:\PClint9\lnt
+
+// Project PCLint Option File Path
+-iD:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\PCLint2
+
+// Project File Path (and *.h file path included in project)
+-iD:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\src
+-iD:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\PCLint2\forLint\device
+
+///// [2] options /////
+-w1 // warning level 4, see all messages. Default is 3.
+-wlib(4) // see all library messages.
+//-e46 // MisraC 2004 Rule 6.4 bit field
+//-e956 // Don't report static variable warning.
+//-e720 // allow direct test of assignment 
+//-e502 -e713 -e737 -eau // don't report on signed/unsigned mismatches 
+//-e734 // allow sub-integer loss of information 
+//-e701 -e703 // shifting int left is OK 
+//-e718 // allow calls to undeclared C functions 
+//-e746 // allow calls w/o prototypes in C
+-e830 // location cited in prior message
+-e831 // Reference cited in prior message
+
+///// [3] Standard /////
+// Author Recommended Options
+// au-ds.lnt
+// au-misra.lnt
+// au-misra1.lnt
+// au-misra2.lnt
+ au-misra3.lnt
+// au-sm12.lnt
+// au-sm3.lnt
+// au-sm123.lnt
+
+// Compiler Options
+// co-msc70.lnt
+// co-msc71.lnt
+// co-msc80.lnt
+// co.lnt
+
+// Library Options
+// lib-atl.lnt
+// lib-w32.lnt 
+// lib-wnt.lnt
+// lib-mfc.lnt
+
+
+///// [4] inhibit messages for Processor Expert libraries ///// 
+-elib(19, 10)
+// -elib(140)
+-e766
++libh(Events.h, Cpu.h)
+
+///// [5] Coerce messages for Eclipse ///// 
+-hF1
++ffn
+// Normally my format is defined as follows:
+//-"format=%(\q%f\q %l %C%) %t %n: %m"
+// For eclipse-usage, the GCC error format is necessary,
+// since we have only the default eclipse error parser available.
+-"format=%(%f:%l:%C:%) %t %n: %m"
+// Enable warning 831 if you are interested.
+-frl
+// Do not break lines
+-width(0) 
+// And make sure no foreign includes change the format
++flm

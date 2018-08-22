@@ -1,0 +1,63 @@
+                                                                      Page 1
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00005481.si
+Command Line: C:\GHS\V800.V2014.1.7\comp_201417\ease850.exe -w -elf -b0 -Ipe1_project\inc -I..\..\..\src -Isrc -Idev -Iinc -Idevice -IC:\GHS\V800.V2014.1.7\comp_201417\lib\rh850 -cg_underscore -cpu=rh850g3m -no_v850_simd -rh850_fpsimd=none -nomacro -patch_dbo=D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway\output\obj\pe1\PduR_Cfg.dbo -source=PduR_Cfg.c -o .\output\obj\pe1\gh_00005481.o -list=.\output\obj\pe1\PduR_Cfg.lst C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00005481.si 
+Original File: C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00005481.si
+Source File: PduR_Cfg.c
+Directory: D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway
+Host OS: Windows 7
+EASE: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:05:06 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+                           1 --Driver Command: ccv850 -c -MD -Ipe1_project\inc -I..\..\..\src -Isrc -Idev
+                           2 --		-Iinc -Idevice -DMY_CLOCK -UMSC_CLOCK -sda -DEMBEDDED
+                           3 --		--enable_noinline --restrict --bool -bsp generic -g -list
+                           4 --		-passsource -preprocess_assembly_files
+                           5 --		--preprocess_linker_directive_full -DDEVICE=F1H -cpu=rh850g3m
+                           6 --		-Onone -DCPU1=1 -DCPU2=0 -DCORE1 -object_dir=./output/obj/pe1
+                           7 --		-filetype.c ..\..\..\src\PduR_Cfg.c -o
+                           8 --		.\output\obj\pe1\PduR_Cfg.o
+                           9 --Source File:   ..\..\..\src\PduR_Cfg.c
+                          10 --Directory:     
+                          11 --		D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS
+                          12 --		MULTI\CAN Gateway
+                          13 --Compile Date:  Tue Nov 10 14:51:54 2015
+                          14 --Host OS:       Win32
+                          15 --Version:       C-RH850 2014.1.7 RELEASE VERSION
+                          16 --Release:       Compiler v2014.1.7
+                          17 --Revision Date: Fri Sep 05 14:10:46 2014
+                          18 --Release Date:  Fri Sep 05 14:44:23 2014
+                          19 -- ecom  -g -w
+                          20 
+                          21 	.section ".rosdata","a"
+                          22 	.align	4
+                          23 	.global	_PduR_PbConfig
+00000000 0400             24 _PduR_PbConfig:	.byte	4,0
+00000002 0000             25 	.space	2
+00000004 00000000*        26 	.word	_PduR_PduRouteTable
+                          27 	.type	_PduR_PbConfig,@object
+                          28 	.size	_PduR_PbConfig,8
+                          29 	.section ".rodata","a"
+                          30 	.align	4
+                          31 	.global	_PduR_PduRouteTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR_Cfg.
+                          32 _PduR_PduRouteTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR_Cfg.:
+00000000 00000000         33 _PduR_PduRouteTable:	.space	4
+00000004 00000000         34 	.space	4
+00000008 00000000         35 	.space	4
+0000000c 00000000         36 	.space	4
+                          37 	.type	_PduR_PduRouteTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR_Cfg.,@object
+                          38 	.size	_PduR_PduRouteTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR_Cfg.,16
+                          39 	.type	_PduR_PduRouteTable,@object
+                          40 	.size	_PduR_PduRouteTable,16
+                          41 	.data
+                          42 	.ghsnote version,15
+                          43 	.ghsnote tools,3
+                          44 	.ghsnote options,144
+                          45 	.text
+                          46 ..bof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR_Cfg...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940A..0::
+                          47 ..eof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR_Cfg...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940A..0::
+                          48 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3M

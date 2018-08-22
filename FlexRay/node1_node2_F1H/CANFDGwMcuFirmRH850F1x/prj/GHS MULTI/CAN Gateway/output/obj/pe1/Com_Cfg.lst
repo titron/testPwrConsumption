@@ -1,0 +1,338 @@
+                                                                      Page 1
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si
+Command Line: C:\GHS\V800.V2014.1.7\comp_201417\ease850.exe -w -elf -b0 -Ipe1_project\inc -I..\..\..\src -Isrc -Idev -Iinc -Idevice -IC:\GHS\V800.V2014.1.7\comp_201417\lib\rh850 -cg_underscore -cpu=rh850g3m -no_v850_simd -rh850_fpsimd=none -nomacro -patch_dbo=D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway\output\obj\pe1\Com_Cfg.dbo -source=Com_Cfg.c -o .\output\obj\pe1\gh_00006vs1.o -list=.\output\obj\pe1\Com_Cfg.lst C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si 
+Original File: C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si
+Source File: Com_Cfg.c
+Directory: D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway
+Host OS: Windows 7
+EASE: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:05:06 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+                           1 --Driver Command: ccv850 -c -MD -Ipe1_project\inc -I..\..\..\src -Isrc -Idev
+                           2 --		-Iinc -Idevice -DMY_CLOCK -UMSC_CLOCK -sda -DEMBEDDED
+                           3 --		--enable_noinline --restrict --bool -bsp generic -g -list
+                           4 --		-passsource -preprocess_assembly_files
+                           5 --		--preprocess_linker_directive_full -DDEVICE=F1H -cpu=rh850g3m
+                           6 --		-Onone -DCPU1=1 -DCPU2=0 -DCORE1 -object_dir=./output/obj/pe1
+                           7 --		-filetype.c ..\..\..\src\Com_Cfg.c -o .\output\obj\pe1\Com_Cfg.o
+                           8 --Source File:   ..\..\..\src\Com_Cfg.c
+                           9 --Directory:     
+                          10 --		D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS
+                          11 --		MULTI\CAN Gateway
+                          12 --Compile Date:  Tue Nov 10 14:51:54 2015
+                          13 --Host OS:       Win32
+                          14 --Version:       C-RH850 2014.1.7 RELEASE VERSION
+                          15 --Release:       Compiler v2014.1.7
+                          16 --Revision Date: Fri Sep 05 14:10:46 2014
+                          17 --Release Date:  Fri Sep 05 14:44:23 2014
+                          18 -- ecom  -g -w
+                          19 --_g_com_ram_pool	_g_com_ram_pool	import
+                          20 
+                          21 	.section ".rodata","a"
+                          22 	.align	4
+                          23 	.global	_Com_PbCfg
+00000000 02000400         24 _Com_PbCfg:	.byte	2,0,4,0
+00000004 00000000*        25 	.word	_Com_IPduCfgTbl
+00000008 00000000*        26 	.word	_Com_IPduRefTbl
+0000000c 0200             27 	.byte	2,0
+0000000e 0000             28 	.space	2
+00000010 00000000*        29 	.word	_Com_SigCfgTbl
+00000014 00000000*        30 	.word	sdaoff2(_Com_SigRefTbl)
+00000018 00000000*        31 	.word	sdaoff2(_Com_OldSigRefTbl)
+0000001c 0200             32 	.byte	2,0
+0000001e 0000             33 	.space	2
+00000020 00000000*        34 	.word	_Com_SigGwCfgTbl
+                          35 	.type	_Com_PbCfg,@object
+                          36 	.size	_Com_PbCfg,36
+                          37 	.global	_Com_IPduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                          38 _Com_IPduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000024 0000             39 _Com_IPduCfgTbl:	.space	2
+00000026 10               40 	.byte	16
+00000027 00               41 	.space	1
+00000028 01000000         42 	.byte	1,0,0,0
+0000002c 01               43 	.byte	1
+0000002d 000000           44 	.space	3
+00000030 00000000*        45 	.word	sdaoff2(_MapTblMsgm2_node1_network1)
+00000034 08000000         46 	.byte	8,0,0,0
+00000038 01               47 	.byte	1
+00000039 00               48 	.space	1
+0000003a 0000             49 	.space	2
+0000003c 00000000*        50 	.word	_g_com_ram_pool+104
+
+                                                                      Page 2
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si
+00000040 0100             51 	.byte	1,0
+00000042 10               52 	.byte	16
+00000043 00               53 	.space	1
+00000044 01000000         54 	.byte	1,0,0,0
+00000048 01               55 	.byte	1
+00000049 000000           56 	.space	3
+0000004c 00000000*        57 	.word	sdaoff2(_MapTblMsgm3_node1_network1)
+00000050 08000000         58 	.byte	8,0,0,0
+00000054 01               59 	.byte	1
+00000055 00               60 	.space	1
+00000056 0000             61 	.space	2
+00000058 00000000*        62 	.word	_g_com_ram_pool+112
+0000005c 0200             63 	.byte	2,0
+0000005e 10               64 	.byte	16
+0000005f 00               65 	.space	1
+00000060 00000000         66 	.space	4
+00000064 01               67 	.byte	1
+00000065 000000           68 	.space	3
+00000068 00000000*        69 	.word	sdaoff2(_MapTblMsgm0_node0_network0)
+0000006c 08000000         70 	.byte	8,0,0,0
+00000070 01               71 	.byte	1
+00000071 00               72 	.space	1
+00000072 0000             73 	.space	2
+00000074 00000000         74 	.space	4
+00000078 0300             75 	.byte	3,0
+0000007a 10               76 	.byte	16
+0000007b 00               77 	.space	1
+0000007c 00000000         78 	.space	4
+00000080 01               79 	.byte	1
+00000081 000000           80 	.space	3
+00000084 00000000*        81 	.word	sdaoff2(_MapTblMsgM1_node0_network0)
+00000088 08000000         82 	.byte	8,0,0,0
+0000008c 01               83 	.byte	1
+0000008d 00               84 	.space	1
+0000008e 0000             85 	.space	2
+00000090 00000000         86 	.space	4
+                          87 	.type	_Com_IPduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                          88 	.size	_Com_IPduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,112
+                          89 	.type	_Com_IPduCfgTbl,@object
+                          90 	.size	_Com_IPduCfgTbl,112
+                          91 	.global	_Com_IPduRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                          92 _Com_IPduRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000094 00000000*        93 _Com_IPduRefTbl:	.word	_g_com_ram_pool+32
+00000098 00000000*        94 	.word	_g_com_ram_pool+48
+0000009c 00000000*        95 	.word	_g_com_ram_pool+64
+000000a0 00000000*        96 	.word	_g_com_ram_pool+80
+                          97 	.type	_Com_IPduRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                          98 	.size	_Com_IPduRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,16
+                          99 	.type	_Com_IPduRefTbl,@object
+                         100 	.size	_Com_IPduRefTbl,16
+                         101 	.global	_Com_SigCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         102 _Com_SigCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+000000a4 0000            103 _Com_SigCfgTbl:	.space	2
+000000a6 40              104 	.byte	64
+000000a7 00              105 	.space	1
+000000a8 03000000        106 	.byte	3,0,0,0
+000000ac 01000000        107 	.byte	1,0,0,0
+000000b0 00000000*       108 	.word	sdaoff2(_SigInitVal_Sigs0)
+000000b4 00000000*       109 	.word	sdaoff2(_SigInactiveVal_Sigs0)
+000000b8 00000000*       110 	.word	_Com_SigGwCfgTbl
+000000bc 01              111 	.byte	1
+
+                                                                      Page 3
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si
+000000bd 000000          112 	.space	3
+000000c0 00000000*       113 	.word	sdaoff2(_Sigs0IPduMappingTable)
+000000c4 00000000*       114 	.word	_g_com_ram_pool+96
+000000c8 0100            115 	.byte	1,0
+000000ca 40              116 	.byte	64
+000000cb 00              117 	.space	1
+000000cc 03000000        118 	.byte	3,0,0,0
+000000d0 01000000        119 	.byte	1,0,0,0
+000000d4 00000000*       120 	.word	sdaoff2(_SigInitVal_Sigs1)
+000000d8 00000000*       121 	.word	sdaoff2(_SigInactiveVal_Sigs1)
+000000dc 00000000*       122 	.word	_Com_SigGwCfgTbl+8
+000000e0 01              123 	.byte	1
+000000e1 000000          124 	.space	3
+000000e4 00000000*       125 	.word	sdaoff2(_Sigs1IPduMappingTable)
+000000e8 00000000*       126 	.word	_g_com_ram_pool+97
+                         127 	.type	_Com_SigCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         128 	.size	_Com_SigCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,72
+                         129 	.type	_Com_SigCfgTbl,@object
+                         130 	.size	_Com_SigCfgTbl,72
+                         131 	.section ".rosdata","a"
+                         132 	.align	8
+                         133 	.global	_Com_SigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         134 _Com_SigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000000 00000000*       135 _Com_SigRefTbl:	.word	_g_com_ram_pool
+00000004 00000000*       136 	.word	_g_com_ram_pool+8
+                         137 	.type	_Com_SigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         138 	.size	_Com_SigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,8
+                         139 	.type	_Com_SigRefTbl,@object
+                         140 	.size	_Com_SigRefTbl,8
+                         141 	.global	_Com_OldSigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         142 _Com_OldSigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000008 00000000*       143 _Com_OldSigRefTbl:	.word	_g_com_ram_pool+16
+0000000c 00000000*       144 	.word	_g_com_ram_pool+24
+                         145 	.type	_Com_OldSigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         146 	.size	_Com_OldSigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,8
+                         147 	.type	_Com_OldSigRefTbl,@object
+                         148 	.size	_Com_OldSigRefTbl,8
+                         149 	.section ".rodata","a"
+                         150 	.global	_Com_SigGwCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         151 _Com_SigGwCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+000000ec 0000            152 _Com_SigGwCfgTbl:	.space	2
+000000ee 01              153 	.byte	1
+000000ef 00              154 	.space	1
+000000f0 00000000*       155 	.word	sdaoff2(_Com_Gw_Destination_Sigs0)
+000000f4 0100            156 	.byte	1,0
+000000f6 01              157 	.byte	1
+000000f7 00              158 	.space	1
+000000f8 00000000*       159 	.word	sdaoff2(_Com_Gw_Destination_Sigs1)
+                         160 	.type	_Com_SigGwCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         161 	.size	_Com_SigGwCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,16
+                         162 	.type	_Com_SigGwCfgTbl,@object
+                         163 	.size	_Com_SigGwCfgTbl,16
+                         164 	.section ".rosdata","a"
+                         165 	.global	_MapTblMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         166 _MapTblMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+                         167 _MapTblMsgm2_node1_network1:
+00000010 00000000*       168 	.word	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1
+                         169 	.type	_MapTblMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         170 	.size	_MapTblMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         171 	.type	_MapTblMsgm2_node1_network1,@object
+                         172 	.size	_MapTblMsgm2_node1_network1,4
+
+                                                                      Page 4
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si
+                         173 	.global	_MapTblMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         174 _MapTblMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+                         175 _MapTblMsgm3_node1_network1:
+00000014 00000000*       176 	.word	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1
+                         177 	.type	_MapTblMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         178 	.size	_MapTblMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         179 	.type	_MapTblMsgm3_node1_network1,@object
+                         180 	.size	_MapTblMsgm3_node1_network1,4
+                         181 	.global	_MapTblMsgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         182 _MapTblMsgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+                         183 _MapTblMsgm0_node0_network0:
+00000018 00000000*       184 	.word	_Sigs0_Msgm0_node0_network0
+                         185 	.type	_MapTblMsgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         186 	.size	_MapTblMsgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         187 	.type	_MapTblMsgm0_node0_network0,@object
+                         188 	.size	_MapTblMsgm0_node0_network0,4
+                         189 	.global	_MapTblMsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         190 _MapTblMsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+                         191 _MapTblMsgM1_node0_network0:
+0000001c 00000000*       192 	.word	_Sigs1_MsgM1_node0_network0
+                         193 	.type	_MapTblMsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         194 	.size	_MapTblMsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         195 	.type	_MapTblMsgM1_node0_network0,@object
+                         196 	.size	_MapTblMsgM1_node0_network0,4
+                         197 	.global	_SigInitVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         198 _SigInitVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000020 00000000        199 _SigInitVal_Sigs0:	.byte	0,0,0,0
+00000024 00000000        200 	.byte	0,0,0,0
+                         201 	.type	_SigInitVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         202 	.size	_SigInitVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,8
+                         203 	.type	_SigInitVal_Sigs0,@object
+                         204 	.size	_SigInitVal_Sigs0,8
+                         205 	.global	_SigInactiveVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         206 _SigInactiveVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000028 00000000        207 _SigInactiveVal_Sigs0:	.byte	0,0,0,0
+0000002c 00000000        208 	.byte	0,0,0,0
+                         209 	.type	_SigInactiveVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         210 	.size	_SigInactiveVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,8
+                         211 	.type	_SigInactiveVal_Sigs0,@object
+                         212 	.size	_SigInactiveVal_Sigs0,8
+                         213 	.global	_Sigs0IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         214 _Sigs0IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000030 00000000*       215 _Sigs0IPduMappingTable:	.word	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1
+                         216 	.type	_Sigs0IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         217 	.size	_Sigs0IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         218 	.type	_Sigs0IPduMappingTable,@object
+                         219 	.size	_Sigs0IPduMappingTable,4
+00000034 00000000        220 	.space	4
+                         221 	.global	_SigInitVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         222 _SigInitVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000038 00000000        223 _SigInitVal_Sigs1:	.byte	0,0,0,0
+0000003c 00000000        224 	.byte	0,0,0,0
+                         225 	.type	_SigInitVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         226 	.size	_SigInitVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,8
+                         227 	.type	_SigInitVal_Sigs1,@object
+                         228 	.size	_SigInitVal_Sigs1,8
+                         229 	.global	_SigInactiveVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         230 _SigInactiveVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000040 00000000        231 _SigInactiveVal_Sigs1:	.byte	0,0,0,0
+00000044 00000000        232 	.byte	0,0,0,0
+                         233 	.type	_SigInactiveVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+
+                                                                      Page 5
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si
+                         234 	.size	_SigInactiveVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,8
+                         235 	.type	_SigInactiveVal_Sigs1,@object
+                         236 	.size	_SigInactiveVal_Sigs1,8
+                         237 	.global	_Sigs1IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         238 _Sigs1IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000048 00000000*       239 _Sigs1IPduMappingTable:	.word	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1
+                         240 	.type	_Sigs1IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         241 	.size	_Sigs1IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         242 	.type	_Sigs1IPduMappingTable,@object
+                         243 	.size	_Sigs1IPduMappingTable,4
+                         244 	.global	_Com_Gw_Destination_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         245 _Com_Gw_Destination_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+0000004c 00000000*       246 _Com_Gw_Destination_Sigs0:	.word	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1
+                         247 	.type	_Com_Gw_Destination_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         248 	.size	_Com_Gw_Destination_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         249 	.type	_Com_Gw_Destination_Sigs0,@object
+                         250 	.size	_Com_Gw_Destination_Sigs0,4
+                         251 	.global	_Com_Gw_Destination_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         252 _Com_Gw_Destination_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000050 00000000*       253 _Com_Gw_Destination_Sigs1:	.word	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1
+                         254 	.type	_Com_Gw_Destination_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         255 	.size	_Com_Gw_Destination_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,4
+                         256 	.type	_Com_Gw_Destination_Sigs1,@object
+                         257 	.size	_Com_Gw_Destination_Sigs1,4
+                         258 	.section ".rodata","a"
+                         259 	.global	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         260 _Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+000000fc 0000            261 _Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1:	.space	2
+000000fe 0000            262 	.space	2
+00000100 0000            263 	.space	2
+00000102 0000            264 	.space	2
+00000104 01000000        265 	.byte	1,0,0,0
+                         266 	.type	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         267 	.size	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,12
+                         268 	.type	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1,@object
+                         269 	.size	_Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1,12
+                         270 	.global	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         271 _Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000108 0000            272 _Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1:	.space	2
+0000010a 01000100        273 	.byte	1,0,1,0
+0000010e 0000            274 	.space	2
+00000110 01000000        275 	.byte	1,0,0,0
+                         276 	.type	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         277 	.size	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,12
+                         278 	.type	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1,@object
+                         279 	.size	_Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1,12
+                         280 	.global	_Sigs0_Msgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         281 _Sigs0_Msgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000114 4000            282 _Sigs0_Msgm0_node0_network0:	.byte	64,0
+00000116 0000            283 	.space	2
+00000118 0200            284 	.byte	2,0
+0000011a 0000            285 	.space	2
+0000011c 01000000        286 	.byte	1,0,0,0
+                         287 	.type	_Sigs0_Msgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         288 	.size	_Sigs0_Msgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,12
+                         289 	.type	_Sigs0_Msgm0_node0_network0,@object
+                         290 	.size	_Sigs0_Msgm0_node0_network0,12
+                         291 	.global	_Sigs1_MsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+                         292 _Sigs1_MsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.:
+00000120 08000100        293 _Sigs1_MsgM1_node0_network0:	.byte	8,0,1,0
+00000124 0300            294 	.byte	3,0
+
+                                                                      Page 6
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006vs1.si
+00000126 0000            295 	.space	2
+00000128 01000000        296 	.byte	1,0,0,0
+                         297 	.type	_Sigs1_MsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,@object
+                         298 	.size	_Sigs1_MsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.,12
+                         299 	.type	_Sigs1_MsgM1_node0_network0,@object
+                         300 	.size	_Sigs1_MsgM1_node0_network0,12
+                         301 	.data
+                         302 	.ghsnote version,15
+                         303 	.ghsnote tools,3
+                         304 	.ghsnote options,144
+                         305 	.text
+                         306 ..bof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940A..0::
+                         307 ..eof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940A..0::
+                         308 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3M

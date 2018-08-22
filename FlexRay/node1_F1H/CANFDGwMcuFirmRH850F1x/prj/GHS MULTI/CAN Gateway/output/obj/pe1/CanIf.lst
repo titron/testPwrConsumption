@@ -1,0 +1,1615 @@
+                                                                      Page 1
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+Command Line: C:\GHS\V800.V2014.1.7\comp_201417\ease850.exe -w -elf -b0 -Ipe1_project\inc -I..\..\..\src -Isrc -Idev -Iinc -Idevice -IC:\GHS\V800.V2014.1.7\comp_201417\lib\rh850 -cg_underscore -cpu=rh850g3m -no_v850_simd -rh850_fpsimd=none -nomacro -patch_dbo=D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway\output\obj\pe1\CanIf.dbo -source=CanIf.c -o .\output\obj\pe1\gh_00006lc1.o -list=.\output\obj\pe1\CanIf.lst C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si 
+Original File: C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+Source File: CanIf.c
+Directory: D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway
+Host OS: Windows 7
+EASE: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:05:06 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+                           1 --Driver Command: ccv850 -c -MD -Ipe1_project\inc -I..\..\..\src -Isrc -Idev
+                           2 --		-Iinc -Idevice -DMY_CLOCK -UMSC_CLOCK -sda -DEMBEDDED
+                           3 --		--enable_noinline --restrict --bool -bsp generic -g -list
+                           4 --		-passsource -preprocess_assembly_files
+                           5 --		--preprocess_linker_directive_full -DDEVICE=F1H -cpu=rh850g3m
+                           6 --		-Onone -DCPU1=1 -DCPU2=0 -DCORE1 -object_dir=./output/obj/pe1
+                           7 --		-filetype.c ..\..\..\src\CanIf.c -o .\output\obj\pe1\CanIf.o
+                           8 --Source File:   ..\..\..\src\CanIf.c
+                           9 --Directory:     
+                          10 --		D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS
+                          11 --		MULTI\CAN Gateway
+                          12 --Compile Date:  Tue Nov 10 14:51:55 2015
+                          13 --Host OS:       Win32
+                          14 --Version:       C-RH850 2014.1.7 RELEASE VERSION
+                          15 --Release:       Compiler v2014.1.7
+                          16 --Revision Date: Fri Sep 05 14:10:46 2014
+                          17 --Release Date:  Fri Sep 05 14:44:23 2014
+                          18 -- ecom  -g -w
+                          19 
+                          20 --1: /***********************************************************************************************************************
+                          21 --2:  * DISCLAIMER
+                          22 --3:  * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          23 --4:  * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          24 --5:  * applicable laws, including copyright laws.
+                          25 --6:  * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          26 --7:  * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          27 --8:  * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          28 --9:  * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          29 --10:  * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          30 --11:  * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          31 --12:  * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          32 --13:  * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          33 --14:  * following link:
+                          34 --15:  * (MISRA C:2012 Violation - Rule 3.1
+                          35 --16:  * Justification - C comment contains C++ comment can't avoid here.)
+                          36 --17:  * http:/ /www.renesas.com/disclaimer
+                          37 --18:  *
+                          38 --19:  * Copyright (C) 2011 Renesas Electronics Corporation. All rights reserved.
+                          39 --20:  ***********************************************************************************************************************/
+                          40 --21: /***********************************************************************************************************************
+                          41 --22:  * File Name	: CanIf.c
+                          42 --23:  * Version      : 1.0
+                          43 --24:  * Description  : This file implements functions in CAN Interface module.
+                          44 --25:  **********************************************************************************************************************/
+                          45 --26: /**********************************************************************************************************************
+                          46 --27:  * History : DD.MM.YYYY Version  Description
+                          47 --28:  *         : 25.09.2014 1.00     First Release
+                          48 --29:  ***********************************************************************************************************************/
+                          49 --31: /***********************************************************************************************************************
+                          50 --32:  Includes   <System Includes> , "Project Includes"
+
+                                                                      Page 2
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                          51 --33:  ***********************************************************************************************************************/
+                          52 --34: #include "Can.h"
+                          53 --35: #include "CanIf_Cfg.h"
+                          54 --36: #include "CanIf.h"
+                          55 --37: #include "PduR.h"
+                          56 --38: #include "User_Callback.h"
+                          57 --40: /***********************************************************************************************************************
+                          58 --41:  Macro definitions
+                          59 --42:  ***********************************************************************************************************************/
+                          60 --44: /***********************************************************************************************************************
+                          61 --45:  Typedef definitions
+                          62 --46:  ***********************************************************************************************************************/
+                          63 --48: /***********************************************************************************************************************
+                          64 --49:  Exported global variables (to be accessed by other files)
+                          65 --50:  ***********************************************************************************************************************/
+                          66 --52: /***********************************************************************************************************************
+                          67 --53:  Private global variables and functions
+                          68 --54:  ***********************************************************************************************************************/
+                          69 --55: static const can_if_pdu_cfg_t* can_if_pdu_cfg_tbl;
+                          70 --56: static const can_if_hrh_pdu_map_list_t* can_if_hrh_cfg_tbl;
+                          71 --57: CanIf_ControllerModeType can_if_can_mode[CAN_NUM_OF_CHN] = { CANIF_CS_UNINIT, CANIF_CS_UNINIT, CANIF_CS_UNINIT,
+                          72 --58:                                                              CANIF_CS_UNINIT, CANIF_CS_UNINIT, CANIF_CS_UNINIT, };
+                          73 --60: static uint32_t canif_set_id(const can_if_pdu_cfg_t* ppdu_cfg);
+                          74 --62: /***********************************************************************************************************************
+                          75 --63:  * Function Name: canif_set_id
+                          76 --64:  * Description  : This function return id of PDU information.
+                          77 --65:  * Arguments    : ppdu_cfg -
+                          78 --66:  *                    Pointer to PDU configuration.
+                          79 --67:  * Return Value : ID of PDU information
+                          80 --68:  ***********************************************************************************************************************/
+                          81 --69: static uint32_t canif_set_id(const can_if_pdu_cfg_t* ppdu_cfg)
+                          82 	.text
+                          83 ..bof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940B..0::
+                          84 	.align	2
+                          85 	.global	_canif_set_id..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                          86 _canif_set_id..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.:
+                          87 _canif_set_id:
+00000000 06f0             88 	mov	r6,ep
+                          89 --	    .bf
+                          90 .LDW01:
+                          91 --70: {
+                          92 --71: 	uint32_t rtn_value;
+                          93 --73: 	if (CANIF_CAN_ID_EXTENDED_FD == ppdu_cfg->CanIdType)
+00000002 040d             94 	sld.w	8[ep],r1
+00000004 630a             95 	cmp	3,r1
+00000006 ea05*            96 	bne	.L4
+                          97 --74: 	{
+                          98 --75: 		rtn_value = (0xC0000000UL | ppdu_cfg->CanId);
+                          99 --line75
+                         100 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.1::
+                         101 .LDWlin1:
+00000008 020d            102 	sld.w	4[ep],r1
+0000000a 401600c0        103 	movhi	hi(-1073741824),zero,r2
+0000000e 0209            104 	or	r2,r1
+00000010 a515*           105 	br	.L6
+                         106 .L4:
+                         107 --76: 	}
+                         108 --77: 	else if (CANIF_CAN_ID_EXTENDED == ppdu_cfg->CanIdType)
+                         109 --line77
+                         110 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.2::
+                         111 .LDWlin2:
+
+                                                                      Page 3
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+00000012 040d            112 	sld.w	8[ep],r1
+00000014 620a            113 	cmp	2,r1
+00000016 ea05*           114 	bne	.L7
+                         115 --78: 	{
+                         116 --79: 		rtn_value = (0x80000000UL | ppdu_cfg->CanId);
+                         117 --line79
+                         118 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.3::
+                         119 .LDWlin3:
+00000018 020d            120 	sld.w	4[ep],r1
+0000001a 40160080        121 	movhi	hi(-2147483648),zero,r2
+0000001e 0209            122 	or	r2,r1
+00000020 a50d*           123 	br	.L6
+                         124 .L7:
+                         125 --80: 	}
+                         126 --81: 	else if (CANIF_CAN_ID_STANDARD_FD == ppdu_cfg->CanIdType)
+                         127 --line81
+                         128 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.4::
+                         129 .LDWlin4:
+00000022 040d            130 	sld.w	8[ep],r1
+00000024 610a            131 	cmp	1,r1
+00000026 ea05*           132 	bne	.L10
+                         133 --82: 	{
+                         134 --83: 		rtn_value = (0x40000000UL | ppdu_cfg->CanId);
+                         135 --line83
+                         136 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.5::
+                         137 .LDWlin5:
+00000028 020d            138 	sld.w	4[ep],r1
+0000002a 40160040        139 	movhi	hi(1073741824),zero,r2
+0000002e 0209            140 	or	r2,r1
+00000030 a505*           141 	br	.L6
+                         142 .L10:
+                         143 --84: 	}
+                         144 --85: 	else
+                         145 --86: 	{
+                         146 --87: 		rtn_value = ppdu_cfg->CanId;
+                         147 --line87
+                         148 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.6::
+                         149 .LDWlin6:
+00000032 020d            150 	sld.w	4[ep],r1
+                         151 .L6:
+                         152 --88: 	}
+                         153 --90: 	return rtn_value;
+00000034 0150            154 	mov	r1,r10
+                         155 --	    .ef
+                         156 .LDW11:
+00000036 7f00            157 	jmp	[lp]
+                         158 	.type	_canif_set_id,@function
+                         159 	.size	_canif_set_id,.-_canif_set_id
+                         160 	.type	_canif_set_id..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,@function
+                         161 	.size	_canif_set_id..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,.-_canif_set_id..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                         162 	.align	2
+                         163 .LDW21:
+                         164 --_rtn_value	r1	local
+                         165 
+                         166 --_ppdu_cfg	ep	param
+                         167 
+                         168 	.data
+                         169 	.text
+                         170 
+                         171 --91: }
+                         172 
+
+                                                                      Page 4
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         173 --93: /***********************************************************************************************************************
+                         174 --94:  * Function Name: canif_is_mode_invalid
+                         175 --95:  * Description  : This function is to check validity of controller mode.
+                         176 --96:  * Arguments    : ControllerMode -
+                         177 --97:  *                    specified controller mode.
+                         178 --98:  * Return Value : TRUE -
+                         179 --99:  *                  if mode is invalid.
+                         180 --100:  *                FALSE -
+                         181 --101:  *                  if mode is valid.
+                         182 --102:  ***********************************************************************************************************************/
+                         183 --103: static boolean canif_is_mode_invalid(CanIf_ControllerModeType ControllerMode)
+                         184 	.align	2
+                         185 	.align	2
+                         186 	.global	_canif_is_mode_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                         187 _canif_is_mode_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.:
+                         188 _canif_is_mode_invalid:
+                         189 --	    .bf
+                         190 .LDW31:
+                         191 --104: {
+                         192 --105: 	boolean ret = FALSE;
+00000038 000a            193 	mov	0,r1
+                         194 --107: 	if ((CANIF_CS_UNINIT == ControllerMode) || (CANIF_CS_STOPPED == ControllerMode)
+0000003a e031            195 	cmp	zero,r6
+0000003c f205*           196 	be	.L73
+0000003e 6132            197 	cmp	1,r6
+00000040 d205*           198 	be	.L73
+00000042 6232            199 	cmp	2,r6
+00000044 b205*           200 	be	.L73
+00000046 6332            201 	cmp	3,r6
+00000048 ba05*           202 	bne	.L72
+                         203 .L73:
+                         204 --108: 	    || (CANIF_CS_STARTED == ControllerMode) || (CANIF_CS_SLEEP == ControllerMode))
+                         205 --109: 	{
+                         206 --110: 		ret = FALSE;
+                         207 --line110
+                         208 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.7::
+                         209 .LDWlin7:
+0000004a 000a            210 	mov	0,r1
+0000004c a505*           211 	br	.L77
+                         212 .L72:
+                         213 --111: 	}
+                         214 --112: 	else
+                         215 --113: 	{
+                         216 --114: 		ret = TRUE;
+                         217 --line114
+                         218 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.8::
+                         219 .LDWlin8:
+0000004e 010a            220 	mov	1,r1
+                         221 .L77:
+                         222 --115: 	}
+                         223 --117: 	return ret;
+00000050 0150            224 	mov	r1,r10
+                         225 --	    .ef
+                         226 .LDW41:
+00000052 7f00            227 	jmp	[lp]
+                         228 	.type	_canif_is_mode_invalid,@function
+                         229 	.size	_canif_is_mode_invalid,.-_canif_is_mode_invalid
+                         230 	.type	_canif_is_mode_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,@function
+                         231 	.size	_canif_is_mode_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,.-_canif_is_mode_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                         232 	.align	2
+                         233 .LDW51:
+
+                                                                      Page 5
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         234 --_ret	r1	local
+                         235 
+                         236 --_ControllerMode	r6	param
+                         237 
+                         238 	.data
+                         239 	.text
+                         240 
+                         241 --118: }
+                         242 
+                         243 --120: /***********************************************************************************************************************
+                         244 --121:  * Function Name: canif_is_txpduid_invalid
+                         245 --122:  * Description  : This function is to check validity of Tx Pdu Id.
+                         246 --123:  * Arguments    : CanTxPduId -
+                         247 --124:  *                    specified CAN TX Pdu Id.
+                         248 --125:  * Return Value : TRUE -
+                         249 --126:  *                  if TxPduId is invalid.
+                         250 --127:  *                FALSE -
+                         251 --128:  *                  if TxPduId is valid.
+                         252 --129:  ***********************************************************************************************************************/
+                         253 --130: static boolean canif_is_txpduid_invalid(PduIdType CanTxPduId)
+                         254 	.align	2
+                         255 	.align	2
+                         256 	.global	_canif_is_txpduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                         257 _canif_is_txpduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.:
+                         258 _canif_is_txpduid_invalid:
+00000054 c600            259 	zxh	r6
+                         260 --	    .bf
+                         261 .LDW61:
+                         262 --131: {
+                         263 --132: 	boolean ret = FALSE;
+00000056 000a            264 	mov	0,r1
+                         265 --134: 	if (65535U > CanTxPduId)
+00000058 800effff        266 	ori	65535,zero,r1
+0000005c e131            267 	cmp	r1,r6
+0000005e b905*           268 	bnl	.L131
+                         269 --135: 	{
+                         270 --136: 		ret = FALSE;
+                         271 --line136
+                         272 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.9::
+                         273 .LDWlin9:
+00000060 000a            274 	mov	0,r1
+00000062 a505*           275 	br	.L133
+                         276 .L131:
+                         277 --137: 	}
+                         278 --138: 	else
+                         279 --139: 	{
+                         280 --140: 		ret = TRUE;
+                         281 --line140
+                         282 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.10::
+                         283 .LDWlin10:
+00000064 010a            284 	mov	1,r1
+                         285 .L133:
+                         286 --141: 	}
+                         287 --143: 	return ret;
+00000066 0150            288 	mov	r1,r10
+                         289 --	    .ef
+                         290 .LDW71:
+00000068 7f00            291 	jmp	[lp]
+                         292 	.type	_canif_is_txpduid_invalid,@function
+                         293 	.size	_canif_is_txpduid_invalid,.-_canif_is_txpduid_invalid
+                         294 	.type	_canif_is_txpduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,@function
+
+                                                                      Page 6
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         295 	.size	_canif_is_txpduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,.-_canif_is_txpduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                         296 	.align	2
+                         297 .LDW81:
+                         298 --_ret	r1	local
+                         299 
+                         300 --_CanTxPduId	r6	param
+                         301 
+                         302 	.data
+                         303 	.text
+                         304 
+                         305 --144: }
+                         306 
+                         307 --146: /***********************************************************************************************************************
+                         308 --147:  Exported global variables and functions (to be accessed by other files)
+                         309 --148:  **********************************************************************************************************************/
+                         310 --149: /***********************************************************************************************************************
+                         311 --150:  * Function Name: CanIf_Init
+                         312 --151:  * Description  : This service initializes internal and external interfaces of the CAN Interface for the further processing.
+                         313 --152:  * Arguments    : ConfigPtr -
+                         314 --153:  *                    Pointer to configuration parameter set.
+                         315 --154:  * Return Value : none
+                         316 --155:  ***********************************************************************************************************************/
+                         317 --156: void CanIf_Init(const CanIf_ConfigType* ConfigPtr)
+                         318 	.align	2
+                         319 	.align	2
+                         320 	.align	2
+                         321 	.global	_CanIf_Init
+                         322 _CanIf_Init:
+0000006a 581a            323 	add	-8,sp
+0000006c 63ff0500        324 	st.w	lp,4[sp]
+00000070 63ef0100        325 	st.w	r29,0[sp]
+00000074 06e8            326 	mov	r6,r29
+                         327 --	    .bf
+                         328 .LDW91:
+                         329 --157: {
+                         330 --158: 	uint8_t Idx;
+                         331 --159: 	const CanIf_ConfigType* can_if_pb_cfg_ptr;
+                         332 --161: 	/* check validity of parameters */
+                         333 --162: 	if (NULL_PTR == ConfigPtr)
+00000076 e0e9            334 	cmp	zero,r29
+00000078 8a0d*           335 	bne	.L180
+                         336 --163: 	{
+                         337 --164: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_Init,
+                         338 --line164
+                         339 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.11::
+                         340 .LDWlin11:
+0000007a 0132            341 	mov	1,r6
+0000007c 003a            342 	mov	0,r7
+0000007e 0142            343 	mov	1,r8
+00000080 204e1400        344 	movea	20,zero,r9
+                         345 	jarl	_User_ReportError,lp
+                         345 <EXPANSION BEGIN>
+                         345 jarl22 _User_ReportError , lp 
+00000084 80ff0000*       345 <EXPANSION END>
+                         346 .L180:
+                         347 --165: 		                 (uint8_t) CANIF_E_PARAM_POINTER);
+                         348 --166: 	}
+                         349 --168: 	/* ---- Set current state of each controller ---- */
+                         350 --169: 	for (Idx = (uint8_t) 0U; Idx < CAN_NUM_OF_CHN; Idx++)
+                         351 --line169
+                         352 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.12::
+
+                                                                      Page 7
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         353 .LDWlin12:
+00000088 000a            354 	mov	0,r1
+                         355 .L184:
+                         356 --170: 	{
+                         357 --171: 		if (CAN_PHYCH_NOT_USED_FLAG != ConfigPtr->CanConfigPtr->CanPhysicalIdToSystemIdTable[Idx])
+0000008a 3d171100        358 	ld.w	16[r29],r2
+0000008e 02161800        359 	addi	24,r2,r2
+00000092 01f0            360 	mov	r1,ep
+00000094 c2f1            361 	add	r2,ep
+00000096 6010            362 	sld.bu	0[ep],r2
+00000098 020601ff        363 	addi	-255,r2,zero
+0000009c a20d*           364 	be	.L185
+                         365 --172: 		{
+                         366 --173: 			can_if_can_mode[Idx] = CANIF_CS_STOPPED;
+                         367 --line173
+                         368 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.13::
+                         369 .LDWlin13:
+0000009e 0110            370 	mov	r1,r2
+000000a0 c212            371 	shl	2,r2
+000000a2 330600000000*   372 	mov	_can_if_can_mode,r19
+000000a8 02f0            373 	mov	r2,ep
+000000aa d3f1            374 	add	r19,ep
+000000ac 0112            375 	mov	1,r2
+000000ae 0115            376 	sst.w	r2,0[ep]
+                         377 .L185:
+000000b0 410a            378 	add	1,r1
+000000b2 8100            379 	zxb	r1
+000000b4 660a            380 	cmp	6,r1
+000000b6 a1ed*           381 	bl	.L184
+                         382 --174: 		}
+                         383 --175: 	}
+                         384 --177: 	/* ---- Initialize internal parameters. ---- */
+                         385 --178: 	can_if_pb_cfg_ptr = ConfigPtr;
+                         386 --line178
+                         387 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.14::
+                         388 .LDWlin14:
+000000b8 1df0            389 	mov	r29,ep
+                         390 --179: 	can_if_pdu_cfg_tbl = can_if_pb_cfg_ptr->PduConfigTable;
+000000ba 020d            391 	sld.w	4[ep],r1
+000000bc 640f0100*       392 	st.w	r1,sdaoff(_can_if_pdu_cfg_tbl)[gp]
+                         393 --180: 	can_if_hrh_cfg_tbl = can_if_pb_cfg_ptr->HrhConfigTable;
+000000c0 060d            394 	sld.w	12[ep],r1
+000000c2 640f0100*       395 	st.w	r1,sdaoff(_can_if_hrh_cfg_tbl)[gp]
+                         396 --181: } /* End of CanIf_Init() */
+                         397 --	    .ef
+                         398 .LDW02:
+000000c6 23ff0500        399 	ld.w	4[sp],lp
+000000ca 23ef0100        400 	ld.w	0[sp],r29
+000000ce 481a            401 	add	8,sp
+000000d0 7f00            402 	jmp	[lp]
+                         403 	.type	_CanIf_Init,@function
+                         404 	.size	_CanIf_Init,.-_CanIf_Init
+                         405 	.align	2
+                         406 .LDW12:
+                         407 --_Idx	r1	local
+                         408 --_can_if_pb_cfg_ptr	ep	local
+                         409 
+                         410 --_ConfigPtr	r29	param
+                         411 
+                         412 	.section ".sbss","awb"
+                         413 	.align	4
+
+                                                                      Page 8
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         414 	.global	_can_if_pdu_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                         415 _can_if_pdu_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.:
+00000000 00000000        416 _can_if_pdu_cfg_tbl:	.space	4
+                         417 	.type	_can_if_pdu_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,@object
+                         418 	.size	_can_if_pdu_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,4
+                         419 	.type	_can_if_pdu_cfg_tbl,@object
+                         420 	.size	_can_if_pdu_cfg_tbl,4
+                         421 	.global	_can_if_hrh_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+                         422 _can_if_hrh_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.:
+00000004 00000000        423 _can_if_hrh_cfg_tbl:	.space	4
+                         424 	.type	_can_if_hrh_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,@object
+                         425 	.size	_can_if_hrh_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.,4
+                         426 	.type	_can_if_hrh_cfg_tbl,@object
+                         427 	.size	_can_if_hrh_cfg_tbl,4
+                         428 	.data
+                         429 	.text
+                         430 
+                         431 
+                         432 --183: /***********************************************************************************************************************
+                         433 --184:  * Function Name: CanIf_SetControllerMode
+                         434 --185:  * Description  : This service calls the corresponding CAN Driver service for changing of the CAN controller mode.
+                         435 --186:  * Arguments    : ControllerId -
+                         436 --187:  *                    Specified CAN controller.
+                         437 --188:  *                ControllerMode -
+                         438 --189:  *                    Requested mode transition
+                         439 --190:  * Return Value : E_OK - Controller mode request has been accepted
+                         440 --191:  *               E_NOT_OK - Controller mode request has not been accepted
+                         441 --192:  ***********************************************************************************************************************/
+                         442 --193: Std_ReturnType CanIf_SetControllerMode(uint8 ControllerId, CanIf_ControllerModeType ControllerMode)
+                         443 	.align	2
+                         444 	.align	2
+                         445 	.global	_CanIf_SetControllerMode
+                         446 _CanIf_SetControllerMode:
+000000d2 501a            447 	add	-16,sp
+000000d4 63ff0d00        448 	st.w	lp,12[sp]
+000000d8 63df0900        449 	st.w	r27,8[sp]
+000000dc 63e70500        450 	st.w	r28,4[sp]
+000000e0 63ef0100        451 	st.w	r29,0[sp]
+000000e4 c6e6ff00        452 	andi	255,r6,r28
+000000e8 07d8            453 	mov	r7,r27
+                         454 --	    .bf
+                         455 .LDW22:
+                         456 --194: {
+                         457 --195: 	Std_ReturnType RtnValue;
+                         458 --196: 	CanIf_ControllerModeType OldMode;
+                         459 --198: 	/* check validity of parameters */
+                         460 --199: 	if ((uint8) CAN_NUM_OF_CHN < ControllerId)
+000000ea 66e2            461 	cmp	6,r28
+000000ec f305*           462 	bnh	.L243
+                         463 --200: 	{
+                         464 --201: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_SetControllerMode,
+                         465 --line201
+                         466 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.15::
+                         467 .LDWlin15:
+000000ee 0132            468 	mov	1,r6
+000000f0 003a            469 	mov	0,r7
+000000f2 0342            470 	mov	3,r8
+000000f4 0f4a            471 	mov	15,r9
+                         472 	jarl	_User_ReportError,lp
+                         472 <EXPANSION BEGIN>
+                         472 jarl22 _User_ReportError , lp 
+
+                                                                      Page 9
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+000000f6 80ff0000*       472 <EXPANSION END>
+                         473 .L243:
+                         474 --202: 		                 (uint8_t) CANIF_E_PARAM_CONTROLLERID);
+                         475 --203: 	}
+                         476 --204: 	if (TRUE == canif_is_mode_invalid(ControllerMode))
+                         477 --line204
+                         478 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.16::
+                         479 .LDWlin16:
+000000fa 1b30            480 	mov	r27,r6
+                         481 	jarl	_canif_is_mode_invalid,lp
+                         481 <EXPANSION BEGIN>
+                         481 jarl22 _canif_is_mode_invalid , lp 
+000000fc bfff3cff*       481 <EXPANSION END>
+00000100 6152            482 	cmp	1,r10
+00000102 8a0d*           483 	bne	.L245
+                         484 --205: 	{
+                         485 --206: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_SetControllerMode,
+                         486 --line206
+                         487 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.17::
+                         488 .LDWlin17:
+00000104 0132            489 	mov	1,r6
+00000106 003a            490 	mov	0,r7
+00000108 0342            491 	mov	3,r8
+0000010a 204e1500        492 	movea	21,zero,r9
+                         493 	jarl	_User_ReportError,lp
+                         493 <EXPANSION BEGIN>
+                         493 jarl22 _User_ReportError , lp 
+0000010e 80ff0000*       493 <EXPANSION END>
+                         494 .L245:
+                         495 --207: 		                 (uint8_t) CANIF_E_PARAM_CTRLMODE);
+                         496 --208: 	}
+                         497 --210: 	RtnValue = (Std_ReturnType) E_OK;
+                         498 --line210
+                         499 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.18::
+                         500 .LDWlin18:
+00000112 00ea            501 	mov	0,r29
+                         502 --211: 	/* MISRA C:2012 Violation - Rule 18.1 */
+                         503 --212: 	/* Justification - index was check as above */
+                         504 --213: 	OldMode = can_if_can_mode[ControllerId];
+00000114 1c08            505 	mov	r28,r1
+00000116 c20a            506 	shl	2,r1
+00000118 220600000000*   507 	mov	_can_if_can_mode,r2
+0000011e 01f0            508 	mov	r1,ep
+00000120 c2f1            509 	add	r2,ep
+00000122 000d            510 	sld.w	0[ep],r1
+                         511 --214: 	if (OldMode == CANIF_CS_UNINIT)
+00000124 e009            512 	cmp	zero,r1
+00000126 ba05*           513 	bne	.L247
+                         514 --215: 	{
+                         515 --216: 		RtnValue = (Std_ReturnType) E_NOT_OK;
+                         516 --line216
+                         517 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.19::
+                         518 .LDWlin19:
+00000128 01ea            519 	mov	1,r29
+0000012a 8545*           520 	br	.L249
+                         521 .L247:
+                         522 --217: 	}
+                         523 --219: 	else
+                         524 --220: 	{
+                         525 --221: 		switch (ControllerMode)
+                         526 --line221
+
+                                                                      Page 10
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         527 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.20::
+                         528 .LDWlin20:
+0000012c 1b10            529 	mov	r27,r2
+0000012e 6112            530 	cmp	1,r2
+00000130 c13d*           531 	bl	.L281
+00000132 f215*           532 	be	.L262
+00000134 6312            533 	cmp	3,r2
+00000136 b105*           534 	bl	.L252
+00000138 e225*           535 	be	.L272
+0000013a f535*           536 	br	.L281
+                         537 .L252:
+                         538 --222: 		{
+                         539 --224: 			case CANIF_CS_STARTED:
+                         540 --225: 				if (OldMode == CANIF_CS_SLEEP)
+                         541 --line225
+                         542 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.21::
+                         543 .LDWlin21:
+0000013c 630a            544 	cmp	3,r1
+0000013e 9a0d*           545 	bne	.L253
+                         546 --226: 				{
+                         547 --227: 					if (Can_SetControllerMode(ControllerId, CAN_T_WAKEUP) != CAN_OK)
+                         548 --line227
+                         549 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.22::
+                         550 .LDWlin22:
+00000140 1c30            551 	mov	r28,r6
+00000142 033a            552 	mov	3,r7
+                         553 	jarl	_Can_SetControllerMode,lp
+                         553 <EXPANSION BEGIN>
+                         553 jarl22 _Can_SetControllerMode , lp 
+00000144 80ff0000*       553 <EXPANSION END>
+00000148 e051            554 	cmp	zero,r10
+0000014a b205*           555 	be	.L253
+                         556 --228: 					{
+                         557 --229: 						RtnValue = (Std_ReturnType) E_NOT_OK;
+                         558 --line229
+                         559 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.23::
+                         560 .LDWlin23:
+0000014c 01ea            561 	mov	1,r29
+                         562 --230: 						break;
+0000014e e52d*           563 	br	.L249
+                         564 .L253:
+                         565 --231: 					}
+                         566 --232: 				}
+                         567 --233: 				if (Can_SetControllerMode(ControllerId, CAN_T_START) != CAN_OK)
+                         568 --line233
+                         569 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.24::
+                         570 .LDWlin24:
+00000150 1c30            571 	mov	r28,r6
+00000152 003a            572 	mov	0,r7
+                         573 	jarl	_Can_SetControllerMode,lp
+                         573 <EXPANSION BEGIN>
+                         573 jarl22 _Can_SetControllerMode , lp 
+00000154 80ff0000*       573 <EXPANSION END>
+00000158 e051            574 	cmp	zero,r10
+0000015a 822d*           575 	be	.L249
+                         576 --234: 				{
+                         577 --235: 					RtnValue = (Std_ReturnType) E_NOT_OK;
+                         578 --line235
+                         579 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.25::
+                         580 .LDWlin25:
+0000015c 01ea            581 	mov	1,r29
+
+                                                                      Page 11
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         582 --236: 					break;
+0000015e e525*           583 	br	.L249
+                         584 .L262:
+                         585 --237: 				}
+                         586 --238: 				break;
+                         587 --240: 			case CANIF_CS_STOPPED:
+                         588 --241: 				if (OldMode == CANIF_CS_SLEEP)
+                         589 --line241
+                         590 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.26::
+                         591 .LDWlin26:
+00000160 630a            592 	cmp	3,r1
+00000162 9a0d*           593 	bne	.L263
+                         594 --242: 				{
+                         595 --243: 					if (Can_SetControllerMode(ControllerId, CAN_T_WAKEUP) != CAN_OK)
+                         596 --line243
+                         597 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.27::
+                         598 .LDWlin27:
+00000164 1c30            599 	mov	r28,r6
+00000166 033a            600 	mov	3,r7
+                         601 	jarl	_Can_SetControllerMode,lp
+                         601 <EXPANSION BEGIN>
+                         601 jarl22 _Can_SetControllerMode , lp 
+00000168 80ff0000*       601 <EXPANSION END>
+0000016c e051            602 	cmp	zero,r10
+0000016e e21d*           603 	be	.L249
+                         604 --244: 					{
+                         605 --245: 						RtnValue = (Std_ReturnType) E_NOT_OK;
+                         606 --line245
+                         607 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.28::
+                         608 .LDWlin28:
+00000170 01ea            609 	mov	1,r29
+                         610 --246: 						break;
+00000172 c51d*           611 	br	.L249
+                         612 .L263:
+                         613 --247: 					}
+                         614 --248: 				}
+                         615 --249: 				else
+                         616 --250: 				{
+                         617 --251: 					if (Can_SetControllerMode(ControllerId, CAN_T_STOP) != CAN_OK)
+                         618 --line251
+                         619 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.29::
+                         620 .LDWlin29:
+00000174 1c30            621 	mov	r28,r6
+00000176 013a            622 	mov	1,r7
+                         623 	jarl	_Can_SetControllerMode,lp
+                         623 <EXPANSION BEGIN>
+                         623 jarl22 _Can_SetControllerMode , lp 
+00000178 80ff0000*       623 <EXPANSION END>
+0000017c e051            624 	cmp	zero,r10
+0000017e e215*           625 	be	.L249
+                         626 --252: 					{
+                         627 --253: 						RtnValue = (Std_ReturnType) E_NOT_OK;
+                         628 --line253
+                         629 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.30::
+                         630 .LDWlin30:
+00000180 01ea            631 	mov	1,r29
+                         632 --254: 						break;
+00000182 c515*           633 	br	.L249
+                         634 .L272:
+                         635 --255: 					}
+                         636 --256: 				}
+
+                                                                      Page 12
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         637 --257: 				break;
+                         638 --259: 			case CANIF_CS_SLEEP:
+                         639 --260: 				if (OldMode == CANIF_CS_STARTED)
+                         640 --line260
+                         641 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.31::
+                         642 .LDWlin31:
+00000184 620a            643 	cmp	2,r1
+00000186 9a0d*           644 	bne	.L273
+                         645 --261: 				{
+                         646 --262: 					if (Can_SetControllerMode(ControllerId, CAN_T_STOP) != CAN_OK)
+                         647 --line262
+                         648 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.32::
+                         649 .LDWlin32:
+00000188 1c30            650 	mov	r28,r6
+0000018a 013a            651 	mov	1,r7
+                         652 	jarl	_Can_SetControllerMode,lp
+                         652 <EXPANSION BEGIN>
+                         652 jarl22 _Can_SetControllerMode , lp 
+0000018c 80ff0000*       652 <EXPANSION END>
+00000190 e051            653 	cmp	zero,r10
+00000192 b205*           654 	be	.L273
+                         655 --263: 					{
+                         656 --264: 						RtnValue = (Std_ReturnType) E_NOT_OK;
+                         657 --line264
+                         658 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.33::
+                         659 .LDWlin33:
+00000194 01ea            660 	mov	1,r29
+                         661 --265: 						break;
+00000196 a50d*           662 	br	.L249
+                         663 .L273:
+                         664 --266: 					}
+                         665 --267: 				}
+                         666 --268: 				if (Can_SetControllerMode(ControllerId, CAN_T_SLEEP) != CAN_OK)
+                         667 --line268
+                         668 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.34::
+                         669 .LDWlin34:
+00000198 1c30            670 	mov	r28,r6
+0000019a 023a            671 	mov	2,r7
+                         672 	jarl	_Can_SetControllerMode,lp
+                         672 <EXPANSION BEGIN>
+                         672 jarl22 _Can_SetControllerMode , lp 
+0000019c 80ff0000*       672 <EXPANSION END>
+000001a0 e051            673 	cmp	zero,r10
+000001a2 c205*           674 	be	.L249
+                         675 --269: 				{
+                         676 --270: 					RtnValue = (Std_ReturnType) E_NOT_OK;
+                         677 --line270
+                         678 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.35::
+                         679 .LDWlin35:
+000001a4 01ea            680 	mov	1,r29
+                         681 --271: 					break;
+000001a6 a505*           682 	br	.L249
+                         683 .L281:
+                         684 --272: 				}
+                         685 --273: 				break;
+                         686 --275: 			case CANIF_CS_UNINIT:
+                         687 --276: 			default:
+                         688 --277: 				RtnValue = (Std_ReturnType) E_NOT_OK;
+                         689 --line277
+                         690 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.36::
+                         691 .LDWlin36:
+
+                                                                      Page 13
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+000001a8 01ea            692 	mov	1,r29
+                         693 .L249:
+                         694 --278: 				break;
+                         695 --279: 		}
+                         696 --280: 	}
+                         697 --282: 	return RtnValue;
+000001aa 1d50            698 	mov	r29,r10
+                         699 --	    .ef
+                         700 .LDW32:
+000001ac 23ff0d00        701 	ld.w	12[sp],lp
+000001b0 23ef0100        702 	ld.w	0[sp],r29
+000001b4 23e70500        703 	ld.w	4[sp],r28
+000001b8 23df0900        704 	ld.w	8[sp],r27
+000001bc 031e1000        705 	addi	16,sp,sp
+000001c0 7f00            706 	jmp	[lp]
+                         707 	.type	_CanIf_SetControllerMode,@function
+                         708 	.size	_CanIf_SetControllerMode,.-_CanIf_SetControllerMode
+                         709 	.align	2
+                         710 .LDW42:
+                         711 --_RtnValue	r29	local
+                         712 --_OldMode	r1	local
+                         713 
+                         714 --_ControllerId	r28	param
+                         715 --_ControllerMode	r27	param
+                         716 
+                         717 	.data
+                         718 	.text
+                         719 
+                         720 --283: } /* End of CanIf_SetControllerMode() */
+                         721 
+                         722 --285: /***********************************************************************************************************************
+                         723 --286:  * Function Name: CanIf_GetControllerMode
+                         724 --287:  * Description  : This service calls the corresponding CAN Driver service for changing of the CAN controller mode.
+                         725 --288:  * Arguments    : ControllerId -
+                         726 --289:  *                    Specified CAN controller.
+                         727 --290:  *                ControllerModePtr -
+                         728 --291:  *                    pointer to controller mode
+                         729 --292:  * Return Value : E_OK - get controller mode
+                         730 --293:  ***********************************************************************************************************************/
+                         731 --294: Std_ReturnType CanIf_GetControllerMode(uint8 ControllerId, CanIf_ControllerModeType* ControllerModePtr)
+                         732 	.align	2
+                         733 	.align	2
+                         734 	.global	_CanIf_GetControllerMode
+                         735 _CanIf_GetControllerMode:
+000001c2 541a            736 	add	-12,sp
+000001c4 63ff0900        737 	st.w	lp,8[sp]
+000001c8 63e70500        738 	st.w	r28,4[sp]
+000001cc 63ef0100        739 	st.w	r29,0[sp]
+000001d0 c6eeff00        740 	andi	255,r6,r29
+000001d4 07e0            741 	mov	r7,r28
+                         742 --	    .bf
+                         743 .LDW52:
+                         744 --295: {
+                         745 --297: 	/* check validity of parameters */
+                         746 --298: 	if (CAN_NUM_OF_CHN <= ControllerId)
+000001d6 66ea            747 	cmp	6,r29
+000001d8 f105*           748 	bl	.L428
+                         749 --299: 	{
+                         750 --300: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_GetControllerMode,
+                         751 --line300
+                         752 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.37::
+
+                                                                      Page 14
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         753 .LDWlin37:
+000001da 0132            754 	mov	1,r6
+000001dc 003a            755 	mov	0,r7
+000001de 0442            756 	mov	4,r8
+000001e0 0f4a            757 	mov	15,r9
+                         758 	jarl	_User_ReportError,lp
+                         758 <EXPANSION BEGIN>
+                         758 jarl22 _User_ReportError , lp 
+000001e2 80ff0000*       758 <EXPANSION END>
+                         759 .L428:
+                         760 --301: 		                 (uint8_t) CANIF_E_PARAM_CONTROLLERID);
+                         761 --302: 	}
+                         762 --303: 	if (NULL_PTR == ControllerModePtr)
+                         763 --line303
+                         764 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.38::
+                         765 .LDWlin38:
+000001e6 e0e1            766 	cmp	zero,r28
+000001e8 8a0d*           767 	bne	.L430
+                         768 --304: 	{
+                         769 --305: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_GetControllerMode,
+                         770 --line305
+                         771 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.39::
+                         772 .LDWlin39:
+000001ea 0132            773 	mov	1,r6
+000001ec 003a            774 	mov	0,r7
+000001ee 0442            775 	mov	4,r8
+000001f0 204e1400        776 	movea	20,zero,r9
+                         777 	jarl	_User_ReportError,lp
+                         777 <EXPANSION BEGIN>
+                         777 jarl22 _User_ReportError , lp 
+000001f4 80ff0000*       777 <EXPANSION END>
+                         778 .L430:
+                         779 --306: 		                 (uint8_t) CANIF_E_PARAM_POINTER);
+                         780 --307: 	}
+                         781 --308: 	/* MISRA C:2012 Violation - Rule 18.1 */
+                         782 --309: 	/* Justification - index was check as above */
+                         783 --310: 	*ControllerModePtr = can_if_can_mode[ControllerId];
+                         784 --line310
+                         785 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.40::
+                         786 .LDWlin40:
+000001f8 1d08            787 	mov	r29,r1
+000001fa c20a            788 	shl	2,r1
+000001fc 220600000000*   789 	mov	_can_if_can_mode,r2
+00000202 01f0            790 	mov	r1,ep
+00000204 c2f1            791 	add	r2,ep
+00000206 000d            792 	sld.w	0[ep],r1
+00000208 7c0f0100        793 	st.w	r1,0[r28]
+                         794 --312: 	return E_OK;
+0000020c 0052            795 	mov	0,r10
+                         796 --	    .ef
+                         797 .LDW62:
+0000020e 23ff0900        798 	ld.w	8[sp],lp
+00000212 23ef0100        799 	ld.w	0[sp],r29
+00000216 23e70500        800 	ld.w	4[sp],r28
+0000021a 4c1a            801 	add	12,sp
+0000021c 7f00            802 	jmp	[lp]
+                         803 	.type	_CanIf_GetControllerMode,@function
+                         804 	.size	_CanIf_GetControllerMode,.-_CanIf_GetControllerMode
+                         805 	.align	2
+                         806 .LDW72:
+                         807 
+
+                                                                      Page 15
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         808 --_ControllerId	r29	param
+                         809 --_ControllerModePtr	r28	param
+                         810 
+                         811 	.data
+                         812 	.text
+                         813 
+                         814 --313: } /* End of CanIf_GetControllerMode() */
+                         815 
+                         816 --315: /***********************************************************************************************************************
+                         817 --316:  * Function Name: CanIf_Transmit
+                         818 --317:  * Description  : This service initiates a request for transmission of the CAN L-PDU specified by the CanTxPduId
+                         819 --318:  *                and CAN related data in the L-PDU structure.
+                         820 --319:  * Arguments    : CanTxPduId -
+                         821 --320:  *                    PDU handle of CAN PDU to be transmitted.
+                         822 --321:  *                PduInfoPtr -
+                         823 --322:  *                    Pointer to a structure with CAN L-PDU data.
+                         824 --323:  * Return Value : E_OK - Transmit request has been accepted.
+                         825 --324:  *                E_NOT_OK - Transmit request has not been accepted.
+                         826 --325:  ***********************************************************************************************************************/
+                         827 --326: Std_ReturnType CanIf_Transmit(PduIdType CanTxPduId, const PduInfoType* PduInfoPtr)
+                         828 	.align	2
+                         829 	.align	2
+                         830 	.global	_CanIf_Transmit
+                         831 _CanIf_Transmit:
+0000021e 031ee0ff        832 	addi	-32,sp,sp
+00000222 63ff1d00        833 	st.w	lp,28[sp]
+00000226 63d71900        834 	st.w	r26,24[sp]
+0000022a 63df1500        835 	st.w	r27,20[sp]
+0000022e 63e71100        836 	st.w	r28,16[sp]
+00000232 63ef0d00        837 	st.w	r29,12[sp]
+00000236 c6e6ffff        838 	andi	65535,r6,r28
+0000023a 07d0            839 	mov	r7,r26
+                         840 --	    .bf
+                         841 .LDW82:
+                         842 --327: {
+                         843 --328: 	Can_PduType CanPduInfo;
+                         844 --329: 	const can_if_pdu_cfg_t* PduCfgPtr;
+                         845 --330: 	Std_ReturnType RtnValue = E_NOT_OK;
+0000023c 010a            846 	mov	1,r1
+                         847 --331: 	uint8_t phyid;
+                         848 --332: 	uint8_t sys_ch_id = 0U;
+0000023e 00da            849 	mov	0,r27
+                         850 --334: 	/* check validity of parameters */
+                         851 --335: 	if (TRUE == canif_is_txpduid_invalid(CanTxPduId))
+00000240 1c30            852 	mov	r28,r6
+                         853 	jarl	_canif_is_txpduid_invalid,lp
+                         853 <EXPANSION BEGIN>
+                         853 jarl22 _canif_is_txpduid_invalid , lp 
+00000242 bfff12fe*       853 <EXPANSION END>
+00000246 6152            854 	cmp	1,r10
+00000248 8a0d*           855 	bne	.L473
+                         856 --336: 	{
+                         857 --337: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_Transmit,
+                         858 --line337
+                         859 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.41::
+                         860 .LDWlin41:
+0000024a 0132            861 	mov	1,r6
+0000024c 003a            862 	mov	0,r7
+0000024e 0542            863 	mov	5,r8
+00000250 204e3200        864 	movea	50,zero,r9
+                         865 	jarl	_User_ReportError,lp
+
+                                                                      Page 16
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         865 <EXPANSION BEGIN>
+                         865 jarl22 _User_ReportError , lp 
+00000254 80ff0000*       865 <EXPANSION END>
+                         866 .L473:
+                         867 --338: 		                 (uint8_t) CANIF_E_INVALID_TXPDUID);
+                         868 --339: 	}
+                         869 --340: 	if (NULL_PTR == PduInfoPtr)
+                         870 --line340
+                         871 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.42::
+                         872 .LDWlin42:
+00000258 e0d1            873 	cmp	zero,r26
+0000025a 8a0d*           874 	bne	.L475
+                         875 --341: 	{
+                         876 --342: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_Transmit,
+                         877 --line342
+                         878 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.43::
+                         879 .LDWlin43:
+0000025c 0132            880 	mov	1,r6
+0000025e 003a            881 	mov	0,r7
+00000260 0542            882 	mov	5,r8
+00000262 204e1400        883 	movea	20,zero,r9
+                         884 	jarl	_User_ReportError,lp
+                         884 <EXPANSION BEGIN>
+                         884 jarl22 _User_ReportError , lp 
+00000266 80ff0000*       884 <EXPANSION END>
+                         885 .L475:
+                         886 --343: 		                 (uint8_t) CANIF_E_PARAM_POINTER);
+                         887 --344: 	}
+                         888 --346: 	PduCfgPtr = &can_if_pdu_cfg_tbl[CanTxPduId];
+                         889 --line346
+                         890 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.44::
+                         891 .LDWlin44:
+0000026a 1c08            892 	mov	r28,r1
+0000026c f40f4002        893 	mul	20,r1,zero
+00000270 24170100*       894 	ld.w	sdaoff(_can_if_pdu_cfg_tbl)[gp],r2
+00000274 01e8            895 	mov	r1,r29
+00000276 c2e9            896 	add	r2,r29
+                         897 --348: 	/* ---- Check corresponding CAN controller's state. ---- */
+                         898 --349: 	/* Get system channel id from physical id */
+                         899 --350: 	for (phyid = 0; phyid < CAN_NUM_OF_CHN; phyid++)
+00000278 000a            900 	mov	0,r1
+                         901 .L479:
+                         902 --351: 	{
+                         903 --352: 		if (PduCfgPtr->CanController == Can_PbConfig.CanPhysicalIdToSystemIdTable[phyid])
+0000027a 220600000000*   904 	mov	_Can_PbConfig,r2
+00000280 02161800        905 	addi	24,r2,r2
+00000284 01f0            906 	mov	r1,ep
+00000286 c2f1            907 	add	r2,ep
+00000288 6010            908 	sld.bu	0[ep],r2
+0000028a 9d9f1100        909 	ld.bu	16[r29],r19
+0000028e e299            910 	cmp	r2,r19
+00000290 ba05*           911 	bne	.L480
+                         912 --353: 		{
+                         913 --354: 			sys_ch_id = phyid;
+                         914 --line354
+                         915 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.45::
+                         916 .LDWlin45:
+00000292 01d8            917 	mov	r1,r27
+                         918 --355: 			break;
+00000294 d505*           919 	br	.L482
+                         920 .L480:
+
+                                                                      Page 17
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         921 --line350
+                         922 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.46::
+                         923 .LDWlin46:
+00000296 410a            924 	add	1,r1
+00000298 8100            925 	zxb	r1
+0000029a 660a            926 	cmp	6,r1
+0000029c f1ed*           927 	bl	.L479
+                         928 .L482:
+                         929 --356: 		}
+                         930 --357: 	}
+                         931 --358: 	if (CANIF_CS_STARTED != can_if_can_mode[sys_ch_id])
+                         932 --line358
+                         933 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.47::
+                         934 .LDWlin47:
+0000029e 1b08            935 	mov	r27,r1
+000002a0 c20a            936 	shl	2,r1
+000002a2 220600000000*   937 	mov	_can_if_can_mode,r2
+000002a8 01f0            938 	mov	r1,ep
+000002aa c2f1            939 	add	r2,ep
+000002ac 000d            940 	sld.w	0[ep],r1
+000002ae 620a            941 	cmp	2,r1
+000002b0 b205*           942 	be	.L484
+                         943 --359: 	{
+                         944 --360: 		RtnValue = (Std_ReturnType) E_NOT_OK;
+                         945 --line360
+                         946 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.48::
+                         947 .LDWlin48:
+000002b2 010a            948 	mov	1,r1
+000002b4 9525*           949 	br	.L486
+                         950 .L484:
+                         951 --361: 	}
+                         952 --363: 	else
+                         953 --364: 	{
+                         954 --365: 		/* ---- Transmit CAN PDU to CAN driver.  ---- */
+                         955 --366: 		CanPduInfo.SwPduHandle = CanTxPduId;
+                         956 --line366
+                         957 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.49::
+                         958 .LDWlin49:
+000002b6 63e70000        959 	st.h	r28,0[sp]
+                         960 --367: 		CanPduInfo.Length = PduCfgPtr->Dlc;
+000002ba 9d0f0d00        961 	ld.bu	12[r29],r1
+000002be 430f0200        962 	st.b	r1,2[sp]
+                         963 --368: 		CanPduInfo.Id = canif_set_id(PduCfgPtr);
+000002c2 1d30            964 	mov	r29,r6
+                         965 	jarl	_canif_set_id,lp
+                         965 <EXPANSION BEGIN>
+                         965 jarl22 _canif_set_id , lp 
+000002c4 bfff3cfd*       965 <EXPANSION END>
+000002c8 63570500        966 	st.w	r10,4[sp]
+                         967 --369: 		CanPduInfo.Sdu = PduInfoPtr->SduDataPtr;
+                         968 --line369
+                         969 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.50::
+                         970 .LDWlin50:
+000002cc 3a0f0100        971 	ld.w	0[r26],r1
+000002d0 630f0900        972 	st.w	r1,8[sp]
+                         973 --370: 		/* MISRA C:2012 Violation - Rule 1.3 */
+                         974 --371: 		/* Justification - Taking address of near auto variable is unavoidable */
+                         975 --372: 		switch (Can_Write(PduCfgPtr->HwHandle, &CanPduInfo))
+000002d4 fd370f00        976 	ld.hu	14[r29],r6
+000002d8 233e0000        977 	movea	0,sp,r7
+                         978 	jarl	_Can_Write,lp
+
+                                                                      Page 18
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                         978 <EXPANSION BEGIN>
+                         978 jarl22 _Can_Write , lp 
+000002dc 80ff0000*       978 <EXPANSION END>
+000002e0 0a08            979 	mov	r10,r1
+000002e2 e009            980 	cmp	zero,r1
+000002e4 c205*           981 	be	.L489
+000002e6 620a            982 	cmp	2,r1
+000002e8 c305*           983 	bnh	.L490
+000002ea d505*           984 	br	.L491
+                         985 .L489:
+                         986 --373: 		{
+                         987 --374: 			case CAN_OK:
+                         988 --375: 				RtnValue = (Std_ReturnType) E_OK;
+                         989 --line375
+                         990 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.51::
+                         991 .LDWlin51:
+000002ec 000a            992 	mov	0,r1
+000002ee c505*           993 	br	.L486
+                         994 .L490:
+                         995 --376: 				break;
+                         996 --377: 			case CAN_NOT_OK:
+                         997 --378: 			case CAN_BUSY:
+                         998 --379: 				RtnValue = (Std_ReturnType) E_NOT_OK;
+                         999 --line379
+                        1000 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.52::
+                        1001 .LDWlin52:
+000002f0 010a           1002 	mov	1,r1
+000002f2 a505*          1003 	br	.L486
+                        1004 .L491:
+                        1005 --380: 				break;
+                        1006 --381: 			default:
+                        1007 --382: 				RtnValue = (Std_ReturnType) E_NOT_OK;
+                        1008 --line382
+                        1009 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.53::
+                        1010 .LDWlin53:
+000002f4 010a           1011 	mov	1,r1
+                        1012 .L486:
+                        1013 --383: 				break;
+                        1014 --384: 		}
+                        1015 --385: 	}
+                        1016 --386: 	return RtnValue;
+000002f6 0150           1017 	mov	r1,r10
+                        1018 --	    .ef
+                        1019 .LDW92:
+000002f8 23ff1d00       1020 	ld.w	28[sp],lp
+000002fc 23ef0d00       1021 	ld.w	12[sp],r29
+00000300 23e71100       1022 	ld.w	16[sp],r28
+00000304 23df1500       1023 	ld.w	20[sp],r27
+00000308 23d71900       1024 	ld.w	24[sp],r26
+0000030c 031e2000       1025 	addi	32,sp,sp
+00000310 7f00           1026 	jmp	[lp]
+                        1027 	.type	_CanIf_Transmit,@function
+                        1028 	.size	_CanIf_Transmit,.-_CanIf_Transmit
+                        1029 	.align	2
+                        1030 .LDW03:
+                        1031 --_CanPduInfo	0[sp]	local
+                        1032 --_PduCfgPtr	r29	local
+                        1033 --_RtnValue	r1	local
+                        1034 --_phyid	r1	local
+                        1035 --_sys_ch_id	r27	local
+                        1036 
+
+                                                                      Page 19
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                        1037 --_CanTxPduId	r28	param
+                        1038 --_PduInfoPtr	r26	param
+                        1039 
+                        1040 	.data
+                        1041 	.text
+                        1042 
+                        1043 --387: } /* End of CanIf_Transmit() */
+                        1044 
+                        1045 --389: /***********************************************************************************************************************
+                        1046 --390:  * Function Name: CanIf_RxIndication
+                        1047 --391:  * Description  : This service indicates a successful reception of a received CAN Rx L-PDU to the CanIf after passing
+                        1048 --392:  *                all filters and validation checks.
+                        1049 --393:  * Arguments    : MailBox -
+                        1050 --394:  *                  pointer to Rx hardware object.
+                        1051 --395:  *              : PduInfoPtr -
+                        1052 --396:  *                  Pointer to received L-SDU (payload).
+                        1053 --397:  * Return Value : void
+                        1054 --398:  ***********************************************************************************************************************/
+                        1055 --399: void CanIf_RxIndication(const Can_HwType* MailBox, const PduInfoType* PduInfoPtr)
+                        1056 	.align	2
+                        1057 	.align	2
+                        1058 	.global	_CanIf_RxIndication
+                        1059 _CanIf_RxIndication:
+00000312 031eecff       1060 	addi	-20,sp,sp
+00000316 63ff1100       1061 	st.w	lp,16[sp]
+0000031a 63d70d00       1062 	st.w	r26,12[sp]
+0000031e 63df0900       1063 	st.w	r27,8[sp]
+00000322 63e70500       1064 	st.w	r28,4[sp]
+00000326 63ef0100       1065 	st.w	r29,0[sp]
+0000032a 06e8           1066 	mov	r6,r29
+0000032c 07d8           1067 	mov	r7,r27
+                        1068 --	    .bf
+                        1069 .LDW13:
+                        1070 --400: {
+                        1071 --401: 	PduIdType RxPduId;
+                        1072 --402: 	const can_if_pdu_cfg_t* PduCfgPtr;
+                        1073 --403: 	const can_if_hrh_pdu_map_list_t* HrhPduMapPtr;
+                        1074 --404: 	uint16_t Label;
+                        1075 --405: 	uint32_t CanId;
+                        1076 --406: 	boolean exit_condition = FALSE;
+0000032e 00e2           1077 	mov	0,r28
+                        1078 --408: 	/* check validity of parameters */
+                        1079 --409: 	if (NULL_PTR == MailBox)
+00000330 e0e9           1080 	cmp	zero,r29
+00000332 9a0d*          1081 	bne	.L591
+                        1082 --410: 	{
+                        1083 --411: 		User_ReportError((uint16_t) CANIF_MODULE_ID, (uint8_t) 0U, (uint8_t) CanIfServiceId_RxIndication,
+                        1084 --line411
+                        1085 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.54::
+                        1086 .LDWlin54:
+00000334 0132           1087 	mov	1,r6
+00000336 003a           1088 	mov	0,r7
+00000338 20461400       1089 	movea	20,zero,r8
+0000033c 204e1400       1090 	movea	20,zero,r9
+                        1091 	jarl	_User_ReportError,lp
+                        1091 <EXPANSION BEGIN>
+                        1091 jarl22 _User_ReportError , lp 
+00000340 80ff0000*      1091 <EXPANSION END>
+                        1092 .L591:
+                        1093 --412: 		                 (uint8_t) CANIF_E_PARAM_POINTER);
+                        1094 --413: 	}
+
+                                                                      Page 20
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                        1095 --415: 	Label = MailBox->Label;
+                        1096 --line415
+                        1097 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.55::
+                        1098 .LDWlin55:
+00000344 fd0f0100       1099 	ld.hu	0[r29],r1
+                        1100 --416: 	CanId = MailBox->CanId;
+00000348 3dd70500       1101 	ld.w	4[r29],r26
+                        1102 --417: 	if (CAN_ID_MAPPED == (CAN_ID_MAPPED & Label))
+0000034c c1160008       1103 	andi	2048,r1,r2
+00000350 020600f8       1104 	addi	-2048,r2,zero
+00000354 da35*          1105 	bne	.L593
+                        1106 --418: 	{
+                        1107 --419: 		/* MSB of label = 1, mapped */
+                        1108 --420: 		HrhPduMapPtr = &can_if_hrh_cfg_tbl[CAN_ID_NO_MAP & Label];
+                        1109 --line420
+                        1110 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.56::
+                        1111 .LDWlin56:
+00000356 c10eff07       1112 	andi	2047,r1,r1
+0000035a ec0f4202       1113 	mulu	12,r1,zero
+0000035e 24170100*      1114 	ld.w	sdaoff(_can_if_hrh_cfg_tbl)[gp],r2
+00000362 01e8           1115 	mov	r1,r29
+00000364 c2e9           1116 	add	r2,r29
+                        1117 --421: 		/* ---- Software filtering and LPDU assignment ---- */
+                        1118 --422: 		exit_condition = FALSE;
+00000366 00e2           1119 	mov	0,r28
+                        1120 --423: 		User_StartTimeCount();
+                        1121 	jarl	_User_StartTimeCount,lp
+                        1121 <EXPANSION BEGIN>
+                        1121 jarl22 _User_StartTimeCount , lp 
+00000368 80ff0000*      1121 <EXPANSION END>
+                        1122 --424: 		do
+                        1123 .L597:
+                        1124 --425: 		{
+                        1125 --426: 			if (HrhPduMapPtr->RxCanId == CanId)
+                        1126 --line426
+                        1127 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.57::
+                        1128 .LDWlin57:
+0000036c 3d0f0100       1129 	ld.w	0[r29],r1
+00000370 fa09           1130 	cmp	r26,r1
+00000372 9a1d*          1131 	bne	.L598
+                        1132 --427: 			{
+                        1133 --428: 				RxPduId = HrhPduMapPtr->PduId;
+                        1134 --line428
+                        1135 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.58::
+                        1136 .LDWlin58:
+00000374 fd0f0500       1137 	ld.hu	4[r29],r1
+                        1138 --430: 				/* ---- DLC check, frame type check ---- */
+                        1139 --431: 				PduCfgPtr = &can_if_pdu_cfg_tbl[RxPduId];
+00000378 0110           1140 	mov	r1,r2
+0000037a f4174002       1141 	mul	20,r2,zero
+0000037e 249f0100*      1142 	ld.w	sdaoff(_can_if_pdu_cfg_tbl)[gp],r19
+00000382 02f0           1143 	mov	r2,ep
+00000384 d3f1           1144 	add	r19,ep
+                        1145 --432: 				if ((PduInfoPtr->SduLength >= PduCfgPtr->Dlc) && (PduInfoPtr->IdType == (uint8_t) PduCfgPtr->CanIdType))
+00000386 6c10           1146 	sld.bu	12[ep],r2
+00000388 9b9f0500       1147 	ld.bu	4[r27],r19
+0000038c e299           1148 	cmp	r2,r19
+0000038e f11d*          1149 	bl	.L589
+00000390 6810           1150 	sld.bu	8[ep],r2
+00000392 bb9f0500       1151 	ld.bu	5[r27],r19
+00000396 e299           1152 	cmp	r2,r19
+
+                                                                      Page 21
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+00000398 aa1d*          1153 	bne	.L589
+                        1154 --433: 				{
+                        1155 --434: 					/* ---- Notify upper layer ---- */
+                        1156 --435: 					PduR_CanIfRxIndication(RxPduId, PduInfoPtr);
+                        1157 --line435
+                        1158 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.59::
+                        1159 .LDWlin59:
+0000039a 0130           1160 	mov	r1,r6
+0000039c 1b38           1161 	mov	r27,r7
+                        1162 	jarl	_PduR_CanIfRxIndication,lp
+                        1162 <EXPANSION BEGIN>
+                        1162 jarl22 _PduR_CanIfRxIndication , lp 
+0000039e 80ff0000*      1162 <EXPANSION END>
+000003a2 d515*          1163 	br	.L589
+                        1164 .L598:
+                        1165 --436: 				}
+                        1166 --438: 				break;
+                        1167 --439: 			}
+                        1168 --440: 			else
+                        1169 --441: 			{
+                        1170 --442: 				HrhPduMapPtr = HrhPduMapPtr->NextItemPtr;
+                        1171 --line442
+                        1172 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.60::
+                        1173 .LDWlin60:
+000003a4 3def0900       1174 	ld.w	8[r29],r29
+                        1175 --443: 			}
+                        1176 --445: 			/* check exit condition */
+                        1177 --446: 			if (HrhPduMapPtr == NULL_PTR)
+000003a8 e0e9           1178 	cmp	zero,r29
+000003aa aa05*          1179 	bne	.L606
+                        1180 --447: 			{
+                        1181 --448: 				exit_condition = TRUE;
+                        1182 --line448
+                        1183 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.61::
+                        1184 .LDWlin61:
+000003ac 01e2           1185 	mov	1,r28
+                        1186 .L606:
+                        1187 --449: 			}
+                        1188 --450: 			if (TRUE == User_IsTimeOut())
+                        1189 	jarl	_User_IsTimeOut,lp
+                        1189 <EXPANSION BEGIN>
+                        1189 jarl22 _User_IsTimeOut , lp 
+000003ae 80ff0000*      1189 <EXPANSION END>
+000003b2 6152           1190 	cmp	1,r10
+000003b4 aa05*          1191 	bne	.L596
+                        1192 --451: 			{
+                        1193 --452: 				exit_condition = TRUE;
+                        1194 --line452
+                        1195 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.62::
+                        1196 .LDWlin62:
+000003b6 01e2           1197 	mov	1,r28
+                        1198 .L596:
+000003b8 e0e1           1199 	cmp	zero,r28
+000003ba 92dd*          1200 	be	.L597
+000003bc 850d*          1201 	br	.L589
+                        1202 .L593:
+                        1203 --453: 			}
+                        1204 --454: 		} while (FALSE == exit_condition);
+                        1205 --455: 	}
+                        1206 --456: 	else
+                        1207 --457: 	{
+
+                                                                      Page 22
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                        1208 --458: 		/* MSB of label = 0, no map */
+                        1209 --459: 		RxPduId = Label + CANIF_CFG_NUM_OF_TX_IPDU;
+                        1210 --line459
+                        1211 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.63::
+                        1212 .LDWlin63:
+000003be 010e0200       1213 	addi	2,r1,r1
+000003c2 c100           1214 	zxh	r1
+                        1215 --460: 		/* ---- Notify upper layer ---- */
+                        1216 --461: 		PduR_CanIfRxIndication(RxPduId, PduInfoPtr);
+000003c4 0130           1217 	mov	r1,r6
+000003c6 1b38           1218 	mov	r27,r7
+                        1219 	jarl	_PduR_CanIfRxIndication,lp
+                        1219 <EXPANSION BEGIN>
+                        1219 jarl22 _PduR_CanIfRxIndication , lp 
+000003c8 80ff0000*      1219 <EXPANSION END>
+                        1220 .L589:
+                        1221 --462: 	}
+                        1222 --463: } /* End of CanIf_RxIndication() */
+                        1223 --	    .ef
+                        1224 .LDW23:
+                        1225 --line463
+                        1226 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.64::
+                        1227 .LDWlin64:
+000003cc 23ff1100       1228 	ld.w	16[sp],lp
+000003d0 23ef0100       1229 	ld.w	0[sp],r29
+000003d4 23e70500       1230 	ld.w	4[sp],r28
+000003d8 23df0900       1231 	ld.w	8[sp],r27
+000003dc 23d70d00       1232 	ld.w	12[sp],r26
+000003e0 031e1400       1233 	addi	20,sp,sp
+000003e4 7f00           1234 	jmp	[lp]
+                        1235 	.type	_CanIf_RxIndication,@function
+                        1236 	.size	_CanIf_RxIndication,.-_CanIf_RxIndication
+                        1237 	.align	2
+                        1238 .LDW33:
+                        1239 --_RxPduId	r1	local
+                        1240 --_PduCfgPtr	ep	local
+                        1241 --_HrhPduMapPtr	r29	local
+                        1242 --_Label	r1	local
+                        1243 --_CanId	r26	local
+                        1244 --_exit_condition	r28	local
+                        1245 
+                        1246 --_MailBox	r29	param
+                        1247 --_PduInfoPtr	r27	param
+                        1248 
+                        1249 	.data
+                        1250 	.text
+                        1251 
+                        1252 
+                        1253 --465: /***********************************************************************************************************************
+                        1254 --466:  * Function Name: CanIf_TxConfirmation
+                        1255 --467:  * Description  : This service is implemented in the CAN Interface and called by the CAN Driver after the CAN L-PDU
+                        1256 --468:  *                has been transmitted on the CAN network.
+                        1257 --469:  *                Within this service, the CAN Driver passes back the CanTxPduId to the CAN Interface, which it got from
+                        1258 --470:  *                Can_Write(Hth, *PduInfo).
+                        1259 --471:  * Arguments    : CanTxPduId -
+                        1260 --472:  *                  Handle of LPDU successfully transmitted.
+                        1261 --473:  * Return Value : void
+                        1262 --474:  ***********************************************************************************************************************/
+                        1263 --475: void CanIf_TxConfirmation(PduIdType CanTxPduId)
+                        1264 	.align	2
+                        1265 	.align	2
+
+                                                                      Page 23
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                        1266 	.global	_CanIf_TxConfirmation
+                        1267 _CanIf_TxConfirmation:
+000003e6 5c1a           1268 	add	-4,sp
+000003e8 63ff0100       1269 	st.w	lp,0[sp]
+000003ec c600           1270 	zxh	r6
+                        1271 --	    .bf
+                        1272 .LDW43:
+                        1273 --476: {
+                        1274 --477: 	PduR_CanIfTxConfirmation(CanTxPduId);
+                        1275 	jarl	_PduR_CanIfTxConfirmation,lp
+                        1275 <EXPANSION BEGIN>
+                        1275 jarl22 _PduR_CanIfTxConfirmation , lp 
+000003ee 80ff0000*      1275 <EXPANSION END>
+                        1276 --478: } /* End of CanIf_TxConfirmation() */
+                        1277 --	    .ef
+                        1278 .LDW53:
+                        1279 --line478
+                        1280 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.65::
+                        1281 .LDWlin65:
+000003f2 23ff0100       1282 	ld.w	0[sp],lp
+000003f6 441a           1283 	add	4,sp
+000003f8 7f00           1284 	jmp	[lp]
+                        1285 	.type	_CanIf_TxConfirmation,@function
+                        1286 	.size	_CanIf_TxConfirmation,.-_CanIf_TxConfirmation
+                        1287 	.align	2
+                        1288 .LDW63:
+                        1289 
+                        1290 --_CanTxPduId	r6	param
+                        1291 
+                        1292 	.data
+                        1293 	.text
+                        1294 
+                        1295 
+                        1296 --480: /***********************************************************************************************************************
+                        1297 --481:  * Function Name: CanIf_GlobalECC
+                        1298 --482:  * Description  : This service indicates a global ECC error to the corresponding CAN controller.
+                        1299 --483:  * Arguments    : EccValue -
+                        1300 --484:  *                  ECC value,
+                        1301 --485:  *                  bit0 - ECC error flag for channel 0
+                        1302 --486:  *                  bit1 - ECC error flag for channel 1
+                        1303 --487:  *                  bit2 - ECC error flag for channel 2
+                        1304 --488:  *                  bit3 - ECC error flag for channel 3
+                        1305 --489:  *                  bit4 - ECC error flag for channel 4
+                        1306 --490:  *                  bit5 - ECC error flag for channel 5
+                        1307 --491:  * Return Value : void
+                        1308 --492:  ***********************************************************************************************************************/
+                        1309 --493: void CanIf_GlobalECC(uint8_t EccValue)
+                        1310 	.align	2
+                        1311 	.align	2
+                        1312 	.global	_CanIf_GlobalECC
+                        1313 _CanIf_GlobalECC:
+000003fa 5c1a           1314 	add	-4,sp
+000003fc 63ff0100       1315 	st.w	lp,0[sp]
+00000400 8600           1316 	zxb	r6
+                        1317 --	    .bf
+                        1318 .LDW73:
+                        1319 --494: {
+                        1320 --495: 	User_ECC(EccValue);
+                        1321 	jarl	_User_ECC,lp
+                        1321 <EXPANSION BEGIN>
+                        1321 jarl22 _User_ECC , lp 
+
+                                                                      Page 24
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+00000402 80ff0000*      1321 <EXPANSION END>
+                        1322 --496: }
+                        1323 --	    .ef
+                        1324 .LDW83:
+                        1325 --line496
+                        1326 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.66::
+                        1327 .LDWlin66:
+00000406 23ff0100       1328 	ld.w	0[sp],lp
+0000040a 441a           1329 	add	4,sp
+0000040c 7f00           1330 	jmp	[lp]
+                        1331 	.type	_CanIf_GlobalECC,@function
+                        1332 	.size	_CanIf_GlobalECC,.-_CanIf_GlobalECC
+                        1333 	.align	2
+                        1334 .LDW93:
+                        1335 
+                        1336 --_EccValue	r6	param
+                        1337 
+                        1338 	.data
+                        1339 	.text
+                        1340 
+                        1341 
+                        1342 --498: /***********************************************************************************************************************
+                        1343 --499:  * Function Name: CanIf_ControllerModeIndication
+                        1344 --500:  * Description  : This service indicates a controller state transition referring to the corresponding CAN controller.
+                        1345 --501:  * Arguments    : Controller -
+                        1346 --502:  *                  CAN controller that has changed mode.
+                        1347 --503:  *               ControllerMode -
+                        1348 --504:  *                 New mode.
+                        1349 --505:  * Return Value : void
+                        1350 --506:  ***********************************************************************************************************************/
+                        1351 --507: void CanIf_ControllerModeIndication(uint8_t Controller, CanIf_ControllerModeType ControllerMode)
+                        1352 	.align	2
+                        1353 	.align	2
+                        1354 	.global	_CanIf_ControllerModeIndication
+                        1355 _CanIf_ControllerModeIndication:
+0000040e 8600           1356 	zxb	r6
+                        1357 --	    .bf
+                        1358 .LDW04:
+                        1359 --508: {
+                        1360 --509: 	can_if_can_mode[Controller] = ControllerMode;
+00000410 0608           1361 	mov	r6,r1
+00000412 c20a           1362 	shl	2,r1
+00000414 220600000000*  1363 	mov	_can_if_can_mode,r2
+0000041a 01f0           1364 	mov	r1,ep
+0000041c c2f1           1365 	add	r2,ep
+0000041e 013d           1366 	sst.w	r7,0[ep]
+                        1367 --511: 	/* TODO: Indicate to upper layer */
+                        1368 --512: 	/* CanSm_ControllerModeIndication(Controller, ControllerMode); */
+                        1369 --513: } /* End of CanIf_ControllerModeIndication() */
+                        1370 --	    .ef
+                        1371 .LDW14:
+00000420 7f00           1372 	jmp	[lp]
+                        1373 	.type	_CanIf_ControllerModeIndication,@function
+                        1374 	.size	_CanIf_ControllerModeIndication,.-_CanIf_ControllerModeIndication
+                        1375 	.align	2
+                        1376 .LDW24:
+                        1377 
+                        1378 --_Controller	r6	param
+                        1379 --_ControllerMode	r7	param
+                        1380 
+                        1381 	.data
+
+                                                                      Page 25
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+                        1382 	.text
+                        1383 
+                        1384 
+                        1385 --515: /***********************************************************************************************************************
+                        1386 --516:  * Function Name: CanIf_ControllerBusOff
+                        1387 --517:  * Description  : This service indicates a controller state transition referring to the corresponding CAN controller.
+                        1388 --518:  * Arguments    : Controller -
+                        1389 --519:  *                  CAN controller, where a BusOff occurred
+                        1390 --520:  * Return Value : void
+                        1391 --521:  ***********************************************************************************************************************/
+                        1392 --522: void CanIf_ControllerBusOff(uint8 Controller)
+                        1393 	.align	2
+                        1394 	.align	2
+                        1395 	.global	_CanIf_ControllerBusOff
+                        1396 _CanIf_ControllerBusOff:
+00000422 5c1a           1397 	add	-4,sp
+00000424 63ff0100       1398 	st.w	lp,0[sp]
+00000428 8600           1399 	zxb	r6
+                        1400 --	    .bf
+                        1401 .LDW34:
+                        1402 --523: {
+                        1403 --524: //	if (E_OK == CanIf_SetControllerMode(Controller, CANIF_CS_STOPPED)) {
+                        1404 --526: 	/* Indicate to upper layer */
+                        1405 --527: 	/* CanSm_ControllerBusOff(Controller); */
+                        1406 --528: 	User_BusOff(Controller);
+                        1407 	jarl	_User_BusOff,lp
+                        1407 <EXPANSION BEGIN>
+                        1407 jarl22 _User_BusOff , lp 
+0000042a 80ff0000*      1407 <EXPANSION END>
+                        1408 --529: //	}
+                        1409 --530: } /* End of CanIf_ControllerBusOff() */
+                        1410 --	    .ef
+                        1411 .LDW44:
+                        1412 --line530
+                        1413 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.67::
+                        1414 .LDWlin67:
+0000042e 23ff0100       1415 	ld.w	0[sp],lp
+00000432 441a           1416 	add	4,sp
+00000434 7f00           1417 	jmp	[lp]
+                        1418 	.type	_CanIf_ControllerBusOff,@function
+                        1419 	.size	_CanIf_ControllerBusOff,.-_CanIf_ControllerBusOff
+                        1420 	.align	2
+                        1421 .LDW54:
+                        1422 
+                        1423 --_Controller	r6	param
+                        1424 
+                        1425 	.data
+                        1426 	.text
+                        1427 
+                        1428 	.align	2
+                        1429 --_Can_PbConfig	_Can_PbConfig	import
+                        1430 --_can_if_pdu_cfg_tbl	sdaoff(_can_if_pdu_cfg_tbl)	static
+                        1431 --_can_if_hrh_cfg_tbl	sdaoff(_can_if_hrh_cfg_tbl)	static
+                        1432 
+                        1433 	.data
+                        1434 	.align	4
+                        1435 	.global	_can_if_can_mode
+00000000 00000000       1436 _can_if_can_mode:	.space	4
+00000004 00000000       1437 	.space	4
+00000008 00000000       1438 	.space	4
+0000000c 00000000       1439 	.space	4
+
+                                                                      Page 26
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00006lc1.si
+00000010 00000000       1440 	.space	4
+00000014 00000000       1441 	.space	4
+                        1442 	.type	_can_if_can_mode,@object
+                        1443 	.size	_can_if_can_mode,24
+                        1444 	.ghsnote version,15
+                        1445 	.ghsnote tools,3
+                        1446 	.ghsnote options,144
+                        1447 	.text
+                        1448 	.align	2
+                        1449 ..eof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940B..0::
+                        1450 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3M

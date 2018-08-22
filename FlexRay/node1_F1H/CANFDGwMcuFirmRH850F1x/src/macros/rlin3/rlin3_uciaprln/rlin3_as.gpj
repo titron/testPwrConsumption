@@ -1,0 +1,21 @@
+#!gbuild
+[Subproject]
+	-I.
+	:sourceDir=.
+	-Onone
+	--slash_comment
+	--slash_comment
+	-D__ghs__
+	-I..\..\..\common
+	:sourceDir=..\..\..\common
+	-I..\..\macros
+	:sourceDir=..\..\..\macros
+rlin3.h
+rlin3_p.h
+rlin3_s.h
+rlin3_a.h
+rlin3_as.h
+rlin3_as_cfg.h
+rlin3_p.c
+rlin3_a.c
+rlin3_as.c

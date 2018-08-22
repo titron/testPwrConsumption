@@ -1,0 +1,43 @@
+Renesas Optimizing Linker (W2.08.00 )             21-Aug-2018 17:37:32
+
+*** Options ***
+
+-subcommand=DefaultBuild\PE2.clnk
+-input=DefaultBuild\cstartm.obj
+-input=DefaultBuild\main.obj
+-debug
+-nocompress
+-output=DefaultBuild\PE2.abs
+-library=v850e3v5\libc.lib
+-library=v850e3v5\libm.lib
+-library=v850e3v5\libmf.lib
+-list=DefaultBuild\PE2.map
+-start=.const,.INIT_DSEC.const,.INIT_BSEC.const,.const.cmn,.text,.data/00130000,.data.R,.bss,.stack.bss/FEDD0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+.const
+                                  00130000  00130000         0   4
+.INIT_DSEC.const
+                                  00130000  0013000b         c   4
+.INIT_BSEC.const
+                                  0013000c  00130013         8   4
+.const.cmn
+                                  00130014  00130017         4   4
+.text
+                                  00130018  00130135       11e   2
+.data
+                                  00130138  00130138         0   4
+.data.R
+                                  fedd0000  fedd0000         0   4
+.bss
+                                  fedd0000  fedd0000         0   4
+.stack.bss
+                                  fedd0000  fedd01ff       200   4

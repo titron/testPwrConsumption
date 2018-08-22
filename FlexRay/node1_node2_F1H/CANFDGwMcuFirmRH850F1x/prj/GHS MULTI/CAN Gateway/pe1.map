@@ -1,0 +1,411 @@
+Host OS:	Windows 7
+ELXR: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:02:55 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+
+
+
+Load Map Tue Nov 10 14:51:58 2015
+Image Summary
+
+  Section              Base      Size(hex)    Size(dec)  SecOffs
+  .intvect             00000000  00000730         1840   0000220
+  .intvect_end         00000730  00000000            0   0000000
+  .rozdata             00000730  00000000            0   0000000
+  .robase              00000730  00000000            0   0000000
+  .rosdata             00000730  00000078          120   0000950
+  .rodata              000007a8  00000268          616   00009c8
+  .text                00000a10  0000777e        30590   0000c30
+  .fixaddr             00008190  00000000            0   0000000
+  .fixtype             00008190  00000000            0   0000000
+  .secinfo             00008190  00000060           96   00083b0
+  .syscall             000081f0  00000006            6   0008410
+  .romdata             000081f8  00000034           52   0008418
+  .romzdata            0000822c  00000000            0   0000000
+  .romsdata            0000822c  00000002            2   000844c
+  .romtdata            00008230  00000000            0   0000000
+  .romsldata           00008230  00000000            0   0000000
+  .bcode               00800000  00000000            0   0000000
+  .bconst              00800000  00000000            0   0000000
+  .top_of_ROM_BOOT     00a00000  00000000            0   0000000
+  .bcode2              01000000  00000000            0   0000000
+  .bconst2             01000000  00000000            0   0000000
+  .top_of_ROM_BOOT2    01008000  00000000            0   0000000
+  .data                febe0000  00000034           52   0008418
+  .bss                 febe0034  00000500         1280   0000000
+  .sdabase             febe0534  00000000            0   0000000
+  .sdata               febe0534  00000002            2   000844c
+  .sbss                febe0538  00000024           36   0000000
+  .noclear             febe055c  00000000            0   0000000
+  .zdata               febe055c  00000000            0   0000000
+  .zbss                febe055c  00000000            0   0000000
+  .ramtext             febe0580  00000000            0   0000000
+  .tdata               febe0580  00000000            0   0000000
+  .exec                febe0580  00000000            0   0000000
+  .stack               febe0580  00001000         4096   0000000
+  .heapbase            febe1580  00000000            0   0000000
+  .heap                febe1580  0001ea80       125568   0000000
+  .top_of_RAM          fec00000  00000000            0   0000000
+  .slsync              feef8000  00000004            4   0000000
+  .sldata              feef8004  00000000            0   0000000
+  .slbss               feef8004  00000000            0   0000000
+  .rdata               fef00000  00000000            0   0000000
+  .rbss                fef00000  00000000            0   0000000
+  .top_of_RAM_R        fef10000  00000000            0   0000000
+  .note.renesas        00000000  0000003c           60   0008450
+  .gstackfix           00000000  00000000            0   0000000
+
+Load Map Tue Nov 10 14:51:58 2015
+Module Summary
+
+  Origin+Size    Section          Module
+00000a10+0000f0  .text            crt0.o
+00000000+00003c  .note.renesas    <RENESAS ABI INFO>
+00000b00+006fac  .text            pe1.rel
+febe0000+000018  .data            pe1.rel
+febe0434+0000fc  .bss             pe1.rel
+00000000+000730  .intvect         pe1.rel
+00000730+000078  .rosdata         pe1.rel
+000007a8+000268  .rodata          pe1.rel
+febe0538+000024  .sbss            pe1.rel
+febe0534+000002  .sdata           pe1.rel
+00007aac+000066  .text            libansi.a(ccexit.o)
+00007b12+00035e  .text            libstartup.a(ind_crt0.o)
+00007e70+000060  .text            libstartup.a(ind_mset.o)
+00007ed0+000114  .text            libstartup.a(ind_mcpy.o)
+00007fe4+0000ac  .text            libsys.a(ind_exit.o)
+febe0530+000004  .bss             libsys.a(ind_exit.o)
+000081f0+000006  .syscall         libsys.a(ind_dots.o)
+00008090+000022  .text            libsys.a(ind_call.o)
+000080b2+0000ba  .text            libsys.a(ind_crt1.o)
+febe0018+00001c  .data            libsys.a(ind_crt1.o)
+0000816c+000006  .text            libsys.a(ind_lock.o)
+00008172+00001c  .text            libsys.a(ind_errn.o)
+00008190+000060  .secinfo         <section info>
+febe0034+000400  COMMON -> .bss   <commons>
+
+Load Map Tue Nov 10 14:51:58 2015
+Global Symbols (sorted alphabetically)
+
+ .intvect         00000000+000000 .intvect..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5Cdr7f7015273_startup.
+ .text            00005b1c+000014 _CanIf_ControllerBusOff
+ .text            00005b08+000014 _CanIf_ControllerModeIndication
+ .text            000058bc+00005c _CanIf_GetControllerMode
+ .text            00005af4+000014 _CanIf_GlobalECC
+ .rodata          00000958+000018 _CanIf_HrhCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.
+ .text            00005764+000068 _CanIf_Init
+ .rodata          000008f4+000014 _CanIf_PbConfig
+ .rodata          00000908+000050 _CanIf_PduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf_Cfg.
+ .text            00005a0c+0000d4 _CanIf_RxIndication
+ .text            000057cc+0000f0 _CanIf_SetControllerMode
+ .text            00005918+0000f4 _CanIf_Transmit
+ .text            00005ae0+000014 _CanIf_TxConfirmation
+ .rosdata         000007a0+000008 _Can_AFLCfgTbl_Ch0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan_Cfg.
+ .rodata          000009f0+000010 _Can_AFLCfgTbl_Ch0_afl0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan_Cfg.
+ .rodata          00000a00+000010 _Can_AFLCfgTbl_Ch0_afl1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan_Cfg.
+ .text            0000738c+00005c _Can_EnableControllerInterrupts..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00007a6c+000040 _Can_ISR_ChnErr
+ .text            00007a3c+000030 _Can_ISR_GlobalErr
+ .text            00007908+0000ac _Can_ISR_RxFifo
+ .text            000079b4+000088 _Can_ISR_THL
+ .text            0000747a+0000f2 _Can_Init
+ .text            0000789c+00006a _Can_MainFunction_BusOff
+ .text            0000788a+000012 _Can_MainFunction_Read
+ .text            00007906+000002 _Can_MainFunction_Wakeup
+ .text            00007858+000032 _Can_MainFunction_Write
+ .rodata          00000970+000020 _Can_PbConfig
+ .rodata          000009d8+000018 _Can_RxFifoCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan_Cfg.
+ .text            0000756c+00014a _Can_SetControllerMode
+ .text            00000e5e+000072 _Can_SetRegisterMapping
+ .rosdata         0000079c+000004 _Can_TxHwObjectTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan_Cfg.
+ .text            000076b6+0001a2 _Can_Write
+ .rodata          00000990+000048 _Can_ctrlerCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan_Cfg.
+ .rosdata         00000794+000004 _Com_Gw_Destination_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000798+000004 _Com_Gw_Destination_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rodata          000007ec+000070 _Com_IPduCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rodata          0000085c+000010 _Com_IPduRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .text            00004f7a+000078 _Com_Init
+ .text            00005574+0000c2 _Com_JudgeGatewayPduTxMethod
+ .text            000053d2+0001a2 _Com_MainFunctionRouteSignals
+ .text            0000535e+000074 _Com_MainFunctionTx
+ .rosdata         00000750+000008 _Com_OldSigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .text            000056ac+00004e _Com_OsTimerCallBack
+ .rodata          000007c8+000024 _Com_PbCfg
+ .text            0000518e+00005c _Com_ReceiveSignal
+ .text            000051ea+00014a _Com_RxIndication
+ .text            00004ff2+00019c _Com_SendSignal
+ .rodata          0000086c+000048 _Com_SigCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rodata          000008b4+000010 _Com_SigGwCfgTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000748+000008 _Com_SigRefTbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .text            00005636+000076 _Com_TriggerGatewayPduTransmit
+ .text            00005334+00002a _Com_TxConfirmation
+ .text            00000d50+000080 _EcuM_Init
+ .rodata          000007a8+000010 _FDDlcBytesMap..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5Crscanfd_drv.
+ .text            00003c10+000078 _Isr_CAN0ERR
+ .text            00003c88+000044 _Isr_CAN0REC
+ .text            00003ccc+000078 _Isr_CAN0TRX
+ .text            00003d44+000078 _Isr_CAN1ERR
+ .text            00003dbc+000044 _Isr_CAN1REC
+ .text            00003e00+000078 _Isr_CAN1TRX
+ .text            00003e78+000078 _Isr_CAN2ERR
+ .text            00003ef0+000044 _Isr_CAN2REC
+ .text            00003f34+000078 _Isr_CAN2TRX
+ .text            00003fac+000078 _Isr_CAN3ERR
+ .text            00004024+000044 _Isr_CAN3REC
+ .text            00004068+000078 _Isr_CAN3TRX
+ .text            000040e0+000078 _Isr_CAN4ERR
+ .text            00004158+000044 _Isr_CAN4REC
+ .text            0000419c+000078 _Isr_CAN4TRX
+ .text            00004214+000078 _Isr_CAN5ERR
+ .text            0000428c+000044 _Isr_CAN5REC
+ .text            000042d0+000078 _Isr_CAN5TRX
+ .text            00004348+000044 _Isr_CAN6ERR
+ .text            0000438c+000044 _Isr_CAN6REC
+ .text            000043d0+000044 _Isr_CAN6TRX
+ .text            000039c4+000074 _Isr_OsTimer0
+ .text            00003a38+000076 _Isr_RSCANGERR0
+ .text            00003b24+000076 _Isr_RSCANGERR1
+ .text            00003aae+000076 _Isr_RSCANGRECC0
+ .text            00003b9a+000076 _Isr_RSCANGRECC1
+ .rosdata         00000764+000004 _MapTblMsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000760+000004 _MapTblMsgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000758+000004 _MapTblMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         0000075c+000004 _MapTblMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .text            00003874+0000aa _PduR_CanIfRxIndication
+ .text            0000391e+000038 _PduR_CanIfTxConfirmation
+ .text            00003956+00005c _PduR_ComTransmit
+ .text            00003844+000030 _PduR_Init
+ .rosdata         0000073c+000008 _PduR_PbConfig
+ .rodata          000007b8+000010 _PduR_PduRouteTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR_Cfg.
+ .text            00000b00+000000 _RESET
+ .text            00002d1c+00002e _RSCFD_ClearCFIFORxIntFlag
+ .text            00002cec+000030 _RSCFD_ClearCFIFOTxIntFlag
+ .text            00002a10+000024 _RSCFD_ClearRFIFORxFlag
+ .text            0000380a+000024 _RSCFD_ClearTHLIntFlag
+ .text            0000106c+000008 _RSCFD_ConfigGlobal
+ .text            00002bc6+00007c _RSCFD_DisableCFIFOInterrupt
+ .text            00002722+000024 _RSCFD_DisableRFIFOInterrupt
+ .text            000036c2+000026 _RSCFD_DisableTHLInterrupt
+ .text            000022d6+00001e _RSCFD_DisableTMBInterrupt
+ .text            00003524+000026 _RSCFD_DisableTxQInterrupt
+ .text            00002e7a+000030 _RSCFD_EnableCFIFO
+ .text            00002c42+00007c _RSCFD_EnableCFIFOInterrupt
+ .text            00002746+000026 _RSCFD_EnableRFIFO
+ .text            000026fe+000024 _RSCFD_EnableRFIFOInterrupt
+ .text            0000370c+000026 _RSCFD_EnableTHL
+ .text            000036e8+000024 _RSCFD_EnableTHLInterrupt
+ .text            00002246+000090 _RSCFD_EnableTMB
+ .text            000022f4+000024 _RSCFD_EnableTMBInterrupt
+ .text            0000356e+000026 _RSCFD_EnableTxQ
+ .text            0000354a+000024 _RSCFD_EnableTxQInterrupt
+ .text            00003476+00002e _RSCFD_GetCFIFOCount
+ .text            000018c0+000024 _RSCFD_GetChannelREC
+ .text            000018e4+000022 _RSCFD_GetChannelTEC
+ .text            00001074+000014 _RSCFD_GetGlobalErrFlag
+ .text            000029c8+000024 _RSCFD_GetRFIFOCount
+ .text            0000233c+000078 _RSCFD_GetRMBNewDataBufferIndex
+ .text            000037e6+000024 _RSCFD_GetTHLCount
+ .text            00002318+000024 _RSCFD_GetTMSTS
+ .text            0000361e+000024 _RSCFD_GetTxQCount
+ .text            000029ec+000024 _RSCFD_HasRxFifoRxCompleteInt
+ .text            00001854+000024 _RSCFD_IsChannelBusOff
+ .text            00001830+000024 _RSCFD_IsChannelReady
+ .text            00001878+000024 _RSCFD_IsChannelReceiving
+ .text            0000189c+000024 _RSCFD_IsChannelTransmitting
+ .text            00001abe+0000c4 _RSCFD_ReadAFL
+ .text            000031e2+000294 _RSCFD_ReadCFIFO
+ .text            0000276c+00025c _RSCFD_ReadRFIFO
+ .text            000023fe+000206 _RSCFD_ReadRMB
+ .text            00003732+0000b4 _RSCFD_ReadTHL
+ .text            00002cbe+00002e _RSCFD_ReturnCFIFOTxStatus
+ .text            00001906+0000f4 _RSCFD_SetAFLNumber
+ .text            00002a34+0000e4 _RSCFD_SetCFIFO
+ .text            00002b18+0000ae _RSCFD_SetCFIFOInterrupt
+ .text            00002d4a+000030 _RSCFD_SetCFIFOTx
+ .text            00002d7a+000100 _RSCFD_SetCFIFOTxInterval
+ .text            00000dfa+000064 _RSCFD_SetCanVersion
+ .text            00001088+0001cc _RSCFD_SetChannelBitrate
+ .text            000016d0+000160 _RSCFD_SetChannelInterrupt
+ .text            000012d6+000080 _RSCFD_SetChannelMultiGateway
+ .text            00001254+000082 _RSCFD_SetChannelTDC
+ .text            000015ea+0000e6 _RSCFD_SetChannelTestMode
+ .text            0000104c+000020 _RSCFD_SetGlobalRx
+ .text            00002604+000094 _RSCFD_SetRFIFO
+ .text            00002698+000066 _RSCFD_SetRFIFOInterrupt
+ .text            000023b4+00004a _RSCFD_SetRMB
+ .text            00003642+00003c _RSCFD_SetTHL
+ .text            0000367e+000044 _RSCFD_SetTHLInterrupt
+ .text            00001b82+00003e _RSCFD_SetTMBMergeMode
+ .text            000034a4+00003c _RSCFD_SetTxQ
+ .text            000034e0+000044 _RSCFD_SetTxQInterrupt
+ .text            00001356+000294 _RSCFD_SwitchChannelMode
+ .text            00000ed0+00017c _RSCFD_SwitchGlobalMode
+ .text            00000dd0+00002a _RSCFD_WaitIPInitialized
+ .text            000019fa+0000c4 _RSCFD_WriteAFL
+ .text            00002eaa+000338 _RSCFD_WriteCFIFO
+ .text            00001bc0+000686 _RSCFD_WriteTMB
+ .text            00003594+00008a _RSCFD_WriteTxQ
+ .rosdata         00000770+000008 _SigInactiveVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000788+000008 _SigInactiveVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000768+000008 _SigInitVal_Sigs0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000780+000008 _SigInitVal_Sigs1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000778+000004 _Sigs0IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rodata          000008dc+00000c _Sigs0_Msgm0_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rodata          000008c4+00000c _Sigs0_Msgm0_node0_network0ToMsgm2_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rosdata         00000790+000004 _Sigs1IPduMappingTable..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rodata          000008e8+00000c _Sigs1_MsgM1_node0_network0..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .rodata          000008d0+00000c _Sigs1_MsgM1_node0_network0ToMsgm3_node1_network1..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom_Cfg.
+ .text            00000d48+000004 _User_BusOff
+ .text            00000d44+000004 _User_ECC
+ .text            00000d2e+000006 _User_GetSignal
+ .text            00000b2e+0001cc _User_InitMcu
+ .text            00000d36+000004 _User_IsTimeOut
+ .text            00000d2c+000002 _User_MainTask
+ .text            00000d3a+00000a _User_ReportError
+ .text            00000cfa+000032 _User_Start1MsSystemTick
+ .text            00000d34+000002 _User_StartTimeCount
+ .text            00000d4c+000004 _User_Wakeup
+ .text            00007fe4+00006a __Exit
+ .rosdata         00000730+000008 __FifoPayloadSizeMap..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5Crscanfd_drv.
+ .rosdata         00000738+000004 __RmbPayloadSizeMap..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5Crscanfd_drv.
+                  00000000+000000 ___atexit_cleanup_func
+                  00000000+000000 ___cpp_exception_cleanup
+                  00000000+000000 ___cpp_exception_init
+ .syscall         000081f0+000006 ___dotsyscall
+ .text            0000817c+000008 ___gh_errno_ptr
+ .text            00008184+00000a ___gh_get_errno
+                  00000000+000000 ___gh_iob_init
+ .text            00008170+000002 ___gh_lock_init
+ .text            00008172+00000a ___gh_set_errno
+ .text            0000816c+000002 ___ghsLock
+ .text            0000816e+000002 ___ghsUnlock
+                  00000000+000000 ___ghs_GetCurrentThreadID
+                  00000000+000000 ___ghs_GetCurrentThreadName
+                  00000000+000000 ___ghs_InterruptLock
+                  00000000+000000 ___ghs_InterruptUnlock
+                  00000000+000000 ___ghs_RunTimeErrorDetected
+ .text            0000804e+000042 ___ghs_at_exit
+                  00000000+000000 ___ghs_board_cache_sync
+                  00000000+000000 ___ghs_board_devices_init
+                  00000000+000000 ___ghs_board_memory_init
+                  00000000+000000 ___ghs_call_table
+                  00000000+000000 ___ghs_checksum
+                  00000000+000000 ___ghs_coverage_init
+                  00000000+000000 ___ghs_cpp_exception_cleanup
+                  00000000+000000 ___ghs_cpp_exception_init
+                  00000000+000000 ___ghs_decompress
+ .text            00007b12+00035e ___ghs_ind_crt0
+ .text            000080b2+0000ba ___ghs_ind_crt1
+ .syscall         000081f0+000006 ___ghs_initial_dotsyscall
+                  00000002+000000 ___ghs_log_fee_level
+                  00000000+000000 ___ghs_manprf_init
+                  00000000+000000 ___ghs_rambootcodeend
+                  00000000+000000 ___ghs_rambootcodestart
+                  00000000+000000 ___ghs_rombootcodeend
+                  00000000+000000 ___ghs_rombootcodestart
+                  00000000+000000 ___ghs_set_stack_chk_guard
+ .text            00008090+000022 ___ghs_syscall
+                  00000000+000000 ___ghs_undefined_func
+ .fixaddr         00008190+000000 ___ghsbegin_fixaddr
+ .fixtype         00008190+000000 ___ghsbegin_fixtype
+                  00000000+000000 ___ghsbegin_picbase
+                  00000000+000000 ___ghsbegin_pidbase
+ .robase          00000730+000000 ___ghsbegin_robase
+                  00000000+000000 ___ghsbegin_sda_end
+                  00000000+000000 ___ghsbegin_sda_start
+ .sdabase         febe0534+000000 ___ghsbegin_sdabase
+ .secinfo         00008190+000000 ___ghsbegin_secinfo
+ .secinfo         000081b4+000000 ___ghsbinfo_aclear
+ .secinfo         000081f0+000000 ___ghsbinfo_acopy
+ .secinfo         000081f0+000000 ___ghsbinfo_bcopy
+ .secinfo         00008190+000024 ___ghsbinfo_clear
+ .secinfo         000081f0+000000 ___ghsbinfo_comacopy
+ .secinfo         000081f0+000000 ___ghsbinfo_comcopy
+ .secinfo         000081f0+000000 ___ghsbinfo_comtcopy
+ .secinfo         000081b4+00003c ___ghsbinfo_copy
+ .secinfo         000081f0+000000 ___ghsbinfo_tcopy
+ .secinfo         000081f0+000000 ___ghseinfo_bcopy
+ .secinfo         000081b4+000000 ___ghseinfo_clear
+ .secinfo         000081f0+000000 ___ghseinfo_comcopy
+ .secinfo         000081f0+000000 ___ghseinfo_copy
+ .fixaddr         00008190+000000 ___ghsend_fixaddr
+ .fixtype         00008190+000000 ___ghsend_fixtype
+ .stack           febe1580+000000 ___ghsend_stack
+                  00000000+000000 ___lowinit
+ .text            00007fc0+000024 ___mcopy
+                  00000000+000000 __cleanup
+ .tdata           febe0580+000000 __ep
+ .text            00007fe4+00006a __exit
+                  00000000+000000 __ghs_v800_r20_initializer
+                  00000000+000000 __ghs_v800_r21_initializer
+                  00000000+000000 __ghs_v800_sda_model
+ .sdabase         febe8534+000000 __gp
+ .text            00000a10+0000ce __start
+ .rosdata         00008730+000000 __tp
+ .text            00000b2c+000000 __unused_isr
+ .text            000069be+000088 _can_check_rx_completion..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            000068a8+000116 _can_check_tx_completion..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00007006+000054 _can_enable_chn_interrupt..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            0000705a+000040 _can_enable_rxfifo_interrupt..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00007344+000048 _can_get_chn_cfgtbl_index..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006b16+00007c _can_get_current_afl_idx..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            0000714c+000088 _can_get_data_length_by_dlc..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            000070dc+000070 _can_get_dlc_by_data_length..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00007456+000024 _can_get_frm_format..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            0000709a+000042 _can_get_id_type..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            000071d4+000108 _can_get_txmsg..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            000072dc+000068 _can_get_txpointer..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .data            febe0000+000018 _can_if_can_mode
+ .sbss            febe0558+000004 _can_if_hrh_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+ .sbss            febe0554+000004 _can_if_pdu_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+ .text            00006daa+0000ec _can_init_channel..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006a46+0000d0 _can_init_global..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            000073e8+000016 _can_is_canfd..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00007426+000030 _can_is_txbuf_ongoing..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006896+000012 _can_is_txlabel_correct..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006800+000096 _can_read_rxfifo..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            000073fe+000028 _can_select_tx_obj..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006bbc+0000be _can_set_afl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006e96+000170 _can_set_interrupt..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00005b30+000cd0 _can_set_port..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006b92+00002a _can_set_tdc..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006d6e+00003c _can_set_thl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006cd6+000098 _can_set_trfifo..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006c7a+000020 _can_set_txbuffer..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00006c9a+00003c _can_set_txq..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .text            00005732+00001c _canif_is_mode_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+ .text            0000574e+000016 _canif_is_txpduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+ .text            000056fa+000038 _canif_set_id..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCanIf.
+ .text            00004df4+000146 _com_init_ipdu..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sbss            febe0540+000004 _com_ipdu_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sbss            febe053c+000004 _com_ipdu_obj_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .text            00004d14+000094 _com_is_signal_changed..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sdata           febe0534+000001 _com_need_pdu_gw..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sdata           febe0535+000001 _com_need_pdu_gw_with_repetition..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sbss            febe0552+000002 _com_num_of_signal..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sbss            febe0550+000002 _com_num_of_tx_ipdu..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sbss            febe0548+000004 _com_old_sig_obj_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .text            000047ae+000566 _com_pack_one_signal..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .text            00004da8+00004c _com_set_signal..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sbss            febe054c+000004 _com_signal_cfg_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .sbss            febe0544+000004 _com_signal_obj_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .text            00004f3a+000040 _com_transmit_ipdu..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+ .text            00004414+00039a _com_unpack_one_signal..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCom.
+                  fe9e001c+000004 _environ
+                  fe9e0020+000004 _errno
+ .text            00007aac+000066 _exit
+ .bss             febe0434+00000c _g_can_hoh_pduid_txbuf_tbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .bss             febe0440+0000f0 _g_can_hoh_pduid_txtbl..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CCan.
+ .bss             febe0034+000400 _g_com_ram_pool
+ .text            000039b2+000012 _main
+ .text            00007ed0+0000f0 _memcpy
+ .text            00007e70+000060 _memset
+ .sbss            febe0538+000004 _pdu_r_pb_cfg_ptr..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.
+ .text            0000382e+000016 _pdur_is_pduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.
+                  00000000+000000 _undefined_cleanup
+                  00000000+000000 _undefined_cleanup_func

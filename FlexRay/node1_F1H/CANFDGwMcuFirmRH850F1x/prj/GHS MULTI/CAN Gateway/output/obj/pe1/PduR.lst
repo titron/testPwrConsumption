@@ -1,0 +1,616 @@
+                                                                      Page 1
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+Command Line: C:\GHS\V800.V2014.1.7\comp_201417\ease850.exe -w -elf -b0 -Ipe1_project\inc -I..\..\..\src -Isrc -Idev -Iinc -Idevice -IC:\GHS\V800.V2014.1.7\comp_201417\lib\rh850 -cg_underscore -cpu=rh850g3m -no_v850_simd -rh850_fpsimd=none -nomacro -patch_dbo=D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway\output\obj\pe1\PduR.dbo -source=PduR.c -o .\output\obj\pe1\gh_00007t41.o -list=.\output\obj\pe1\PduR.lst C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si 
+Original File: C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+Source File: PduR.c
+Directory: D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway
+Host OS: Windows 7
+EASE: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:05:06 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+                           1 --Driver Command: ccv850 -c -MD -Ipe1_project\inc -I..\..\..\src -Isrc -Idev
+                           2 --		-Iinc -Idevice -DMY_CLOCK -UMSC_CLOCK -sda -DEMBEDDED
+                           3 --		--enable_noinline --restrict --bool -bsp generic -g -list
+                           4 --		-passsource -preprocess_assembly_files
+                           5 --		--preprocess_linker_directive_full -DDEVICE=F1H -cpu=rh850g3m
+                           6 --		-Onone -DCPU1=1 -DCPU2=0 -DCORE1 -object_dir=./output/obj/pe1
+                           7 --		-filetype.c ..\..\..\src\PduR.c -o .\output\obj\pe1\PduR.o
+                           8 --Source File:   ..\..\..\src\PduR.c
+                           9 --Directory:     
+                          10 --		D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS
+                          11 --		MULTI\CAN Gateway
+                          12 --Compile Date:  Tue Nov 10 14:51:54 2015
+                          13 --Host OS:       Win32
+                          14 --Version:       C-RH850 2014.1.7 RELEASE VERSION
+                          15 --Release:       Compiler v2014.1.7
+                          16 --Revision Date: Fri Sep 05 14:10:46 2014
+                          17 --Release Date:  Fri Sep 05 14:44:23 2014
+                          18 -- ecom  -g -w
+                          19 
+                          20 --1: /***********************************************************************************************************************
+                          21 --2:  * DISCLAIMER
+                          22 --3:  * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          23 --4:  * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          24 --5:  * applicable laws, including copyright laws.
+                          25 --6:  * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          26 --7:  * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          27 --8:  * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          28 --9:  * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          29 --10:  * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          30 --11:  * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          31 --12:  * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          32 --13:  * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          33 --14:  * following link:
+                          34 --15:  * (MISRA C:2012 Violation - Rule 3.1
+                          35 --16:  * Justification - C comment contains C++ comment can't avoid here.)
+                          36 --17:  * http:/ /www.renesas.com/disclaimer
+                          37 --18:  *
+                          38 --19:  * Copyright (C) 2011 Renesas Electronics Corporation. All rights reserved.
+                          39 --20:  ***********************************************************************************************************************/
+                          40 --21: /***********************************************************************************************************************
+                          41 --22:  * File Name	   : PduR.c
+                          42 --23:  * Version      : 1.0
+                          43 --24:  * Description  : This file implements functions in PDU Router module.
+                          44 --25:  ***********************************************************************************************************************/
+                          45 --26: /**********************************************************************************************************************
+                          46 --27:  * History : DD.MM.YYYY Version  Description
+                          47 --28:  *         : 25.09.2014 1.00     First Release
+                          48 --29:  ***********************************************************************************************************************/
+                          49 --31: /***********************************************************************************************************************
+                          50 --32:  Includes   <System Includes> , "Project Includes"
+
+                                                                      Page 2
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+                          51 --33:  ***********************************************************************************************************************/
+                          52 --34: #include "PduR.h"
+                          53 --35: #include "CanIf.h"
+                          54 --36: #include "Com.h"
+                          55 --37: #include "User_Callback.h"
+                          56 --39: /***********************************************************************************************************************
+                          57 --40:  Macro definitions
+                          58 --41:  ***********************************************************************************************************************/
+                          59 --43: /***********************************************************************************************************************
+                          60 --44:  Typedef definitions
+                          61 --45:  ***********************************************************************************************************************/
+                          62 --47: /***********************************************************************************************************************
+                          63 --48:  Exported global variables (to be accessed by other files)
+                          64 --49:  ***********************************************************************************************************************/
+                          65 --51: /***********************************************************************************************************************
+                          66 --52:  Private global variables and functions
+                          67 --53:  ***********************************************************************************************************************/
+                          68 --54: static const PduR_PBConfigType* pdu_r_pb_cfg_ptr;
+                          69 --56: /***********************************************************************************************************************
+                          70 --57:  * Function Name: pdur_is_pduid_invalid
+                          71 --58:  * Description  : This function is to check validity of Pdu Id.
+                          72 --59:  * Arguments    : PduId -
+                          73 --60:  *                    specified CAN Pdu Id.
+                          74 --61:  * Return Value : TRUE -
+                          75 --62:  *                  if PduId is invalid.
+                          76 --63:  *                FALSE -
+                          77 --64:  *                  if PduId is valid.
+                          78 --65:  ***********************************************************************************************************************/
+                          79 --66: static boolean pdur_is_pduid_invalid(PduIdType PduId)
+                          80 	.text
+                          81 ..bof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940A..0::
+                          82 	.align	2
+                          83 	.global	_pdur_is_pduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.
+                          84 _pdur_is_pduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.:
+                          85 _pdur_is_pduid_invalid:
+00000000 c600             86 	zxh	r6
+                          87 --	    .bf
+                          88 .LDW01:
+                          89 --67: {
+                          90 --68: 	boolean ret = FALSE;
+00000002 000a             91 	mov	0,r1
+                          92 --70: 	if (65535U > PduId)
+00000004 800effff         93 	ori	65535,zero,r1
+00000008 e131             94 	cmp	r1,r6
+0000000a b905*            95 	bnl	.L4
+                          96 --71: 	{
+                          97 --72: 		ret = FALSE;
+                          98 --line72
+                          99 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.1::
+                         100 .LDWlin1:
+0000000c 000a            101 	mov	0,r1
+0000000e a505*           102 	br	.L6
+                         103 .L4:
+                         104 --73: 	}
+                         105 --74: 	else
+                         106 --75: 	{
+                         107 --76: 		ret = TRUE;
+                         108 --line76
+                         109 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.2::
+                         110 .LDWlin2:
+00000010 010a            111 	mov	1,r1
+
+                                                                      Page 3
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+                         112 .L6:
+                         113 --77: 	}
+                         114 --79: 	return ret;
+00000012 0150            115 	mov	r1,r10
+                         116 --	    .ef
+                         117 .LDW11:
+00000014 7f00            118 	jmp	[lp]
+                         119 	.type	_pdur_is_pduid_invalid,@function
+                         120 	.size	_pdur_is_pduid_invalid,.-_pdur_is_pduid_invalid
+                         121 	.type	_pdur_is_pduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.,@function
+                         122 	.size	_pdur_is_pduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.,.-_pdur_is_pduid_invalid..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.
+                         123 	.align	2
+                         124 .LDW21:
+                         125 --_ret	r1	local
+                         126 
+                         127 --_PduId	r6	param
+                         128 
+                         129 	.data
+                         130 	.text
+                         131 
+                         132 --80: }
+                         133 
+                         134 --82: /***********************************************************************************************************************
+                         135 --83:  Exported global variables and functions (to be accessed by other files)
+                         136 --84:  **********************************************************************************************************************/
+                         137 --85: /***********************************************************************************************************************
+                         138 --86:  * Function Name: PduR_Init
+                         139 --87:  * Description  : Initialize PDU router.
+                         140 --88:  * Arguments    : ConfigPtr -
+                         141 --89:  *                    Pointer to post build configuration.
+                         142 --90:  * Return Value : void
+                         143 --91:  ***********************************************************************************************************************/
+                         144 --92: void PduR_Init(const PduR_PBConfigType* ConfigPtr)
+                         145 	.align	2
+                         146 	.align	2
+                         147 	.align	2
+                         148 	.global	_PduR_Init
+                         149 _PduR_Init:
+00000016 581a            150 	add	-8,sp
+00000018 63ff0500        151 	st.w	lp,4[sp]
+0000001c 63ef0100        152 	st.w	r29,0[sp]
+00000020 06e8            153 	mov	r6,r29
+                         154 --	    .bf
+                         155 .LDW31:
+                         156 --93: {
+                         157 --94: 	/* check validity of parameters */
+                         158 --95: 	if (NULL_PTR == ConfigPtr)
+00000022 e0e9            159 	cmp	zero,r29
+00000024 9a0d*           160 	bne	.L52
+                         161 --96: 	{
+                         162 --97: 		User_ReportError((uint16_t) PDUR_MODULE_ID, (uint8_t) 0U, (uint8_t) PduRServiceId_Init,
+                         163 --line97
+                         164 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.3::
+                         165 .LDWlin3:
+00000026 20363300        166 	movea	51,zero,r6
+0000002a 003a            167 	mov	0,r7
+0000002c 2046f000        168 	movea	240,zero,r8
+00000030 094a            169 	mov	9,r9
+                         170 	jarl	_User_ReportError,lp
+                         170 <EXPANSION BEGIN>
+                         170 jarl22 _User_ReportError , lp 
+
+                                                                      Page 4
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+00000032 80ff0000*       170 <EXPANSION END>
+                         171 .L52:
+                         172 --98: 		                 (uint8_t) PDUR_E_NULL_POINTER);
+                         173 --99: 	}
+                         174 --101: 	pdu_r_pb_cfg_ptr = ConfigPtr;
+                         175 --line101
+                         176 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.4::
+                         177 .LDWlin4:
+00000036 64ef0100*       178 	st.w	r29,sdaoff(_pdu_r_pb_cfg_ptr)[gp]
+                         179 --102: } /* End of PduR_Init() */
+                         180 --	    .ef
+                         181 .LDW41:
+0000003a 23ff0500        182 	ld.w	4[sp],lp
+0000003e 23ef0100        183 	ld.w	0[sp],r29
+00000042 481a            184 	add	8,sp
+00000044 7f00            185 	jmp	[lp]
+                         186 	.type	_PduR_Init,@function
+                         187 	.size	_PduR_Init,.-_PduR_Init
+                         188 	.align	2
+                         189 .LDW51:
+                         190 
+                         191 --_ConfigPtr	r29	param
+                         192 
+                         193 	.section ".sbss","awb"
+                         194 	.align	4
+                         195 	.global	_pdu_r_pb_cfg_ptr..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.
+                         196 _pdu_r_pb_cfg_ptr..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.:
+00000000 00000000        197 _pdu_r_pb_cfg_ptr:	.space	4
+                         198 	.type	_pdu_r_pb_cfg_ptr..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.,@object
+                         199 	.size	_pdu_r_pb_cfg_ptr..D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.,4
+                         200 	.type	_pdu_r_pb_cfg_ptr,@object
+                         201 	.size	_pdu_r_pb_cfg_ptr,4
+                         202 	.data
+                         203 	.text
+                         204 
+                         205 
+                         206 --104: /***********************************************************************************************************************
+                         207 --105:  * Function Name: PduR_CanIfRxIndication
+                         208 --106:  * Description  : Rx indicator from CAN interface.
+                         209 --107:  * Arguments    : CanRxPduId -
+                         210 --108:  *                  ID of CAN L-PDU that has been received.
+                         211 --109:  *                CanSduPtr -
+                         212 --110:  *                  Pointer to buffer that stores CAN L-SDU.
+                         213 --111:  * Return Value : void
+                         214 --112:  ***********************************************************************************************************************/
+                         215 --113: void PduR_CanIfRxIndication(PduIdType RxPduId, const PduInfoType* PduInfoPtr)
+                         216 	.align	2
+                         217 	.align	2
+                         218 	.global	_PduR_CanIfRxIndication
+                         219 _PduR_CanIfRxIndication:
+00000046 031eecff        220 	addi	-20,sp,sp
+0000004a 63ff1100        221 	st.w	lp,16[sp]
+0000004e 63d70d00        222 	st.w	r26,12[sp]
+00000052 63df0900        223 	st.w	r27,8[sp]
+00000056 63e70500        224 	st.w	r28,4[sp]
+0000005a 63ef0100        225 	st.w	r29,0[sp]
+0000005e c6eeffff        226 	andi	65535,r6,r29
+00000062 07d8            227 	mov	r7,r27
+                         228 --	    .bf
+                         229 .LDW61:
+                         230 --114: {
+
+                                                                      Page 5
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+                         231 --115: 	uint8_t DstIdx;
+                         232 --116: 	uint8_t NumOfDst;
+                         233 --117: 	const pdur_rx_pdu_routing_path_t* PduGwPathPtr;
+                         234 --118: 	const PduIdType* DestPduTable;
+                         235 --120: 	/* check validity of parameters */
+                         236 --121: 	if (TRUE == pdur_is_pduid_invalid(RxPduId))
+00000064 1d30            237 	mov	r29,r6
+                         238 	jarl	_pdur_is_pduid_invalid,lp
+                         238 <EXPANSION BEGIN>
+                         238 jarl22 _pdur_is_pduid_invalid , lp 
+00000066 bfff9aff*       238 <EXPANSION END>
+0000006a 6152            239 	cmp	1,r10
+0000006c 8a0d*           240 	bne	.L95
+                         241 --122: 	{
+                         242 --123: 		User_ReportError((uint16_t) PDUR_MODULE_ID, (uint8_t) 0U, (uint8_t) PduRServiceId_CanIfRxIndication,
+                         243 --line123
+                         244 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.5::
+                         245 .LDWlin5:
+0000006e 20363300        246 	movea	51,zero,r6
+00000072 003a            247 	mov	0,r7
+00000074 0142            248 	mov	1,r8
+00000076 024a            249 	mov	2,r9
+                         250 	jarl	_User_ReportError,lp
+                         250 <EXPANSION BEGIN>
+                         250 jarl22 _User_ReportError , lp 
+00000078 80ff0000*       250 <EXPANSION END>
+                         251 .L95:
+                         252 --124: 		                 (uint8_t) PDUR_E_PDU_ID_INVALID);
+                         253 --125: 	}
+                         254 --126: 	if (NULL_PTR == PduInfoPtr)
+                         255 --line126
+                         256 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.6::
+                         257 .LDWlin6:
+0000007c e0d9            258 	cmp	zero,r27
+0000007e 8a0d*           259 	bne	.L97
+                         260 --127: 	{
+                         261 --128: 		User_ReportError((uint16_t) PDUR_MODULE_ID, (uint8_t) 0U, (uint8_t) PduRServiceId_CanIfRxIndication,
+                         262 --line128
+                         263 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.7::
+                         264 .LDWlin7:
+00000080 20363300        265 	movea	51,zero,r6
+00000084 003a            266 	mov	0,r7
+00000086 0142            267 	mov	1,r8
+00000088 094a            268 	mov	9,r9
+                         269 	jarl	_User_ReportError,lp
+                         269 <EXPANSION BEGIN>
+                         269 jarl22 _User_ReportError , lp 
+0000008a 80ff0000*       269 <EXPANSION END>
+                         270 .L97:
+                         271 --129: 		                 (uint8_t) PDUR_E_NULL_POINTER);
+                         272 --130: 	}
+                         273 --132: 	/* ---- Send PDU to COM by default. ---- */
+                         274 --133: 	Com_RxIndication(RxPduId, PduInfoPtr);
+                         275 --line133
+                         276 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.8::
+                         277 .LDWlin8:
+0000008e 1d30            278 	mov	r29,r6
+00000090 1b38            279 	mov	r27,r7
+                         280 	jarl	_Com_RxIndication,lp
+                         280 <EXPANSION BEGIN>
+                         280 jarl22 _Com_RxIndication , lp 
+
+                                                                      Page 6
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+00000092 80ff0000*       280 <EXPANSION END>
+                         281 --135: 	/* ---- Route to other CAN interface. ---- */
+                         282 --136: 	PduGwPathPtr = pdu_r_pb_cfg_ptr->PduRouteTable[RxPduId];
+                         283 --line136
+                         284 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.9::
+                         285 .LDWlin9:
+00000096 24f70100*       286 	ld.w	sdaoff(_pdu_r_pb_cfg_ptr)[gp],ep
+0000009a 1d08            287 	mov	r29,r1
+0000009c c20a            288 	shl	2,r1
+0000009e 0215            289 	sld.w	4[ep],r2
+000000a0 01f0            290 	mov	r1,ep
+000000a2 c2f1            291 	add	r2,ep
+000000a4 00e5            292 	sld.w	0[ep],r28
+                         293 --137: 	if (PduGwPathPtr != NULL_PTR)
+000000a6 e0e1            294 	cmp	zero,r28
+000000a8 f215*           295 	be	.L93
+                         296 --138: 	{
+                         297 --140: 		Com_JudgeGatewayPduTxMethod(RxPduId);
+                         298 --line140
+                         299 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.10::
+                         300 .LDWlin10:
+000000aa 1d30            301 	mov	r29,r6
+                         302 	jarl	_Com_JudgeGatewayPduTxMethod,lp
+                         302 <EXPANSION BEGIN>
+                         302 jarl22 _Com_JudgeGatewayPduTxMethod , lp 
+000000ac 80ff0000*       302 <EXPANSION END>
+                         303 --142: 		NumOfDst = PduGwPathPtr->NumberOfDestination;
+                         304 --line142
+                         305 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.11::
+                         306 .LDWlin11:
+000000b0 bcd70300        307 	ld.bu	3[r28],r26
+                         308 --143: 		DestPduTable = PduGwPathPtr->DestinationPduTable;
+000000b4 3ce70500        309 	ld.w	4[r28],r28
+                         310 --144: 		for (DstIdx = (uint8_t) 0U; DstIdx < NumOfDst; DstIdx++)
+000000b8 00ea            311 	mov	0,r29
+000000ba c50d*           312 	br	.L104
+                         313 .L103:
+                         314 --145: 		{
+                         315 --146: 			Com_TriggerGatewayPduTransmit(DestPduTable[DstIdx], PduInfoPtr->SduDataPtr);
+                         316 --line146
+                         317 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.12::
+                         318 .LDWlin12:
+000000bc 1d08            319 	mov	r29,r1
+000000be c10a            320 	shl	1,r1
+000000c0 01f0            321 	mov	r1,ep
+000000c2 dcf1            322 	add	r28,ep
+000000c4 7030            323 	sld.hu	0[ep],r6
+000000c6 3b3f0100        324 	ld.w	0[r27],r7
+                         325 	jarl	_Com_TriggerGatewayPduTransmit,lp
+                         325 <EXPANSION BEGIN>
+                         325 jarl22 _Com_TriggerGatewayPduTransmit , lp 
+000000ca 80ff0000*       325 <EXPANSION END>
+                         326 --line144
+                         327 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.13::
+                         328 .LDWlin13:
+000000ce 41ea            329 	add	1,r29
+000000d0 9d00            330 	zxb	r29
+                         331 .L104:
+000000d2 fae9            332 	cmp	r26,r29
+000000d4 c1f5*           333 	bl	.L103
+                         334 .L93:
+
+                                                                      Page 7
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+                         335 --147: 		}
+                         336 --148: 	}
+                         337 --149: } /* End of PduR_RxIndication() */
+                         338 --	    .ef
+                         339 .LDW71:
+                         340 --line149
+                         341 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.14::
+                         342 .LDWlin14:
+000000d6 23ff1100        343 	ld.w	16[sp],lp
+000000da 23ef0100        344 	ld.w	0[sp],r29
+000000de 23e70500        345 	ld.w	4[sp],r28
+000000e2 23df0900        346 	ld.w	8[sp],r27
+000000e6 23d70d00        347 	ld.w	12[sp],r26
+000000ea 031e1400        348 	addi	20,sp,sp
+000000ee 7f00            349 	jmp	[lp]
+                         350 	.type	_PduR_CanIfRxIndication,@function
+                         351 	.size	_PduR_CanIfRxIndication,.-_PduR_CanIfRxIndication
+                         352 	.align	2
+                         353 .LDW81:
+                         354 --_DstIdx	r29	local
+                         355 --_NumOfDst	r26	local
+                         356 --_PduGwPathPtr	r28	local
+                         357 --_DestPduTable	r28	local
+                         358 
+                         359 --_RxPduId	r29	param
+                         360 --_PduInfoPtr	r27	param
+                         361 
+                         362 	.data
+                         363 	.text
+                         364 
+                         365 
+                         366 --151: /***********************************************************************************************************************
+                         367 --152:  * Function Name: PduR_CanIfTxConfirmation
+                         368 --153:  * Description  : Tx confirmation from CAN interface.
+                         369 --154:  * Arguments    : CanTxPduId -
+                         370 --155:  *                  ID of CAN L-PDU that has been transmitted.
+                         371 --156:  * Return Value : void
+                         372 --157:  ***********************************************************************************************************************/
+                         373 --158: void PduR_CanIfTxConfirmation(PduIdType TxPduId)
+                         374 	.align	2
+                         375 	.align	2
+                         376 	.global	_PduR_CanIfTxConfirmation
+                         377 _PduR_CanIfTxConfirmation:
+000000f0 581a            378 	add	-8,sp
+000000f2 63ff0500        379 	st.w	lp,4[sp]
+000000f6 63ef0100        380 	st.w	r29,0[sp]
+000000fa c6eeffff        381 	andi	65535,r6,r29
+                         382 --	    .bf
+                         383 .LDW91:
+                         384 --159: {
+                         385 --160: 	/* check validity of parameters */
+                         386 --161: 	if (TRUE == pdur_is_pduid_invalid(TxPduId))
+000000fe 1d30            387 	mov	r29,r6
+                         388 	jarl	_pdur_is_pduid_invalid,lp
+                         388 <EXPANSION BEGIN>
+                         388 jarl22 _pdur_is_pduid_invalid , lp 
+00000100 bfff00ff*       388 <EXPANSION END>
+00000104 6152            389 	cmp	1,r10
+00000106 8a0d*           390 	bne	.L168
+                         391 --162: 	{
+                         392 --163: 		User_ReportError((uint16_t) PDUR_MODULE_ID, (uint8_t) 0U, (uint8_t) PduRServiceId_CanIfTxConfirmation,
+
+                                                                      Page 8
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+                         393 --line163
+                         394 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.15::
+                         395 .LDWlin15:
+00000108 20363300        396 	movea	51,zero,r6
+0000010c 003a            397 	mov	0,r7
+0000010e 0242            398 	mov	2,r8
+00000110 024a            399 	mov	2,r9
+                         400 	jarl	_User_ReportError,lp
+                         400 <EXPANSION BEGIN>
+                         400 jarl22 _User_ReportError , lp 
+00000112 80ff0000*       400 <EXPANSION END>
+                         401 .L168:
+                         402 --164: 		                 (uint8_t) PDUR_E_PDU_ID_INVALID);
+                         403 --165: 	}
+                         404 --167: 	Com_TxConfirmation(TxPduId);
+                         405 --line167
+                         406 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.16::
+                         407 .LDWlin16:
+00000116 1d30            408 	mov	r29,r6
+                         409 	jarl	_Com_TxConfirmation,lp
+                         409 <EXPANSION BEGIN>
+                         409 jarl22 _Com_TxConfirmation , lp 
+00000118 80ff0000*       409 <EXPANSION END>
+                         410 --168: } /* End of PduR_CanIfTxConfirmation() */
+                         411 --	    .ef
+                         412 .LDW02:
+                         413 --line168
+                         414 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.17::
+                         415 .LDWlin17:
+0000011c 23ff0500        416 	ld.w	4[sp],lp
+00000120 23ef0100        417 	ld.w	0[sp],r29
+00000124 481a            418 	add	8,sp
+00000126 7f00            419 	jmp	[lp]
+                         420 	.type	_PduR_CanIfTxConfirmation,@function
+                         421 	.size	_PduR_CanIfTxConfirmation,.-_PduR_CanIfTxConfirmation
+                         422 	.align	2
+                         423 .LDW12:
+                         424 
+                         425 --_TxPduId	r29	param
+                         426 
+                         427 	.data
+                         428 	.text
+                         429 
+                         430 
+                         431 --170: /***********************************************************************************************************************
+                         432 --171:  * Function Name: PduR_ComTransmit
+                         433 --172:  * Description  : Requests a transmission for COM Module.
+                         434 --173:  * Arguments    : ComTxPduId -
+                         435 --174:  *                  ID of COM I-PDU to be transmitted.
+                         436 --175:  *                PduInfoPtr -
+                         437 --176:  *                  Pointer to a structure with I-PDU.
+                         438 --177:  * Return Value : void
+                         439 --178:  ***********************************************************************************************************************/
+                         440 --179: Std_ReturnType PduR_ComTransmit(PduIdType ComTxPduId, const PduInfoType* PduInfoPtr)
+                         441 	.align	2
+                         442 	.align	2
+                         443 	.global	_PduR_ComTransmit
+                         444 _PduR_ComTransmit:
+00000128 541a            445 	add	-12,sp
+0000012a 63ff0900        446 	st.w	lp,8[sp]
+0000012e 63e70500        447 	st.w	r28,4[sp]
+
+                                                                      Page 9
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+00000132 63ef0100        448 	st.w	r29,0[sp]
+00000136 c6eeffff        449 	andi	65535,r6,r29
+0000013a 07e0            450 	mov	r7,r28
+                         451 --	    .bf
+                         452 .LDW22:
+                         453 --180: {
+                         454 --181: 	/* check validity of parameters */
+                         455 --182: 	if (TRUE == pdur_is_pduid_invalid(ComTxPduId))
+0000013c 1d30            456 	mov	r29,r6
+                         457 	jarl	_pdur_is_pduid_invalid,lp
+                         457 <EXPANSION BEGIN>
+                         457 jarl22 _pdur_is_pduid_invalid , lp 
+0000013e bfffc2fe*       457 <EXPANSION END>
+00000142 6152            458 	cmp	1,r10
+00000144 9a0d*           459 	bne	.L207
+                         460 --183: 	{
+                         461 --184: 		User_ReportError((uint16_t) PDUR_MODULE_ID, (uint8_t) 0U, (uint8_t) PduRServiceId_ComTransmit,
+                         462 --line184
+                         463 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.18::
+                         464 .LDWlin18:
+00000146 20363300        465 	movea	51,zero,r6
+0000014a 003a            466 	mov	0,r7
+0000014c 20468900        467 	movea	137,zero,r8
+00000150 024a            468 	mov	2,r9
+                         469 	jarl	_User_ReportError,lp
+                         469 <EXPANSION BEGIN>
+                         469 jarl22 _User_ReportError , lp 
+00000152 80ff0000*       469 <EXPANSION END>
+                         470 .L207:
+                         471 --185: 		                 (uint8_t) PDUR_E_PDU_ID_INVALID);
+                         472 --186: 	}
+                         473 --187: 	if (NULL_PTR == PduInfoPtr)
+                         474 --line187
+                         475 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.19::
+                         476 .LDWlin19:
+00000156 e0e1            477 	cmp	zero,r28
+00000158 9a0d*           478 	bne	.L209
+                         479 --188: 	{
+                         480 --189: 		User_ReportError((uint16_t) PDUR_MODULE_ID, (uint8_t) 0U, (uint8_t) PduRServiceId_ComTransmit,
+                         481 --line189
+                         482 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.20::
+                         483 .LDWlin20:
+0000015a 20363300        484 	movea	51,zero,r6
+0000015e 003a            485 	mov	0,r7
+00000160 20468900        486 	movea	137,zero,r8
+00000164 094a            487 	mov	9,r9
+                         488 	jarl	_User_ReportError,lp
+                         488 <EXPANSION BEGIN>
+                         488 jarl22 _User_ReportError , lp 
+00000166 80ff0000*       488 <EXPANSION END>
+                         489 .L209:
+                         490 --190: 		                 (uint8_t) PDUR_E_NULL_POINTER);
+                         491 --191: 	}
+                         492 --193: 	return (Std_ReturnType) CanIf_Transmit(ComTxPduId, PduInfoPtr);
+                         493 --line193
+                         494 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.21::
+                         495 .LDWlin21:
+0000016a 1d30            496 	mov	r29,r6
+0000016c 1c38            497 	mov	r28,r7
+                         498 	jarl	_CanIf_Transmit,lp
+                         498 <EXPANSION BEGIN>
+
+                                                                      Page 10
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00007t41.si
+                         498 jarl22 _CanIf_Transmit , lp 
+0000016e 80ff0000*       498 <EXPANSION END>
+00000172 8a00            499 	zxb	r10
+                         500 --	    .ef
+                         501 .LDW32:
+                         502 --line194
+                         503 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR.22::
+                         504 .LDWlin22:
+00000174 23ff0900        505 	ld.w	8[sp],lp
+00000178 23ef0100        506 	ld.w	0[sp],r29
+0000017c 23e70500        507 	ld.w	4[sp],r28
+00000180 4c1a            508 	add	12,sp
+00000182 7f00            509 	jmp	[lp]
+                         510 	.type	_PduR_ComTransmit,@function
+                         511 	.size	_PduR_ComTransmit,.-_PduR_ComTransmit
+                         512 	.align	2
+                         513 .LDW42:
+                         514 
+                         515 --_ComTxPduId	r29	param
+                         516 --_PduInfoPtr	r28	param
+                         517 
+                         518 	.data
+                         519 	.text
+                         520 
+                         521 --194: } /* End of PduR_ComTransmit() */
+                         522 	.align	2
+                         523 --_pdu_r_pb_cfg_ptr	sdaoff(_pdu_r_pb_cfg_ptr)	static
+                         524 
+                         525 	.data
+                         526 	.ghsnote version,15
+                         527 	.ghsnote tools,3
+                         528 	.ghsnote options,144
+                         529 	.text
+                         530 	.align	2
+                         531 ..eof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe1.5CPduR...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940A..0::
+                         532 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3M
