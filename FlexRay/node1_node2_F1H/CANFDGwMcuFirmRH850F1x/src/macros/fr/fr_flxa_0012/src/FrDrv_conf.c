@@ -585,6 +585,9 @@ Fr_ReturnType FrDrv_Config_PhysicalBuffers ( void ) {
   u08 i_u08;
   u08 mb_u08;
 
+  u32 data_u32[64];
+  u08 data_words_u08 = 1;
+
   i_u08 = 0;
   
   for ( mb_u08 = 0; mb_u08 < 128; mb_u08++ ) {
@@ -633,6 +636,15 @@ Fr_ReturnType FrDrv_Config_PhysicalBuffers ( void ) {
     value_u32 = 0;
     value_u32 |= ( mb_u08 & 0x7F ); 
     FrDrv_write_32bit ( IBCR_REG, value_u32 );
+#ifndef __TEST_FLX_COM//original settings@Titron
+#else
+#ifdef Application_1
+    //send data, added @Titron
+	data_u32[0] = 0x0;
+	FrDrv_data_HOST_to_IB ( &data_u32[0], data_words_u08 );
+	FrDrv_data_IB_to_TRAM (mb_u08);
+#endif
+#endif
 
   } // end of for
 
@@ -647,6 +659,7 @@ Fr_ReturnType FrDrv_Config_PhysicalBuffers ( void ) {
 
   return FLEXRAY_STATUS_OK;
 }
+
 
 // end of file
 

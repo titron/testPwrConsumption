@@ -58,8 +58,9 @@
 //#include <fr\fr_flxa_0012\fr_flxa_0012_Node2_a.h>
 #include <fr_flxa_0012_Node2_a.h>
 
-#define Application_2
-//#define Application_1
+//#define Application_2
+#define Application_1
+#define __TEST_FLX_COM@titron
 
 /* PORT DEFINITIONS */
 

@@ -889,7 +889,7 @@
 const unsigned short BufferHeader_u16[128][10] =
 {
         /* FID,CYC,CHA,CHB,CFG,PPIT,TXM,MBI,PL,DP         Tx node */
-#if 0
+#if 0//original settings@titron
 /*MB_0*/  { 1 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 1 , 36 },    /* Node1 */
 /*MB_1*/  { 3 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 37 },    /* Node2 */
 /*MB_2*/  { 5 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 1 , 38 },    /* Node1 */
@@ -899,7 +899,7 @@ const unsigned short BufferHeader_u16[128][10] =
 /*MB_6*/  { 13 , 0 , 0 , 1 , 1 , 0 , 0 , 0 , 1 , 42 },    /* Node1 */
 /*MB_7*/  { 15 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , 1 , 43 },    /* Node2 */
 /*MB_8*/  { 17 , 0 , 1 , 0 , 1 , 0 , 0 , 0 , 1 , 44 },    /* Node1 */
-#else
+#else//test settings@titron
 /*MB_0*/  { 1 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 1 , 36 },    /* Node1 */
 /*MB_1*/  { 2 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 37 },    /* Node2 */
 /*MB_2*/  { 3 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 1 , 38 },    /* Node1 */
