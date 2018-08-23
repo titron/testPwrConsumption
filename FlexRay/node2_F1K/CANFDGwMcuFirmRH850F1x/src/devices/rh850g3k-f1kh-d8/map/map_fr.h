@@ -60,6 +60,7 @@
 
 #define Application_2
 //#define Application_1
+#define __TEST_PAYLOAD_0  //added @titron
 
 /* PORT DEFINITIONS */
 #define CETITEC_MCU
