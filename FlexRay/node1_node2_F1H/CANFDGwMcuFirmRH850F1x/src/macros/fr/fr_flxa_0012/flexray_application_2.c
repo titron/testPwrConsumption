@@ -156,7 +156,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[0] = 0x3333;
 #else
-  data_u32[0] = 0x0;
+  data_u32[0] = testModeParas[FLX_CURRENT_TEST_MODE].testData;
 #endif
   FrDrv_data_HOST_to_IB ( &data_u32[0], data_words_u08 );
   FrDrv_data_IB_to_TRAM ( MB0 );
@@ -164,7 +164,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[1] = 0x7777;
 #else
-  data_u32[1] = 0x0;
+  data_u32[1] = testModeParas[FLX_CURRENT_TEST_MODE].testData;
 #endif
   FrDrv_data_HOST_to_IB ( &data_u32[1], data_words_u08 );
   FrDrv_data_IB_to_TRAM ( MB3 );
@@ -172,7 +172,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[2] = 0xBBBB;
 #else
-  data_u32[2] = 0x0;
+  data_u32[2] = testModeParas[FLX_CURRENT_TEST_MODE].testData;
 #endif
   FrDrv_data_HOST_to_IB ( &data_u32[2], data_words_u08 );
   FrDrv_data_IB_to_TRAM ( MB5 );
@@ -180,7 +180,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[3] = 0xF1F1;
 #else
-  data_u32[3] = 0x0;
+  data_u32[3] = testModeParas[FLX_CURRENT_TEST_MODE].testData;
 #endif
   FrDrv_data_HOST_to_IB ( &data_u32[3], data_words_u08 );
   FrDrv_data_IB_to_TRAM ( MB7 );
@@ -196,7 +196,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   if ( data_u32[4] != 0x1111)
 #else
-  if ( data_u32[4] != 0x0)
+  if ( data_u32[4] != testModeParas[FLX_CURRENT_TEST_MODE].testData)
 #endif
     { result_u16++;
     }
@@ -211,7 +211,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   if ( data_u32[5] != 0x5555)
 #else
-  if ( data_u32[5] != 0x0)
+  if ( data_u32[5] != testModeParas[FLX_CURRENT_TEST_MODE].testData)
 #endif
     { result_u16++;
     }
@@ -227,7 +227,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   if ( data_u32[6] != 0x9999)
 #else
-  if ( data_u32[6] != 0x0)
+  if ( data_u32[6] != testModeParas[FLX_CURRENT_TEST_MODE].testData)
 #endif
     { result_u16++;
     }
@@ -243,7 +243,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   if ( data_u32[7] != 0xDDDD)
 #else
-  if ( data_u32[7] != 0x0)
+  if ( data_u32[7] != testModeParas[FLX_CURRENT_TEST_MODE].testData)
 #endif
     { result_u16++;
     }
@@ -259,7 +259,7 @@ void application_2 ( void ) {
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   if ( data_u32[8] != 0xF2F2)
 #else
-  if ( data_u32[8] != 0x0)
+  if ( data_u32[8] != testModeParas[FLX_CURRENT_TEST_MODE].testData)
 #endif
     { result_u16++;
     }

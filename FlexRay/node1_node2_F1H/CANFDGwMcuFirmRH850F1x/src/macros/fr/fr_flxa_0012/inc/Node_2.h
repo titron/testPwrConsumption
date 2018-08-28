@@ -180,8 +180,9 @@
 #define MOD                         1923          /* GTUC6 (pdMaxDrift), 2~1923uT */
 //#define MOD                         2          /* GTUC6 (pdMaxDrift), 2~1923uT */
 
-#define MOC                         134           /* GTUC10 (pOffsetCorrectionOut) */
-#define MRC                         1923          /* GTUC10 (pRateCorrectionOut) */
+#define MOC                         134           /* GTUC10 (pOffsetCorrectionOut), 5~15266 ¦ÌT */
+//#define MOC                         15266           /* GTUC10 (pOffsetCorrectionOut), 5~15266 ¦ÌT */
+#define MRC                         1923          /* GTUC10 (pRateCorrectionOut), 2~1923 ¦ÌT */
 
 #define EOCC                        0             /* GTUC11: External Offset Correction Control (vExternOffsetControl) */
 #define ERCC                        0             /* GTUC11: External Rate Correction Control (vExternRateControl) */
