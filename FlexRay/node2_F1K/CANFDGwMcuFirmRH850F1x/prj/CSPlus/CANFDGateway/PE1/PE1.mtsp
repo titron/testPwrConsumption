@@ -1788,7 +1788,7 @@
       <LinkOptionLibraryLibMalloc-DefaultValue>False</LinkOptionLibraryLibMalloc-DefaultValue>
       <LinkOptionLibraryLibSetJmp-DefaultValue>False</LinkOptionLibraryLibSetJmp-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8586667678869221503</TimeTagModified--0>
+      <TimeTagModified--0>-8586662472040393540</TimeTagModified--0>
       <LinkOptionCpu-0>False</LinkOptionCpu-0>
       <LinkOptionDebug-0>Debug</LinkOptionDebug-0>
       <LinkOptionEntry-0>False</LinkOptionEntry-0>
@@ -1808,7 +1808,7 @@
       <LinkOptionMemory-0>False</LinkOptionMemory-0>
       <LinkOptionNoMessageErrorNumber-0 />
       <LinkOptionOutputFileName-0>%ProjectName%.abs</LinkOptionOutputFileName-0>
-      <LinkOptionShowSymbol-0>False</LinkOptionShowSymbol-0>
+      <LinkOptionShowSymbol-0>True</LinkOptionShowSymbol-0>
       <LinkOptionStartUp-0>.const.cmn
 comint.text
 </LinkOptionStartUp-0>
@@ -1818,14 +1818,14 @@ comint.text
       <LinkOptionLibraryStandard-0>True</LinkOptionLibraryStandard-0>
       <LinkOptionMsgUnused-0>False</LinkOptionMsgUnused-0>
       <LinkOptionPadding-0>False</LinkOptionPadding-0>
-      <LinkOptionShowReference-0>False</LinkOptionShowReference-0>
+      <LinkOptionShowReference-0>True</LinkOptionShowReference-0>
       <LinkOptionTotalSize-0>False</LinkOptionTotalSize-0>
       <LinkOptionChangeMessageInformation-0>None</LinkOptionChangeMessageInformation-0>
       <LinkOptionLibraryStandard2-0>UseCompatibleV101</LinkOptionLibraryStandard2-0>
       <LinkOptionLogo-0>False</LinkOptionLogo-0>
       <LinkOptionOverrunFetch-0>False</LinkOptionOverrunFetch-0>
       <LinkOptionOverwriteSymbol-0>True</LinkOptionOverwriteSymbol-0>
-      <LinkOptionShowXreference-0>False</LinkOptionShowXreference-0>
+      <LinkOptionShowXreference-0>True</LinkOptionShowXreference-0>
       <LinkOptionAlignedSection-0 />
       <LinkOptionCFI-0>False</LinkOptionCFI-0>
       <LinkOptionChangeMessageInformationNumber-0 />
@@ -1838,12 +1838,12 @@ comint.text
       <LinkOptionPostLinkCommands-0 />
       <LinkOptionRom-0>.data=.data.R
 </LinkOptionRom-0>
-      <LinkOptionShowStruct-0>False</LinkOptionShowStruct-0>
+      <LinkOptionShowStruct-0>True</LinkOptionShowStruct-0>
       <LinkOptionCFIIgnoreModule-0 />
       <LinkOptionChangeMessageWarningNumber-0 />
       <LinkOptionLibraryLibMF-0>True</LinkOptionLibraryLibMF-0>
       <LinkOptionOtherAdditionalOptions-0 />
-      <LinkOptionShowRelocationAttribute-0>False</LinkOptionShowRelocationAttribute-0>
+      <LinkOptionShowRelocationAttribute-0>True</LinkOptionShowRelocationAttribute-0>
       <LinkOptionChangeMessageError-0>None</LinkOptionChangeMessageError-0>
       <LinkOptionLibraryStandardMathematics-0>True</LinkOptionLibraryStandardMathematics-0>
       <LinkOptionShowCFI-0>False</LinkOptionShowCFI-0>

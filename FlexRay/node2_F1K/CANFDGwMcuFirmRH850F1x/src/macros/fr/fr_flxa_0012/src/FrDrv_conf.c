@@ -103,63 +103,115 @@ extern u32 FrDrv_crc ( u08 mb_u08 );
 u32 eies_reg_u32;
 u32 sies_reg_u32;
 extern const u16 BufferHeader_u16[128][10];
-
-
-/* Start @Titron
- * Below parameters is for bus load rate adjustment.
- * Parameters:
- * reg_GTUC7_SSl,
- *    for length of slot
- * reg_GTUC1_UT,reg_GTUC2_MPC,reg_GTUC4_NIT,reg_GTUC4_OCS,
- *    for length of cycle
- * reg_MHDC_SFDL,
- *    for length of pay-load in 2 bytes.
- *    Above parameters should be calculated by this parameter. */
-typedef struct{
-	u32 reg_GTUC7_SSl; /* GTUC7 (gdStaticSlot), 4~659MT */
-
-	u32 reg_GTUC1_UT; /* GTUC1 (pMicroPerCycle), 640~640000uT */
-	u32 reg_GTUC2_MPC; /* GTUC2 (gMacroPerCycle), 10~16000 MT */
-	u32 reg_GTUC4_NIT; /* GTUC4: Network Idle Time Start, 7~15997MT */
-	u32 reg_GTUC4_OCS; /* GTUC4 (gOffsetCorrectionStart), 8~15998MT */
-
-	u32 reg_MHDC_SFDL; /* MHDC (gPayloadLengthStatic), 0~127 */
-}s_busload_paras;
-
-#define INDEX_BUSLOAD_PARAMETERS_10_PERCENT		0
-#define INDEX_BUSLOAD_PARAMETERS_60_PERCENT		1
-#define INDEX_BUSLOAD_PARAMETERS_100_PERCENT	2
-#define CURRENT_LOADRATE INDEX_BUSLOAD_PARAMETERS_100_PERCENT
-s_busload_paras defaultBusLoadParas[3]={
+/* start @titron */
+s_busload_paras testModeParas[FLX_TEST_TOTAL_MODE_NUM]={
 {
-	/* 10% bus load */
+	/* INDEX_SFDL_1_BUSLOAD_10_PERCENT */
 	15,
 	6000,
 	150,
 	144,
 	148,
+	1284,
+	1,
 	1
 },
 {
-	/* 60% bus load */
+	/* INDEX_SFDL_1_BUSLOAD_10_PERCENT */
 	15,
 	6000,
 	150,
 	144,
 	148,
+	1284,
+	1,
 	1
 },
 {
-	/* 100% bus load */
+	/* INDEX_SFDL_1_BUSLOAD_100_PERCENT */
 	15,
 	6000,
 	150,
 	144,
 	148,
+	1284,
+	1,
 	1
+},
+{
+	/* INDEX_SFDL_2_BUSLOAD_10_PERCENT */
+	15,
+	6000,
+	150,
+	144,
+	148,
+	1284,
+	2,
+	1
+},
+{
+	/* INDEX_SFDL_2_BUSLOAD_60_PERCENT */
+	15,
+	6000,
+	150,
+	144,
+	148,
+	1284,
+	2,
+	1
+},
+{
+	/* INDEX_SFDL_2_BUSLOAD_100_PERCENT */
+//	17,
+//	6800,
+//	170,
+//	164,
+//	168,
+//	1484,
+	17,
+	6800,
+	170,
+	164,
+	168,
+	1484,
+	2,
+	1
+},
+{
+	/* INDEX_SFDL_127_BUSLOAD_10_PERCENT */
+	15,
+	6000,
+	150,
+	144,
+	148,
+	1284,
+	127,
+	64
+},
+{
+	/* INDEX_SFDL_127_BUSLOAD_60_PERCENT */
+	15,
+	6000,
+	150,
+	144,
+	148,
+	1284,
+	127,
+	64
+},
+{
+	/* INDEX_SFDL_127_BUSLOAD_100_PERCENT */
+	15,
+	6000,
+	150,
+	144,
+	148,
+	1284,
+	127,
+	64
 }
 };
-/* End @Titron */
+/* end @titron */
 
 //============================================================================
 // Functions
@@ -421,7 +473,7 @@ Fr_ReturnType FrDrv_Config_LLParams ( void ) {
                                                        
   //CCCR, SUCC2 - SUC Configuration Register 2 (0x0084)   
   value_u32 = 0;
-  value_u32 |= ( LT   & 0x1FFFFF );   // Listen Timeout [20:0]                             
+  value_u32 |= ( testModeParas[FLX_CURRENT_TEST_MODE].reg_SUCC2_LT   & 0x1FFFFF );   // Listen Timeout [20:0]
   value_u32 |= ( LTN  & 0xF ) << 24;  // Listen Timeout [3:0]              
   FrDrv_write_32bit ( SUCC2_REG, value_u32 );
 
@@ -457,20 +509,20 @@ Fr_ReturnType FrDrv_Config_LLParams ( void ) {
   //CCCR, MHDC -  Configuration Register  (0x0098)       
   value_u32 = 0;
 //  value_u32 |= ( SFDL & 0x7F );     // Static Frame Data Length [6:0], comment @Titron
-  value_u32 |= ( defaultBusLoadParas[CURRENT_LOADRATE].reg_MHDC_SFDL & 0x7F );     // Static Frame Data Length [6:0]
+  value_u32 |= ( testModeParas[FLX_CURRENT_TEST_MODE].reg_MHDC_SFDL & 0x7F );     // Static Frame Data Length [6:0]
   value_u32 |= ( SLT  & 0x1FFF )  << 16;  // Start of Latest Transmit [12:0]                             
   FrDrv_write_32bit ( MHDC_REG, value_u32 );
                                                                                                                    
   //CCCR, GTUC1 - GTU Configuration Register 1 (0x00A0)            
   value_u32 = 0;
 //  value_u32 |= ( UT   & 0xFFFFF );    // Microtick per Cycle [19:0], comment @Titron
-  value_u32 |= ( defaultBusLoadParas[CURRENT_LOADRATE].reg_GTUC1_UT   & 0xFFFFF );    // Microtick per Cycle [19:0]
+  value_u32 |= ( testModeParas[FLX_CURRENT_TEST_MODE].reg_GTUC1_UT   & 0xFFFFF );    // Microtick per Cycle [19:0]
   FrDrv_write_32bit ( GTUC1_REG, value_u32 );
                                    
   //CCCR, GTUC2 - GTU Configuration Register 2 (0x00A4)
   value_u32 = 0;
 //  value_u32 |= ( MPC  & 0x3FFF );   // Macrotick Per Cycle [13:0], comment @Titron
-  value_u32 |= ( defaultBusLoadParas[CURRENT_LOADRATE].reg_GTUC2_MPC  & 0x3FFF );   // Macrotick Per Cycle [13:0]
+  value_u32 |= ( testModeParas[FLX_CURRENT_TEST_MODE].reg_GTUC2_MPC  & 0x3FFF );   // Macrotick Per Cycle [13:0]
   value_u32 |= ( SNM  & 0xF ) << 16;  // Sync Node Max [3:0]                             
   FrDrv_write_32bit ( GTUC2_REG, value_u32 );
                                    
@@ -485,9 +537,9 @@ Fr_ReturnType FrDrv_Config_LLParams ( void ) {
   //CCCR, GTUC4 - GTU Configuration Register 4 (0x00AC)        
   value_u32 = 0;
 //  value_u32 |= ( NIT  & 0x3FFF );   // Network Idle Time Start [13:0], comment @Titron
-  value_u32 |= ( defaultBusLoadParas[CURRENT_LOADRATE].reg_GTUC4_NIT  & 0x3FFF );   // Network Idle Time Start [13:0]
+  value_u32 |= ( testModeParas[FLX_CURRENT_TEST_MODE].reg_GTUC4_NIT  & 0x3FFF );   // Network Idle Time Start [13:0]
 //  value_u32 |= ( OCS  & 0x3FFF )  << 16;  // Offset Correction Start [13:0], comment @Titron
-  value_u32 |= ( defaultBusLoadParas[CURRENT_LOADRATE].reg_GTUC4_OCS  & 0x3FFF )  << 16;  // Offset Correction Start [13:0]
+  value_u32 |= ( testModeParas[FLX_CURRENT_TEST_MODE].reg_GTUC4_OCS  & 0x3FFF )  << 16;  // Offset Correction Start [13:0]
   FrDrv_write_32bit ( GTUC4_REG, value_u32 );
                          
   //CCCR, GTUC5 - GTU Configuration Register 5 (0x00B0)         
@@ -507,7 +559,7 @@ Fr_ReturnType FrDrv_Config_LLParams ( void ) {
   //CCCR, GTUC7 - GTU Configuration Register 7 (0x00B8)          
   value_u32 = 0;
 //  value_u32 |= ( SSL  & 0x7FF );      // Static Slot Length [10:0], comment @Titron
-  value_u32 |= ( defaultBusLoadParas[CURRENT_LOADRATE].reg_GTUC7_SSl  & 0x7FF );      // Static Slot Length [10:0]
+  value_u32 |= ( testModeParas[FLX_CURRENT_TEST_MODE].reg_GTUC7_SSl  & 0x7FF );      // Static Slot Length [10:0]
   value_u32 |= ( NSS  & 0x3FF ) << 16;  // Number of Static Slots [9:0]                          
   FrDrv_write_32bit ( GTUC7_REG, value_u32 );
                                            
@@ -633,7 +685,6 @@ Fr_ReturnType FrDrv_Config_PhysicalBuffers ( void ) {
     value_u32 = 0;
     value_u32 |= ( mb_u08 & 0x7F ); 
     FrDrv_write_32bit ( IBCR_REG, value_u32 );
-
   } // end of for
 
   // check if input buffer busy by the message handler
@@ -647,6 +698,7 @@ Fr_ReturnType FrDrv_Config_PhysicalBuffers ( void ) {
 
   return FLEXRAY_STATUS_OK;
 }
+
 
 // end of file
 

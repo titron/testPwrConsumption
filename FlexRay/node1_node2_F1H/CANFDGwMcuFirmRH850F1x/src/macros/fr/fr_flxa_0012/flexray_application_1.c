@@ -152,6 +152,7 @@ int FR_check_result( void )
   return( test_result );
 }
 
+
 void application_1 ( void ) {
 //=============================================================================
 // FunctionName:
@@ -164,12 +165,12 @@ void application_1 ( void ) {
   static u16 result_u16 = 0;
   static u16 result_old_u16 = 0;
   u32 data_u32[64];
-  u08 data_words_u08 = 1;
+  u08 data_words_u08 = testModeParas[FLX_CURRENT_TEST_MODE].quadByteNum;
 
   //clear table
   for (i=0; i<=63; i++) data_u32[i]=0x00000000;
   //send data
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[0] = 0x1111;
 #else
   data_u32[0] = 0x0;
@@ -178,7 +179,7 @@ void application_1 ( void ) {
   FrDrv_data_IB_to_TRAM (MB0);
 
   //send data
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[1] = 0x5555;
 #else
   data_u32[1] = 0x0;
@@ -187,7 +188,7 @@ void application_1 ( void ) {
   FrDrv_data_IB_to_TRAM (MB2);
 
   //send data
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[2] = 0x9999;
 #else
   data_u32[2] = 0x0;
@@ -196,7 +197,7 @@ void application_1 ( void ) {
   FrDrv_data_IB_to_TRAM (MB4);
 
   //send data
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[3] = 0xDDDD;
 #else
   data_u32[3] = 0x0;
@@ -205,7 +206,7 @@ void application_1 ( void ) {
   FrDrv_data_IB_to_TRAM (MB6);
 
   //send data
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[4] = 0xF2F2;
 #else
   data_u32[4] = 0x0;
@@ -223,7 +224,7 @@ void application_1 ( void ) {
 
     // compare received data of frame 3 in output buffer
     data_u32[5] &= 0x0000FFFF;
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
     if ( data_u32[5] != 0x3333) result_u16++;
 #else
     if ( data_u32[5] != 0x0) result_u16++;
@@ -238,7 +239,7 @@ void application_1 ( void ) {
       FrDrv_data_OBF_to_HOST ( &data_u32[6], data_words_u08 );
 //   compare received data of frame 7 in output buffer
     data_u32[6] &= 0x0000FFFF;
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
     if ( data_u32[6] != 0x7777) result_u16++;
 #else
     if ( data_u32[6] != 0x0) result_u16++;
@@ -253,7 +254,7 @@ void application_1 ( void ) {
       FrDrv_data_OBF_to_HOST ( &data_u32[7], data_words_u08 );
 //   compare received data of frame 11 in output buffer
     data_u32[7] &= 0x0000FFFF;
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
     if ( data_u32[7] != 0xBBBB) result_u16++;
 #else
     if ( data_u32[7] != 0x0) result_u16++;
@@ -268,7 +269,7 @@ void application_1 ( void ) {
       FrDrv_data_OBF_to_HOST ( &data_u32[8], data_words_u08 );
 //   compare received data of frame 15 in output buffer
     data_u32[8] &= 0x0000FFFF;
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
     if ( data_u32[8] != 0xF1F1) result_u16++;
 #else
     if ( data_u32[8] != 0x0) result_u16++;
@@ -283,7 +284,7 @@ void application_1 ( void ) {
     first_start = 1;
     //last data check
     result_u16 = 0;
-#ifndef __TEST_FLX_COM//original settings@Titron
+#ifndef __TEST_PAYLOAD_0//original settings@Titron
     if ( data_u32[5] != 0x3333) result_u16++;
     if ( data_u32[6] != 0x7777) result_u16++;
     if ( data_u32[7] != 0xBBBB) result_u16++;

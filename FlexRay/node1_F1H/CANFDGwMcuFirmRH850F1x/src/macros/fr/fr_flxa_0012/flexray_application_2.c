@@ -151,7 +151,7 @@ void application_2 ( void ) {
   static u16 result_u16 = 0;
   static u16 result_old_u16 = 0;
   u32 data_u32[64];
-  u08 data_words_u08 = 1;
+  u08 data_words_u08 = testModeParas[FLX_CURRENT_TEST_MODE].quadByteNum;
 
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[0] = 0x3333;

@@ -60,7 +60,40 @@
 
 //#define Application_2
 #define Application_1
-#define __TEST_FLX_COM@titron
+
+// test mode definition ---start @titron
+#include "TypeDefines.h"
+
+#define __TEST_PAYLOAD_0  //added @titron
+
+#define INDEX_SFDL_1_BUSLOAD_10_PERCENT		0 /* 2 bytes, 10% */
+#define INDEX_SFDL_1_BUSLOAD_60_PERCENT		1 /* 2 bytes, 60% */
+#define INDEX_SFDL_1_BUSLOAD_100_PERCENT	2 /* 2 bytes, 100% */
+#define INDEX_SFDL_2_BUSLOAD_10_PERCENT		3 /* 4 bytes, 10% */
+#define INDEX_SFDL_2_BUSLOAD_60_PERCENT		4 /* 4 bytes, 60% */
+#define INDEX_SFDL_2_BUSLOAD_100_PERCENT	5 /* 4 bytes, 100% */
+#define INDEX_SFDL_127_BUSLOAD_10_PERCENT	6 /* 254 bytes, 10% */
+#define INDEX_SFDL_127_BUSLOAD_60_PERCENT	7 /* 254 bytes, 60% */
+#define INDEX_SFDL_127_BUSLOAD_100_PERCENT	8 /* 254 bytes, 100% */
+#define FLX_CURRENT_TEST_MODE 				INDEX_SFDL_2_BUSLOAD_100_PERCENT
+#define FLX_TEST_TOTAL_MODE_NUM             9
+
+typedef struct{
+	u32 reg_GTUC7_SSl; /* GTUC7 (gdStaticSlot), 4~659MT */
+
+	u32 reg_GTUC1_UT; /* GTUC1 (pMicroPerCycle), 640~640000uT */
+	u32 reg_GTUC2_MPC; /* GTUC2 (gMacroPerCycle), 10~16000 MT */
+	u32 reg_GTUC4_NIT; /* GTUC4: Network Idle Time Start, 7~15997MT */
+	u32 reg_GTUC4_OCS; /* GTUC4 (gOffsetCorrectionStart), 8~15998MT */
+	u32 reg_SUCC2_LT; /* SUCC2 (pdListenTimeout) */
+
+	u32 reg_MHDC_SFDL; /* MHDC (gPayloadLengthStatic), 0~127 */
+	u32 quadByteNum; /* quad-byte number, 1~64 */
+}s_busload_paras;
+
+
+extern const s_busload_paras testModeParas[FLX_TEST_TOTAL_MODE_NUM];
+// test mode definition ---start @titron
 
 /* PORT DEFINITIONS */
 

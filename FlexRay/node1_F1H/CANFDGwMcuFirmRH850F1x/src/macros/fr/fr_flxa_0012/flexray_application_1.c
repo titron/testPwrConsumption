@@ -152,6 +152,7 @@ int FR_check_result( void )
   return( test_result );
 }
 
+
 void application_1 ( void ) {
 //=============================================================================
 // FunctionName:
@@ -164,7 +165,7 @@ void application_1 ( void ) {
   static u16 result_u16 = 0;
   static u16 result_old_u16 = 0;
   u32 data_u32[64];
-  u08 data_words_u08 = 1;
+  u08 data_words_u08 = testModeParas[FLX_CURRENT_TEST_MODE].quadByteNum;
 
   //clear table
   for (i=0; i<=63; i++) data_u32[i]=0x00000000;
