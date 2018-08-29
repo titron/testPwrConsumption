@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             27-Aug-2018 14:05:11
+Renesas Optimizing Linker (W2.08.00 )             28-Aug-2018 18:13:02
 
 *** Options ***
 
@@ -85,28 +85,28 @@ Renesas Optimizing Linker (W2.08.00 )             27-Aug-2018 14:05:11
 
 SECTION                            START      END         SIZE   ALIGN
 .const
-                                  00002000  0000510f      3110   4
+                                  00002000  00004fef      2ff0   4
 .INIT_DSEC.const
-                                  00005110  0000511b         c   4
+                                  00004ff0  00004ffb         c   4
 .INIT_BSEC.const
-                                  0000511c  00005123         8   4
+                                  00004ffc  00005003         8   4
 .const.cmn
-                                  00005124  00005127         4   4
+                                  00005004  00005007         4   4
 comint.text
-                                  00005128  000074b5      238e   2
+                                  00005008  00007395      238e   2
 .text
-                                  000074b6  00025eb1     1e9fc   2
+                                  00007396  00025e35     1eaa0   2
 .data
-                                  00025eb4  00026c03       d50   4
+                                  00025e38  00026bf3       dbc   4
 .data.R
-                                  fede4000  fede4d4f       d50   4
+                                  fede4000  fede4dbb       dbc   4
 .bss
-                                  fede4d50  fede4dd7        88   4
+                                  fede4dbc  fede4e43        88   4
 .stack.bss
-                                  fede4dd8  fede4fd7       200   4
+                                  fede4e44  fede5043       200   4
 
 *** Total Section Size ***
 
-RAMDATA SECTION:  00000fd8 Byte(s)
-ROMDATA SECTION:  00003e78 Byte(s)
-PROGRAM SECTION:  00020d8a Byte(s)
+RAMDATA SECTION:  00001044 Byte(s)
+ROMDATA SECTION:  00003dc4 Byte(s)
+PROGRAM SECTION:  00020e2e Byte(s)

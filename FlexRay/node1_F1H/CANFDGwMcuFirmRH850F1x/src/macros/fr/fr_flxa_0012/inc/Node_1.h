@@ -181,7 +181,8 @@
 #define MOD                         1923          /* GTUC6 (pdMaxDrift), 2~1923uT */
 //#define MOD                         2          /* GTUC6 (pdMaxDrift), 2~1923uT */
 
-#define MOC                         134           /* GTUC10 (pOffsetCorrectionOut), 5~15266uT */
+#define MOC                         134           /* GTUC10 (pOffsetCorrectionOut), 5~15266 ¦ÌT */
+//#define MOC                         15266           /* GTUC10 (pOffsetCorrectionOut), 5~15266 ¦ÌT */
 #define MRC                         1923          /* GTUC10 (pRateCorrectionOut), 2~1923uT */
 
 #define EOCC                        0             /* GTUC11: External Offset Correction Control (vExternOffsetControl) */
@@ -910,7 +911,7 @@ const unsigned short BufferHeader_u16[128][10] =
 /*MB_6*/  { 7 , 0 , 0 , 1 , 1 , 0 , 0 , 0 , 1 , 42 },    /* Node1 */
 /*MB_7*/  { 8 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , 1 , 43 },    /* Node2 */
 /*MB_8*/  { 9 , 0 , 1 , 0 , 1 , 0 , 0 , 0 , 1 , 44 },    /* Node1 */
-#else//payload length test
+#else//payload length test---4bytes
 /*MB_0*/  { 1 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 2 , 36 },    /* Node1 */
 /*MB_1*/  { 2 , 0 , 1 , 1 , 0 , 0 , 0 , 0 , 2 , 37 },    /* Node2 */
 /*MB_2*/  { 3 , 0 , 1 , 1 , 1 , 0 , 0 , 0 , 2 , 38 },    /* Node1 */

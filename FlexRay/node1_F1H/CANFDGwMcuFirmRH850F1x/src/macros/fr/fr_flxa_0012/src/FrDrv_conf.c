@@ -104,29 +104,7 @@ u32 eies_reg_u32;
 u32 sies_reg_u32;
 extern const u16 BufferHeader_u16[128][10];
 /* start @titron */
-const s_busload_paras testModeParas[FLX_TEST_TOTAL_MODE_NUM]={
-{
-	/* INDEX_SFDL_1_BUSLOAD_10_PERCENT */
-	15,
-	6000,
-	150,
-	144,
-	148,
-	1284,
-	1,
-	1
-},
-{
-	/* INDEX_SFDL_1_BUSLOAD_10_PERCENT */
-	15,
-	6000,
-	150,
-	144,
-	148,
-	1284,
-	1,
-	1
-},
+s_busload_paras testModeParas[FLX_TEST_TOTAL_MODE_NUM]={
 {
 	/* INDEX_SFDL_1_BUSLOAD_100_PERCENT */
 	15,
@@ -136,38 +114,18 @@ const s_busload_paras testModeParas[FLX_TEST_TOTAL_MODE_NUM]={
 	148,
 	1284,
 	1,
-	1
-},
-{
-	/* INDEX_SFDL_2_BUSLOAD_10_PERCENT */
-	15,
-	6000,
-	150,
-	144,
-	148,
-	1284,
-	2,
-	1
-},
-{
-	/* INDEX_SFDL_2_BUSLOAD_60_PERCENT */
-	15,
-	6000,
-	150,
-	144,
-	148,
-	1284,
-	2,
-	1
+	1,
+//	0x00
+//	0xff
+//	0x55
+//	0xaa
+	0x33
+//	0xcc
+//	0x66
+//	0x99
 },
 {
 	/* INDEX_SFDL_2_BUSLOAD_100_PERCENT */
-//	17,
-//	6800,
-//	170,
-//	164,
-//	168,
-//	1484,
 	17,
 	6800,
 	170,
@@ -175,40 +133,21 @@ const s_busload_paras testModeParas[FLX_TEST_TOTAL_MODE_NUM]={
 	168,
 	1484,
 	2,
-	1
-},
-{
-	/* INDEX_SFDL_127_BUSLOAD_10_PERCENT */
-	15,
-	6000,
-	150,
-	144,
-	148,
-	1284,
-	127,
-	64
-},
-{
-	/* INDEX_SFDL_127_BUSLOAD_60_PERCENT */
-	15,
-	6000,
-	150,
-	144,
-	148,
-	1284,
-	127,
-	64
+	1,
+	0x00
 },
 {
 	/* INDEX_SFDL_127_BUSLOAD_100_PERCENT */
-	15,
-	6000,
-	150,
-	144,
-	148,
-	1284,
+	//254bytes
+	267,
+	106800,
+	2670,
+	2600,
+	2665,
+	26000,
 	127,
-	64
+	64,
+	0x00
 }
 };
 /* end @titron */
@@ -654,7 +593,8 @@ Fr_ReturnType FrDrv_Config_PhysicalBuffers ( void ) {
 
     // IB, WRHS3 - Write Header Section 2
     value_u32 = 0;
-    value_u32 |= (BufferHeader_u16[mb_u08][8]         & 0x7F )  << 16;  // Payload [10:0]
+//    value_u32 |= (BufferHeader_u16[mb_u08][8]         & 0x7F )  << 16;  // Payload [10:0], comment @titron
+    value_u32 |= (testModeParas[FLX_CURRENT_TEST_MODE].reg_MHDC_SFDL & 0x7F )  << 16;  // Payload [10:0]
     FrDrv_write_32bit ( WRHS2_REG, value_u32 );
 
     // IB, WRHS3 - Write Header Section 3
