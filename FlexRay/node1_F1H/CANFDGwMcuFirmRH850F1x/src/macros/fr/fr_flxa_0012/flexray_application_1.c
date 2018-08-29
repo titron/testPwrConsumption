@@ -168,7 +168,7 @@ void application_1 ( void ) {
   u08 data_words_u08 = testModeParas[FLX_CURRENT_TEST_MODE].quadByteNum;
 
   //clear table
-  for (i=0; i<=63; i++) data_u32[i]=0x00000000;
+  for (i=0; i<=63; i++) data_u32[i]=testModeParas[FLX_CURRENT_TEST_MODE].testData;
   //send data
 #ifndef __TEST_PAYLOAD_0//original settings@Titron
   data_u32[0] = 0x1111;

@@ -115,7 +115,14 @@ s_busload_paras testModeParas[FLX_TEST_TOTAL_MODE_NUM]={
 	1284,
 	1,
 	1,
-	0x00
+	0x00000000
+//	0xffffffff
+//	0x55555555
+//	0xaaaaaaaa
+//	0x33333333
+//	0xcccccccc
+//	0x66666666
+//	0x99999999
 },
 {
 	/* INDEX_SFDL_2_BUSLOAD_100_PERCENT */
