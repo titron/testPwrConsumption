@@ -1,0 +1,247 @@
+                                                                      Page 1
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00003401.si
+Command Line: C:\GHS\V800.V2014.1.7\comp_201417\ease850.exe -w -elf -b0 -Ipe2_project\inc -Isrc -Idev -Iinc -Idevice -IC:\GHS\V800.V2014.1.7\comp_201417\lib\rh850 -cg_underscore -cpu=rh850g3m -no_v850_simd -rh850_fpsimd=none -nomacro -patch_dbo=D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway\output\obj\pe2\main_pe2.dbo -source=main_pe2.c -o .\output\obj\pe2\gh_00003401.o -list=.\output\obj\pe2\main_pe2.lst C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00003401.si 
+Original File: C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00003401.si
+Source File: main_pe2.c
+Directory: D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS MULTI\CAN Gateway
+Host OS: Windows 7
+EASE: Copyright (C) 1983-2014 Green Hills Software.  All Rights Reversed.
+Release: Compiler v2014.1.7
+Build Directory: [Directory] BTOWINBOX:c:/build_2014_1_bto/2014-09-04.2200-2014_1_bto/win32-comp-ecom
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2014-1-bto/src@515859 (built by build)
+Revision Date: Fri Sep 05 14:05:06 2014
+
+Release Date: Fri Sep 05 14:43:29 2014
+
+                           1 --Driver Command: ccv850 -c -MD -Ipe2_project\inc -Isrc -Idev -Iinc -Idevice
+                           2 --		-DMY_CLOCK -UMSC_CLOCK -sda -DEMBEDDED --enable_noinline
+                           3 --		--restrict --bool -bsp generic -g -list -passsource
+                           4 --		-preprocess_assembly_files --preprocess_linker_directive_full
+                           5 --		-DDEVICE=F1H -cpu=rh850g3m -Onone -DCPU1=0 -DCPU2=1 -DCORE2
+                           6 --		-object_dir=./output/obj/pe2 -filetype.c
+                           7 --		pe2_project\src\main_pe2.c -o .\output\obj\pe2\main_pe2.o
+                           8 --Source File:   pe2_project\src\main_pe2.c
+                           9 --Directory:     
+                          10 --		D:\CANFDGwMcuFirmRH850F1x\code\CANFDGwMcuFirmRH850F1x\CANFDGwMcuFirmRH850F1x\prj\GHS
+                          11 --		MULTI\CAN Gateway
+                          12 --Compile Date:  Tue Nov 10 14:51:56 2015
+                          13 --Host OS:       Win32
+                          14 --Version:       C-RH850 2014.1.7 RELEASE VERSION
+                          15 --Release:       Compiler v2014.1.7
+                          16 --Revision Date: Fri Sep 05 14:10:46 2014
+                          17 --Release Date:  Fri Sep 05 14:44:23 2014
+                          18 -- ecom  -g -w
+                          19 
+                          20 --1: /*===============================================================================================
+                          21 --3:     Copyright (c) 2013 by Renesas Electronics Europe GmbH, a company of the Renesas Electronics 
+                          22 --4:     Corporation. All rights reserved.
+                          23 --6:   ===============================================================================================
+                          24 --8:     Warranty Disclaimer                                                       
+                          25 --9:                                                                              
+                          26 --10:     Because the Product(s) is licensed free of charge, there is no warranty of any kind
+                          27 --11:     whatsoever and expressly disclaimed and excluded by Renesas, either expressed or implied, 
+                          28 --12:     including but not limited to those for non-infringement of intellectual property,
+                          29 --13:     merchantability and/or fitness for the particular purpose.
+                          30 --14:     Renesas shall not have any obligation to maintain, service or provide bug fixes for the
+                          31 --15:     supplied Product(s) and/or the Application.
+                          32 --17:     Each User is solely responsible for determining the appropriateness of using the Product(s)
+                          33 --18:     and assumes all risks associated with its exercise of rights under this Agreement, including,
+                          34 --19:     but not limited to the risks and costs of program errors, compliance with applicable laws,
+                          35 --20:     damage to or loss of data, programs or equipment, and unavailability or interruption of
+                          36 --21:     operations.
+                          37 --23:     Limitation of Liability
+                          38 --25:     In no event shall Renesas be liable to the User for any incidental, consequential, indirect,
+                          39 --26:     or punitive damage (including but not limited to lost profits) regardless of whether such
+                          40 --27:     liability is based on breach of contract, tort, strict liability, breach of warranties, 
+                          41 --28:     failure of essential purpose or otherwise and even if advised of the possibility of such
+                          42 --29:     damages. Renesas shall not be liable for any services or products provided by third party
+                          43 --30:     vendors, developers or consultants identified or referred to the User by Renesas in 
+                          44 --31:     connection with the Product(s) and/or the Application.
+                          45 --33:   ===============================================================================================*/
+                          46 --35: //--------------------------------------------------------------------------
+                          47 --36: // includes
+                          48 --37: //--------------------------------------------------------------------------
+                          49 --39: #include <device.h>
+                          50 --41: //--------------------------------------------------------------------------
+
+                                                                      Page 2
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00003401.si
+                          51 --42: // defines
+                          52 --43: //--------------------------------------------------------------------------
+                          53 --46: //--------------------------------------------------------------------------
+                          54 --47: // prototypes
+                          55 --48: //--------------------------------------------------------------------------
+                          56 --49: __interrupt void INTOSTM5_1(void)
+                          57 	.text
+                          58 ..bof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe2.5Cmain_pe2...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940D..0::
+                          59 	.align	2
+                          60 	.global	_INTOSTM5_1
+                          61 _INTOSTM5_1:
+00000000 231efcff         62 	movea	-4,sp,sp
+00000004 63f70100         63 	st.w	ep,0[sp]
+                          64 	stsr	6,ep -- FPSR
+                          64 <EXPANSION BEGIN>
+                          64 stsr 6 , ep , 0
+00000008 e6f74000         64 <EXPANSION END>
+0000000c 231efcff         65 	movea	-4,sp,sp
+00000010 63f70100         66 	st.w	ep,0[sp]
+                          67 	stsr	7,ep -- FPEPC
+                          67 <EXPANSION BEGIN>
+                          67 stsr 7 , ep , 0
+00000014 e7f74000         67 <EXPANSION END>
+00000018 231efcff         68 	movea	-4,sp,sp
+0000001c 63f70100         69 	st.w	ep,0[sp]
+                          70 --	    .bf
+                          71 .LDW01:
+                          72 --50: {  
+                          73 --52: }
+                          74 --	    .ef
+                          75 .LDW11:
+00000020 23f70100         76 	ld.w	0[sp],ep
+00000024 231e0400         77 	movea	4,sp,sp
+                          78 	ldsr	ep,7 -- FPEPC
+                          78 <EXPANSION BEGIN>
+                          78 ldsr ep , 7 , 0
+00000028 fe3f2000         78 <EXPANSION END>
+0000002c 23f70100         79 	ld.w	0[sp],ep
+00000030 231e0400         80 	movea	4,sp,sp
+                          81 	ldsr	ep,6 -- FPSR
+                          81 <EXPANSION BEGIN>
+                          81 ldsr ep , 6 , 0
+00000034 fe372000         81 <EXPANSION END>
+00000038 23f70100         82 	ld.w	0[sp],ep
+0000003c 231e0400         83 	movea	4,sp,sp
+00000040 e0074801         84 	eiret
+                          85 	.type	_INTOSTM5_1,@function
+                          86 	.size	_INTOSTM5_1,.-_INTOSTM5_1
+                          87 	.align	2
+                          88 .LDW21:
+                          89 
+                          90 	.data
+                          91 	.text
+                          92 
+                          93 
+                          94 --55: void init_OSTM5 (void) {
+                          95 	.align	2
+                          96 	.align	2
+                          97 	.align	2
+                          98 	.global	_init_OSTM5
+                          99 _init_OSTM5:
+
+                                                                      Page 3
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00003401.si
+                         100 --	    .bf
+                         101 .LDW31:
+                         102 --57:    /*Set Count stop trigger reg*/
+                         103 --59: 	OSTM5TT= 0x01;
+00000044 010a            104 	mov	1,r1
+00000046 80078d0920ae    105 	st.b	r1,4292284440[zero]
+                         106 --60: 	
+                         107 --61: 	/*Select Interval Timer mode and start interrupt disabled*/
+                         108 --62: 	OSTM5CTL = 0x00;
+0000004c 80070d0220ae    109 	st.b	zero,4292284448[zero]
+                         110 --64: 	/* Set start value of down counter in interval timer mode */
+                         111 --65: 	OSTM5CMP = 0x3D0900;		// OSTM runs on CPUCLK2 = 40MHz / (39999+1) = 1000Hz
+00000052 210600093d00    112 	mov	4000000,r1
+00000058 80070f0820ae    113 	st.w	r1,4292284416[zero]
+                         114 --66:  
+                         115 --67:  
+                         116 --68:   /* enable interrupt for OSTM5 (interrupt channel 314) */
+                         117 --69:   EIBD314=0x00000002; /* assign interrupt to PE2 */
+0000005e 020a            118 	mov	2,r1
+00000060 600fe9bc        119 	st.w	r1,lo(4294950120)[zero]
+                         120 --70:   PFSSTBOSTM5=1;      /* activate table mode */
+00000064 c03774b2        121 	set1	6,lo(4294947444)[zero]
+                         122 --71:   PFSSRFOSTM5=0;      /* clear request flag */
+00000068 c0a775b2        123 	clr1	4,lo(4294947445)[zero]
+                         124 --72:   PFSSMKOSTM5=0;      /* unmask interrupt */
+0000006c c0bf74b2        125 	clr1	7,lo(4294947444)[zero]
+                         126 --73:  
+                         127 --74:   /* Start timer */
+                         128 --75:   OSTM5TS = 0x01;
+00000070 010a            129 	mov	1,r1
+00000072 80074d0920ae    130 	st.b	r1,4292284436[zero]
+                         131 --76: }
+                         132 --	    .ef
+                         133 .LDW41:
+00000078 7f00            134 	jmp	[lp]
+                         135 	.type	_init_OSTM5,@function
+                         136 	.size	_init_OSTM5,.-_init_OSTM5
+                         137 	.align	2
+                         138 .LDW51:
+                         139 
+                         140 	.data
+                         141 	.text
+                         142 
+                         143 
+                         144 --78: //--------------------------------------------------------------------------
+                         145 --79: //
+                         146 --80: //	Common MAIN function
+                         147 --81: //
+                         148 --82: //--------------------------------------------------------------------------
+                         149 --84: void main()
+                         150 	.align	2
+                         151 	.align	2
+                         152 	.global	_main
+                         153 _main:
+0000007a 5c1a            154 	add	-4,sp
+0000007c 63ff0100        155 	st.w	lp,0[sp]
+                         156 --	    .bf
+                         157 .LDW61:
+                         158 --85: {
+                         159 --86:   /* wait until clock init is done by PE1 */
+                         160 --87:   while(PFSSG0MEV0!=1u);
+
+                                                                      Page 4
+                                                              C:\Users\TIEZHU~1\AppData\Local\Temp\gh_00003401.si
+                         161 .L69:
+00000080 80070908d8fd    162 	ld.w	4294896640[zero],r1
+00000086 610a            163 	cmp	1,r1
+00000088 cafd*           164 	bne	.L69
+                         165 --88: init_OSTM5();
+                         166 --line88
+                         167 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe2.5Cmain_pe2.1::
+                         168 .LDWlin1:
+                         169 	jarl	_init_OSTM5,lp
+                         169 <EXPANSION BEGIN>
+                         169 jarl22 _init_OSTM5 , lp 
+0000008a bfffbaff*       169 <EXPANSION END>
+                         170 --90:  EI();
+                         171 --line90
+                         172 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe2.5Cmain_pe2.2::
+                         173 .LDWlin2:
+0000008e e0876001        174 	ei
+                         175 --91:  
+                         176 --92:  while(1);
+                         177 .L74:
+00000092 8505*           178 	br	.L74
+                         179 --	    .ef
+                         180 .LDW71:
+                         181 ..lin.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe2.5Cmain_pe2.3::
+                         182 .LDWlin3:
+                         183 	.type	_main,@function
+                         184 	.size	_main,.-_main
+                         185 	.align	2
+                         186 .LDW81:
+                         187 
+                         188 	.data
+                         189 	.text
+                         190 
+                         191 --93:   
+                         192 --94: }
+                         193 	.align	2
+                         194 --_OSTM5CMP	4292284416	import
+                         195 --_OSTM5TS	4292284436	import
+                         196 --_OSTM5TT	4292284440	import
+                         197 --_OSTM5CTL	4292284448	import
+                         198 --_PFSSG0MEV0	4294896640	import
+                         199 --___itbl	512	import
+                         200 
+                         201 	.data
+                         202 	.ghsnote version,15
+                         203 	.ghsnote tools,3
+                         204 	.ghsnote options,144
+                         205 	.text
+                         206 	.align	2
+                         207 ..eof.D.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway.5Coutput.5Cobj.5Cpe2.5Cmain_pe2...44.3A.5CCANFDGwMcuFirmRH850F1x.5Ccode.5CCANFDGwMcuFirmRH850F1x.5CCANFDGwMcuFirmRH850F1x.5Cprj.5CGHS.20MULTI.5CCAN.20Gateway..5641940D..0::
+                         208 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3M

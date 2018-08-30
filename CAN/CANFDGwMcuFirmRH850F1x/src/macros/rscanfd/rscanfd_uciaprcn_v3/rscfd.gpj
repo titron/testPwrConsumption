@@ -1,0 +1,18 @@
+#!gbuild
+[Subproject]
+	-I.
+	:sourceDir=.
+	-Onone
+	--slash_comment
+	--slash_comment
+	-D__ghs__
+	-I..\..\..\common
+	:sourceDir=..\..\..\common
+	-I..\..\macros
+	:sourceDir=..\..\macros
+rscfd.h
+rscfd_p.h
+rscfd_s.h
+rscfd_a.h
+rscfd_p.c
+rscfd_a.c

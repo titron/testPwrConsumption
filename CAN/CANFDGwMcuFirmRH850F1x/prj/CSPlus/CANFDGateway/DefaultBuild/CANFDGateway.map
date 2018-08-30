@@ -1,0 +1,35 @@
+Renesas Optimizing Linker (W2.08.00 )             30-Aug-2018 13:46:35
+
+*** Options ***
+
+-subcommand=DefaultBuild\CANFDGateway.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\vecttbl.obj
+-input=DefaultBuild\PE1.obj
+-input=DefaultBuild\PE1.obj
+-input=DefaultBuild\PE2.obj
+-debug
+-nocompress
+-output=DefaultBuild\CANFDGateway.abs
+-library=v850e3v5\libc.lib
+-library=v850e3v5\libm.lib
+-library=v850e3v5\libmf.lib
+-list=DefaultBuild\CANFDGateway.map
+-start=RESET,EIINTTBL/00000000,.text/00200000
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+W0561010:Duplicate file specified in option "input" : "DefaultBuild\PE1.obj"
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f5       1f6   200
+EIINTTBL
+                                  00000200  00000f6f       d70   200
+.text
+                                  00200000  002000c5        c6   2

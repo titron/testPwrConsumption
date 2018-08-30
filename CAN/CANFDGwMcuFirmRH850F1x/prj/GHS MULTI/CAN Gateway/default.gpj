@@ -1,0 +1,19 @@
+#!gbuild
+primaryTarget=v800_standalone.tgt
+[Project]
+	-bsp generic
+	-DMY_CLOCK
+	-UMSC_CLOCK
+	-e _RESET
+	-sda
+	-DEMBEDDED
+	-g
+	--preprocess_linker_directive_full
+	--enable_noinline
+	--restrict
+	--bool
+	-lnk=-v
+	-delete
+	-Idevice
+simple_mca.gpj		[MultiCoreArchive]
+
