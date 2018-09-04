@@ -109,6 +109,7 @@ void main(void)
 	port_test();
 #endif
 
+	tmr0_Delay(30000);
 	main_loop();
 } /* End of main() */
 

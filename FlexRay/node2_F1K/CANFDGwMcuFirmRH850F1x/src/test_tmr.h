@@ -9,5 +9,6 @@
 #define CPU1_CUP1_TEST_TMR_H_
 
 extern void tmr0_init (void);
+extern void tmr0_Delay(u32 delayInSecond);
 
 #endif /* CPU1_CUP1_TEST_TMR_H_ */

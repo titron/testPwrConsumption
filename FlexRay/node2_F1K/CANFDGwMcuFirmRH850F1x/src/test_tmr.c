@@ -25,17 +25,41 @@ void tmr0_init (void) {
 #pragma section text"comint"
 #pragma interrupt Isr_OsTimer0( enable=false , channel=84 , callt=false , fpu=false )
 char portlevel = 0;
+u32 tmrCounter = 0;
 void Isr_OsTimer0(void)
 {
-	if(portlevel)
-	{
-		PORT_SET_LEVEL(1);
-		portlevel = 0;
-	}
-	else
-	{
-		PORT_SET_LEVEL(0);
-		portlevel = 1;
-	}
+	tmrCounter++;
+//	if(portlevel)
+//	{
+//		PORT_SET_LEVEL(1);
+//		portlevel = 0;
+//	}
+//	else
+//	{
+//		PORT_SET_LEVEL(0);
+//		portlevel = 1;
+//	}
 } /* End of Isr_OsTimer0() */
 #pragma section default
+
+void tmr0_Start(void)
+{
+	tmr0_init();
+}
+
+void tmr0_End(void)
+{
+	/*Set Count stop trigger reg*/
+	OSTM0.TT= 0x01;
+}
+
+void tmr0_Delay(u32 delayInMicroSecond)
+{
+	char portlevel_B = portlevel;
+
+	tmrCounter = 0;
+	tmr0_Start();
+	while(tmrCounter !=delayInMicroSecond);
+	tmr0_End();
+}
+//End of file
