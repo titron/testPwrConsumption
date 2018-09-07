@@ -269,6 +269,9 @@ extern void ASMN_DIRECTSTART( void );
 #ifdef   ETH_MACROS
 #include "asmn_eth_a_asmnif.h"
 #endif
+#ifdef RIIC_MACROS
+#include "riic_application.h"
+#endif
 
 /* SDST includes */
 #ifdef   SDST_EMIEMS
@@ -1221,6 +1224,7 @@ ASMN_SetNewCom( pu08 MenuCom_pu08 )
 //#define TEST_RLIN3
 //#define TEST_RLIN2
 //#define TEST_FR
+//#define TEST_RIIC
 
 int main_loop(void)
 {
@@ -1631,6 +1635,9 @@ int main_loop(void)
 
 #endif
 
+#ifdef TEST_RIIC
+  riic_app();
+#endif
 #ifdef TEST_RSCFD
 	ASMN_RSCFDApplications( 1 );
 #endif

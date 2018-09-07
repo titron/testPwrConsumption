@@ -20,7 +20,8 @@ _pm1_setting_table:
 ;-----------------------------------------------------------------------------
 ;	system stack
 ;-----------------------------------------------------------------------------
-STACKSIZE	.set	0x200
+;STACKSIZE	.set	0x200
+STACKSIZE	.set	0x400
 	.section	".stack.bss", bss
 	.align	4
 	.ds	(STACKSIZE)

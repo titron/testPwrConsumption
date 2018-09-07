@@ -9433,25 +9433,230 @@ struct __tag794
 {                                                          /* Module           */
     union __tag387 SELB_READTESTW;                         /* SELB_READTESTW   */
 };
-struct __tag795
-{                                                          /* Module           */
-    union __tag374 CR1;                                    /* CR1              */
-    union __tag374 CR2;                                    /* CR2              */
-    union __tag374 MR1;                                    /* MR1              */
-    union __tag374 MR2;                                    /* MR2              */
-    union __tag374 MR3;                                    /* MR3              */
-    union __tag374 FER;                                    /* FER              */
-    union __tag374 SER;                                    /* SER              */
-    union __tag374 IER;                                    /* IER              */
-    union __tag374 SR1;                                    /* SR1              */
-    union __tag374 SR2;                                    /* SR2              */
-    union __tag374 SAR0;                                   /* SAR0             */
-    union __tag374 SAR1;                                   /* SAR1             */
-    union __tag374 SAR2;                                   /* SAR2             */
-    union __tag374 BRL;                                    /* BRL              */
-    union __tag374 BRH;                                    /* BRH              */
-    union __tag374 DRT;                                    /* DRT              */
-    union __tag374 DRR;                                    /* DRR              */
+//struct __tag795
+//{                                                          /* Module           */
+//    union __tag374 CR1;                                    /* CR1              */
+//    union __tag374 CR2;                                    /* CR2              */
+//    union __tag374 MR1;                                    /* MR1              */
+//    union __tag374 MR2;                                    /* MR2              */
+//    union __tag374 MR3;                                    /* MR3              */
+//    union __tag374 FER;                                    /* FER              */
+//    union __tag374 SER;                                    /* SER              */
+//    union __tag374 IER;                                    /* IER              */
+//    union __tag374 SR1;                                    /* SR1              */
+//    union __tag374 SR2;                                    /* SR2              */
+//    union __tag374 SAR0;                                   /* SAR0             */
+//    union __tag374 SAR1;                                   /* SAR1             */
+//    union __tag374 SAR2;                                   /* SAR2             */
+//    union __tag374 BRL;                                    /* BRL              */
+//    union __tag374 BRH;                                    /* BRH              */
+//    union __tag374 DRT;                                    /* DRT              */
+//    union __tag374 DRR;                                    /* DRR              */
+//};
+struct st_riic {
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :24;
+			unsigned long ICE:1;
+			unsigned long IICRST:1;
+			unsigned long CLO:1;
+			unsigned long SOWP:1;
+			unsigned long SCLO:1;
+			unsigned long SDAO:1;
+			unsigned long SCLI:1;
+			unsigned long SDAI:1;
+		} BIT;
+	} CR1;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :24;
+			unsigned long BBSY:1;
+			unsigned long MST:1;
+			unsigned long TRS:1;
+			unsigned long :1;
+			unsigned long SP:1;
+			unsigned long RS:1;
+			unsigned long ST:1;
+			unsigned long :1;
+		} BIT;
+	} CR2;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :24;
+			unsigned long MTWP:1;
+			unsigned long CKS:3;
+			unsigned long BCWP:1;
+			unsigned long BC:3;
+		} BIT;
+	} MR1;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :24;
+			unsigned long DLCS:1;
+			unsigned long SDDL:3;
+			unsigned long :1;
+			unsigned long TMOH:1;
+			unsigned long TMOL:1;
+			unsigned long TMOS:1;
+		} BIT;
+	} MR2;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :25;
+			unsigned long WAIT:1;
+			unsigned long RDRFS:1;
+			unsigned long ACKWP:1;
+			unsigned long ACKBT:1;
+			unsigned long ACKBR:1;
+			unsigned long NF:2;
+		} BIT;
+	} MR3;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :25;
+			unsigned long SCLE:1;
+			unsigned long NFE:1;
+			unsigned long NACKE:1;
+			unsigned long SALE:1;
+			unsigned long NALE:1;
+			unsigned long MALE:1;
+			unsigned long TMOE:1;
+		} BIT;
+	} FER;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :26;
+			unsigned long DIDE:1;
+			unsigned long :1;
+			unsigned long GCE:1;
+			unsigned long SAR2:1;
+			unsigned long SAR1:1;
+			unsigned long SAR0:1;
+		} BIT;
+	} SER;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :24;
+			unsigned long TIE:1;
+			unsigned long TEIE:1;
+			unsigned long RIE:1;
+			unsigned long NAKIE:1;
+			unsigned long SPIE:1;
+			unsigned long STIE:1;
+			unsigned long ALIE:1;
+			unsigned long TMOIE:1;
+		} BIT;
+	} IER;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :26;
+			unsigned long DID:1;
+			unsigned long :1;
+			unsigned long GCA:1;
+			unsigned long AAS2:1;
+			unsigned long AAS1:1;
+			unsigned long AAS0:1;
+		} BIT;
+	} SR1;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :24;
+			unsigned long TDRE:1;
+			unsigned long TEND:1;
+			unsigned long RDRF:1;
+			unsigned long NACKF:1;
+			unsigned long STOP:1;
+			unsigned long START:1;
+			unsigned long AL:1;
+			unsigned long TMOF:1;
+		} BIT;
+	} SR2;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :16;
+			unsigned long FS:1;
+			unsigned long :5;
+			unsigned long SVA:9;
+			unsigned long SVA0:1;
+		} BIT;
+	} SAR0;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :16;
+			unsigned long FS:1;
+			unsigned long :5;
+			unsigned long SVA:9;
+			unsigned long SVA0:1;
+		} BIT;
+	} SAR1;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :16;
+			unsigned long FS:1;
+			unsigned long :5;
+			unsigned long SVA:9;
+			unsigned long SVA0:1;
+		} BIT;
+	} SAR2;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :27;
+			unsigned long BRL:5;
+		} BIT;
+	} BRL;
+	union {
+		unsigned long  UINT32;                                 /* 32-bit Access    */
+		unsigned short UINT16[2];                              /* 16-bit Access    */
+		unsigned char  UINT8[4];                               /* 8-bit Access     */
+		struct {
+			unsigned long :27;
+			unsigned long BRH:5;
+		} BIT;
+	} BRH;
+	unsigned long  DRT;
+	unsigned long  DRR;
 };
 struct __tag796
 {                                                          /* Module           */
@@ -22822,8 +23027,8 @@ struct __tag865
 #define ECCETNB0TX (*(volatile struct __tag792 *)0xFFC74100) /* ECCETNB0TX */
 #define ECCETNB0RX (*(volatile struct __tag792 *)0xFFC74200) /* ECCETNB0RX */
 #define SL_READTEST (*(volatile struct __tag794 *)0xFFC78000) /* SL_READTEST */
-#define RIIC0    (*(volatile struct __tag795 *)0xFFCA0000) /* RIIC0 */
-#define RIIC1    (*(volatile struct __tag795 *)0xFFCA0080) /* RIIC1 */
+#define RIIC0    (*(volatile struct st_riic *)0xFFCA0000) /* RIIC0 */
+#define RIIC1    (*(volatile struct st_riic *)0xFFCA0080) /* RIIC1 */
 #define SCDS     (*(volatile struct __tag796 *)0xFFCD00D0) /* SCDS */
 #define RLN240   (*(volatile struct __tag797 *)0xFFCE0000) /* RLN240 */
 #define RLN2400  (*(volatile struct __tag798 *)0xFFCE0008) /* RLN2400 */

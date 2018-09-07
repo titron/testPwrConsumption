@@ -86,6 +86,8 @@
 #define FR_MACROS         1
 #define FR_TYPE           FR_FLXA_0012
 
+#define RIIC_MACROS       1
+
 #endif
 
 

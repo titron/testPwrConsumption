@@ -7,18 +7,25 @@
 ;   Corporation.
 
 ;   NOTE       : THIS IS A TYPICAL EXAMPLE FOR MULTI CORE PROJECT.
-
+	; OSTIMER 0
 	.extern _Isr_OsTimer0
+	; RSCANFD 0
 	.extern _INTRCANGERR0
 	.extern _INTRCANGRECC0
 	.extern _INTRCAN0ERR
 	.extern _INTRCAN0REC
 	.extern _INTRCAN0TRX
+	; FLEXRAY 0
 	.extern _INTFLXA0LINE0
 	.extern _INTFLXA0LINE1
 	.extern _INTFLXA0TIM0
 	.extern _INTFLXA0TIM1
 	.extern _INTFLXA0TIM2
+	; RIIC0
+	.extern _riic0_eei_isr
+	.extern _riic0_txi_isr
+	.extern _riic0_rxi_isr
+	.extern _riic0_tei_isr
 
 	.section "RESET", text
 
@@ -201,10 +208,14 @@
 	.dw	#_Dummy_EI ; 73 - ICDMA13
 	.dw	#_Dummy_EI ; 74 - ICDMA14
 	.dw	#_Dummy_EI ; 75 - ICDMA15
-	.dw	#_Dummy_EI ; 76 - ICRIIC0TI
-	.dw	#_Dummy_EI ; 77 - ICRIIC0TEI
-	.dw	#_Dummy_EI ; 78 - ICRIIC0RI
-	.dw	#_Dummy_EI ; 79 - ICRIIC0EE
+	;.dw	#_Dummy_EI ; 76 - ICRIIC0TI
+	.dw #_riic0_txi_isr
+	;.dw	#_Dummy_EI ; 77 - ICRIIC0TEI
+	.dw #_riic0_eei_isr
+	;.dw	#_Dummy_EI ; 78 - ICRIIC0RI
+	.dw #_riic0_rxi_isr
+	;.dw	#_Dummy_EI ; 79 - ICRIIC0EE
+	.dw #_riic0_tei_isr
 	.dw	#_Dummy_EI ; 80 - ICTAUJ0I0
 	.dw	#_Dummy_EI ; 81 - ICTAUJ0I1
 	.dw	#_Dummy_EI ; 82 - ICTAUJ0I2

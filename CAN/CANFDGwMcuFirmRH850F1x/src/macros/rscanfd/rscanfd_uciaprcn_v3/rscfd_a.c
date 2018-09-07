@@ -67,6 +67,7 @@
 
 #include "rscfd_p.h"
 #include "rscfd_s.h"
+#include "riic_application.h"
 
 /* ASMN Modules: Main Communication Port */
 #if( EE_RSCFD_VERBOSE == 1 )
@@ -326,7 +327,7 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	FilterEntry->ptr0.ptr = 0x23; /* HRH equal to HTH */
 
 	/* Port activation */
-
+	Cetic_CAN_LIN_TRA_turn_On();
 	EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, Channel1_u08);
 	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
 		return ( EE_RSCFD_ERROR);

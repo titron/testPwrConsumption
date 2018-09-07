@@ -167,27 +167,6 @@
 
 #else
 #ifndef RH850_F1H_RSCFD20// CetiBox-MCU board
-//transceiver control @titron
-#define EE_RSCFD_PORT_CH0EN       PORT_0
-#define EE_RSCFD_PORT_CH0STB      PORT_0
-#define EE_RSCFD_PORT_CH1EN       PORT_0
-#define EE_RSCFD_PORT_CH1STB      PORT_0
-#define EE_RSCFD_PORT_CH2EN       PORT_0
-#define EE_RSCFD_PORT_CH2STB      PORT_0
-#define EE_RSCFD_PORT_CH3EN       PORT_0
-#define EE_RSCFD_PORT_CH3STB      PORT_0
-#define EE_RSCFD_PORT_CH4EN       PORT_0
-#define EE_RSCFD_PORT_CH4STB      PORT_0
-#define EE_RSCFD_PORT_CH5EN       PORT_0
-#define EE_RSCFD_PORT_CH5STB      PORT_0
-#define EE_RSCFD_PORT_CH6EN       PORT_0
-#define EE_RSCFD_PORT_CH6STB      PORT_0
-#define EE_RSCFD_PORT_CH7EN       PORT_0
-#define EE_RSCFD_PORT_CH7STB      PORT_0
-
-#define EE_RSCFD_PORT_BIT_CH0EN   BIT_1
-#define EE_RSCFD_PORT_BIT_CH0STB  BIT_1
-//ctxd, crxd definition
 #define EE_RSCFD_PORT_M0RX0       PORT_0
 #define EE_RSCFD_PORT_M0TX0       PORT_0
 #define EE_RSCFD_PORT_M0RX1       PORT_10
