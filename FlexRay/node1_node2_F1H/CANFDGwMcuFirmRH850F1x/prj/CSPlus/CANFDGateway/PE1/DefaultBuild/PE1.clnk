@@ -58,6 +58,9 @@
 -input=DefaultBuild\lowinit.obj
 -input=DefaultBuild\test_port.obj
 -input=DefaultBuild\test_tmr.obj
+-input=DefaultBuild\r_riic_rh850f1kh.obj
+-input=DefaultBuild\r_riic_rh850f1x.obj
+-input=DefaultBuild\riic_application.obj
 -debug
 -nocompress
 -output=DefaultBuild\PE1.abs

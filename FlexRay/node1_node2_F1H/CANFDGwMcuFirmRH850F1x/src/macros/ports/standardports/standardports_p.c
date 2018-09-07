@@ -1170,6 +1170,11 @@ bit PORT_Enable( u16 PortNumber_u16,
             {
                 port_mode_numeric_p->pm0 |=
                        BitSpecification_u16;
+            }else{
+                port_mode_numeric_p->pm0 &=
+                    ~( BitSpecification_u16 );
+                port_dir_numeric_p->pbdc0 |=
+            	                       BitSpecification_u16;
             }
 
             /* P0_0 setting:

@@ -68,6 +68,7 @@
 /* ADDRESS DEFINITIONS */
 
 #define N_PORT_BASE                   ( 0xffc10000 )
+#define N_PORT_DIR_BASE               ( 0xffc14100 )
 #define N_PORT_MODE_BASE              ( 0xffc10300 )
 #define N_PORT_MODE_CONTROL_BASE      ( 0xffc10400 )
 #define N_PORT_FUNCTION_CONTROL_BASE  ( 0xffc10500 )
@@ -159,8 +160,54 @@ typedef struct port_numeric {
 } port_numeric;
 
 
-typedef struct port_mode_numeric {
+typedef struct port_dir_numeric {
   
+  volatile unsigned short pbdc0;
+  volatile unsigned short RESERVED0;
+  volatile unsigned short pbdc1;
+  volatile unsigned short RESERVED1;
+  volatile unsigned short pbdc2;
+  volatile unsigned short RESERVED2;
+  volatile unsigned short pbdc3;
+  volatile unsigned short RESERVED3;
+  volatile unsigned short pbdc4;
+  volatile unsigned short RESERVED4;
+  volatile unsigned short pbdc5;
+  volatile unsigned short RESERVED5;
+  volatile unsigned short pbdc6;
+  volatile unsigned short RESERVED6;
+  volatile unsigned short pbdc7;
+  volatile unsigned short RESERVED7;
+  volatile unsigned short pbdc8;
+  volatile unsigned short RESERVED8;
+  volatile unsigned short pbdc9;
+  volatile unsigned short RESERVED9;
+  volatile unsigned short pbdc10;
+  volatile unsigned short RESERVED10;
+  volatile unsigned short pbdc11;
+  volatile unsigned short RESERVED11;
+  volatile unsigned short pbdc12;
+  volatile unsigned short RESERVED12;
+  volatile unsigned short pbdc13;
+  volatile unsigned short RESERVED13;
+  volatile unsigned short pbdc14;
+  volatile unsigned short RESERVED14;
+  volatile unsigned short pbdc15;
+  volatile unsigned short RESERVED15;
+  volatile unsigned short pbdc16;
+  volatile unsigned short RESERVED16;
+  volatile unsigned short pbdc17;
+  volatile unsigned short RESERVED17;
+  volatile unsigned short pbdc18;
+  volatile unsigned short RESERVED18;
+  volatile unsigned short pbdc19;
+  volatile unsigned short RESERVED19;
+  volatile unsigned short pbdc20;
+  volatile unsigned short RESERVED20;
+
+} port_dir_numeric;
+typedef struct port_mode_numeric {
+
   volatile unsigned short pm0;       
   volatile unsigned short RESERVED0;
   volatile unsigned short pm1;
@@ -456,6 +503,10 @@ static struct port_numeric
                                  ( struct port_numeric * )
                                  ( N_PORT_BASE );
 
+static struct port_dir_numeric
+             *port_dir_numeric_p =
+                                 ( struct port_dir_numeric * )
+                                 ( N_PORT_DIR_BASE );
 static struct port_mode_numeric         
              *port_mode_numeric_p = 
                                  ( struct port_mode_numeric * )

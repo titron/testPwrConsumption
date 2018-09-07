@@ -211,6 +211,11 @@ void __lowinit_hw( void)
     while((CKSC_ICANS_ACT & 0x03) != 0x03){
 		WR_PROT_REG(PROTCMD1, PROTS1,CKSC_ICANOSCD_CTL,0x03);
     }
+
+    /* PLL -> RIIC Clock: PPLLCLK2 (PLL1, 40 MHz) */
+    while((CKSC_IIICS_ACT & 0x02) != 0x02){
+		WR_PROT_REG(PROTCMD1, PROTS1,CKSC_IIICS_CTL,0x02);
+    }
     
     /* PLL -> CSI Clock: PPLLCLK (PLL1, 80 MHz) */
     while((CKSC_ICSIS_ACT & 0x01) != 0x01){

@@ -57,4 +57,10 @@
 
 #define CSPLUS_PRJ_USED
 
+#include "ree_types.h"
+#include "iodefine.h"
+
+
+#define BSP_MCU_RH850F1X
+#define BSP_MCU_RH850F1KH
 #endif

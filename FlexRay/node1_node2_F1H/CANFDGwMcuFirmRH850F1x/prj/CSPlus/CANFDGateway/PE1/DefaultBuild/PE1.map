@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             28-Aug-2018 16:25:07
+Renesas Optimizing Linker (W2.08.00 )             07-Sep-2018 09:32:41
 
 *** Options ***
 
@@ -63,6 +63,9 @@ Renesas Optimizing Linker (W2.08.00 )             28-Aug-2018 16:25:07
 -input=DefaultBuild\lowinit.obj
 -input=DefaultBuild\test_port.obj
 -input=DefaultBuild\test_tmr.obj
+-input=DefaultBuild\r_riic_rh850f1kh.obj
+-input=DefaultBuild\r_riic_rh850f1x.obj
+-input=DefaultBuild\riic_application.obj
 -debug
 -nocompress
 -output=DefaultBuild\PE1.abs
@@ -85,28 +88,28 @@ Renesas Optimizing Linker (W2.08.00 )             28-Aug-2018 16:25:07
 
 SECTION                            START      END         SIZE   ALIGN
 .const
-                                  00002000  00004fef      2ff0   4
+                                  00002000  00005407      3408   4
 .INIT_DSEC.const
-                                  00004ff0  00004ffb         c   4
+                                  00005408  00005413         c   4
 .INIT_BSEC.const
-                                  00004ffc  00005003         8   4
+                                  00005414  0000541b         8   4
 .const.cmn
-                                  00005004  00005007         4   4
+                                  0000541c  0000541f         4   4
 comint.text
-                                  00005008  00007395      238e   2
+                                  00005420  000079bd      259e   2
 .text
-                                  00007396  00025e35     1eaa0   2
+                                  000079be  0002b04f     23692   2
 .data
-                                  00025e38  00026bf3       dbc   4
+                                  0002b050  0002be0f       dc0   4
 .data.R
-                                  fede4000  fede4dbb       dbc   4
+                                  fede4000  fede4dbf       dc0   4
 .bss
-                                  fede4dbc  fede4e43        88   4
+                                  fede4dc0  fede4e97        d8   4
 .stack.bss
-                                  fede4e44  fede5043       200   4
+                                  fede4e98  fede5097       200   4
 
 *** Total Section Size ***
 
-RAMDATA SECTION:  00001044 Byte(s)
-ROMDATA SECTION:  00003dc4 Byte(s)
-PROGRAM SECTION:  00020e2e Byte(s)
+RAMDATA SECTION:  00001098 Byte(s)
+ROMDATA SECTION:  000041e0 Byte(s)
+PROGRAM SECTION:  00025c30 Byte(s)

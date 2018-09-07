@@ -61,6 +61,28 @@
 #define FALSE  ( !TRUE )
 #endif
 
+#ifndef ON
+#define ON 1
+#endif
+#ifndef OFF
+#define OFF 0
+#endif
+#ifndef SET
+#define SET 1
+#endif
+#ifndef CLEAR
+#define CLEAR 0
+#endif
+
+#ifndef NULL
+#define NULL 0x0
+#endif
+
+#ifndef FIT_NO_PTR
+#define FIT_NO_PTR 0x0
+#endif
+
+
 #ifndef EE_API
 #define EE_API
 #endif

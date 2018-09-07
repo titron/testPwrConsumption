@@ -5,23 +5,14 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/bsp_asmn.c \
-../CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/bsp_tgmn.c \
-../CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/core2.c \
-../CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/ghlock.c \
 ../CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/lowinit.c 
 
 OBJS += \
 ./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/bsp_asmn.o \
-./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/bsp_tgmn.o \
-./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/core2.o \
-./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/ghlock.o \
 ./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/lowinit.o 
 
 C_DEPS += \
 ./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/bsp_asmn.d \
-./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/bsp_tgmn.d \
-./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/core2.d \
-./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/ghlock.d \
 ./CANFDGwMcuFirmRH850F1x/src/test_app/devices/rh850g3k-f1kh-d8/monitor_map/lowinit.d 
 
 
