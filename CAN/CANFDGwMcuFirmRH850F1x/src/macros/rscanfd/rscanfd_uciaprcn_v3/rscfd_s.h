@@ -80,7 +80,7 @@
                                  EE_RSCFD_FIFO_INT_ONLEVEL, \
                                  EE_RSCFD_FIFO_ILEVEL_1D8, 0 } /* RX FIFO disabled */
 
-#define EE_RSCFD_A_RXFIFO_SWGW { 0, 1, 0, \
+#define EE_RSCFD_A_RXFIFO_SWGW { 1, 1, 0, \
                                  EE_RSCFD_FIFODL_64, 0,  \
                                  EE_RSCFD_FIFO_DEPTH_32, 0, \
                                  EE_RSCFD_FIFO_INT_ONEVERY, \
@@ -242,7 +242,7 @@ const struct ee_rscfd_cfg_global EE_RSCFD_A_GCFG_BASIC = {
 	  1, 1, 1, 1, 1, 1, 1, 1  	            /* every channel has one AFL entry */
   },
   {
-    EE_RSCFD_A_RXFIFO_OFF,                           /* disable all RX FIFOs */
+		  EE_RSCFD_A_RXFIFO_SWGW,                           /* disable all RX FIFOs */
     EE_RSCFD_A_RXFIFO_OFF,
     EE_RSCFD_A_RXFIFO_OFF,
     EE_RSCFD_A_RXFIFO_OFF,
@@ -333,9 +333,9 @@ struct ee_rscfd_a_afl EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW = {
     EE_RSCFD_ID_STD                           /* standard frame configuration */
   },
   {
-    0x000000F,                             /* mask is filtering GW bus number */
-    0, EE_RSCFD_MASK_FILTER,                  /* only standard ID data frames */
-    EE_RSCFD_MASK_FILTER
+    0x0000000,                             /* mask is filtering GW bus number */
+    0, EE_RSCFD_MASK_DONTCARE,                  /* only standard ID data frames */
+	EE_RSCFD_MASK_DONTCARE
   },
   {
     EE_RSCFD_DLCCHECK_DISABLE, 0,      /* to enable DLC check, enter DLC here */
@@ -344,7 +344,7 @@ struct ee_rscfd_a_afl EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW = {
     0x0000          /* Receive HRH pointer - to be replaced with actual value */
   },
   {
-    EE_RSCFD_AFL_RXFIF0_NONE,           /* to be replaced by assigned RX-FIFO */
+		  EE_RSCFD_AFL_RXFIF0_EN0,           /* to be replaced by assigned RX-FIFO */
     EE_RSCFD_AFL_COMFIFO_NONE                         /* COM-FIFO is not used */
   }
 };

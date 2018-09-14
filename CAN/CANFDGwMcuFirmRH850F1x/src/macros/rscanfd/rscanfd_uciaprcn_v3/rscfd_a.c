@@ -139,6 +139,11 @@ void RSCFD_A_DoNothing(char *String) /* Suppress printing action */
 {
 }
 
+void RSCFD_A_UnitRXFIFOReceiveIRQ(void) /* Receive Interrupt 1st Unit/Channel */
+{
+//	EE_RSCFD_CH0_RXF();
+	return;
+}
 void RSCFD_A_UnitChannel1ReceiveIRQ(void) /* Receive Interrupt 1st Unit/Channel */
 {
 	EE_RSCFD_A_IRQ_REC_0++;
@@ -154,6 +159,7 @@ void RSCFD_A_UnitChannel2ReceiveIRQ(void) /* Receive Interrupt 1st Unit/Channel 
 void RSCFD_A_UnitChannel1TransmitIRQ(void) /* Receive Interrupt 1st Unit/Channel */
 {
 	EE_RSCFD_A_IRQ_TRX_0++;
+	EE_RSCFD_CH0_tx();
 	return;
 }
 
@@ -494,10 +500,12 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	u08 SendStatus_u08;
 	u08 ReceiveStatus_u08;
 	u32 TimeoutLimit_u32;
+//	u08 FIFONumber_u08;
 
 	struct ee_rscfd_message SendMessage;
 	struct ee_rscfd_message ReceiveMessage;
-	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXBOX_ANY;
+//	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXBOX_ANY;
+	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW;
 
 	/* Message Set Up */
 
@@ -516,12 +524,122 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 		SendMessage.data[DataCounter_u08] = DEFAULT_PAYLOAD_DATA;
 	}
 
-	ReceiveMessage.path = EE_RSCFD_PATH_MSGBOX; /* Receive in msg box */
+	ReceiveMessage.path = EE_RSCFD_PATH_RXFIFO; /* Receive in msg box */
 	ReceiveMessage.pathdetail = 0; /* Check in box #0 */
+#if 0
 	FilterEntry->ptr0.rmdp = 0; /* Receive in box #0 */
 	FilterEntry->ptr0.rmv = 0; /* NO receive buffer used */
 	FilterEntry->ptr0.ptr = 0x23; /* HRH equal to HTH */
-	FilterEntry->ptr1.rxfifomask = 0x1; /* rx fifo #0 is used */
+#endif
+	FilterEntry->ptr1.rxfifomask = EE_RSCFD_AFL_RXFIF0_EN0; /* HRH equal to HTH */
+
+	/* Port activation */
+	EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, Channel1_u08);
+	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+		return ( EE_RSCFD_ERROR);
+
+	/* Configuration */
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_SetGlobalConfiguration(Unit1_u08,
+			&EE_RSCFD_A_GCFG_BASIC);
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_Start(Unit1_u08, /* Perform global activation */
+	Channel1_u08,
+	EE_RSCFD_OPMODE_RESET, /* Channel Reset */
+	EE_RSCFD_CLEAR,
+	EE_RSCFD_CLEAR);
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_EnableRXFIFO(Unit1_u08, 0,
+	EE_RSCFD_SET);
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_SetChannelConfiguration(Unit1_u08,
+			Channel1_u08, &EE_RSCFD_A_CHCFG_BASIC);
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_CreateInterrupt(Unit1_u08, Channel1_u08,
+	EE_RSCFD_INT_TX,
+	EE_RSCFD_INTENABLEDEFAULT, RSCFD_A_UnitChannel1TransmitIRQ);
+	EE_RSCFD_Status_bit &= EE_RSCFD_CreateInterrupt(Unit1_u08, EE_RSCFD_GLOBAL,
+	EE_RSCFD_INT_RXF0,
+	EE_RSCFD_INTENABLEDEFAULT, RSCFD_A_UnitRXFIFOReceiveIRQ);
+
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_SetAFLEntry(Unit1_u08, Channel1_u08, 0,
+				FilterEntry);
+
+	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+		return ( EE_RSCFD_ERROR);
+
+	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+		return ( EE_RSCFD_ERROR);
+
+	/* Activate Units and Channels */
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_Start(Unit1_u08, Channel1_u08,
+	EE_RSCFD_OPMODE_OPER, /* operation mode */
+	EE_RSCFD_SET, /* error clearing */
+	EE_RSCFD_SET); /* timestamp reset */
+
+	EE_RSCFD_A_IRQ_TRX_0 = 0;
+
+#if 1 // Send frame for basic board test
+	/* Send Message to be received by other unit/channel */
+	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(Unit1_u08, Channel1_u08,
+			&SendStatus_u08, &SendMessage);
+
+	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+		return ( EE_RSCFD_ERROR);
+
+	TimeoutLimit_u32 = EE_RSCFD_A_TIMEOUT_LIMIT;
+	while ((--TimeoutLimit_u32 > 0) && (EE_RSCFD_A_IRQ_TRX_0 == 0))
+		;
+	if (EE_RSCFD_A_IRQ_TRX_0 == 0)
+		return ( EE_RSCFD_ERROR);
+#endif
+
+	while (1)
+		;
+
+	/* Shutdown */
+	EE_RSCFD_Status_bit &= EE_RSCFD_Stop(Unit1_u08,
+	EE_RSCFD_GLOBAL,
+	EE_RSCFD_OPMODE_RESET);
+
+	return (EE_RSCFD_Status_bit);
+}
+
+struct ee_rscfd_message SendMessage;
+
+bit EE_RSCFD_SingleCH(u08 Unit1_u08, /* runs with default configuration */
+u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
+{
+	bit EE_RSCFD_Status_bit = EE_RSCFD_OK;
+	u08 DataCounter_u08;
+	u08 SendStatus_u08;
+	u08 ReceiveStatus_u08;
+	u32 TimeoutLimit_u32;
+//	u08 FIFONumber_u08;
+
+	struct ee_rscfd_message ReceiveMessage;
+//	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXBOX_ANY;
+	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW;
+
+	/* Message Set Up */
+
+	SendMessage.hdr.id = DEFAULT_PAYLOAD_ID;
+	SendMessage.hdr.thlen = EE_RSCFD_CLEAR; /* No entry in THL */
+	SendMessage.hdr.rtr = EE_RSCFD_FRAME_DATA; /* Data Frame */
+	SendMessage.hdr.ide = EE_RSCFD_ID_STD; /* Standard Frame */
+	SendMessage.fdsts.ptr = 0x23; /* HTH value */
+	SendMessage.flag.dlc = DEFAULT_PAYLOAD_LENGTH;
+	SendMessage.path = EE_RSCFD_PATH_MSGBOX; /* Send via Message Box */
+	SendMessage.pathdetail = EE_RSCFD_PATHDETAIL_ANY; /* use any box... */
+
+	for (DataCounter_u08 = 0; DataCounter_u08 < SendMessage.flag.dlc;
+			DataCounter_u08++)
+	{
+		SendMessage.data[DataCounter_u08] = DEFAULT_PAYLOAD_DATA;
+	}
+
 
 	/* Port activation */
 	EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, Channel1_u08);
@@ -549,6 +667,9 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
 		return ( EE_RSCFD_ERROR);
 
+	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+		return ( EE_RSCFD_ERROR);
+
 	/* Activate Units and Channels */
 
 	EE_RSCFD_Status_bit &= EE_RSCFD_Start(Unit1_u08, Channel1_u08,
@@ -558,7 +679,6 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 
 	EE_RSCFD_A_IRQ_TRX_0 = 0;
 
-#if 0 // Send frame for basic board test
 	/* Send Message to be received by other unit/channel */
 	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(Unit1_u08, Channel1_u08,
 			&SendStatus_u08, &SendMessage);
@@ -571,7 +691,6 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 		;
 	if (EE_RSCFD_A_IRQ_TRX_0 == 0)
 		return ( EE_RSCFD_ERROR);
-#endif
 
 	while (1)
 		;

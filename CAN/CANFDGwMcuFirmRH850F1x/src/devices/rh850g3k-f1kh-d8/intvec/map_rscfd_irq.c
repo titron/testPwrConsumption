@@ -314,9 +314,6 @@ void INTRCAN0REC( void )
   EE_RSCFD_InterruptFlag_Unit_u08 = 0;
   EE_RSCFD_InterruptFlag_Channel0_u08 = EE_RSCFD_INT_RXCF;
   EE_RSCFD_Interrupt( );
-
-  /* Read received message */
-  /* Transmit the received message */
 }
 
 #pragma interrupt INTRCAN0TRX( enable=false , channel=26 , callt=false , fpu=false )

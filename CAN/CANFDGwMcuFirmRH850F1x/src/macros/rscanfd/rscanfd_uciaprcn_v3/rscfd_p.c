@@ -83,16 +83,13 @@ float testValue;
  * CreateInterrupt() Jump Vector Table
  */
  
-void EE_RSCFD_IRQDefault( );
 
 #if( EE_RSCFD_MACROS == 1 )
 
-static void EE_RSCFD_CH0_RXF(void)
-{
-	struct ee_rscfd_message tempMsg;
-//	EE_RSCFD_GetMessageRF( &ee_rscfd_rxfifo_p[ 0 ]->buf[ 0 ],
-//												  &tempMsg );
-}
+void EE_RSCFD_IRQDefault( );
+void EE_RSCFD_CH0_RXF();
+void EE_RSCFD_GetMessageRF( struct ee_rscfd_r_rfmsg *Buffer,
+                            struct ee_rscfd_message *Message );
 
 static void ( *EE_RSCFD_CIVector [ ( EE_RSCFD_MACROS * 
        			                       ( EE_RSCFD_INT_GLOBAL + 
@@ -103,7 +100,7 @@ static void ( *EE_RSCFD_CIVector [ ( EE_RSCFD_MACROS *
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
-		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_CH0_RXF, EE_RSCFD_IRQDefault,
+		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
@@ -214,6 +211,34 @@ u08 EE_RSCFD_LastTxObjectChannel7_u08   = EE_RSCFD_INT_NOINT;
 void EE_RSCFD_IRQDefault( )
 {
 }
+
+/* rx fifo 0 interrupt routine@titron */
+void EE_RSCFD_CH0_RXF()
+{
+	ee_rscfd_message tempMsg;
+	bit EE_RSCFD_Status_bit = EE_RSCFD_OK;
+	u08 SendStatus_u08;
+
+    /* Read received message */
+	EE_RSCFD_GetMessageRF( &ee_rscfd_rxfifo_p[ 0 ]->buf[ 0 ],
+												  &tempMsg );
+
+    /* Transmit the received message */
+	tempMsg.path = EE_RSCFD_PATH_MSGBOX; /* Send via Message Box */
+	tempMsg.pathdetail = EE_RSCFD_PATHDETAIL_ANY; /* use any box... */
+	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(0, 0,
+				&SendStatus_u08, &tempMsg );
+}
+extern struct ee_rscfd_message SendMessage;
+void EE_RSCFD_CH0_tx()
+{
+	bit EE_RSCFD_Status_bit = EE_RSCFD_OK;
+	u08 SendStatus_u08;
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(0, 0,
+				&SendStatus_u08, &SendMessage);
+}
+
                                   
 u08 EE_RSCFD_GetTxBuffer( u32 FlagRegister_u32 )
 {
@@ -3083,6 +3108,16 @@ bit EE_RSCFD_SetGlobalConfiguration( u08 UnitNumber_u08,
 	ee_rscfd_common_p[ UnitNumber_u08 ]->gaflc1.rnc6   = Config->rnc[ 6 ];		
 	ee_rscfd_common_p[ UnitNumber_u08 ]->gaflc1.rnc7   = Config->rnc[ 7 ];				
 
+	// added by @titron
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[0]   = Config->rfcc[ 0 ];
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[1]   = Config->rfcc[ 1 ];
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[2]   = Config->rfcc[ 2 ];
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[3]   = Config->rfcc[ 3 ];
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[4]   = Config->rfcc[ 4 ];
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[5]   = Config->rfcc[ 5 ];
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[6]   = Config->rfcc[ 6 ];
+	ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[7]   = Config->rfcc[ 7 ];
+
   return( EE_RSCFD_OK );
 }    
 
@@ -4485,3 +4520,7 @@ bit EE_RSCFD_GetFIFOStatus( u08  UnitNumber_u08,
   }
   return( EE_RSCFD_OK );
 }
+
+
+
+// End of file
