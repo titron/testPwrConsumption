@@ -314,6 +314,9 @@ void INTRCAN0REC( void )
   EE_RSCFD_InterruptFlag_Unit_u08 = 0;
   EE_RSCFD_InterruptFlag_Channel0_u08 = EE_RSCFD_INT_RXCF;
   EE_RSCFD_Interrupt( );
+
+  /* Read received message */
+  /* Transmit the received message */
 }
 
 #pragma interrupt INTRCAN0TRX( enable=false , channel=26 , callt=false , fpu=false )
@@ -468,29 +471,29 @@ void INTRCAN6TRX( void )
   EE_RSCFD_Interrupt( );
 }
 
-//#pragma interrupt INTRCAN7ERR( enable=false , channel=33 , callt=false , fpu=false )
-//void INTRCAN7ERR( void )
-//{
-//  EE_RSCFD_InterruptFlag_Unit_u08 = 0;
-//  EE_RSCFD_InterruptFlag_Channel7_u08 = EE_RSCFD_INT_CERR;
-//  EE_RSCFD_Interrupt( );
-//}
-//
-//#pragma interrupt INTRCAN7REC( enable=false , channel=33 , callt=false , fpu=false )
-//void INTRCAN7REC( void )
-//{
-//  EE_RSCFD_InterruptFlag_Unit_u08 = 0;
-//  EE_RSCFD_InterruptFlag_Channel7_u08 = EE_RSCFD_INT_RXCF;
-//  EE_RSCFD_Interrupt( );
-//}
-//
-//#pragma interrupt INTRCAN7TRX( enable=false , channel=33 , callt=false , fpu=false )
-//void INTRCAN7TRX( void )
-//{
-//  EE_RSCFD_InterruptFlag_Unit_u08 = 0;
-//  EE_RSCFD_InterruptFlag_Channel7_u08 = EE_RSCFD_INT_TX;
-//  EE_RSCFD_Interrupt( );
-//}
+#pragma interrupt INTRCAN7ERR( enable=false , channel=332 , callt=false , fpu=false )
+void INTRCAN7ERR( void )
+{
+  EE_RSCFD_InterruptFlag_Unit_u08 = 0;
+  EE_RSCFD_InterruptFlag_Channel7_u08 = EE_RSCFD_INT_CERR;
+  EE_RSCFD_Interrupt( );
+}
+
+#pragma interrupt INTRCAN7REC( enable=false , channel=333 , callt=false , fpu=false )
+void INTRCAN7REC( void )
+{
+  EE_RSCFD_InterruptFlag_Unit_u08 = 0;
+  EE_RSCFD_InterruptFlag_Channel7_u08 = EE_RSCFD_INT_RXCF;
+  EE_RSCFD_Interrupt( );
+}
+
+#pragma interrupt INTRCAN7TRX( enable=false , channel=334 , callt=false , fpu=false )
+void INTRCAN7TRX( void )
+{
+  EE_RSCFD_InterruptFlag_Unit_u08 = 0;
+  EE_RSCFD_InterruptFlag_Channel7_u08 = EE_RSCFD_INT_TX;
+  EE_RSCFD_Interrupt( );
+}
 
 
 #pragma section default

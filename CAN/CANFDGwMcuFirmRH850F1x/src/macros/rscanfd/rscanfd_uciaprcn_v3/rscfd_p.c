@@ -87,6 +87,13 @@ void EE_RSCFD_IRQDefault( );
 
 #if( EE_RSCFD_MACROS == 1 )
 
+static void EE_RSCFD_CH0_RXF(void)
+{
+	struct ee_rscfd_message tempMsg;
+//	EE_RSCFD_GetMessageRF( &ee_rscfd_rxfifo_p[ 0 ]->buf[ 0 ],
+//												  &tempMsg );
+}
+
 static void ( *EE_RSCFD_CIVector [ ( EE_RSCFD_MACROS * 
        			                       ( EE_RSCFD_INT_GLOBAL + 
             		                     EE_RSCFD_INT_CHANNEL * 
@@ -96,7 +103,7 @@ static void ( *EE_RSCFD_CIVector [ ( EE_RSCFD_MACROS *
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
-		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
+		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_CH0_RXF, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,
 		EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault, EE_RSCFD_IRQDefault,

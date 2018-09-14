@@ -15,6 +15,42 @@
 	.extern _INTRCAN0ERR
 	.extern _INTRCAN0REC
 	.extern _INTRCAN0TRX
+	; RSCANFD 1
+	.extern _INTRCANGERR1
+	.extern _INTRCANGRECC1
+	.extern _INTRCAN1ERR
+	.extern _INTRCAN1REC
+	.extern _INTRCAN1TRX
+	; RSCANFD 2
+	.extern _INTRCANGERR2
+	.extern _INTRCANGRECC2
+	.extern _INTRCAN2ERR
+	.extern _INTRCAN2REC
+	.extern _INTRCAN2TRX
+	; RSCANFD 3
+	.extern _INTRCANGERR3
+	.extern _INTRCANGRECC3
+	.extern _INTRCAN3ERR
+	.extern _INTRCAN3REC
+	.extern _INTRCAN3TRX
+	; RSCANFD 4
+	.extern _INTRCANGERR4
+	.extern _INTRCANGRECC4
+	.extern _INTRCAN4ERR
+	.extern _INTRCAN4REC
+	.extern _INTRCAN4TRX
+	; RSCANFD 5
+	.extern _INTRCANGERR5
+	.extern _INTRCANGRECC5
+	.extern _INTRCAN5ERR
+	.extern _INTRCAN5REC
+	.extern _INTRCAN5TRX
+	; RSCANFD 6
+	.extern _INTRCANGERR6
+	.extern _INTRCANGRECC6
+	.extern _INTRCAN6ERR
+	.extern _INTRCAN6REC
+	.extern _INTRCAN6TRX
 	; FLEXRAY 0
 	.extern _INTFLXA0LINE0
 	.extern _INTFLXA0LINE1
@@ -149,16 +185,16 @@
 	.dw	#_Dummy_EI ; 19 - ICADCA0I1
 	.dw	#_Dummy_EI ; 20 - ICADCA0I2, ICCSIH0IJC_1
 	.dw	#_Dummy_EI ; 21 - ICDCUTDI
-	;.dw	#_INTRCANGERR0 ; 22 - ICRCANGERR0
-	.dw	#_Dummy_EI ; 22 - ICRCANGERR0
-	;.dw	#_INTRCANGRECC0 ; 23 - ICRCANGRECC0
-	.dw	#_Dummy_EI ; 23 - ICRCANGRECC0
-	;.dw	#_INTRCAN0ERR ; 24 - ICRCAN0ERR
-	.dw	#_Dummy_EI ; 24 - ICRCAN0ERR
-	;.dw	#_INTRCAN0REC ; 25 - ICRCAN0REC
-	.dw	#_Dummy_EI ; 25 - ICRCAN0REC
-	;.dw	#_INTRCAN0TRX ; 26 - ICRCAN0TRX
-	.dw	#_Dummy_EI ; 26 - ICRCAN0TRX
+	.dw	#_INTRCANGERR0 ; 22 - ICRCANGERR0
+	;.dw	#_Dummy_EI ; 22 - ICRCANGERR0
+	.dw	#_INTRCANGRECC0 ; 23 - ICRCANGRECC0
+	;.dw	#_Dummy_EI ; 23 - ICRCANGRECC0
+	.dw	#_INTRCAN0ERR ; 24 - ICRCAN0ERR
+	;.dw	#_Dummy_EI ; 24 - ICRCAN0ERR
+	.dw	#_INTRCAN0REC ; 25 - ICRCAN0REC
+	;.dw	#_Dummy_EI ; 25 - ICRCAN0REC
+	.dw	#_INTRCAN0TRX ; 26 - ICRCAN0TRX
+	;.dw	#_Dummy_EI ; 26 - ICRCAN0TRX
 	.dw	#_Dummy_EI ; 27 - ICCSIG0IC, ICCSIH1IRE_1
 	.dw	#_Dummy_EI ; 28 - ICCSIG0IR, ICCSIH1IJC_1
 	.dw	#_Dummy_EI ; 29 - ICCSIH0IC
@@ -250,9 +286,12 @@
 	.dw	#_Dummy_EI ; 110 - ICFLERR
 	.dw	#_Dummy_EI ; 111 - ICFLENDNM
 	.dw	#_Dummy_EI ; 112 - ICCWEND
-	.dw	#_Dummy_EI ; 113 - ICRCAN1ERR
-	.dw	#_Dummy_EI ; 114 - ICRCAN1REC
-	.dw	#_Dummy_EI ; 115 - ICRCAN1TRX
+	;.dw	#_Dummy_EI ; 113 - ICRCAN1ERR
+	.dw	#_INTRCAN1ERR ; 113 - ICRCAN1ERR
+	;.dw	#_Dummy_EI ; 114 - ICRCAN1REC
+	.dw	#_INTRCAN1REC ; 114 - ICRCAN1REC
+	;.dw	#_Dummy_EI ; 115 - ICRCAN1TRX
+	.dw	#_INTRCAN1TRX ; 115 - ICRCAN1TRX
 	.dw	#_Dummy_EI ; 116 - ICCSIH1IC, ICTAPA0IPEK0_2
 	.dw	#_Dummy_EI ; 117 - ICCSIH1IR, ICTAPA0IVLY0_2
 	.dw	#_Dummy_EI ; 118 - ICCSIH1IRE, ICCSIG0IC_2
@@ -359,12 +398,18 @@
 	.dw	#_Dummy_EI ; 214 - ICADCA1I1
 	.dw	#_Dummy_EI ; 215 - ICADCA1I2
 	.dw	#_Dummy_EI ; 216 - reserved
-	.dw	#_Dummy_EI ; 217 - ICRCAN2ERR
-	.dw	#_Dummy_EI ; 218 - ICRCAN2REC
-	.dw	#_Dummy_EI ; 219 - ICRCAN2TRX
-	.dw	#_Dummy_EI ; 220 - ICRCAN3ERR
-	.dw	#_Dummy_EI ; 221 - ICRCAN3REC
-	.dw	#_Dummy_EI ; 222 - ICRCAN3TRX
+	;.dw	#_Dummy_EI ; 217 - ICRCAN2ERR
+	.dw	#_INTRCAN2ERR ; 217 - ICRCAN2ERR
+	;.dw	#_Dummy_EI ; 218 - ICRCAN2REC
+	.dw	#_INTRCAN2REC ; 218 - ICRCAN2REC
+	;.dw	#_Dummy_EI ; 219 - ICRCAN2TRX
+	.dw	#_INTRCAN2TRX ; 219 - ICRCAN2TRX
+	;.dw	#_Dummy_EI ; 220 - ICRCAN3ERR
+	.dw	#_INTRCAN3ERR ; 220 - ICRCAN3ERR
+	;.dw	#_Dummy_EI ; 221 - ICRCAN3REC
+	.dw	#_INTRCAN3REC ; 221 - ICRCAN3REC
+	;.dw	#_Dummy_EI ; 222 - ICRCAN3TRX
+	.dw	#_INTRCAN3TRX ; 222 - ICRCAN3TRX
 	.dw	#_Dummy_EI ; 223 - ICCSIG1IC
 	.dw	#_Dummy_EI ; 224 - ICCSIG1IR
 	.dw	#_Dummy_EI ; 225 - ICCSIG1IRE
@@ -414,9 +459,12 @@
 	.dw	#_Dummy_EI ; 269 - ICTAUB1I13
 	.dw	#_Dummy_EI ; 270 - ICTAUB1I14
 	.dw	#_Dummy_EI ; 271 - ICTAUB1I15
-	.dw	#_Dummy_EI ; 272 - ICRCAN4ERR
-	.dw	#_Dummy_EI ; 273 - ICRCAN4REC
-	.dw	#_Dummy_EI ; 274 - ICRCAN4TRX
+	;.dw	#_Dummy_EI ; 272 - ICRCAN4ERR
+	.dw	#_INTRCAN4ERR ; 272 - ICRCAN4ERR
+	;.dw	#_Dummy_EI ; 273 - ICRCAN4REC
+	.dw	#_INTRCAN4REC ; 273 - ICRCAN4REC
+	;.dw	#_Dummy_EI ; 274 - ICRCAN4TRX
+	.dw	#_INTRCAN4TRX ; 274 - ICRCAN4TRX
 	.dw	#_Dummy_EI ; 275 - ICRLIN26
 	.dw	#_Dummy_EI ; 276 - ICRLIN27
 	.dw	#_Dummy_EI ; 277 - ICPWGA64
@@ -429,9 +477,12 @@
 	.dw	#_Dummy_EI ; 284 - ICPWGA71
 	.dw	#_Dummy_EI ; 285 - ICRLIN28
 	.dw	#_Dummy_EI ; 286 - ICRLIN29
-	.dw	#_Dummy_EI ; 287 - ICRCAN5ERR
-	.dw	#_Dummy_EI ; 288 - ICRCAN5REC
-	.dw	#_Dummy_EI ; 289 - ICRCAN5TRX
+	;.dw	#_Dummy_EI ; 287 - ICRCAN5ERR
+	.dw	#_INTRCAN5ERR ; 287 - ICRCAN5ERR
+	;.dw	#_Dummy_EI ; 288 - ICRCAN5REC
+	.dw	#_INTRCAN5REC ; 288 - ICRCAN5REC
+	;.dw	#_Dummy_EI ; 289 - ICRCAN5TRX
+	.dw	#_INTRCAN5TRX ; 289 - ICRCAN5TRX
 	.dw	#_Dummy_EI ; 290 - ICPWGA72
 	.dw	#_Dummy_EI ; 291 - ICPWGA73
 	.dw	#_Dummy_EI ; 292 - ICPWGA74
@@ -463,9 +514,12 @@
 	.dw	#_Dummy_EI ; 318 - IC_ETH3
 	.dw	#_Dummy_EI ; 319 - ICRCANGERR1
 	.dw	#_Dummy_EI ; 320 - ICRCANGRECC1
-	.dw	#_Dummy_EI ; 321 - ICRCAN6ERR
-	.dw	#_Dummy_EI ; 322 - ICRCAN6REC
-	.dw	#_Dummy_EI ; 323 - ICRCAN6TRX
+	;.dw	#_Dummy_EI ; 321 - ICRCAN6ERR
+	.dw	#_INTRCAN6ERR ; 321 - ICRCAN6ERR
+	;.dw	#_Dummy_EI ; 322 - ICRCAN6REC
+	.dw	#_INTRCAN6REC ; 322 - ICRCAN6REC
+	;.dw	#_Dummy_EI ; 323 - ICRCAN6TRX
+	.dw	#_INTRCAN6TRX ; 323 - ICRCAN6TRX
 	.dw	#_Dummy_EI ; 324 - ICRLIN210
 	.dw	#_Dummy_EI ; 325 - ICRLIN211
 	.dw	#_Dummy_EI ; 326 - ICCSIG2IC
@@ -474,9 +528,12 @@
 	.dw	#_Dummy_EI ; 329 - ICCSIG3IC
 	.dw	#_Dummy_EI ; 330 - ICCSIG3IR
 	.dw	#_Dummy_EI ; 331 - ICCSIG3IRE
-	.dw	#_Dummy_EI ; 332 - reserved
-	.dw	#_Dummy_EI ; 333 - reserved
-	.dw	#_Dummy_EI ; 334 - reserved
+	;.dw	#_Dummy_EI ; 332 - ICRCAN7ERR
+	.dw	#_INTRCAN7ERR ; 332 - ICRCAN6ERR
+	;.dw	#_Dummy_EI ; 333 - ICRCAN7REC
+	.dw	#_INTRCAN7REC ; 333 - ICRCAN6REC
+	;.dw	#_Dummy_EI ; 334 - ICRCAN7TRX
+	.dw	#_INTRCAN7TRX ; 334 - ICRCAN6TRX
 	.dw	#_Dummy_EI ; 335 - ICPWGA80
 	.dw	#_Dummy_EI ; 336 - ICPWGA81
 	.dw	#_Dummy_EI ; 337 - ICPWGA82
