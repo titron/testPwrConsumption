@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             14-Sep-2018 17:08:58
+Renesas Optimizing Linker (W2.08.00 )             17-Sep-2018 16:45:06
 
 *** Options ***
 
@@ -20,9 +20,7 @@ DefaultBuild\CANFDGateway.mot
 DefaultBuild\CANFDGateway.mot
                    00000200         00000f6f         d70
 D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\CAN\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE1\DefaultBuild\PE1.mot
-                   00002000         0002c5f9         2a5fa
-D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\CAN\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE1\DefaultBuild\PE1.mot
-                   0002c5fc         0002d3bb         dc0
+                   00002000         0002d6c7         2b6c8
 D:\WorksContent\projects\Eva_PwrConsumption_Cetibox\code\CAN\CANFDGwMcuFirmRH850F1x\prj\CSPlus\CANFDGateway\PE2\DefaultBuild\PE2.mot
                    00130000         00130135         136
 DefaultBuild\CANFDGateway.mot

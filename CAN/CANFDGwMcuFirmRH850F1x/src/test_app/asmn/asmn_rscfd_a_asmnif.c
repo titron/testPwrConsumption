@@ -58,7 +58,7 @@
 #include <map_asmn_basic.h>
 #include <map_device.h>
 
-#include "riic_application.h"
+
 
 #if( defined( EE_RSCFD_MACROS ) || defined( RSCFD_MACROS ) )
 
@@ -114,6 +114,8 @@ extern bit ASMN_ReceiveFloat( u08    UnitNumber_u08,
 #undef DRIVER_LOCAL
 #endif
 #include <map_rscfd.h>
+#include "cetic_eva_setting.h"
+#include "riic_application.h"
 
 /* Basic ASMN Configuration, dependent on device specifics */
 #include <map_asmn.h>
@@ -626,10 +628,6 @@ ApplRSCFDSWGateway( u08 MenuCom )
 
 #endif
 
-#define EVA_CETIBOX_PWR_CONSUMPTION_SINGLE_CH	0
-#define EVA_CETIBOX_PWR_CONSUMPTION_ALL_CHS		1
-#define EVA_CETIBOX_PWR_CONSUMPTION_MODE		EVA_CETIBOX_PWR_CONSUMPTION_SINGLE_CH
-
 bit ASMN_RSCFDApplications( u08 MenuCom )
 {
 #if 0
@@ -685,14 +683,13 @@ bit ASMN_RSCFDApplications( u08 MenuCom )
   return( UARTStatus );
 #endif
 
-
   Cetic_CAN_LIN_TRA_turn_On();
-
   EE_RSCFD_Reset( 0 );
 #if (EVA_CETIBOX_PWR_CONSUMPTION_MODE == EVA_CETIBOX_PWR_CONSUMPTION_SINGLE_CH)
 //  EE_RSCFD_BasicTest( 0, 1, 0, 0 );
   EE_RSCFD_SingleCH( 0, 1, 0, 0 );
 #else (EVA_CETIBOX_PWR_CONSUMPTION_MODE == EVA_CETIBOX_PWR_CONSUMPTION_ALL_CHS)
+  EE_RSCFD_All8CHs( 0, 1, 0, 0 );
 #endif
 }
 

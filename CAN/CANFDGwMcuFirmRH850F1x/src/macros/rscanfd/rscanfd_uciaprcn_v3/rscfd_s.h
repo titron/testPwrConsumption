@@ -151,8 +151,8 @@
 
 const struct ee_rscfd_cfg_channel EE_RSCFD_A_CHCFG_BASIC = {
 
-  500000,  0.0,                 /* arbitration bitrate 500 kbit/s, default BT */
-  2000000, 0.0,                       /* data bitrate 2000 kbit/s, default BT */
+  1000000,  0.0,                 /* arbitration bitrate 500 kbit/s, default BT */
+  4000000, 0.0,                       /* data bitrate 2000 kbit/s, default BT */
   
   EE_RSCFD_A_BT_AUTO,                     /* automatic arbitration bit timing */
   EE_RSCFD_A_BT_AUTO,                            /* automatic data bit timing */
@@ -242,8 +242,9 @@ const struct ee_rscfd_cfg_global EE_RSCFD_A_GCFG_BASIC = {
 	  1, 1, 1, 1, 1, 1, 1, 1  	            /* every channel has one AFL entry */
   },
   {
-		  EE_RSCFD_A_RXFIFO_SWGW,                           /* disable all RX FIFOs */
-    EE_RSCFD_A_RXFIFO_OFF,
+    //EE_RSCFD_A_RXFIFO_SWGW,  // comment@titron, rx fifo 0 is enabled if test ch0 rx
+    EE_RSCFD_A_RXFIFO_OFF, /* disable all RX FIFOs */
+	EE_RSCFD_A_RXFIFO_OFF,
     EE_RSCFD_A_RXFIFO_OFF,
     EE_RSCFD_A_RXFIFO_OFF,
     EE_RSCFD_A_RXFIFO_OFF,
@@ -344,7 +345,8 @@ struct ee_rscfd_a_afl EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW = {
     0x0000          /* Receive HRH pointer - to be replaced with actual value */
   },
   {
-		  EE_RSCFD_AFL_RXFIF0_EN0,           /* to be replaced by assigned RX-FIFO */
+//		  EE_RSCFD_AFL_RXFIF0_EN0,           /* @titron, to be replaced by assigned RX-FIFO */
+		  EE_RSCFD_AFL_RXFIF0_NONE,
     EE_RSCFD_AFL_COMFIFO_NONE                         /* COM-FIFO is not used */
   }
 };

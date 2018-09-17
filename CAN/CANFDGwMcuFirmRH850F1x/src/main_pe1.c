@@ -67,6 +67,7 @@
 #include <test_tmr.h>
 #include <test_port.h>
 #endif
+
 /***********************************************************************************************************************
  Macro definitions
  ***********************************************************************************************************************/
@@ -92,6 +93,7 @@ void main(void);
  * Arguments    : none
  * Return Value : none
  ***********************************************************************************************************************/
+#define SILENT_DURATION_IN_MILLISECOND_BEFORE_CAN_COM (30000)
 void main(void)
 {
 	__DI();
@@ -108,6 +110,8 @@ void main(void)
 	while(1);
 	port_test();
 #endif
+
+	tmr0_Delay(SILENT_DURATION_IN_MILLISECOND_BEFORE_CAN_COM);
 
 	main_loop();
 } /* End of main() */

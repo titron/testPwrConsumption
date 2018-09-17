@@ -1,4 +1,4 @@
-;RENESAS OPTIMIZING LINKER GENERATED FILE 2018.09.14
+;RENESAS OPTIMIZING LINKER GENERATED FILE 2018.09.17
 ;fsymbol = .const.cmn, comint.text
 
 ;SECTION NAME = .const.cmn
@@ -140,10 +140,10 @@ _INTRCAN7TRX .equ 0x782e
  .public _Isr_OsTimer0
 _Isr_OsTimer0 .equ 0x78c2
  .public _riic0_eei_isr
-_riic0_eei_isr .equ 0x79ba
+_riic0_eei_isr .equ 0x78f4
  .public _riic0_txi_isr
-_riic0_txi_isr .equ 0x7a3e
+_riic0_txi_isr .equ 0x7978
  .public _riic0_rxi_isr
-_riic0_rxi_isr .equ 0x7ac2
+_riic0_rxi_isr .equ 0x79fc
  .public _riic0_tei_isr
-_riic0_tei_isr .equ 0x7b46
+_riic0_tei_isr .equ 0x7a80

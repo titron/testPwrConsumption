@@ -67,6 +67,7 @@
 
 #include "rscfd_p.h"
 #include "rscfd_s.h"
+#include "cetic_eva_setting.h"
 
 /* ASMN Modules: Main Communication Port */
 #if( EE_RSCFD_VERBOSE == 1 )
@@ -462,36 +463,7 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	return (EE_RSCFD_Status_bit);
 }
 #else // evaluation power consumption
-/* DEFAULT_PAYLOAD_LENGTH
- * Possible settings:
- * 0~ 8 --- 0 ~ 8 bytes
- *    9 --- 12 bytes
- *   10 --- 16 bytes
- *   11 --- 20 bytes
- *   12 --- 24 bytes
- *   13 --- 32 bytes
- *   14 --- 48 bytes
- *   15 --- 64 bytes
- */
-#define DEFAULT_PAYLOAD_LENGTH_0BYTE	(0x00)
-#define DEFAULT_PAYLOAD_LENGTH_1BYTE	(0x01)
-#define DEFAULT_PAYLOAD_LENGTH_2BYTES	(0x02)
-#define DEFAULT_PAYLOAD_LENGTH_3BYTES	(0x03)
-#define DEFAULT_PAYLOAD_LENGTH_4BYTES	(0x04)
-#define DEFAULT_PAYLOAD_LENGTH_5BYTES	(0x05)
-#define DEFAULT_PAYLOAD_LENGTH_6BYTES	(0x06)
-#define DEFAULT_PAYLOAD_LENGTH_7BYTES	(0x07)
-#define DEFAULT_PAYLOAD_LENGTH_8BYTES	(0x08)
-#define DEFAULT_PAYLOAD_LENGTH_12BYTES	(0x09)
-#define DEFAULT_PAYLOAD_LENGTH_16BYTES	(0x0A)
-#define DEFAULT_PAYLOAD_LENGTH_20BYTES	(0x0B)
-#define DEFAULT_PAYLOAD_LENGTH_24BYTES	(0x0C)
-#define DEFAULT_PAYLOAD_LENGTH_32BYTES	(0x0D)
-#define DEFAULT_PAYLOAD_LENGTH_48BYTES	(0x0E)
-#define DEFAULT_PAYLOAD_LENGTH_64BYTES	(0x0F)
-#define DEFAULT_PAYLOAD_LENGTH			DEFAULT_PAYLOAD_LENGTH_8BYTES
-#define DEFAULT_PAYLOAD_ID	 			(0x5AA)
-#define DEFAULT_PAYLOAD_DATA 			(0x00)
+
 bit EE_RSCFD_BasicTest(u08 Unit1_u08, /* runs with default configuration */
 u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 {
@@ -609,6 +581,25 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 
 struct ee_rscfd_message SendMessage;
 
+/*** CeticBox Power Consumption
+ * function:
+ * EE_RSCFD_SingleCH()
+ *
+ * Mode 1:
+ * Single channel (channel 0) power consumption
+ *
+ * Test Method:
+ * channel 0 keep transmitting frame.
+ * CANvisualizer3 receive frame.
+ *
+ * Check current from power supply.
+ *
+ * Settings:
+ * CAN FD, Stand Data frame
+ * Data length:DEFAULT_PAYLOAD_LENGTH (8 bytes)
+ * ID: DEFAULT_PAYLOAD_ID (0x00)
+ * Data: DEFAULT_PAYLOAD_DATA (0x00)
+ ***/
 bit EE_RSCFD_SingleCH(u08 Unit1_u08, /* runs with default configuration */
 u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 {
@@ -617,10 +608,8 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	u08 SendStatus_u08;
 	u08 ReceiveStatus_u08;
 	u32 TimeoutLimit_u32;
-//	u08 FIFONumber_u08;
 
 	struct ee_rscfd_message ReceiveMessage;
-//	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXBOX_ANY;
 	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW;
 
 	/* Message Set Up */
@@ -703,6 +692,181 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	return (EE_RSCFD_Status_bit);
 }
 #endif
+
+static u32 EE_RSCFD_Set_afl_cfifo0AsRx(u08 channelIndex)
+{
+	/* Receive Rule:
+	 * CH1 gateway -> CH2
+	 * CH3 gateway -> CH4
+	 * CH5 gateway -> CH6
+	 * CH7 gateway -> CH0
+	 *  */
+	switch(channelIndex)
+	{
+	case 0:
+//		return (EE_RSCFD_AFL_COMFIFO_C1E0 << 8);
+		return (0x00);
+		break;
+	case 1:
+		return (EE_RSCFD_AFL_COMFIFO_C2E0);
+		break;
+	case 2:
+//		return (EE_RSCFD_AFL_COMFIFO_C3E0 << 8);
+		return (0x00);
+		break;
+	case 3:
+		return (EE_RSCFD_AFL_COMFIFO_C4E0);
+		break;
+	case 4:
+//		return (EE_RSCFD_AFL_COMFIFO_C5E0 << 8);
+		return (0x00);
+		break;
+	case 5:
+		return (EE_RSCFD_AFL_COMFIFO_C6E0);
+		break;
+	case 6:
+//		return (EE_RSCFD_AFL_COMFIFO_C7E0 << 8);
+		return (0x00);
+		break;
+	case 7:
+		return (EE_RSCFD_AFL_COMFIFO_C0E0);
+		break;
+	default:
+		return (0x00);
+		break;
+	}
+}
+/*** CeticBox Power Consumption
+ * function:
+ * EE_RSCFD_All8CHs()
+ *
+ * Mode 2:
+ * All 8 channels' power consumption
+ *
+ * Test Method (connection):
+ * CH0 --- CH1
+ * CH2 --- CH3
+ * CH4 --- CH5
+ * CH6 --- CH7
+ *
+ * Check current from power supply.
+ *
+ * Settings:
+ * CH0(CFIFO 0 GW) --- CH1(RX rule, to CH2's CFIFO 0)
+ * CH2(CFIFO 0 GW) --- CH3(RX rule, to CH4's CFIFO 0)
+ * CH4(CFIFO 0 GW) --- CH5(RX rule, to CH6's CFIFO 0)
+ * CH6(CFIFO 0 GW) --- CH7(RX rule, to CH0's CFIFO 0)
+ *
+ * CAN FD, Stand Data frame
+ * Data length:DEFAULT_PAYLOAD_LENGTH (8 bytes)
+ * ID: DEFAULT_PAYLOAD_ID (0x00)
+ * Data: DEFAULT_PAYLOAD_DATA (0x00)
+ ***/
+bit EE_RSCFD_All8CHs(u08 Unit1_u08, /* runs with default configuration */
+u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
+{
+
+	bit EE_RSCFD_Status_bit = EE_RSCFD_OK;
+	u08 DataCounter_u08;
+	u08 SendStatus_u08;
+	u08 ReceiveStatus_u08;
+	u32 TimeoutLimit_u32;
+	u08 tempCh_u08;
+
+	ee_rscfd_cfg_channel* temp_ch_config = &EE_RSCFD_A_CHCFG_BASIC;
+
+	struct ee_rscfd_message ReceiveMessage;
+	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW;
+
+	/* Message Set Up */
+
+	SendMessage.hdr.id = DEFAULT_PAYLOAD_ID;
+	SendMessage.hdr.thlen = EE_RSCFD_CLEAR; /* No entry in THL */
+	SendMessage.hdr.rtr = EE_RSCFD_FRAME_DATA; /* Data Frame */
+	SendMessage.hdr.ide = EE_RSCFD_ID_STD; /* Standard Frame */
+	SendMessage.fdsts.ptr = 0x23; /* HTH value */
+	SendMessage.flag.dlc = DEFAULT_PAYLOAD_LENGTH;
+	SendMessage.path = EE_RSCFD_PATH_MSGBOX; /* Send via Message Box */
+	SendMessage.pathdetail = EE_RSCFD_PATHDETAIL_ANY; /* use any box... */
+
+	for (DataCounter_u08 = 0; DataCounter_u08 < SendMessage.flag.dlc;
+			DataCounter_u08++)
+	{
+		SendMessage.data[DataCounter_u08] = DEFAULT_PAYLOAD_DATA;
+	}
+
+
+	/* Port activation */
+	for(tempCh_u08 = 0;tempCh_u08 < ee_rscfd_channels[ EE_RSCFD_MACROS ];tempCh_u08++)
+	{
+		EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, tempCh_u08);
+		if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+			return ( EE_RSCFD_ERROR);
+	}
+
+	/* Configuration */
+	EE_RSCFD_Status_bit &= EE_RSCFD_SetGlobalConfiguration(Unit1_u08,
+			&EE_RSCFD_A_GCFG_BASIC);
+
+	for(tempCh_u08 = 0;tempCh_u08 < ee_rscfd_channels[ EE_RSCFD_MACROS ];tempCh_u08++)
+	{
+		EE_RSCFD_Status_bit &= EE_RSCFD_Start(Unit1_u08, /* Perform global activation */
+		tempCh_u08,
+		EE_RSCFD_OPMODE_RESET, /* Channel Reset */
+		EE_RSCFD_CLEAR,
+		EE_RSCFD_CLEAR);
+
+		temp_ch_config->cfcc[0].cfrxie = 1;
+		temp_ch_config->cfcc[0].cftxie = 1;
+		temp_ch_config->cfcc[0].cfm = EE_RSCFD_FIFO_MODE_RX;
+		EE_RSCFD_Status_bit &= EE_RSCFD_SetChannelConfiguration(Unit1_u08,
+				tempCh_u08, &EE_RSCFD_A_CHCFG_BASIC);
+		if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+			return ( EE_RSCFD_ERROR);
+
+		/* Activate Units and Channels */
+		EE_RSCFD_Status_bit &= EE_RSCFD_Start(Unit1_u08, tempCh_u08,
+		EE_RSCFD_OPMODE_OPER, /* operation mode */
+		EE_RSCFD_SET, /* error clearing */
+		EE_RSCFD_SET); /* timestamp reset */
+
+		FilterEntry->ptr1.comfifomask = EE_RSCFD_Set_afl_cfifo0AsRx(tempCh_u08);
+		EE_RSCFD_Status_bit &= EE_RSCFD_SetAFLEntry(Unit1_u08, tempCh_u08, tempCh_u08,
+				FilterEntry);
+	}
+
+	for(tempCh_u08 = 0;tempCh_u08 < ee_rscfd_channels[ EE_RSCFD_MACROS ];tempCh_u08++)
+	{
+		EE_RSCFD_Status_bit &= EE_RSCFD_EnableCOMFIFO(Unit1_u08,
+									tempCh_u08,
+									0,
+									EE_RSCFD_SET);
+	}
+
+	EE_RSCFD_A_IRQ_TRX_0 = 0;
+
+	/* Send Message to be received by other unit/channel */
+	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(Unit1_u08, 0,
+			&SendStatus_u08, &SendMessage);
+	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+		return ( EE_RSCFD_ERROR);
+
+	TimeoutLimit_u32 = EE_RSCFD_A_TIMEOUT_LIMIT;
+	while ((--TimeoutLimit_u32 > 0) && (EE_RSCFD_A_IRQ_TRX_0 == 0))
+		;
+	if (EE_RSCFD_A_IRQ_TRX_0 == 0)
+		return ( EE_RSCFD_ERROR);
+
+	while (1)
+		;
+
+	/* Shutdown */
+	EE_RSCFD_Status_bit &= EE_RSCFD_Stop(Unit1_u08,
+	EE_RSCFD_GLOBAL,
+	EE_RSCFD_OPMODE_RESET);
+
+	return (EE_RSCFD_Status_bit);
+}
 
 //=============================================================================
 // FunctionName: EE_RSCFD_BasicSelfTest
