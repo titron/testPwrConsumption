@@ -1286,12 +1286,6 @@ bit EE_RSCFD_PortEnable( u08 UnitNumber_u08,
             PORT_Enable( EE_RSCFD_PORT_M0TX0, EE_RSCFD_PORT_BIT_M0TX0,
                          PORT_DIR_OUTPUT, PORT_MODE_PERIPHERAL, 
                          EE_RSCFD_PORT_FUNC_M0TX0 );
-            PORT_Enable( EE_RSCFD_PORT_M0RX0, EE_RSCFD_PORT_BIT_M0RX0,
-                         PORT_DIR_INPUT, PORT_MODE_PERIPHERAL,
-                         EE_RSCFD_PORT_FUNC_M0RX0 );
-            PORT_Enable( EE_RSCFD_PORT_M0TX0, EE_RSCFD_PORT_BIT_M0TX0,
-                         PORT_DIR_OUTPUT, PORT_MODE_PERIPHERAL,
-                         EE_RSCFD_PORT_FUNC_M0TX0 );
             break;
 #endif
 
@@ -3565,8 +3559,6 @@ bit EE_RSCFD_SetChannelConfiguration( u08 UnitNumber_u08,
   }
 
   ee_rscfd_common_p[ UnitNumber_u08 ]->thlcc[ ChannelNumber_u08 ].thle = Config->thlcc.thle;
-  
-
 
 	return( EE_RSCFD_OK );
 }

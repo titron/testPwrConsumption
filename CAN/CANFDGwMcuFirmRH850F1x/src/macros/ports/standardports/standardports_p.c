@@ -1142,6 +1142,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc0 |= 
@@ -1162,6 +1163,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+                {
+                case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+                    port_function_control4_numeric_p->pfcae0 |=
+                      BitSpecification_u16;
+                    port_function_control2_numeric_p->pfce0 |=
+                      BitSpecification_u16;
+                    port_function_control_numeric_p->pfc0 &=
+                      ~( BitSpecification_u16 );
+                	break;
+                case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+                    port_function_control4_numeric_p->pfcae0 |=
+                      BitSpecification_u16;
+                    port_function_control2_numeric_p->pfce0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control_numeric_p->pfc0 |=
+                      BitSpecification_u16;
+                	break;
+                case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+                    port_function_control4_numeric_p->pfcae0 |=
+                      BitSpecification_u16;
+                    port_function_control2_numeric_p->pfce0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control_numeric_p->pfc0 &=
+                    		~( BitSpecification_u16 );
+                	break;
+                case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+                    port_function_control4_numeric_p->pfcae0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control2_numeric_p->pfce0 |=
+                            BitSpecification_u16 ;
+                    port_function_control_numeric_p->pfc0 |=
+                    		BitSpecification_u16 ;
+                	break;
+                case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+                    port_function_control4_numeric_p->pfcae0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control2_numeric_p->pfce0 |=
+                            BitSpecification_u16 ;
+                    port_function_control_numeric_p->pfc0 &=
+                            ~( BitSpecification_u16 );
+                	break;
+                case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+                    port_function_control4_numeric_p->pfcae0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control2_numeric_p->pfce0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control_numeric_p->pfc0 |=
+                            BitSpecification_u16 ;
+                	break;
+                case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+                    port_function_control4_numeric_p->pfcae0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control2_numeric_p->pfce0 &=
+                            ~( BitSpecification_u16 );
+                    port_function_control_numeric_p->pfc0 &=
+                            ~( BitSpecification_u16 );
+                	break;
+                default:
+                	break;
+                }
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1221,6 +1292,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc1 |= 
@@ -1241,6 +1313,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae1 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce1 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc1 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae1 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce1 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc1 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae1 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce1 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc1 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae1 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce1 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc1 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae1 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce1 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc1 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae1 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce1 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc1 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae1 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce1 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc1 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1283,6 +1425,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc2 |= 
@@ -1303,6 +1446,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae2 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce2 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc2 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae2 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce2 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc2 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae2 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce2 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc2 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae2 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce2 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc2 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae2 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce2 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc2 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae2 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce2 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc2 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae2 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce2 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc2 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1345,6 +1558,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc3 |= 
@@ -1365,6 +1579,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae3 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce3 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc3 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae3 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce3 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc3 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae3 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce3 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc3 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae3 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce3 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc3 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae3 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce3 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc3 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae3 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce3 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc3 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae3 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce3 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc3 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1407,6 +1691,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc4 |= 
@@ -1427,6 +1712,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae4 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce4 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc4 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae4 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce4 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc4 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae4 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce4 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc4 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae4 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce4 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc4 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae4 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce4 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc4 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae4 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce4 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc4 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae4 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce4 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc4 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1469,6 +1824,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc5 |= 
@@ -1489,6 +1845,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae5 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce5 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc5 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae5 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce5 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc5 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae5 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce5 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc5 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae5 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce5 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc5 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae5 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce5 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc5 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae5 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce5 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc5 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae5 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce5 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc5 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1531,6 +1957,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc6 |= 
@@ -1551,6 +1978,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae6 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce6 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc6 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae6 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce6 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc6 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae6 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce6 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc6 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae6 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce6 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc6 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae6 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce6 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc6 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae6 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce6 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc6 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae6 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce6 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc6 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1593,6 +2090,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc7 |= 
@@ -1613,6 +2111,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae7 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce7 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc7 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae7 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce7 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc7 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae7 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce7 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc7 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae7 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce7 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc7 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae7 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce7 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc7 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae7 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce7 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc7 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae7 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce7 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc7 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1655,6 +2223,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc8 |= 
@@ -1675,6 +2244,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae8 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce8 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc8 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae8 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce8 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc8 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae8 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce8 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc8 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae8 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce8 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc8 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae8 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce8 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc8 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae8 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce8 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc8 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae8 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce8 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc8 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1717,6 +2356,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc9 |= 
@@ -1737,6 +2377,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae9 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce9 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc9 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae9 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce9 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc9 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae9 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce9 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc9 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae9 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce9 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc9 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae9 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce9 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc9 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae9 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce9 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc9 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae9 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce9 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc9 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1779,6 +2489,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc10 |= 
@@ -1799,6 +2510,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae10 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce10 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc10 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae10 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce10 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc10 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae10 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce10 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc10 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae10 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce10 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc10 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae10 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce10 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc10 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae10 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce10 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc10 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae10 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce10 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc10 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1841,6 +2622,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc11 |= 
@@ -1861,6 +2643,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae11 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce11 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc11 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae11 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce11 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc11 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae11 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce11 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc11 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae11 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce11 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc11 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae11 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce11 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc11 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae11 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce11 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc11 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae11 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce11 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc11 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1903,6 +2755,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc12 |= 
@@ -1923,6 +2776,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae12 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce12 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc12 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae12 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce12 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc12 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae12 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce12 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc12 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae12 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce12 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc12 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae12 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce12 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc12 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae12 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce12 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc12 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae12 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce12 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc12 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -1965,6 +2888,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc13 |= 
@@ -1985,6 +2909,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae13 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce13 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc13 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae13 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce13 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc13 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae13 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce13 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc13 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae13 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce13 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc13 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae13 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce13 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc13 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae13 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce13 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc13 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae13 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce13 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc13 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2027,6 +3021,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc14 |= 
@@ -2047,6 +3042,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae14 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce14 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc14 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae14 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce14 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc14 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae14 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce14 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc14 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae14 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce14 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc14 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae14 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce14 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc14 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae14 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce14 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc14 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae14 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce14 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc14 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2089,6 +3154,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc15 |= 
@@ -2109,6 +3175,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae15 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce15 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc15 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae15 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce15 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc15 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae15 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce15 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc15 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae15 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce15 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc15 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae15 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce15 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc15 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae15 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce15 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc15 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae15 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce15 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc15 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2151,6 +3287,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc16 |= 
@@ -2171,6 +3308,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else\
+		switch(AlternateFunction_u08)
+		{
+		case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+			/* Alternative 7 */
+			port_function_control4_numeric_p->pfcae16 |=
+			  BitSpecification_u16;
+			port_function_control2_numeric_p->pfce16 |=
+			  BitSpecification_u16;
+			port_function_control_numeric_p->pfc16 &=
+			  ~( BitSpecification_u16 );
+			break;
+		case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+			/* Alternative 6 */
+			port_function_control4_numeric_p->pfcae16 |=
+			  BitSpecification_u16;
+			port_function_control2_numeric_p->pfce16 &=
+					~( BitSpecification_u16 );
+			port_function_control_numeric_p->pfc16 |=
+			  BitSpecification_u16;
+			break;
+		case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+			/* Alternative 5 */
+			port_function_control4_numeric_p->pfcae16 |=
+			  BitSpecification_u16;
+			port_function_control2_numeric_p->pfce16 &=
+					~( BitSpecification_u16 );
+			port_function_control_numeric_p->pfc16 &=
+					~( BitSpecification_u16 );
+			break;
+		case (PORT_FUNCTION_ALTERN4 ):
+			/* Alternative 4 */
+			port_function_control4_numeric_p->pfcae16 &=
+					~( BitSpecification_u16 );
+			port_function_control2_numeric_p->pfce16 |=
+					BitSpecification_u16 ;
+			port_function_control_numeric_p->pfc16 |=
+					BitSpecification_u16 ;
+			break;
+		case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+			/* Alternative 3 */
+			port_function_control4_numeric_p->pfcae16 &=
+					~( BitSpecification_u16 );
+			port_function_control2_numeric_p->pfce16 |=
+					BitSpecification_u16 ;
+			port_function_control_numeric_p->pfc16 &=
+					~( BitSpecification_u16 );
+			break;
+		case (PORT_FUNCTION_ALTERN2 ):
+			/* Alternative 2 */
+			port_function_control4_numeric_p->pfcae16 &=
+					~( BitSpecification_u16 );
+			port_function_control2_numeric_p->pfce16 &=
+					~( BitSpecification_u16 );
+			port_function_control_numeric_p->pfc16 |=
+					BitSpecification_u16 ;
+			break;
+		case (PORT_FUNCTION_ALTERN ):
+			/* Alternative 1 */
+			port_function_control4_numeric_p->pfcae16 &=
+					~( BitSpecification_u16 );
+			port_function_control2_numeric_p->pfce16 &=
+					~( BitSpecification_u16 );
+			port_function_control_numeric_p->pfc16 &=
+					~( BitSpecification_u16 );
+			break;
+		default:
+			break;
+		}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2213,6 +3420,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc17 |= 
@@ -2233,6 +3441,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae17 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce17 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc17 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae17 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce17 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc17 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae17 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce17 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc17 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae17 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce17 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc17 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae17 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce17 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc17 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae17 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce17 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc17 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae17 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce17 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc17 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2276,6 +3554,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc18 |= 
@@ -2296,6 +3575,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae18 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce18 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc18 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae18 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce18 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc18 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae18 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce18 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc18 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae18 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce18 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc18 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae18 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce18 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc18 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae18 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce18 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc18 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae18 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce18 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc18 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2339,6 +3688,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc20 |= 
@@ -2359,6 +3709,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae20 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce20 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc20 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae20 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce20 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc20 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae20 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce20 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc20 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae20 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce20 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc20 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae20 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce20 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc20 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae20 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce20 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc20 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae20 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce20 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc20 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2402,6 +3822,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc22 |= 
@@ -2422,6 +3843,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae22 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce22 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc22 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae22 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce22 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc22 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae22 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce22 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc22 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae22 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce22 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc22 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae22 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce22 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc22 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae22 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce22 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc22 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae22 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce22 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc22 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2465,6 +3956,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc24 |= 
@@ -2485,6 +3977,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae24 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce24 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc24 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae24 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce24 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc24 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae24 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce24 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc24 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae24 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce24 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc24 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae24 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce24 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc24 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae24 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce24 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc24 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae24 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce24 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc24 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2528,6 +4090,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc25 |= 
@@ -2548,6 +4111,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae25 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce25 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc25 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae25 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce25 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc25 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae25 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce25 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc25 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae25 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce25 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc25 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae25 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce25 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc25 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae25 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce25 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc25 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae25 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce25 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc25 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2591,6 +4224,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc29 |= 
@@ -2611,6 +4245,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae29 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce29 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc29 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae29 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce29 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc29 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae29 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce29 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc29 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae29 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce29 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc29 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae29 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce29 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc29 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae29 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce29 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc29 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae29 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce29 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc29 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2654,6 +4358,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc31 |= 
@@ -2674,6 +4379,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae31 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce31 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc31 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae31 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce31 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc31 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae31 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce31 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc31 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae31 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce31 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc31 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae31 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce31 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc31 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae31 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce31 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc31 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae31 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce31 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc31 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2717,6 +4492,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc32 |= 
@@ -2737,6 +4513,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae32 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce32 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc32 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae32 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce32 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc32 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae32 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce32 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc32 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae32 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce32 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc32 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae32 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce32 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc32 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae32 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce32 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc32 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae32 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce32 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc32 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2780,6 +4626,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc33 |= 
@@ -2800,6 +4647,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae33 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce33 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc33 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae33 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce33 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc33 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae33 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce33 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc33 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae33 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce33 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc33 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae33 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce33 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc33 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae33 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce33 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc33 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae33 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce33 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc33 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )
@@ -2843,6 +4760,7 @@ bit PORT_Enable( u16 PortNumber_u16,
               }
             else 
               {
+#if 0
                 if ( AlternateFunction_u08 & PORT_FUNCTION_ALTERN )
                   {
                     port_function_control_numeric_p->pfc34 |= 
@@ -2863,6 +4781,76 @@ bit PORT_Enable( u16 PortNumber_u16,
                       BitSpecification_u16;
                   }
 #endif
+#endif
+#else
+                switch(AlternateFunction_u08)
+				{
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 7 */
+					port_function_control4_numeric_p->pfcae34 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce34 |=
+					  BitSpecification_u16;
+					port_function_control_numeric_p->pfc34 &=
+					  ~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 6 */
+					port_function_control4_numeric_p->pfcae34 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce34 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc34 |=
+					  BitSpecification_u16;
+					break;
+				case (PORT_FUNCTION_ALTERN4 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 5 */
+					port_function_control4_numeric_p->pfcae34 |=
+					  BitSpecification_u16;
+					port_function_control2_numeric_p->pfce34 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc34 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN4 ):
+					/* Alternative 4 */
+					port_function_control4_numeric_p->pfcae34 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce34 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc34 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN2 | PORT_FUNCTION_ALTERN ):
+					/* Alternative 3 */
+					port_function_control4_numeric_p->pfcae34 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce34 |=
+							BitSpecification_u16 ;
+					port_function_control_numeric_p->pfc34 &=
+							~( BitSpecification_u16 );
+					break;
+				case (PORT_FUNCTION_ALTERN2 ):
+					/* Alternative 2 */
+					port_function_control4_numeric_p->pfcae34 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce34 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc34 |=
+							BitSpecification_u16 ;
+					break;
+				case (PORT_FUNCTION_ALTERN ):
+					/* Alternative 1 */
+					port_function_control4_numeric_p->pfcae34 &=
+							~( BitSpecification_u16 );
+					port_function_control2_numeric_p->pfce34 &=
+							~( BitSpecification_u16 );
+					port_function_control_numeric_p->pfc34 &=
+							~( BitSpecification_u16 );
+					break;
+				default:
+					break;
+				}
 #endif
               }
             if ( PortDirection_u08 == PORT_DIR_OUTPUT )

@@ -63,6 +63,16 @@
 
 /* Default Configuration Macros */
 
+#define EE_RSCFD_A_COMFIFO_ON { 0, 0, 0, 0, \
+                                 EE_RSCFD_FIFODL_8, 0, \
+                                 EE_RSCFD_FIFO_MODE_GW, \
+                                 EE_RSCFD_FIFO_IT_REFCLK, \
+                                 EE_RSCFD_FIFO_IT_REFCLK1, \
+                                 EE_RSCFD_FIFO_INT_ONLEVEL, \
+                                 EE_RSCFD_FIFO_ILEVEL_1D8, \
+                                 0, \
+                                 EE_RSCFD_FIFO_DEPTH_128, \
+                                 0 }                          /* COM FIFO disabled */
 #define EE_RSCFD_A_COMFIFO_OFF { 0, 0, 0, 0, \
                                  EE_RSCFD_FIFODL_8, 0, \
                                  EE_RSCFD_FIFO_MODE_RX, \
@@ -114,7 +124,8 @@
                                     EE_RSCFD_TDC_DISABLE,     \
                                     EE_RSCFD_ESI_BYNODE, 0,   \
                                     0, 0,                     \
-                                    EE_RSCFD_MULTIGW_DISABLE, \
+                                    /* EE_RSCFD_MULTIGW_DISABLE, \ comment @titron */ \
+                                    EE_RSCFD_MULTIGW_ENABLE, \
                                     EE_RSCFD_FDF_FD,          \
                                     EE_RSCFD_BRS_SWITCH, 0,   \
                                     EE_RSCFD_FDMIXED,         \
@@ -151,8 +162,8 @@
 
 const struct ee_rscfd_cfg_channel EE_RSCFD_A_CHCFG_BASIC = {
 
-  1000000,  0.0,                 /* arbitration bitrate 500 kbit/s, default BT */
-  4000000, 0.0,                       /* data bitrate 2000 kbit/s, default BT */
+  500000,  0.0,                 /* arbitration bitrate 500 kbit/s, default BT */
+  2000000, 0.0,                       /* data bitrate 2000 kbit/s, default BT */
   
   EE_RSCFD_A_BT_AUTO,                     /* automatic arbitration bit timing */
   EE_RSCFD_A_BT_AUTO,                            /* automatic data bit timing */
@@ -173,7 +184,12 @@ const struct ee_rscfd_cfg_channel EE_RSCFD_A_CHCFG_BASIC = {
   
   EE_RSCFD_A_TXQ_OFF,                      /* disable queues, lists and FIFOs */
   EE_RSCFD_A_THL_OFF,
-  { EE_RSCFD_A_COMFIFO_OFF,
+  {
+#if (EVA_CETIBOX_PWR_CONSUMPTION_MODE == EVA_CETIBOX_PWR_CONSUMPTION_SINGLE_CH)
+		  EE_RSCFD_A_COMFIFO_OFF,
+#else
+		  EE_RSCFD_A_COMFIFO_ON,
+#endif
     EE_RSCFD_A_COMFIFO_OFF,
     EE_RSCFD_A_COMFIFO_OFF }
 };
@@ -238,8 +254,12 @@ const struct ee_rscfd_cfg_global EE_RSCFD_A_GCFG_BASIC = {
   	EE_RSCFD_MAXRXBUFFERS,        /* use max. amount of classical RX buffers */
   	EE_RSCFD_BUFDL_8, 0  /* standard 8-byte size of all classical RX buffers */
   },
-  {             
+  {
+#if (EVA_CETIBOX_PWR_CONSUMPTION_MODE == EVA_CETIBOX_PWR_CONSUMPTION_SINGLE_CH)
 	  1, 1, 1, 1, 1, 1, 1, 1  	            /* every channel has one AFL entry */
+#else
+	  0, 1, 0, 1, 0, 1, 0, 1  	            /* every channel has one AFL entry */
+#endif
   },
   {
     //EE_RSCFD_A_RXFIFO_SWGW,  // comment@titron, rx fifo 0 is enabled if test ch0 rx

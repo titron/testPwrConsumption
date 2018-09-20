@@ -473,6 +473,7 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	u08 ReceiveStatus_u08;
 	u32 TimeoutLimit_u32;
 //	u08 FIFONumber_u08;
+	u08 tempCh_u08;
 
 	struct ee_rscfd_message SendMessage;
 	struct ee_rscfd_message ReceiveMessage;
@@ -506,9 +507,12 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	FilterEntry->ptr1.rxfifomask = EE_RSCFD_AFL_RXFIF0_EN0; /* HRH equal to HTH */
 
 	/* Port activation */
-	EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, Channel1_u08);
-	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
-		return ( EE_RSCFD_ERROR);
+	for(tempCh_u08 = 0;tempCh_u08 < EE_RSCFD_MAXCHANNELS;tempCh_u08++)
+	{
+		EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, tempCh_u08);
+		if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+			return ( EE_RSCFD_ERROR);
+	}
 
 	/* Configuration */
 
@@ -608,6 +612,7 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	u08 SendStatus_u08;
 	u08 ReceiveStatus_u08;
 	u32 TimeoutLimit_u32;
+	u08 tempCh_u08;
 
 	struct ee_rscfd_message ReceiveMessage;
 	struct ee_rscfd_a_afl *FilterEntry = &EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW;
@@ -631,9 +636,12 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 
 
 	/* Port activation */
-	EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, Channel1_u08);
-	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
-		return ( EE_RSCFD_ERROR);
+	for(tempCh_u08 = 0;tempCh_u08 < EE_RSCFD_MAXCHANNELS;tempCh_u08++)
+	{
+		EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, tempCh_u08);
+		if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
+			return ( EE_RSCFD_ERROR);
+	}
 
 	/* Configuration */
 
@@ -787,7 +795,8 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	SendMessage.fdsts.ptr = 0x23; /* HTH value */
 	SendMessage.flag.dlc = DEFAULT_PAYLOAD_LENGTH;
 	SendMessage.path = EE_RSCFD_PATH_MSGBOX; /* Send via Message Box */
-	SendMessage.pathdetail = EE_RSCFD_PATHDETAIL_ANY; /* use any box... */
+//	SendMessage.pathdetail = EE_RSCFD_PATHDETAIL_ANY; /* use any box... */
+	SendMessage.pathdetail = 0x01; /* use any box... */
 
 	for (DataCounter_u08 = 0; DataCounter_u08 < SendMessage.flag.dlc;
 			DataCounter_u08++)
@@ -797,7 +806,8 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 
 
 	/* Port activation */
-	for(tempCh_u08 = 0;tempCh_u08 < ee_rscfd_channels[ EE_RSCFD_MACROS ];tempCh_u08++)
+//	for(tempCh_u08 = 0;tempCh_u08 < ee_rscfd_channels[ EE_RSCFD_MACROS ];tempCh_u08++)
+	for(tempCh_u08 = 0;tempCh_u08 < EE_RSCFD_MAXCHANNELS;tempCh_u08++)
 	{
 		EE_RSCFD_Status_bit = EE_RSCFD_PortEnable(Unit1_u08, tempCh_u08);
 		if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
@@ -808,7 +818,19 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	EE_RSCFD_Status_bit &= EE_RSCFD_SetGlobalConfiguration(Unit1_u08,
 			&EE_RSCFD_A_GCFG_BASIC);
 
-	for(tempCh_u08 = 0;tempCh_u08 < ee_rscfd_channels[ EE_RSCFD_MACROS ];tempCh_u08++)
+	for(tempCh_u08 = 0;tempCh_u08 < EE_RSCFD_MAXCHANNELS;tempCh_u08++)
+	{
+		/* Set receive rule */
+		FilterEntry->ptr1.comfifomask = EE_RSCFD_Set_afl_cfifo0AsRx(tempCh_u08);
+		EE_RSCFD_Status_bit &= EE_RSCFD_SetAFLEntry(Unit1_u08, tempCh_u08, 0,
+				FilterEntry);
+
+		/* Set common fifo */
+		EE_RSCFD_Status_bit &= EE_RSCFD_SetCOMFIFOConfiguration(Unit1_u08,
+				tempCh_u08, &EE_RSCFD_A_CHCFG_BASIC);
+	}
+
+	for(tempCh_u08 = 0;tempCh_u08 < EE_RSCFD_MAXCHANNELS;tempCh_u08++)
 	{
 		EE_RSCFD_Status_bit &= EE_RSCFD_Start(Unit1_u08, /* Perform global activation */
 		tempCh_u08,
@@ -816,9 +838,8 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 		EE_RSCFD_CLEAR,
 		EE_RSCFD_CLEAR);
 
-		temp_ch_config->cfcc[0].cfrxie = 1;
-		temp_ch_config->cfcc[0].cftxie = 1;
-		temp_ch_config->cfcc[0].cfm = EE_RSCFD_FIFO_MODE_RX;
+//		temp_ch_config->arb_bitrate = 1000000;
+//		temp_ch_config->data_bitrate = 4000000;
 		EE_RSCFD_Status_bit &= EE_RSCFD_SetChannelConfiguration(Unit1_u08,
 				tempCh_u08, &EE_RSCFD_A_CHCFG_BASIC);
 		if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
@@ -830,13 +851,7 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 		EE_RSCFD_SET, /* error clearing */
 		EE_RSCFD_SET); /* timestamp reset */
 
-		FilterEntry->ptr1.comfifomask = EE_RSCFD_Set_afl_cfifo0AsRx(tempCh_u08);
-		EE_RSCFD_Status_bit &= EE_RSCFD_SetAFLEntry(Unit1_u08, tempCh_u08, tempCh_u08,
-				FilterEntry);
-	}
 
-	for(tempCh_u08 = 0;tempCh_u08 < ee_rscfd_channels[ EE_RSCFD_MACROS ];tempCh_u08++)
-	{
 		EE_RSCFD_Status_bit &= EE_RSCFD_EnableCOMFIFO(Unit1_u08,
 									tempCh_u08,
 									0,
@@ -846,7 +861,7 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	EE_RSCFD_A_IRQ_TRX_0 = 0;
 
 	/* Send Message to be received by other unit/channel */
-	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(Unit1_u08, 0,
+	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(Unit1_u08, Channel1_u08,
 			&SendStatus_u08, &SendMessage);
 	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
 		return ( EE_RSCFD_ERROR);
