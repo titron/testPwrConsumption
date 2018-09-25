@@ -170,6 +170,13 @@ void RSCFD_A_UnitChannel2TransmitIRQ(void) /* Receive Interrupt 1st Unit/Channel
 	return;
 }
 
+void RSCFD_A_UnitChannel8TransmitIRQ(void) /* Receive Interrupt 1st Unit/Channel */
+{
+	EE_RSCFD_A_IRQ_TRX_0++;
+	EE_RSCFD_CH7_tx();
+	return;
+}
+
 void RSCFD_A_GatewayTransmitIRQ(void) /* Transmit Interrupt Gateway */
 {
 	EE_RSCFD_A_IRQ_TRX_0++;
@@ -659,9 +666,12 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	EE_RSCFD_Status_bit &= EE_RSCFD_SetChannelConfiguration(Unit1_u08,
 			Channel1_u08, &EE_RSCFD_A_CHCFG_BASIC);
 
+//	EE_RSCFD_Status_bit &= EE_RSCFD_CreateInterrupt(Unit1_u08, Channel1_u08,
+//	EE_RSCFD_INT_TX,
+//	EE_RSCFD_INTENABLEDEFAULT, RSCFD_A_UnitChannel1TransmitIRQ);
 	EE_RSCFD_Status_bit &= EE_RSCFD_CreateInterrupt(Unit1_u08, Channel1_u08,
 	EE_RSCFD_INT_TX,
-	EE_RSCFD_INTENABLEDEFAULT, RSCFD_A_UnitChannel1TransmitIRQ);
+	EE_RSCFD_INTENABLEDEFAULT, RSCFD_A_UnitChannel8TransmitIRQ);
 
 	if (EE_RSCFD_Status_bit == EE_RSCFD_ERROR)
 		return ( EE_RSCFD_ERROR);

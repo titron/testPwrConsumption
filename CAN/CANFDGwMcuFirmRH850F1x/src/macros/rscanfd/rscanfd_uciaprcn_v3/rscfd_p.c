@@ -238,6 +238,14 @@ void EE_RSCFD_CH0_tx()
 	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(0, 0,
 				&SendStatus_u08, &SendMessage);
 }
+void EE_RSCFD_CH7_tx()
+{
+	bit EE_RSCFD_Status_bit = EE_RSCFD_OK;
+	u08 SendStatus_u08;
+
+	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(0, 7,
+				&SendStatus_u08, &SendMessage);
+}
 
                                   
 u08 EE_RSCFD_GetTxBuffer( u32 FlagRegister_u32 )

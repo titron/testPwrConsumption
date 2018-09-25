@@ -628,6 +628,53 @@ ApplRSCFDSWGateway( u08 MenuCom )
 
 #endif
 
+
+uint32_t turnOnTrcvs_CANLIN_AllChs[13] = {
+		0xff,// 0x0, output CAN enable0
+		0xff,// 0x1, output Can enable1
+		0xff,// 0x2, output CAN stbz0
+		0xff,// 0x3, output CAN stbz1
+		0x00,// 0x4, input CAN wake0
+		0x00,// 0X5, input CAN wake1
+		0x00,// 0x6, input rlin3x_mst
+		0xff,// 0x7, input rlin3x_slpz
+		0x00,// 0x8, input rlin3x_wakez
+		0xff,// 0x9, input rlin2x_slpz
+		0x00,// 0xA, input rlin2x_wakez
+		0x00,// 0xB, input can0 err
+		0x00,// 0xC, input can1 err
+};
+uint32_t turnOnTrcvs_CAN_AllChs[13] = {
+			0xff,// 0x0, output CAN enable0
+			0xff,// 0x1, output Can enable1
+			0xff,// 0x2, output CAN stbz0
+			0xff,// 0x3, output CAN stbz1
+			0x00,// 0x4, input CAN wake0
+			0x00,// 0X5, input CAN wake1
+			0x00,// 0x6, input rlin3x_mst
+			0x00,// 0x7, input rlin3x_slpz
+			0x00,// 0x8, input rlin3x_wakez
+			0x00,// 0x9, input rlin2x_slpz
+			0x00,// 0xA, input rlin2x_wakez
+			0x00,// 0xB, input can0 err
+			0x00,// 0xC, input can1 err
+	};
+uint32_t turnOnTrcvs_CAN_Ch7[13] = {
+			0x80,// 0x0, output CAN enable0
+			0x00,// 0x1, output Can enable1
+			0x80,// 0x2, output CAN stbz0
+			0x00,// 0x3, output CAN stbz1
+			0x00,// 0x4, input CAN wake0
+			0x00,// 0X5, input CAN wake1
+			0x00,// 0x6, input rlin3x_mst
+			0x00,// 0x7, input rlin3x_slpz
+			0x00,// 0x8, input rlin3x_wakez
+			0x00,// 0x9, input rlin2x_slpz
+			0x00,// 0xA, input rlin2x_wakez
+			0x00,// 0xB, input can0 err
+			0x00,// 0xC, input can1 err
+	};
+
 bit ASMN_RSCFDApplications( u08 MenuCom )
 {
 #if 0
@@ -683,12 +730,13 @@ bit ASMN_RSCFDApplications( u08 MenuCom )
   return( UARTStatus );
 #endif
 
-  Cetic_CAN_LIN_TRA_turn_On();
   EE_RSCFD_Reset( 0 );
 #if (EVA_CETIBOX_PWR_CONSUMPTION_MODE == EVA_CETIBOX_PWR_CONSUMPTION_SINGLE_CH)
 //  EE_RSCFD_BasicTest( 0, 1, 0, 0 );
-  EE_RSCFD_SingleCH( 0, 1, 0, 0 );
+  Cetic_CAN_LIN_TRA_turn_On(&turnOnTrcvs_CAN_Ch7[0]);
+  EE_RSCFD_SingleCH( 0, 1, 7, 0 );
 #else
+  Cetic_CAN_LIN_TRA_turn_On(&turnOnTrcvs_CAN_AllChs[0]);
   EE_RSCFD_All8CHs( 0, 1, 0, 0 );
 #endif
 }
