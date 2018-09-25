@@ -61,6 +61,8 @@
 #include <map_rscfd.h>
 #endif
 
+#include "cetic_eva_setting.h"
+
 /* Default Configuration Macros */
 
 #define EE_RSCFD_A_COMFIFO_ON { 0, 0, 0, 0, \
@@ -124,7 +126,7 @@
                                     EE_RSCFD_TDC_DISABLE,     \
                                     EE_RSCFD_ESI_BYNODE, 0,   \
                                     0, 0,                     \
-                                    /* EE_RSCFD_MULTIGW_DISABLE, \ comment @titron */ \
+                                    /* EE_RSCFD_MULTIGW_DISABLE, \ */ \
                                     EE_RSCFD_MULTIGW_ENABLE, \
                                     EE_RSCFD_FDF_FD,          \
                                     EE_RSCFD_BRS_SWITCH, 0,   \
@@ -164,6 +166,8 @@ const struct ee_rscfd_cfg_channel EE_RSCFD_A_CHCFG_BASIC = {
 
   500000,  0.0,                 /* arbitration bitrate 500 kbit/s, default BT */
   2000000, 0.0,                       /* data bitrate 2000 kbit/s, default BT */
+//  1000000,  0.0,                 /* arbitration bitrate 1000 kbit/s, default BT */
+//  4000000, 0.0,                       /* data bitrate 4000 kbit/s, default BT */
   
   EE_RSCFD_A_BT_AUTO,                     /* automatic arbitration bit timing */
   EE_RSCFD_A_BT_AUTO,                            /* automatic data bit timing */
@@ -258,7 +262,7 @@ const struct ee_rscfd_cfg_global EE_RSCFD_A_GCFG_BASIC = {
 #if (EVA_CETIBOX_PWR_CONSUMPTION_MODE == EVA_CETIBOX_PWR_CONSUMPTION_SINGLE_CH)
 	  1, 1, 1, 1, 1, 1, 1, 1  	            /* every channel has one AFL entry */
 #else
-	  0, 1, 0, 1, 0, 1, 0, 1  	            /* every channel has one AFL entry */
+	  0, 1, 0, 1, 0, 1, 0, 0  	            /* every channel has one AFL entry */
 #endif
   },
   {
@@ -367,6 +371,30 @@ struct ee_rscfd_a_afl EE_RSCFD_A_AFL_RXFIFO_STDID_SWGW = {
   {
 //		  EE_RSCFD_AFL_RXFIF0_EN0,           /* @titron, to be replaced by assigned RX-FIFO */
 		  EE_RSCFD_AFL_RXFIF0_NONE,
+    EE_RSCFD_AFL_COMFIFO_NONE                         /* COM-FIFO is not used */
+  }
+};
+struct ee_rscfd_a_afl EE_RSCFD_A_AFL_CFIFO_STDID_GW = {
+
+  {
+    0x0000000,            /* to be replaced by GW bus number in lowest 4 bits */
+    EE_RSCFD_AFL_RXENTRY,                        /* receive entry type of AFL */
+    EE_RSCFD_FRAME_DATA,                      /* RTR data frame configuration */
+    EE_RSCFD_ID_STD                           /* standard frame configuration */
+  },
+  {
+    0x0000000,                             /* mask is filtering GW bus number */
+    0, EE_RSCFD_MASK_DONTCARE,                  /* only standard ID data frames */
+	EE_RSCFD_MASK_DONTCARE
+  },
+  {
+    EE_RSCFD_DLCCHECK_DISABLE, 0,      /* to enable DLC check, enter DLC here */
+    0,                               /* RX Box Number - not relevant for FIFO */
+    EE_RSCFD_CLEAR,                                 /* RX Box is set inactive */
+    0x0000          /* Receive HRH pointer - to be replaced with actual value */
+  },
+  {
+    EE_RSCFD_AFL_RXFIF0_NONE,
     EE_RSCFD_AFL_COMFIFO_NONE                         /* COM-FIFO is not used */
   }
 };

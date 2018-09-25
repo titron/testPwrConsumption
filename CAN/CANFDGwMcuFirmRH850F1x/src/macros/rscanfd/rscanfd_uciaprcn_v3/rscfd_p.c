@@ -3482,14 +3482,6 @@ bit EE_RSCFD_SetChannelConfiguration( u08 UnitNumber_u08,
   ee_rscfd_common_p[ UnitNumber_u08 ]->fdch[ ChannelNumber_u08 ].fdctr.eocclr = Config->fdctr.eocclr;
   ee_rscfd_common_p[ UnitNumber_u08 ]->fdch[ ChannelNumber_u08 ].fdctr.socclr = Config->fdctr.socclr;
   
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->rmnd[0]);
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->rfcc[0]);
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->cfcc[0]);
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->fests);
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->tmtrsts[0]);
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->txq.cc[0]);
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->thlcc[0]);
-//  testsfrAddress = &(ee_rscfd_common_p[ UnitNumber_u08 ]->gtcfg);
   ee_rscfd_common_p[ UnitNumber_u08 ]->fdch[ ChannelNumber_u08 ].fdcfg.eoccfg = Config->fdcfg.eoccfg;
   ee_rscfd_common_p[ UnitNumber_u08 ]->fdch[ ChannelNumber_u08 ].fdcfg.tdcoc  = Config->fdcfg.tdcoc;
   ee_rscfd_common_p[ UnitNumber_u08 ]->fdch[ ChannelNumber_u08 ].fdcfg.tdce   = Config->fdcfg.tdce;
@@ -4259,7 +4251,9 @@ bit EE_RSCFD_SetAFLEntry( u08  UnitNumber_u08,
   if( AFLElement_u16 >= EE_RSCFD_MAXAFLENTRIES ) 
     return( EE_RSCFD_ERROR );
 
-	if( RuleNumber_u16 >= AFLChannelEntry[ ChannelNumber_u08 ] )
+//	if( RuleNumber_u16 >= AFLChannelEntry[ ChannelNumber_u08 ] )
+//		return( EE_RSCFD_ERROR );
+	if( RuleNumber_u16 > AFLChannelEntry[ ChannelNumber_u08 ] )
 		return( EE_RSCFD_ERROR );
 
   if( AFLChannelEntry[ ChannelNumber_u08 ] > EE_RSCFD_MAXAFLCHANSET )
