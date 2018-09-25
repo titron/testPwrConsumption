@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<content>
+<general/>
+<database/>
+<channels>
+<K1025 db_ref="-1" ver="0" auto_speed="0" nbitrate="500000" nbt="0" dbitrate="2000000" dbt="0" run_mode="0" tx_mode="0" terminal_res="0">
+<graphic/>
+</K1025>
+<K1024 db_ref="-1" ver="1" auto_speed="0" nbitrate="500000" nbt="21" dbitrate="2000000" dbt="3" run_mode="1" tx_mode="0" terminal_res="1">
+<graphic/>
+</K1024>
+<K769 db_ref="-1" ver="1" auto_speed="0" nbitrate="500000" nbt="21" dbitrate="2000000" dbt="3" run_mode="0" tx_mode="0" terminal_res="1">
+<graphic/>
+</K769>
+<K768 db_ref="-1" ver="1" auto_speed="0" nbitrate="500000" nbt="21" dbitrate="2000000" dbt="3" run_mode="0" tx_mode="0" terminal_res="0">
+<graphic/>
+</K768>
+</channels>
+<filters/>
+<frames/>
+</content>
