@@ -1,0 +1,10 @@
+#!gbuild
+[Subproject]
+	-I.
+	:sourceDir=.
+	--slash_comment
+	--slash_comment
+	-Onone
+standardports.h
+standardports_p.h
+standardports_p.c

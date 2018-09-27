@@ -1,0 +1,120 @@
+#!gbuild
+[Subproject]
+	-I.
+	:sourceDir=.
+	--slash_comment
+	-D__ghs__
+	-I..\..\..\common
+	:sourceDir=..\..\..\common
+	-I..\..\..\macros
+	:sourceDir=..\..\..\macros
+	-I..\.\
+	:sourceDir=..\.\
+ASMN.c
+asmn_ports_p_asmnif.h
+#asmn_adc_p_asmnif.h
+#asmn_brg_p_asmnif.h
+#asmn_csi_p_asmnif.h
+#asmn_memc_p_asmnif.h
+#	include_file
+#asmn_dmac_p_asmnif.h
+asmn_intc_p_asmnif.h
+#asmn_timer_cp_asmnif.h
+#	include_file
+#asmn_timer_ca_asmnif.h
+#	include_file
+#asmn_timer_dp_asmnif.h
+#	include_file
+#asmn_dcan_p_asmnif.h
+#	include_file
+#asmn_fcan_a_asmnif.h
+#	include_file
+asmn_rscan_a_asmnif.h
+asmn_rscfd_a_asmnif.h
+asmn_mcan_a_asmnif.h
+asmn_mttcan_a_asmnif.h
+asmn_afcan_a_asmnif.h
+asmn_swc_a_asmnif.h
+#asmn_fvan_a_asmnif.h
+#	include_file
+#asmn_timer_ep_asmnif.h
+#	include_file
+#asmn_timer_ea_asmnif.h
+#	include_file
+#asmn_timer_gp_asmnif.h
+#	include_file
+#asmn_timer_ga_asmnif.h
+#	include_file
+#asmn_timerp_p_asmnif.h
+#asmn_timerp_a_asmnif.h
+#asmn_timery_p_asmnif.h
+#asmn_timery_a_asmnif.h
+#asmn_timerz_p_asmnif.h
+#asmn_timerz_a_asmnif.h
+#asmn_timer0_p_asmnif.h
+#asmn_watch_p_asmnif.h
+#asmn_watchdog_p_asmnif.h
+asmn_ism_p_asmnif.h
+asmn_ism_a_asmnif.h
+#	include_file
+asmn_uarta_p_asmnif.h
+asmn_uarta_a_asmnif.h
+#asmn_uartc_p_asmnif.h
+#asmn_uartc_a_asmnif.h
+asmn_rlin3_a_asmnif.h
+asmn_rlin2_a_asmnif.h
+asmn_fr_a_asmnif.h
+asmn_eth_a_asmnif.h
+asmn_ports_p_asmnif.c
+#asmn_brg_p_asmnif.c
+#asmn_csi_p_asmnif.c
+#asmn_adc_p_asmnif.c
+#asmn_memc_p_asmnif.c
+#	C
+#asmn_dmac_p_asmnif.c
+asmn_intc_p_asmnif.c
+#asmn_timer_cp_asmnif.c
+#	C
+#asmn_timer_ca_asmnif.c
+#	C
+#asmn_timer_dp_asmnif.c
+#	C
+#asmn_dcan_p_asmnif.c
+#	C
+#asmn_fcan_a_asmnif.c
+#	C
+asmn_afcan_a_asmnif.c
+asmn_rscan_a_asmnif.c
+asmn_rscfd_a_asmnif.c
+asmn_mcan_a_asmnif.c
+asmn_mttcan_a_asmnif.c
+asmn_swc_a_asmnif.c
+#asmn_fvan_a_asmnif.c
+#	C
+#asmn_timer_ep_asmnif.c
+#	C
+#asmn_timer_ea_asmnif.c
+#	C
+#asmn_timer_gp_asmnif.c
+#	C
+#asmn_timer_ga_asmnif.c
+#	C
+#asmn_timerp_p_asmnif.c
+#asmn_timerp_a_asmnif.c
+#asmn_timery_p_asmnif.c
+#asmn_timery_a_asmnif.c
+#asmn_timerz_p_asmnif.c
+#asmn_timerz_a_asmnif.c
+#asmn_watch_p_asmnif.c
+#asmn_watchdog_p_asmnif.c
+#	C
+asmn_ism_p_asmnif.c
+asmn_ism_a_asmnif.c
+asmn_uarta_p_asmnif.c
+asmn_uarta_a_asmnif.c
+#asmn_uartc_p_asmnif.c
+#asmn_uartc_a_asmnif.c
+asmn_rlin3_a_asmnif.c
+asmn_rlin2_a_asmnif.c
+asmn_fr_a_asmnif.c
+asmn_eth_a_asmnif.c

@@ -1,0 +1,33 @@
+Renesas Optimizing Linker (W1.01.01 )             05-Jan-2015 08:45:24
+
+*** Options ***
+
+-subcommand=DefaultBuild\CAN FD sample20140717.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\vecttbl.obj
+-input=DefaultBuild\PE1.obj
+-input=DefaultBuild\PE2.obj
+-debug
+-nocompress
+-output="DefaultBuild\CAN FD sample20140717.abs"
+-library=v850e3v5\libc.lib
+-library=v850e3v5\libm.lib
+-library=v850e3v5\libmf.lib
+-list="DefaultBuild\CAN FD sample20140717.map"
+-start=RESET,EIINTTBL,.text/00000000
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+
+RESET
+                                  00000000  000001f5       1f6   200
+EIINTTBL
+                                  00000200  000009ff       800   200
+.text
+                                  00000a00  00000aa3        a4   2
