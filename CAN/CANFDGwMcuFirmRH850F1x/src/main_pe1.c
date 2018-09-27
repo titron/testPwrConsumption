@@ -111,7 +111,7 @@ void main(void)
 	port_test();
 #endif
 
-	tmr0_Delay(SILENT_DURATION_IN_MILLISECOND_BEFORE_CAN_COM);
+//	tmr0_Delay(SILENT_DURATION_IN_MILLISECOND_BEFORE_CAN_COM);
 
 	main_loop();
 } /* End of main() */

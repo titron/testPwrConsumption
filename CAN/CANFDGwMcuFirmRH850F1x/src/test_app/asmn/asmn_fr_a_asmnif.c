@@ -309,7 +309,7 @@ ApplFRStart_1( u08 MenuCom )
 #ifdef ASMN_MENUCODE_TEST2
 
 bit
-ApplFRStart_2( u08 MenuCom )
+ApplFRStart_2 ( u08 MenuCom )
 {
   ERay_reset( );
   FrDrv_CC_init( );

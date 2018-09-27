@@ -888,7 +888,8 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 		;
 	if (EE_RSCFD_A_IRQ_TRX_0 == 0)
 		return ( EE_RSCFD_ERROR);
-
+#if 0
+	// only FR test
 	while (1)
 		;
 
@@ -896,7 +897,8 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	EE_RSCFD_Status_bit &= EE_RSCFD_Stop(Unit1_u08,
 	EE_RSCFD_GLOBAL,
 	EE_RSCFD_OPMODE_RESET);
-
+#else
+#endif
 	return (EE_RSCFD_Status_bit);
 }
 

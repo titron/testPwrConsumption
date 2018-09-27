@@ -1219,11 +1219,11 @@ ASMN_SetNewCom( pu08 MenuCom_pu08 )
 
     return( UARTStatus );
 }
-
+#define TEST_RSCFD_RLIN_FR
 #define TEST_RSCFD
 //#define TEST_RLIN3
 //#define TEST_RLIN2
-//#define TEST_FR
+#define TEST_FR
 //#define TEST_RIIC
 
 int main_loop(void)
@@ -1634,6 +1634,15 @@ int main_loop(void)
 #endif
 
 #endif
+#ifdef TEST_RSCFD_RLIN_FR
+	/* 1st. FR test */
+	ApplFRStart_2( 0 );
+	/* 2nd. RSCFD test */
+	ASMN_RSCFDApplications( 1 );
+	/* 3rd. RLIN2/3 */
+	/* 3rd. while(1) loop */
+	while(1);
+#endif
 
 #ifdef TEST_RIIC
   riic_app();
@@ -1650,4 +1659,6 @@ int main_loop(void)
 #ifdef TEST_FR
 	ASMN_FRApplications( 1 );
 #endif
+
+
 }
