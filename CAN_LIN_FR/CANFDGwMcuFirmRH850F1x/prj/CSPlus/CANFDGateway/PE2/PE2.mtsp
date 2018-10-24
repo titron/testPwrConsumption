@@ -138,7 +138,7 @@
       <COptionISystem-DefaultValue />
       <DependencyFileExistCheckingType-DefaultValue>Rebuild</DependencyFileExistCheckingType-DefaultValue>
       <GeneralOptionCoreCPU-DefaultValue>G3M</GeneralOptionCoreCPU-DefaultValue>
-      <GeneralOptionCurrentDevice-DefaultValue>DR7F701709.DVF, V1.00</GeneralOptionCurrentDevice-DefaultValue>
+      <GeneralOptionCurrentDevice-DefaultValue>DR7F701709.DVF, V1.10</GeneralOptionCurrentDevice-DefaultValue>
       <GeneralOptionR4-DefaultValue>None</GeneralOptionR4-DefaultValue>
       <GeneralOptionResetVectorAddressPE2-DefaultValue>800000</GeneralOptionResetVectorAddressPE2-DefaultValue>
       <GeneralOptionXep-DefaultValue>None</GeneralOptionXep-DefaultValue>

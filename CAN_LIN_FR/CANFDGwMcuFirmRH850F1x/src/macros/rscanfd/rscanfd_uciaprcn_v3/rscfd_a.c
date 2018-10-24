@@ -687,7 +687,7 @@ u08 Unit2_u08, u08 Channel1_u08, u08 Channel2_u08)
 	EE_RSCFD_SET); /* timestamp reset */
 
 	EE_RSCFD_A_IRQ_TRX_0 = 0;
-#if 0 //comment for temperature start
+#if 1 //comment for temperature start
 	/* Send Message to be received by other unit/channel */
 	EE_RSCFD_Status_bit &= EE_RSCFD_SendMessage(Unit1_u08, Channel1_u08,
 			&SendStatus_u08, &SendMessage);
