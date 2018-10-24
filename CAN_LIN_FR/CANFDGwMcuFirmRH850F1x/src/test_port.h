@@ -11,8 +11,8 @@
 #include <standardports.h>
 
 
-#define EE_FR_PORT_TEST        PORT_0
-#define EE_FR_PORT_BIT_TEST    BIT_4
+#define EE_FR_PORT_TEST        PORT_1
+#define EE_FR_PORT_BIT_TEST    BIT_9
 
 #define PORT_SET_LEVEL(LEVEL)	PORT_WriteBit( EE_FR_PORT_TEST, EE_FR_PORT_BIT_TEST, LEVEL );
 

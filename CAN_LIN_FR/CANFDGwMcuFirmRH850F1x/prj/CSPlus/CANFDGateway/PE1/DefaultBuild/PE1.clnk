@@ -70,7 +70,7 @@
 -library=v850e3v5\libmf.lib
 -list=DefaultBuild\PE1.map
 -show=symbol,reference,xreference,total_size,struct,RELOCATION_ATTRIBUTE
--start=.const,.INIT_DSEC.const,.INIT_BSEC.const,.const.cmn,comint.text,.text,.data/00002000,.data.R,.bss,.stack.bss/FEDD0000
+-start=.const,.INIT_DSEC.const,.INIT_BSEC.const,.const.cmn,comint.text,.text,.data/00002000,.data.R,.bss,.stack.bss/FEBD0000
 -fsymbol=.const.cmn
 -fsymbol=comint.text
 -rom=.data=.data.R

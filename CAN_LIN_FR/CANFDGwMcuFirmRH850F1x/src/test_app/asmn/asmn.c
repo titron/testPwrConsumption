@@ -1221,11 +1221,11 @@ ASMN_SetNewCom( pu08 MenuCom_pu08 )
 
     return( UARTStatus );
 }
-#define TEST_RSCFD_RLIN_FR
-#define TEST_RSCFD
+//#define TEST_RSCFD_RLIN_FR
+//#define TEST_RSCFD
 //#define TEST_RLIN3
 //#define TEST_RLIN2
-#define TEST_FR
+//#define TEST_FR
 //#define TEST_RIIC
 
 int main_loop(void)

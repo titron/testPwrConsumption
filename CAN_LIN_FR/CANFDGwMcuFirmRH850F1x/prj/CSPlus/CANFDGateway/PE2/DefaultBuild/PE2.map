@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             27-Sep-2018 16:20:18
+Renesas Optimizing Linker (W3.00.00 )             24-Oct-2018 15:18:18
 
 *** Options ***
 
@@ -12,7 +12,7 @@ Renesas Optimizing Linker (W2.08.00 )             27-Sep-2018 16:20:18
 -library=v850e3v5\libm.lib
 -library=v850e3v5\libmf.lib
 -list=DefaultBuild\PE2.map
--start=.const,.INIT_DSEC.const,.INIT_BSEC.const,.const.cmn,.text,.data/00130000,.data.R,.bss,.stack.bss/FEDD0000
+-start=.const,.INIT_DSEC.const,.INIT_BSEC.const,.const.cmn,.text,.data/00800000,.data.R,.bss,.stack.bss/FE9D0000
 -fsymbol=.const.cmn
 -rom=.data=.data.R
 -memory=high
@@ -25,20 +25,20 @@ Renesas Optimizing Linker (W2.08.00 )             27-Sep-2018 16:20:18
 
 SECTION                            START      END         SIZE   ALIGN
 .const
-                                  00130000  00130000         0   4
+                                  00800000  00800000         0   4
 .INIT_DSEC.const
-                                  00130000  0013000b         c   4
+                                  00800000  0080000b         c   4
 .INIT_BSEC.const
-                                  0013000c  00130013         8   4
+                                  0080000c  00800013         8   4
 .const.cmn
-                                  00130014  00130017         4   4
+                                  00800014  00800017         4   4
 .text
-                                  00130018  00130135       11e   2
+                                  00800018  00800135       11e   2
 .data
-                                  00130138  00130138         0   4
+                                  00800138  00800138         0   4
 .data.R
-                                  fedd0000  fedd0000         0   4
+                                  fe9d0000  fe9d0000         0   4
 .bss
-                                  fedd0000  fedd0000         0   4
+                                  fe9d0000  fe9d0000         0   4
 .stack.bss
-                                  fedd0000  fedd01ff       200   4
+                                  fe9d0000  fe9d01ff       200   4

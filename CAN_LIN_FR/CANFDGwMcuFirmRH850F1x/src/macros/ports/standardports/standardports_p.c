@@ -53,8 +53,8 @@
 #define DRIVER_LOCAL
 
 #include <ree_types.h>
-//#include <dr7f701709_0.h>
-#include "iodefine.h"
+
+#include <iodefine.h>
 
 #ifdef VLIB
 #include <config_afcan.h>

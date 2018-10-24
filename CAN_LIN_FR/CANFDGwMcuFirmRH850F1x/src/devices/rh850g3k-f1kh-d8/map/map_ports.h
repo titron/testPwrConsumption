@@ -1,7 +1,7 @@
 //============================================================================
 // PROJECT = RH850/F1KH-D8
 //============================================================================
-//                                 C O P Y R I G H T                                    
+//                                 C O P Y R I G H T
 //============================================================================
 // Copyright (c) 2017 by Renesas Electronics Europe GmbH. All rights reserved.
 // Arcadiastrasse 10
@@ -12,31 +12,31 @@
 //
 //Warranty Disclaimer
 //
-//Because the Product(s) is licensed free of charge, there is no warranty 
-//of any kind whatsoever and expressly disclaimed and excluded by Renesas, 
-//either expressed or implied, including but not limited to those for 
-//non-infringement of intellectual property, merchantability and/or 
-//fitness for the particular purpose. 
-//Renesas shall not have any obligation to maintain, service or provide bug 
+//Because the Product(s) is licensed free of charge, there is no warranty
+//of any kind whatsoever and expressly disclaimed and excluded by Renesas,
+//either expressed or implied, including but not limited to those for
+//non-infringement of intellectual property, merchantability and/or
+//fitness for the particular purpose.
+//Renesas shall not have any obligation to maintain, service or provide bug
 //fixes for the supplied Product(s) and/or the Application.
 //
-//Each User is solely responsible for determining the appropriateness of 
-//using the Product(s) and assumes all risks associated with its exercise 
-//of rights under this Agreement, including, but not limited to the risks 
-//and costs of program errors, compliance with applicable laws, damage to 
-//or loss of data, programs or equipment, and unavailability or 
+//Each User is solely responsible for determining the appropriateness of
+//using the Product(s) and assumes all risks associated with its exercise
+//of rights under this Agreement, including, but not limited to the risks
+//and costs of program errors, compliance with applicable laws, damage to
+//or loss of data, programs or equipment, and unavailability or
 //interruption of operations.
 //
 //Limitation of Liability
 //
-//In no event shall Renesas be liable to the User for any incidental, 
-//consequential, indirect, or punitive damage (including but not limited 
-//to lost profits) regardless of whether such liability is based on breach 
-//of contract, tort, strict liability, breach of warranties, failure of 
-//essential purpose or otherwise and even if advised of the possibility of 
-//such damages. Renesas shall not be liable for any services or products 
+//In no event shall Renesas be liable to the User for any incidental,
+//consequential, indirect, or punitive damage (including but not limited
+//to lost profits) regardless of whether such liability is based on breach
+//of contract, tort, strict liability, breach of warranties, failure of
+//essential purpose or otherwise and even if advised of the possibility of
+//such damages. Renesas shall not be liable for any services or products
 //provided by third party vendors, developers or consultants identified or
-//referred to the User by Renesas in connection with the Product(s) and/or the 
+//referred to the User by Renesas in connection with the Product(s) and/or the
 //Application.
 //
 //
@@ -80,7 +80,7 @@
 #define A_PORT_BASE                   ( 0xffc102cc )
 #define A_PORT_CONTROL_BASE           ( 0xffc103cc )
 #define A_PORT_MODE_CONTROL_BASE      ( 0xffc140cc )
-                                                                   
+
 /* NON-EXISTING PORT AREAS */
 
 #undef PORT_3
@@ -113,7 +113,7 @@
 /* PORT STRUCTURE */
 
 typedef struct port_numeric {
-  
+
   volatile unsigned short  p0;
   volatile unsigned short  RESERVED0;
   volatile unsigned short  p1;
@@ -156,12 +156,12 @@ typedef struct port_numeric {
   volatile unsigned short  RESERVED19;
   volatile unsigned short  p20;
   volatile unsigned short  RESERVED20;
-  
+
 } port_numeric;
 
 
 typedef struct port_dir_numeric {
-  
+
   volatile unsigned short pbdc0;
   volatile unsigned short RESERVED0;
   volatile unsigned short pbdc1;
@@ -208,7 +208,7 @@ typedef struct port_dir_numeric {
 } port_dir_numeric;
 typedef struct port_mode_numeric {
 
-  volatile unsigned short pm0;       
+  volatile unsigned short pm0;
   volatile unsigned short RESERVED0;
   volatile unsigned short pm1;
   volatile unsigned short RESERVED1;
@@ -250,13 +250,13 @@ typedef struct port_mode_numeric {
   volatile unsigned short RESERVED19;
   volatile unsigned short pm20;
   volatile unsigned short RESERVED20;
-  
+
 } port_mode_numeric;
 
 
 typedef struct port_mode_control_numeric {
-  
-  volatile unsigned short pmc0;      
+
+  volatile unsigned short pmc0;
   volatile unsigned short RESERVED0;
   volatile unsigned short pmc1;
   volatile unsigned short RESERVED1;
@@ -298,11 +298,11 @@ typedef struct port_mode_control_numeric {
   volatile unsigned short RESERVED19;
   volatile unsigned short pmc20;
   volatile unsigned short RESERVED20;
-  
+
 } port_mode_control_numeric;
 
 typedef struct port_function_control_numeric {
-  
+
   volatile unsigned short pfc0;
   volatile unsigned short RESERVED0;
   volatile unsigned short pfc1;
@@ -345,11 +345,11 @@ typedef struct port_function_control_numeric {
   volatile unsigned short RESERVED19;
   volatile unsigned short pfc20;
   volatile unsigned short RESERVED20;
-  
+
 } port_function_control_numeric;
 
 typedef struct port_function_control2_numeric {
-  
+
   volatile unsigned short pfce0;
   volatile unsigned short RESERVED0;
   volatile unsigned short pfce1;
@@ -392,11 +392,11 @@ typedef struct port_function_control2_numeric {
   volatile unsigned short RESERVED19;
   volatile unsigned short pfce20;
   volatile unsigned short RESERVED20;
-  
+
 } port_function_control2_numeric;
 
 typedef struct port_function_control4_numeric {
-  
+
   volatile unsigned short pfcae0;
   volatile unsigned short RESERVED0;
   volatile unsigned short pfcae1;
@@ -439,11 +439,11 @@ typedef struct port_function_control4_numeric {
   volatile unsigned short RESERVED19;
   volatile unsigned short pfcae20;
   volatile unsigned short RESERVED20;
-  
+
 } port_function_control4_numeric;
 
 typedef struct port_alpha {
-  
+
   volatile unsigned short pal;
 /*   volatile unsigned char  pah; */
 /*   volatile unsigned char  RESERVED0; */
@@ -456,12 +456,12 @@ typedef struct port_alpha {
 /*   volatile unsigned char  pcm; */
 /*   volatile unsigned char  RESERVED3; */
 /*   volatile unsigned char  pcd; */
-  
+
 } port_alpha;
 
 
 typedef struct port_mode_alpha {
-  
+
   volatile unsigned short pmal;
 /*   volatile unsigned char  pmah; */
 /*   volatile unsigned char  RESERVED0; */
@@ -474,12 +474,12 @@ typedef struct port_mode_alpha {
 /*   volatile unsigned char  pmcm; */
 /*   volatile unsigned char  RESERVED3; */
 /*   volatile unsigned char  pmcd; */
-  
+
 } port_mode_alpha;
 
 
 typedef struct port_mode_control_alpha {
-  
+
   volatile unsigned short pmcal;
 /*   volatile unsigned char  pmcah; */
 /*   volatile unsigned char  RESERVED0; */
@@ -492,14 +492,14 @@ typedef struct port_mode_control_alpha {
 /*   volatile unsigned char  pmccm; */
 /*   volatile unsigned char  RESERVED3; */
 /*   volatile unsigned char  pmccd;  */
-  
+
 } port_mode_control_alpha;
 
 
 /* PORT DECLARATION */
 
-static struct port_numeric              
-             *port_numeric_p = 
+static struct port_numeric
+             *port_numeric_p =
                                  ( struct port_numeric * )
                                  ( N_PORT_BASE );
 
@@ -507,28 +507,28 @@ static struct port_dir_numeric
              *port_dir_numeric_p =
                                  ( struct port_dir_numeric * )
                                  ( N_PORT_DIR_BASE );
-static struct port_mode_numeric         
-             *port_mode_numeric_p = 
+static struct port_mode_numeric
+             *port_mode_numeric_p =
                                  ( struct port_mode_numeric * )
                                  ( N_PORT_MODE_BASE );
 
-static struct port_mode_control_numeric 
-             *port_mode_control_numeric_p = 
+static struct port_mode_control_numeric
+             *port_mode_control_numeric_p =
                                  ( struct port_mode_control_numeric * )
                                  ( N_PORT_MODE_CONTROL_BASE );
 
-static struct port_function_control_numeric 
-             *port_function_control_numeric_p = 
+static struct port_function_control_numeric
+             *port_function_control_numeric_p =
                                  ( struct port_function_control_numeric * )
                                  ( N_PORT_FUNCTION_CONTROL_BASE );
 
-static struct port_function_control2_numeric 
-             *port_function_control2_numeric_p = 
+static struct port_function_control2_numeric
+             *port_function_control2_numeric_p =
                                  ( struct port_function_control2_numeric * )
                                  ( N_PORT_FUNCTION_CONTROL2_BASE );
 
-static struct port_function_control4_numeric 
-             *port_function_control4_numeric_p = 
+static struct port_function_control4_numeric
+             *port_function_control4_numeric_p =
                                  ( struct port_function_control4_numeric * )
                                  ( N_PORT_FUNCTION_CONTROL4_BASE );
 

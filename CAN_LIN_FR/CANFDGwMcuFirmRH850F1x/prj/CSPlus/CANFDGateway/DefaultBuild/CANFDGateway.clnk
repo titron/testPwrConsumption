@@ -10,7 +10,7 @@
 -library=v850e3v5\libm.lib
 -library=v850e3v5\libmf.lib
 -list=DefaultBuild\CANFDGateway.map
--start=RESET,EIINTTBL/00000000,.text/00200000
+-start=RESET,EIINTTBL,.text/00000000
 -memory=high
 -nologo
 -end

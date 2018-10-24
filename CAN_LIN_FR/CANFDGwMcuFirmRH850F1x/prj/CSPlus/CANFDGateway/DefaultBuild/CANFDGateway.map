@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             27-Sep-2018 16:20:18
+Renesas Optimizing Linker (W3.00.00 )             24-Oct-2018 15:18:18
 
 *** Options ***
 
@@ -15,7 +15,7 @@ Renesas Optimizing Linker (W2.08.00 )             27-Sep-2018 16:20:18
 -library=v850e3v5\libm.lib
 -library=v850e3v5\libmf.lib
 -list=DefaultBuild\CANFDGateway.map
--start=RESET,EIINTTBL/00000000,.text/00200000
+-start=RESET,EIINTTBL,.text/00000000
 -memory=high
 -nologo
 -end
@@ -32,4 +32,4 @@ RESET
 EIINTTBL
                                   00000200  00000f6f       d70   200
 .text
-                                  00200000  002000c5        c6   2
+                                  00000f70  00001035        c6   2

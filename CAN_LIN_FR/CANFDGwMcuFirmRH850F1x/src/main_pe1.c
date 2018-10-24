@@ -62,6 +62,8 @@
 /***********************************************************************************************************************
  Includes   <System Includes> , "Project Includes"
  ***********************************************************************************************************************/
+#define TEST_ENV
+
 #include "iodefine.h"
 #ifdef TEST_ENV
 #include <test_tmr.h>
@@ -96,19 +98,23 @@ void main(void);
 #define SILENT_DURATION_IN_MILLISECOND_BEFORE_CAN_COM (30000)
 void main(void)
 {
+#ifdef TEST_ENV
+//	port_test();
+//	while(1);
+#endif
 	__DI();
 	__lowinit_hw();
 #ifdef TEST_ENV
-	tmr0_init();
-	port_init();
+//	tmr0_init();
+//	port_init();
 #endif
 	 /* Tell PE2 that clock init is done */
 	MEV.G0MEV0.UINT32=1u;
 	__EI();
 
 #ifdef TEST_ENV
-	while(1);
-	port_test();
+//	port_test();
+//	while(1);
 #endif
 
 //	tmr0_Delay(SILENT_DURATION_IN_MILLISECOND_BEFORE_CAN_COM);
