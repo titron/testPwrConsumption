@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.00.00 )             25-Oct-2018 09:06:59
+Renesas Optimizing Linker (W3.00.00 )             25-Oct-2018 15:39:26
 
 *** Options ***
 
@@ -32,4 +32,4 @@ RESET
 EIINTTBL
                                   00000200  00000f6f       d70   200
 .text
-                                  00000f70  00001035        c6   2
+                                  00000f70  00001047        d8   2
