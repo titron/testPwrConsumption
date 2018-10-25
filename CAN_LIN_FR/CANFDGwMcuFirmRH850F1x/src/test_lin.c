@@ -36,15 +36,16 @@ u08	RLIN3Slave[MAX_LIN_BUS_NUM] =
 void powertest_lin_rlin2_m_rlin3_s (void)
 {
 	u08 i;
-
-//    Cetic_CAN_LIN_TRA_turn_Off();
+#if 0
+    Cetic_CAN_LIN_TRA_turn_Off();
 #if ACTIVATE_LIN_BUS_NUM == 1
-    	//Cetic_CAN_LIN_TRA_turn_On(Transceiver_RLIN30_RLIN20);
+    	Cetic_CAN_LIN_TRA_turn_On(Transceiver_RLIN30_RLIN20);
     	//Cetic_CAN_LIN_TRA_turn_On(Transceiver_RLIN34_RLIN24);
 #elif ACTIVATE_LIN_BUS_NUM == 5
-//    	Cetic_CAN_LIN_TRA_turn_On(Transceiver_ALL_RLIN);
+    	Cetic_CAN_LIN_TRA_turn_On(Transceiver_ALL_RLIN);
 #else
 		#error "LIN bus number isn't defined"
+#endif
 #endif
 
     for(i = (u08)0; i < ACTIVATE_LIN_BUS_NUM; i ++)

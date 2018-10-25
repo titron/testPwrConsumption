@@ -102,8 +102,12 @@ void main(void)
 //	port_test();
 //	while(1);
 #endif
+
+
 	__DI();
 	__lowinit_hw();
+
+
 #ifdef TEST_ENV
 //	tmr0_init();
 //	port_init();

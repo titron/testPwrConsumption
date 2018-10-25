@@ -1535,7 +1535,7 @@
       <COptionISystem-DefaultValue />
       <DependencyFileExistCheckingType-DefaultValue>Rebuild</DependencyFileExistCheckingType-DefaultValue>
       <GeneralOptionCoreCPU-DefaultValue>G3M</GeneralOptionCoreCPU-DefaultValue>
-      <GeneralOptionCurrentDevice-DefaultValue>DR7F701709.DVF, V1.00</GeneralOptionCurrentDevice-DefaultValue>
+      <GeneralOptionCurrentDevice-DefaultValue>DR7F701709.DVF, V1.10</GeneralOptionCurrentDevice-DefaultValue>
       <GeneralOptionR4-DefaultValue>None</GeneralOptionR4-DefaultValue>
       <GeneralOptionResetVectorAddressPE2-DefaultValue>800000</GeneralOptionResetVectorAddressPE2-DefaultValue>
       <GeneralOptionXep-DefaultValue>None</GeneralOptionXep-DefaultValue>
@@ -1708,7 +1708,7 @@
       <COptionInsertDbtagWithLabelParameters-DefaultValue />
       <COptionXmultiLevel-DefaultValue>Level0</COptionXmultiLevel-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8586642708672352041</TimeTagModified--0>
+      <TimeTagModified--0>-8586612351022256034</TimeTagModified--0>
       <COptionChangeMessageError-0>No</COptionChangeMessageError-0>
       <COptionG-0>True</COptionG-0>
       <COptionI-0>..\..\..\..\src\macros\riic
