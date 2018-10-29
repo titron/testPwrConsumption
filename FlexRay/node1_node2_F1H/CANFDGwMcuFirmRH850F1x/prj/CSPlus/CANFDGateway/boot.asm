@@ -16,14 +16,14 @@
 
 	; the following is the addresses on R7F701Z07.
 	; specify values suitable to your system if needed.
-	GLOBAL_RAM_ADDR 	.set	0xfeef8000
+	GLOBAL_RAM_ADDR 	.set	0xfeefc000
 	GLOBAL_RAM_END		.set	0xfeefffff
 
-	LOCAL_RAM_PE1_ADDR	.set	0xfebe0000
+	LOCAL_RAM_PE1_ADDR	.set	0xfebe4000
 	LOCAL_RAM_PE1_END	.set	0xfebfffff
 
-	LOCAL_RAM_PE3_ADDR	.set	0xfe9e0000
-	LOCAL_RAM_PE3_END	.set	0xfe9fffff
+	LOCAL_RAM_PE2_ADDR	.set	0xfe9e4000
+	LOCAL_RAM_PE2_END	.set	0xfe9fffff
 
 ;-----------------------------------------------------------------------------
 ;	startup
@@ -78,8 +78,8 @@ $endif
 	bz	__start_PE1
 	cmp	2, r10
 	bz	__start_PE2
-	cmp	3, r10
-	bz	__start_PE3
+	;cmp	3, r10
+	;bz	__start_PE3
 __exit:
 	br	__exit
 
@@ -94,7 +94,16 @@ $endif
 	jmp	[r10]			; jump to #__start
 
 __start_PE2:
-	br	__exit			; PE2 do not exist on R7F701Z07
+jarl	_hdwinit_PE2, lp	; initialize hardware
+;$ifdef USE_TABLE_REFERENCE_METHOD
+;	jarl	_init_eiint, lp		; initialize exception
+;$endif
+
+;	mov	#_pm2_setting_table, r13
+;	ld.w	.OFFSET_ENTRY[r13], r10	; r10 <- #__start
+;	jmp	[r10]			; jump to #__start
+	br	__exit
+
 
 __start_PE3:
 ;	jarl	_hdwinit_PE3, lp	; initialize hardware
@@ -123,6 +132,23 @@ _hdwinit_PE1:
 	; clear Local RAM PE1
 	mov	LOCAL_RAM_PE1_ADDR, r6
 	mov	LOCAL_RAM_PE1_END, r7
+	jarl	_zeroclr4, lp
+
+	mov	r14, lp
+	jmp	[lp]
+
+;-----------------------------------------------------------------------------
+;	hdwinit_PE2
+; Specify RAM addresses suitable to your system if needed.
+;-----------------------------------------------------------------------------
+
+	.align	2
+_hdwinit_PE2:
+	mov	lp, r14			; save return address
+
+	; clear Local RAM PE2
+	mov	LOCAL_RAM_PE2_ADDR, r6
+	mov	LOCAL_RAM_PE2_END, r7
 	jarl	_zeroclr4, lp
 
 	mov	r14, lp

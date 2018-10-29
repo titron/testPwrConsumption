@@ -1,9 +1,9 @@
-<CubeSuiteProject>
-  <ProductVersion>8.01.00.00</ProductVersion>
+﻿<CubeSuiteProject>
+  <ProductVersion>9.00.00.00</ProductVersion>
   <Class Guid="68f4a651-b9cd-473b-a595-b00447132ffa">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <FormatVersion>2.0</FormatVersion>
-      <FileVersion>8.1</FileVersion>
+      <FileVersion>9.0</FileVersion>
       <ProjectGuid>8a99bb11-a6fc-4014-9ad8-10bf51b3c8b1</ProjectGuid>
       <ProjectItemGuid>67ed5309-6cc6-4426-9f45-846bee4a5082</ProjectItemGuid>
       <FileCategoryGuid>8621f411-6997-4bf2-a012-ec260e213b84</FileCategoryGuid>
@@ -1455,7 +1455,7 @@
       <LibOptionLibraryLibSetJmp-DefaultValue>False</LibOptionLibraryLibSetJmp-DefaultValue>
       <LinkOptionLibraryLibSetJmp-DefaultValue>False</LinkOptionLibraryLibSetJmp-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8586722263511686260</TimeTagModified--0>
+      <TimeTagModified--0>-8586608325774030693</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <SetAllBuildModeValue-0>False</SetAllBuildModeValue-0>
@@ -1495,7 +1495,7 @@
       <GeneralOptionOtherAdditionalOptions-0 />
       <GeneralOptionResetVectorAddressPE6-0 />
       <GeneralOptionResetVectorAddressPE7-0 />
-      <LastCompilerVersion-0>V1.07.00</LastCompilerVersion-0>
+      <LastCompilerVersion-0>V2.00.00</LastCompilerVersion-0>
       <GeneralOptionResetVectorAddressD-0>0</GeneralOptionResetVectorAddressD-0>
     </Instance>
     <Instance Guid="24e7db6c-6f3c-483e-b3af-c4be92050d3b">
@@ -1555,22 +1555,25 @@
       <COptionXintermodule-DefaultValue>None</COptionXintermodule-DefaultValue>
       <COptionXmisra2012RuleFile-DefaultValue />
       <COptionXround-DefaultValue>Nearest</COptionXround-DefaultValue>
-      <COptionXaliasAnsi-DefaultValue>False</COptionXaliasAnsi-DefaultValue>
+      <COptionLibraryIntrinsic-DefaultValue>None</COptionLibraryIntrinsic-DefaultValue>
       <COptionXfxu-DefaultValue>True</COptionXfxu-DefaultValue>
       <COptionXmisra2012RuleNumberApply-DefaultValue />
-      <COptionXinlineStrcpy-DefaultValue>False</COptionXinlineStrcpy-DefaultValue>
+      <COptionXaliasAnsi-DefaultValue>False</COptionXaliasAnsi-DefaultValue>
       <COptionXmisra2012RuleNumberIgnore-DefaultValue />
       <COptionXuseFp16-DefaultValue>False</COptionXuseFp16-DefaultValue>
       <COptionXdblSize-DefaultValue>DoublePrecision</COptionXdblSize-DefaultValue>
-      <COptionXmergeString-DefaultValue>False</COptionXmergeString-DefaultValue>
+      <COptionXinlineStrcpy-DefaultValue>False</COptionXinlineStrcpy-DefaultValue>
       <COptionXmisra2012RuleNumberRequiredAdd-DefaultValue />
       <COptionXdiv-DefaultValue>False</COptionXdiv-DefaultValue>
+      <COptionXmergeString-DefaultValue>False</COptionXmergeString-DefaultValue>
       <COptionXmisra2012RuleNumberRequiredRemove-DefaultValue />
       <COptionXcheckDivOv-DefaultValue>False</COptionXcheckDivOv-DefaultValue>
       <COptionXignoreFilesMisra-DefaultValue />
       <COptionXcheckDivOvValue-DefaultValue>1</COptionXcheckDivOvValue-DefaultValue>
       <COptionXcheckLanguageExtension-DefaultValue>False</COptionXcheckLanguageExtension-DefaultValue>
+      <COptionRelaxedMath-DefaultValue>None</COptionRelaxedMath-DefaultValue>
       <COptionXuseFmaf-DefaultValue>False</COptionXuseFmaf-DefaultValue>
+      <COptionUseRecipf-DefaultValue>False</COptionUseRecipf-DefaultValue>
       <COptionXunorderedCmpf-DefaultValue>False</COptionXunorderedCmpf-DefaultValue>
       <COptionXcallJump-DefaultValue>None</COptionXcallJump-DefaultValue>
       <COptionXfarJump-DefaultValue />
@@ -1588,7 +1591,7 @@
       <COptionInsertDbtagWithLabelParameters-DefaultValue />
       <COptionXmultiLevel-DefaultValue>Level0</COptionXmultiLevel-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8586717091635702164</TimeTagModified--0>
+      <TimeTagModified--0>-8586608325774030693</TimeTagModified--0>
       <COptionChangeMessageError-0>No</COptionChangeMessageError-0>
       <COptionG-0>True</COptionG-0>
       <COptionI-0>..\..\..\..\src\devices\rh850g3k-f1kh-d8
@@ -1663,22 +1666,25 @@
       <COptionXintermodule-0>None</COptionXintermodule-0>
       <COptionXmisra2012RuleFile-0 />
       <COptionXround-0>Nearest</COptionXround-0>
-      <COptionXaliasAnsi-0>False</COptionXaliasAnsi-0>
+      <COptionLibraryIntrinsic-0>None</COptionLibraryIntrinsic-0>
       <COptionXfxu-0>True</COptionXfxu-0>
       <COptionXmisra2012RuleNumberApply-0 />
-      <COptionXinlineStrcpy-0>False</COptionXinlineStrcpy-0>
+      <COptionXaliasAnsi-0>False</COptionXaliasAnsi-0>
       <COptionXmisra2012RuleNumberIgnore-0 />
       <COptionXuseFp16-0>False</COptionXuseFp16-0>
       <COptionXdblSize-0>DoublePrecision</COptionXdblSize-0>
-      <COptionXmergeString-0>False</COptionXmergeString-0>
+      <COptionXinlineStrcpy-0>False</COptionXinlineStrcpy-0>
       <COptionXmisra2012RuleNumberRequiredAdd-0 />
       <COptionXdiv-0>False</COptionXdiv-0>
+      <COptionXmergeString-0>False</COptionXmergeString-0>
       <COptionXmisra2012RuleNumberRequiredRemove-0 />
       <COptionXcheckDivOv-0>False</COptionXcheckDivOv-0>
       <COptionXignoreFilesMisra-0 />
       <COptionXcheckDivOvValue-0>1</COptionXcheckDivOvValue-0>
       <COptionXcheckLanguageExtension-0>False</COptionXcheckLanguageExtension-0>
+      <COptionRelaxedMath-0>None</COptionRelaxedMath-0>
       <COptionXuseFmaf-0>False</COptionXuseFmaf-0>
+      <COptionUseRecipf-0>True</COptionUseRecipf-0>
       <COptionXunorderedCmpf-0>False</COptionXunorderedCmpf-0>
       <COptionXcallJump-0>None</COptionXcallJump-0>
       <COptionXfarJump-0 />
@@ -1877,19 +1883,20 @@ comint.text
       <HexOptionRecordS-DefaultValue>None</HexOptionRecordS-DefaultValue>
       <HexOptionChangeMessageInformation-DefaultValue>None</HexOptionChangeMessageInformation-DefaultValue>
       <HexOptionCrcType-DefaultValue>Ethernet</HexOptionCrcType-DefaultValue>
-      <HexOptionDivisionOutputFile-DefaultValue />
+      <HexOptionLoadAddress-DefaultValue />
       <HexOptionOtherAdditionalOptions-DefaultValue />
       <HexOptionSpace-DefaultValue>None</HexOptionSpace-DefaultValue>
       <HexOptionChangeMessageInformationNumber-DefaultValue />
       <HexOptionCrcInitialValue-DefaultValue />
+      <HexOptionDivisionOutputFile-DefaultValue />
       <HexOptionSpaceValue-DefaultValue>FF</HexOptionSpaceValue-DefaultValue>
-      <HexOptionUseObject-DefaultValue>False</HexOptionUseObject-DefaultValue>
       <HexOptionChangeMessageWarning-DefaultValue>None</HexOptionChangeMessageWarning-DefaultValue>
       <HexOptionCrcEndian-DefaultValue>Little</HexOptionCrcEndian-DefaultValue>
       <HexOptionFixRecordLengthAndAlign-DefaultValue>False</HexOptionFixRecordLengthAndAlign-DefaultValue>
-      <HexOptionOutputFolderForUnitedHexFile-DefaultValue>%BuildModeName%_merged</HexOptionOutputFolderForUnitedHexFile-DefaultValue>
+      <HexOptionUseObject-DefaultValue>False</HexOptionUseObject-DefaultValue>
       <HexOptionChangeMessageWarningNumber-DefaultValue />
       <HexOptionFixRecordLengthAndAlignValue-DefaultValue>1</HexOptionFixRecordLengthAndAlignValue-DefaultValue>
+      <HexOptionOutputFolderForUnitedHexFile-DefaultValue>%BuildModeName%_merged</HexOptionOutputFolderForUnitedHexFile-DefaultValue>
       <HexOptionByteCount-DefaultValue>False</HexOptionByteCount-DefaultValue>
       <HexOptionChangeMessageError-DefaultValue>None</HexOptionChangeMessageError-DefaultValue>
       <HexOptionByteCountValue-DefaultValue>FF</HexOptionByteCountValue-DefaultValue>
@@ -1915,19 +1922,20 @@ comint.text
       <HexOptionRecordS-0>None</HexOptionRecordS-0>
       <HexOptionChangeMessageInformation-0>None</HexOptionChangeMessageInformation-0>
       <HexOptionCrcType-0>Ethernet</HexOptionCrcType-0>
-      <HexOptionDivisionOutputFile-0 />
+      <HexOptionLoadAddress-0 />
       <HexOptionOtherAdditionalOptions-0 />
       <HexOptionSpace-0>None</HexOptionSpace-0>
       <HexOptionChangeMessageInformationNumber-0 />
       <HexOptionCrcInitialValue-0 />
+      <HexOptionDivisionOutputFile-0 />
       <HexOptionSpaceValue-0>FF</HexOptionSpaceValue-0>
-      <HexOptionUseObject-0>False</HexOptionUseObject-0>
       <HexOptionChangeMessageWarning-0>None</HexOptionChangeMessageWarning-0>
       <HexOptionCrcEndian-0>Little</HexOptionCrcEndian-0>
       <HexOptionFixRecordLengthAndAlign-0>False</HexOptionFixRecordLengthAndAlign-0>
-      <HexOptionOutputFolderForUnitedHexFile-0>%BuildModeName%_merged</HexOptionOutputFolderForUnitedHexFile-0>
+      <HexOptionUseObject-0>False</HexOptionUseObject-0>
       <HexOptionChangeMessageWarningNumber-0 />
       <HexOptionFixRecordLengthAndAlignValue-0>1</HexOptionFixRecordLengthAndAlignValue-0>
+      <HexOptionOutputFolderForUnitedHexFile-0>%BuildModeName%_merged</HexOptionOutputFolderForUnitedHexFile-0>
       <HexOptionByteCount-0>False</HexOptionByteCount-0>
       <HexOptionChangeMessageError-0>None</HexOptionChangeMessageError-0>
       <HexOptionByteCountValue-0>FF</HexOptionByteCountValue-0>
@@ -2167,7 +2175,9 @@ CLMA2|iodefine.h|True
 </GeneratorOptionOutputModuleNameList-DefaultValue>
       <GeneratorOptionUitron-DefaultValue>False</GeneratorOptionUitron-DefaultValue>
       <GeneratorOptionOutputMISRAC-DefaultValue>False</GeneratorOptionOutputMISRAC-DefaultValue>
+      <GeneratorOptionModuleArray-DefaultValue>False</GeneratorOptionModuleArray-DefaultValue>
       <GeneratorOptionOutputIORArray-DefaultValue>False</GeneratorOptionOutputIORArray-DefaultValue>
+      <GeneratorOptionIORArray-DefaultValue>False</GeneratorOptionIORArray-DefaultValue>
       <GeneratorOptionShareStructure-DefaultValue>True</GeneratorOptionShareStructure-DefaultValue>
       <GeneratorOptionPragmaPeripheralGroup-DefaultValue>False</GeneratorOptionPragmaPeripheralGroup-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
@@ -2327,7 +2337,9 @@ CLMA2|iodefine.h|True
 </GeneratorOptionOutputModuleNameList-0>
       <GeneratorOptionUitron-0>False</GeneratorOptionUitron-0>
       <GeneratorOptionOutputMISRAC-0>False</GeneratorOptionOutputMISRAC-0>
+      <GeneratorOptionModuleArray-0>False</GeneratorOptionModuleArray-0>
       <GeneratorOptionOutputIORArray-0>False</GeneratorOptionOutputIORArray-0>
+      <GeneratorOptionIORArray-0>False</GeneratorOptionIORArray-0>
       <GeneratorOptionShareStructure-0>True</GeneratorOptionShareStructure-0>
       <GeneratorOptionPragmaPeripheralGroup-0>False</GeneratorOptionPragmaPeripheralGroup-0>
     </Instance>
